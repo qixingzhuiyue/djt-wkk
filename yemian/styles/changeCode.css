@@ -1,0 +1,93 @@
+.regPhone {
+  background: url("../images/login/regPhone.png") no-repeat 90% 50%;
+  background-size: 12px 12px;
+}
+.regKey {
+  background: url("../images/login/regKey.png") no-repeat 90% 50%;
+  background-size: 12px 12px;
+}
+.code {
+  background: #ebebeb;
+  border: none;
+  width: 70px;
+  height: 22px;
+  line-height: 22px;
+  right: 4px;
+  top: 3px;
+}
+.identifyingCode {
+  margin: 0 auto;
+  width: 200px;
+}
+form input {
+  margin-bottom: 10px;
+}
+form .btnRegister {
+  margin-top: 10px;
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .code {
+    width: 70px;
+    height: 16px;
+    line-height: 16px;
+    right: 2px;
+    top: 2px;
+  }
+  .identifyingCode {
+    width: 148px;
+  }
+  form input {
+    margin-bottom: 10px;
+  }
+  .regPhone {
+    background-size: 14px 14px;
+  }
+  .regKey {
+    background-size: 14px 14px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .code {
+    width: 70px;
+    height: 20px;
+    line-height: 20px;
+    right: 2px;
+    top: 2px;
+  }
+  .identifyingCode {
+    width: 182px;
+  }
+  form input {
+    margin-bottom: 10px;
+  }
+  .regPhone {
+    background-size: 16px 16px;
+  }
+  .regKey {
+    background-size: 16px 16px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  form input {
+    margin-bottom: 20px;
+  }
+  .code {
+    width: 100px;
+    height: 34px;
+    line-height: 34px;
+    right: 6px;
+    top: 3px;
+  }
+  .regPhone {
+    background-size: 20px 20px;
+  }
+  .regKey {
+    background-size: 20px 20px;
+  }
+  .identifyingCode {
+    width: 300px;
+  }
+}
