@@ -1,0 +1,32 @@
+body{text-align: center;}
+@media (max-width: 768px) {
+    .weixin{margin-top: 12px;}
+    h2{padding-top: 30px;}
+    .weixin img{width: 120px;height: 120px;}
+    .weixin_botm h3{line-height: 20px;}
+    .weixin_botm{padding-bottom: 20px;}
+}
+
+@media (min-width: 768px) {
+    .weixin{margin-top: 20px;}
+    h2{padding-top: 40px;}
+    .weixin img{width: 180px;height: 180px;}
+    .weixin_botm h3{line-height: 24px;}
+    .weixin_botm{padding-bottom: 24px;}
+}
+
+@media (min-width: 992px) {
+    .weixin{margin-top: 30px;}
+    h2{padding-top: 50px;}
+    .weixin img{width: 200px;height: 200px;}
+    .weixin_botm h3{line-height: 24px;}
+    .weixin_botm{padding-bottom: 30px;}
+}
+
+@media (min-width: 1200px) {
+    .weixin{margin-top: 40px;}
+    h2{padding-top: 60px;}
+    .weixin img{width: 250px;height: 250px;}
+    .weixin_botm{padding-bottom: 40px;}
+    .weixin_botm h3{line-height: 26px;}
+}

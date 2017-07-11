@@ -1,0 +1,352 @@
+.loginForm {
+  width: 100%;
+  height: 528px;
+  background-size: 100% 488px;
+  text-align: center;
+}
+.logo {
+  height: 44px;
+  line-height: 44px;
+  width: 100%;
+  text-align: center;
+}
+.logoImg img {
+  height: 40px;
+  margin: 10px 4px 0 0;
+}
+.logo p {
+  font-weight: 600;
+}
+.loginForm form {
+    border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  -ms-border-radius: 2px;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  /*padding-bottom: 30px;*/
+  padding: 0 30px;
+  margin: auto;
+  overflow: hidden;
+  /*background: #eee;*/
+}
+input[type="button"] {
+  margin: 0 auto 10px;
+}
+.loginForm h2 {
+  line-height: 40px;
+  height: 40px;
+}
+form input {
+  border: 1px solid #c4c4c4;
+  text-indent: .24rem;
+  width: 100%;
+  line-height:40px;
+  height: 40px;
+}
+.name,
+.password {
+  margin-bottom: 8px;
+  background-size: 10px 10px;
+}
+.remPass a {
+  background-size: 12px 12px;
+  top: 4px;
+}
+.name {
+  background: url("../images/login/phone.png") no-repeat 90% 50%;
+}
+.password {
+  background: url("../images/login/password.png") no-repeat 90% 50%;
+}
+.btnLogin {
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  margin-bottom: 6px;
+}
+.btnRegister {
+  width: 100%;
+  line-height: 40px;
+  height: 40px;
+  margin-bottom: 14px;
+}
+.remPass input {
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 9;
+}
+.remPass label {
+  text-indent: 22px;
+  line-height: 20px;
+  height: 20px;
+}
+.remPass a {
+  background: url("../images/login/noConfirm.png") no-repeat;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  top: 0;
+}
+.remPass .confirm {
+  background: url("../images/login/confirm.png") no-repeat;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  left: 0;
+  /*top: 0;*/
+}
+form button {
+  border: 1px solid #9ab126;
+  margin: 0 auto;
+}
+.fotBot {
+  background: #1e1e1e;
+  text-align: center;
+  height: 118px;
+  padding: 0 24px;
+}
+.addition {
+  width: 302px;
+  margin:20px 0 40px 6px;
+}
+.fotBot h3 {
+  margin: 18px 0 8px ;
+}
+.fotBot p,
+.fotBot span {
+  line-height: 16px;
+  margin-bottom: 0;
+  height: 16px;
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  form input {
+    text-indent: .5rem;
+  }
+  #tel{    margin: -4px 0 6px;}
+  .logo p {
+    font-size: 12px;
+  }
+  .fotBot h3,
+  .fotBot p,
+  .addition {
+    font-size: 10px;
+  }
+  .loginForm form {
+    float: none;
+  }
+}
+.loginForm form{border-top: 1px solid #dcdcdc }
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .loginForm form{border-top: none;}
+  #tel{    margin: -4px 0 6px;}
+  form input {
+    text-indent: .24rem;
+  }
+  .loginForm {
+      background: url("../images/login/login3.png") no-repeat;
+    background-size: 100% 100%;
+    height: 336px;
+    width: 100%;
+  }
+  .logo {
+    line-height: 70px;
+    height: 70px;
+  }
+  .logoImg img {
+    height: 60px;
+    margin-top: 4px;
+  }
+  .loginForm form {
+    width: 240px;
+    height:280px;
+    padding:0 0 10px;
+    margin: 36px 0 0 60%;
+  }
+  .loginForm h2 {
+    line-height: 40px;
+    height: 40px;
+  }
+  form input {
+    width:200px;
+    line-height: 28px;
+    height: 28px;
+  }
+  .name,
+  .password {
+    margin-bottom: 8px;
+    background-size: 12px 12px;
+  }
+  .remPass a {
+    background-size: 20px;
+    top:0;
+  }
+  .btnLogin {
+    width: 200px;
+    line-height: 28px;
+    height: 28px;
+    margin-bottom: 6px;
+  }
+  .btnRegister {
+    width: 200px;
+    line-height:28px;
+    height: 28px;
+    margin-bottom: 14px;
+  }
+  .addition {
+    width:200px;
+    margin: auto;
+  }
+  .fotBot {
+    height: 82px;
+  }
+  .fotBot h3 {
+    margin: 18px 0 8px ;
+  }
+  .fotBot p,
+  .fotBot span {
+    line-height: 16px;
+    margin-bottom: 0;
+    height: 16px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  #tel{    margin: -4px 0 6px;}
+  .loginForm {
+      background: url("../images/login/login2.png") no-repeat;
+    background-size: 100% 100%;
+    height: 404px;
+    width: 100%;
+  }
+  .logo {
+    line-height: 78px;
+    height: 78px;
+  }
+  .logoImg img {
+    height: 72px;
+  }
+  .loginForm form {
+    width: 220px;
+    padding-bottom: 10px;
+    height: 266px;
+    margin: 88px 0 0 60%;
+  }
+  .loginForm h2 {
+    line-height: 48px;
+    height: 48px;
+  }
+  form input {
+    width: 182px;
+    line-height: 24px;
+    height: 24px;
+  }
+  .name,
+  .password {
+    margin-bottom: 12px;
+    background-size: 14px 14px;
+  }
+  .remPass a {
+    background-size: 20px 20px;
+    top:0;
+  }
+  .btnLogin {
+    width: 182px;
+    line-height: 24px;
+    height: 24px;
+    margin-bottom: 12px;
+  }
+  .btnRegister {
+    width: 182px;
+    line-height: 24px;
+    height: 24px;
+    margin-bottom: 18px;
+  }
+  .addition {
+    width: 182px;
+    margin: 0 0 10px 20px;
+  }
+  .fotBot {
+    height: 98px;
+  }
+  .fotBot h3 {
+    margin: 24px 0 8px ;
+  }
+  .fotBot p,
+  .fotBot span {
+    line-height: 18px;
+    margin-bottom: 0;
+    height: 18px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  #tel{    margin: -10px 0 10px;}
+  .loginForm {
+      background: url("../images/login/login.png") no-repeat;
+    background-size: 100% 100%;
+    height: 658px;
+    width: 100%;
+  }
+  .logo {
+    line-height: 100px;
+    height: 100px;
+  }
+  .logoImg img {
+    height: 118px;
+    margin-right: 24px;
+  }
+  .loginForm form {
+    padding-bottom: 30px;
+    width: 360px;
+    height: 400px;
+  }
+  .loginForm h2 {
+    line-height: 82px;
+    height: 82px;
+  }
+  form input {
+    width: 300px;
+    line-height: 40px;
+    height: 40px;
+  }
+  .name {
+    margin-bottom: 20px;
+  }
+  .btnLogin {
+    width: 300px;
+    line-height: 42px;
+    height: 42px;
+    margin-bottom: 12px;
+  }
+  .btnRegister {
+    width: 300px;
+    line-height: 42px;
+    height: 42px;
+    margin-bottom: 30px;
+  }
+  .addition {
+    margin: 18px 0 20px 28px;
+    width: 300px;
+  }
+  .fotBot {
+    height: 160px;
+  }
+  .fotBot h3 {
+    margin: 38px 0 12px ;
+  }
+  .fotBot p,
+  .fotBot span {
+    line-height: 32px;
+    height: 32px;
+    margin-bottom: 0;
+  }
+}

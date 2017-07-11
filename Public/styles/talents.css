@@ -1,0 +1,1331 @@
+body {
+  background: #fff;
+}
+.mainBg {
+  background: url("../images/talents/bg.png") no-repeat 100%;
+  width: 100%;
+}
+input {
+  margin: 0;
+}
+label {
+  vertical-align: top;
+}
+.banner img {
+  margin: auto;
+}
+.demandList {
+  background: url("../images/talents/demand.png") center;
+  margin: auto;
+}
+.demandIcon p {
+  color: #9ebd00;
+}
+.demandIcon p span {
+  border-radius: 50%;
+  background: #9ebd00;
+}
+.demandList h4 {
+  color: #8ec100;
+}
+.demandList .demandListR h4 {
+  text-indent: 0;
+}
+.demandListL {
+  text-align: right;
+  margin-top: 0;
+}
+.demandListR {
+  text-align: left;
+}
+hr {
+  height: 1px;
+  background: #9ebd00;
+}
+.demand {
+  text-align: center;
+}
+.form h3,
+.form h4,
+.form label {
+  margin: 0;
+}
+.form .title ul li:after {
+  content: "";
+  width: 1px;
+  background: #990000;
+  position: absolute;
+}
+.form .title span {
+  background: #dcdcdc;
+  vertical-align: top;
+  height: 1px;
+}
+.form .title span:after {
+  content: "";
+  background: #8c8c8c;
+  border-radius: 50%;
+  position: absolute;
+}
+.form-con > li {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  margin: auto;
+  z-index: 99;
+}
+.form-con label {
+  text-align: right;
+  display: inline-block;
+}
+.form-con input[type="text"],
+.form-con select,
+.form-con option {
+  width: 360px;
+  line-height: 38px;
+  /*height: 40px;*/
+  margin-bottom: 40px;
+  text-indent: 10px;
+}
+.form-con h3 {
+  font-weight: 500;
+}
+.form-con h3:before {
+  content: "";
+  background: #9ab126;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.sex ul li input,
+.charge li input {
+  opacity: 0;
+  z-index: 99;
+  left: 0;
+  top: 0;
+}
+.form-tab {
+  text-align: center;
+}
+.form-tab .formTabBg {
+  background: url("../images/talents/formTabBg.png");
+  color: #fff;
+}
+form .submit span {
+  margin: auto;
+}
+#imgdiv {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+}
+#imgdiv img {
+  width: 100%;
+}
+.upImg input {
+  opacity: 0;
+}
+.upImg label {
+  z-index: 9;
+  left: 0;
+  top: 0;
+  background: #9ab126;
+  color: #fff;
+  border-radius: 2px;
+  text-align: center;
+  padding: 0;
+  z-index: -1;
+}
+.charge li input {
+  margin: 0;
+}
+.form .book {
+  text-align: center;
+  font-weight: 500;
+}
+.submit {
+  text-align: center;
+}
+.form .submit span {
+  border: none;
+  border-radius: 4px;
+}
+.banner img {
+  width: 100%;
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  .content {
+    width: 320px;
+    margin: auto;
+    height: 1680px;
+  }
+  /*.mainBg {*/
+    /*height: 1500px;*/
+  /*}*/
+  .demand h3 {
+    margin: 30px 0 6px;
+    font-size: 14px;
+  }
+  .capacity {
+    font-size: 12px;
+  }
+  .demand hr {
+    width: 28px;
+    margin: 8px auto 20px;
+  }
+  .demandList {
+    background-size: 100% 100px;
+    height: 100px;
+    width: 300px;
+  }
+  .demandIcon {
+    width: 220px;
+    margin: 40px auto 0;
+  }
+  .demandIcon p {
+    font-size: 12px;
+  }
+  .demandIcon p span {
+    width: 30px;
+    line-height: 24px;
+    margin-right: 16px;
+  }
+  .demandList p {
+    line-height: 16px;
+    font-size: 12px;
+  }
+  .demandList .demandListR h4 {
+    text-indent: 22px;
+  }
+  .student h4 {
+    background: url("../images/talents/student.png") no-repeat 10% 0;
+  }
+  .ability h4 {
+    background: url("../images/talents/ability.png") no-repeat 10% 0;
+  }
+  .marketing h4 {
+    background: url("../images/talents/marketing.png") no-repeat 0;
+  }
+  .job h4 {
+    background: url("../images/talents/job.png") no-repeat 0;
+  }
+  .demandList h4 {
+    font-size: 16px;
+    background-size: 24px 24px;
+    line-height: 24px;
+    text-indent: 50px;
+    margin: 0;
+  }
+  .demandListR {
+    margin-top: 0;
+  }
+  .ability {
+    margin: 38px 0 0 0;
+  }
+  .job {
+    margin: 48px 0 0 6px;
+  }
+  .form {
+    margin-top: 12px;
+  }
+  .form h4 {
+    line-height: 24px;
+  }
+  .form .title {
+    width: 280px;
+    margin: auto;
+  }
+  .form .title ul li {
+    margin-right: 0;
+  }
+  .form .title ul li:after {
+    right: -4px;
+    top: 8px;
+  }
+  .form .title span {
+    width: 188px;
+    margin: 12px 0 0 6px;
+  }
+  .form .title h3 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .form .title span:after {
+    width: 4px;
+    height: 4px;
+    left: 0;
+    top: -2px;
+  }
+  .form-con {
+    width: 320px;
+    height: 1280px;
+    margin: auto;
+  }
+  .form-con > li {
+    width: 320px;
+    /*height: 1180px;*/
+  }
+  .form-con label {
+    padding-right: 12px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .form-conL label {
+    width: 100px;
+  }
+  .form-conR label {
+    width: 90px;
+  }
+  .form-conL {
+    margin-top: 12px;
+  }
+  .form-conR {
+    margin: 20px 16px 0 0;
+  }
+  .form-con input[type="text"],
+  .form-con select,
+  .form-con option,
+  .form-con textarea {
+    width: 180px;
+    line-height: 24px;
+    /*height: 20px;*/
+    margin-bottom: 6px;
+    text-indent: 2px;
+    border: 1px solid #e5e5e5;
+  }
+  .form-con h3 {
+    font-size: 14px;
+    margin: 0 20px 10px;
+    text-indent: 14px;
+  }
+  .form-con h3:before {
+    width: 2px;
+    height: 14px;
+  }
+  .form-con .registered select,
+  .form-con .registered option {
+    width: 80px;
+  }
+  .registered > div {
+    width: 180px;
+  }
+  .sex ul {
+    margin-bottom: 10px;
+  }
+  .sex ul li,
+  .charge li {
+    width: 46px;
+    height: 14px;
+    text-indent: 20px;
+  }
+  .sex ul li span,
+  .charge li span {
+    line-height: 14px;
+    background: url("../images/talents/sexN.png") no-repeat 0;
+    background-size: 12px;
+    width: 72px;
+    margin-left: -18px;
+  }
+  .sex ul li .sexY,
+  .charge li .chargeY {
+    background: url("../images/talents/sexY.png") no-repeat 0;
+  }
+  .sex ul li input,
+  .charge li input {
+    opacity: 0;
+    z-index: 99;
+    width: 72px;
+    height: 14px;
+    left: 0;
+    top: 0;
+  }
+  .form-tab {
+    margin: 10px 0;
+  }
+  .form-tab li:first-child {
+    margin-right: 6px;
+  }
+  .form-tab li {
+    width: 62px;
+    line-height: 28px;
+    height: 34px;
+    font-size: 12px;
+  }
+  .form-tab .formTabBg {
+    background: url("../images/talents/formTabBg.png");
+    background-size: 62px 34px;
+  }
+  .form-con .professional input,
+  .form-con .major input,
+  .major textarea {
+    margin-bottom: 6px;
+  }
+  #imgdiv,
+  #businessDiv,
+  #environmentDiv {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+  .imgdiv img,
+  #businessDiv img,
+  #environmentDiv img {
+    width: 100%;
+    height: 100px;
+  }
+  .upImg p {
+    line-height: 24px;
+  }
+  .upImg input {
+    width: 130px;
+    line-height: 32px;
+    margin: 6px 0 8px;
+  }
+  .upImg label {
+    width: 60px;
+    line-height: 20px;
+    left: 0;
+    top: 0;
+    font-size: 12px;
+  }
+  .charge {
+    margin-left: 12px;
+  }
+  .commitment p {
+    margin-left: 14px;
+  }
+  .commitment,
+  .charge span {
+    line-height: 14px;
+    font-size: 12px;
+  }
+  .commitment .charge span {
+    background: url("../images/talents/sexN.png") no-repeat 0;
+  }
+  .commitment .charge li .chargeY {
+    background: url("../images/talents/sexY.png") no-repeat 0;
+  }
+  .charge li input {
+    height: 22px;
+  }
+  .form .book {
+    font-size: 12px;
+    line-height: 22px;
+    margin-bottom: 0;
+  }
+  .submit {
+    margin: 18px auto 0;
+  }
+  .form .submit span {
+    width: 160px;
+    line-height: 24px;
+  }
+  .commitment p {
+    font-size: 12px;
+    margin-bottom: 4px;
+    line-height: 14px;
+  }
+  #businessDiv,
+  #environmentDiv {
+    margin-left: 50px;
+  }
+  .shape ul {
+    margin-left: 0;
+  }
+  .shape ul li span,
+  .shape ul li {
+    width: 62px;
+  }
+  .form-con textarea {
+    height: 80px;
+    resize: none;
+  }
+  .form-con .form-conR .abort {
+    margin-bottom: 20px;
+  }
+  .business > label {
+    width: 96px;
+  }
+  .upImgTitle {
+    margin: 32px 0 0 8px;
+  }
+  #businessDiv,
+  #environmentDiv {
+    height: 100px;
+  }
+  .form-con .cooperation {
+    height: 1390px;
+  }
+  .shape > ul {
+    margin-bottom: 6px;
+  }
+  .sexSelect{height: 20px;line-height: 20px;margin-bottom:20px;}
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .sexSelect{height: 32px;line-height: 32px;margin-bottom: 32px;}
+  .shape > ul {
+    margin-bottom: 0;
+  }
+  .content {
+    width: 768px;
+    margin: auto;
+    height: 2200px;
+  }
+  /*.mainBg {*/
+    /*height: 2820px;*/
+  /*}*/
+  .form .title h3 {
+    font-size: 20px;
+    line-height: 20px;
+  }
+  .commitment p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 16px;
+  }
+  .demand h3 {
+    margin: 40px 0 12px;
+    font-size: 16px;
+  }
+  .capacity {
+    font-size: 14px;
+  }
+  .demand hr {
+    width: 28px;
+    margin: 12px auto 0;
+  }
+  .demandList {
+    background-size: 100% 200px;
+    height: 240px;
+    width: 700px;
+  }
+  .demandIcon {
+    width: 220px;
+    margin: 60px auto 0;
+  }
+  .demandIcon p {
+    font-size: 14px;
+  }
+  .demandIcon p span {
+    width: 30px;
+    line-height: 26px;
+    margin-right: 16px;
+  }
+  .demandList p {
+    line-height: 24px;
+    font-size: 14px;
+  }
+  .demandList h4 {
+    font-size: 16px;
+    background-size: 40px 32px;
+    line-height: 32px;
+    text-indent: 50px;
+    margin: 0;
+  }
+  .demandListR {
+    margin-top: -70px;
+  }
+  .ability {
+    margin: 78px -16px 0 0;
+  }
+  .job {
+    margin: 108px 0 0 -6px;
+  }
+  .student h4 {
+    background: url("../images/talents/student.png") no-repeat 50% 0;
+  }
+  .ability h4 {
+    background: url("../images/talents/ability.png") no-repeat 50% 0;
+  }
+  .marketing h4 {
+    background: url("../images/talents/marketing.png") no-repeat 50% 0;
+  }
+  .job h4 {
+    background: url("../images/talents/job.png") no-repeat 50% 0;
+  }
+  .form {
+    margin-top: 42px;
+  }
+  .form h4 {
+    line-height: 36px;
+  }
+  .form h3 {
+    font-size: 20px;
+  }
+  .form .title {
+    width: 700px;
+    margin: auto;
+  }
+  .form .title ul li {
+    margin-right: 10px;
+  }
+  .form .title ul li:after {
+    right: -4px;
+    top: 8px;
+  }
+  .form .title span {
+    width: 580px;
+    margin: 12px 0 0 10px;
+  }
+  .form .title span:after {
+    width: 4px;
+    height: 4px;
+    left: 0;
+    top: -2px;
+  }
+  .form-con {
+    width: 700px;
+    height: 1480px;
+    margin: auto;
+  }
+  .form-con > li {
+    width: 700px;
+    /*height: 1480px;*/
+  }
+  .form-con label {
+    padding-right: 10px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .form-conL label {
+    width: 112px;
+  }
+  .form-conR label {
+    width: 100px;
+  }
+  .form-conL {
+    margin-top: 32px;
+  }
+  .form-conR {
+    margin: 82px 36px 0 0;
+  }
+  .form-con input[type="text"],
+  .form-con select,
+  .form-con option,
+  .form-con textarea {
+    width: 168px;
+    line-height: 28px;
+    /*height: 32px;*/
+    margin-bottom: 30px;
+    text-indent: 10px;
+      border: 1px solid #dfdfdf;
+  }
+  .form-con h3 {
+    font-size: 18px;
+    margin: 0 30px 30px;
+    text-indent: 14px;
+  }
+  .form-con h3:before {
+    width: 3px;
+    height: 18px;
+  }
+  .form-con .registered select,
+  .form-con .registered option {
+    width: 82px;
+  }
+  .registered > div {
+    width: 168px;
+  }
+  .sex ul {
+    margin-bottom: 24px;
+  }
+  .sex ul li,
+  .charge li {
+    width: 56px;
+    height: 36px;
+    text-indent: 22px;
+  }
+  .sex ul li span,
+  .charge li span {
+    line-height: 32px;
+    height: 32px;
+    background: url("../images/talents/sexN.png") no-repeat 0 2px;
+    background-size: 20px;
+    width: 76px;
+    margin-left: -22px;
+  }
+  .sex ul li .sexY,
+  .charge li .chargeY {
+    background: url("../images/talents/sexY.png") no-repeat 0 2px;
+  }
+  .sex ul li input,
+  .charge li input {
+    opacity: 0;
+    z-index: 99;
+    width: 56px;
+    height: 36px;
+    left: 0;
+    top: 0;
+  }
+  .form-tab {
+    margin: 30px 0;
+  }
+  .form-tab li:first-child {
+    margin-right: 70px;
+  }
+  .form-tab li {
+    width: 116px;
+    line-height: 54px;
+    height: 64px;
+    font-size: 18px;
+  }
+  .form-tab .formTabBg {
+    background: url("../images/talents/formTabBg.png");
+    background-size: 116px 64px;
+  }
+  .form-con .professional input,
+  .form-con .major input,
+  .major textarea {
+    margin-bottom: 78px;
+  }
+  #imgdiv,
+  #businessDiv,
+  #environmentDiv {
+    width: 166px;
+    height: 160px;
+    margin-bottom: 20px;
+  }
+  .imgdiv img,
+  #businessDiv img,
+  #environmentDiv img {
+    width: 100%;
+    height: 160px;
+  }
+  .upImg p {
+    line-height: 24px;
+  }
+  .upImg input {
+    width: 130px;
+    line-height: 32px;
+    margin: 22px 0 30px;
+    padding: 0;
+  }
+  .upImg label {
+    width: 130px;
+    line-height: 32px;
+    left: 0;
+    top: 0;
+    font-size: 18px;
+  }
+  .charge {
+    margin-left: 6px;
+  }
+  .commitment p {
+    margin-left: 6px;
+  }
+  .commitment,
+  .commitment .charge span {
+    line-height: 32px;
+    font-size: 12px;
+  }
+  .commitment .charge span {
+    background: url("../images/talents/sexN.png") no-repeat 0 6px;
+  }
+  .commitment .charge li .chargeY {
+    background: url("../images/talents/sexY.png") no-repeat 0 6px;
+  }
+  .charge li input {
+    height: 32px;
+  }
+  .form .book {
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 22px;
+  }
+  .submit {
+    margin: 38px auto 20px;
+  }
+  .form .submit span {
+    width: 220px;
+    line-height: 36px;
+  }
+  .form-con textarea {
+    height: 100px;
+    resize: none;
+  }
+  .form-con .form-conR .abort {
+    margin-bottom: 108px;
+  }
+  .business > label {
+    width: 116px;
+  }
+  .upImgTitle {
+    margin: 52px 0 0 40px;
+  }
+  #businessDiv,
+  #environmentDiv {
+    width: 160px;
+  }
+  .form-con .cooperation {
+    height: 1570px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .sexSelect{height: 36px;line-height: 36px;margin-bottom: 36px;}
+  .content {
+    width: 992px;
+    margin: auto;
+  }
+  /*.mainBg {*/
+    /*height: 3160px;*/
+  /*}*/
+  .content {
+    height: 2440px;
+  }
+  .form .title h3 {
+    font-size: 24px;
+    line-height: 24px;
+  }
+  .demand h3 {
+    margin: 60px 0 12px;
+    font-size: 20px;
+  }
+  .capacity {
+    font-size: 18px;
+  }
+  .demand hr {
+    width: 28px;
+    margin: 16px auto 0;
+  }
+  .demandList {
+    background-size: 100% 230px;
+    height: 260px;
+    width: 800px;
+  }
+  .demandIcon {
+    width: 220px;
+    margin: 100px auto 0;
+  }
+  .demandIcon p {
+    font-size: 20px;
+  }
+  .demandIcon p span {
+    width: 30px;
+    line-height: 30px;
+    margin-right: 16px;
+  }
+  .demandList p {
+    line-height: 24px;
+    font-size: 16px;
+  }
+  .demandList h4 {
+    font-size: 16px;
+    background-size: 40px 32px;
+    line-height: 32px;
+    text-indent: 50px;
+    margin: 0;
+  }
+  .demandListR {
+    margin-top: -70px;
+  }
+  .ability {
+    margin: 108px -16px 0 0;
+  }
+  .job {
+    margin: 138px 0 0 -6px;
+  }
+  .form {
+    margin-top: 62px;
+  }
+  .form h4 {
+    line-height: 46px;
+  }
+  .form .title {
+    width: 900px;
+    margin: auto;
+  }
+  .form .title ul li {
+    margin-right: 10px;
+  }
+  .form .title ul li:after {
+    right: -4px;
+    top: 8px;
+  }
+  .form .title span {
+    width: 788px;
+    margin: 12px 0 0 10px;
+  }
+  .form .title span:after {
+    width: 4px;
+    height: 4px;
+    left: 0;
+    top: -2px;
+  }
+  .form-con {
+    width: 888px;
+    height: 1800px;
+    margin: auto;
+  }
+  .form-con > li {
+    width: 900px;
+    /*height: 1600px;*/
+  }
+  .form-con label {
+    padding-right: 20px;
+    font-size: 16px;
+    line-height: 32px;
+  }
+  .form-conL label {
+    width: 112px;
+  }
+  .form-conR label {
+    width: 100px;
+  }
+  .form-conL {
+    margin-top: 32px;
+  }
+  .form-conR {
+    margin: 80px 36px 0 0;
+  }
+  .form-con input[type="text"],
+  .form-con select,
+  .form-con option,
+  .form-con textarea {
+    width: 288px;
+    line-height: 32px;
+    /*height: 36px;*/
+    margin-bottom: 30px;
+    text-indent: 10px;
+      border: 1px solid #dfdfdf;
+  }
+  .form h3 {
+    font-size: 24px;
+  }
+  .form-con h3 {
+    font-size: 18px;
+    margin: 0 30px 30px;
+    text-indent: 14px;
+  }
+  .form-con h3:before {
+    width: 3px;
+    height: 18px;
+  }
+  .form-con .registered select,
+  .form-con .registered option {
+    width: 142px;
+  }
+  .registered > div {
+    width: 288px;
+  }
+  .sex ul {
+    margin-bottom: 30px;
+  }
+  .sex ul li,
+  .charge li {
+    width: 56px;
+    height: 36px;
+    text-indent: 22px;
+  }
+  .sex ul li span,
+  .charge li span {
+    line-height: 32px;
+    background: url("../images/talents/sexN.png") no-repeat 0 8px;
+    background-size: 20px;
+    width: 56px;
+    margin-left: -22px;
+  }
+  .sex ul li .sexY,
+  .charge li .chargeY {
+    background: url("../images/talents/sexY.png") no-repeat 0 8px;
+  }
+  .sex ul li input,
+  .charge li input {
+    opacity: 0;
+    z-index: 99;
+    width: 56px;
+    height: 38px;
+    left: 0;
+    top: 0;
+  }
+  .form-tab {
+    margin: 30px 0;
+  }
+  .form-tab li:first-child {
+    margin-right: 70px;
+  }
+  .form-tab li {
+    width: 116px;
+    line-height: 54px;
+    height: 64px;
+    font-size: 18px;
+  }
+  .form-tab .formTabBg {
+    background: url("../images/talents/formTabBg.png");
+    background-size: 116px 64px;
+  }
+  .form-con .professional input,
+  .form-con .major input,
+  .major textarea {
+    margin-bottom: 62px;
+  }
+  #imgdiv,
+  #businessDiv,
+  #environmentDiv {
+    width: 166px;
+    height: 174px;
+    margin-bottom: 20px;
+  }
+  .imgdiv img,
+  #businessDiv img,
+  #environmentDiv img {
+    width: 100%;
+    height: 174px;
+  }
+  .upImg p {
+    line-height: 24px;
+  }
+  .upImg input {
+    width: 130px;
+    line-height: 32px;
+    margin: 22px 0 38px;
+  }
+  .upImg label {
+    width: 130px;
+    line-height: 40px;
+    left: 0;
+    top: 0;
+    font-size: 18px;
+  }
+  .charge {
+    margin-left: 22px;
+  }
+  .commitment p {
+    margin: 0 0 0 34px;
+    line-height: 36px;
+  }
+  .commitment,
+  .commitment .charge span {
+    line-height: 32px;
+    font-size: 16px;
+  }
+  .commitment .charge span {
+    background: url("../images/talents/sexN.png") no-repeat 0 6px;
+  }
+  .commitment .charge li .chargeY {
+    background: url("../images/talents/sexY.png") no-repeat 0 6px;
+  }
+  .charge li input {
+    height: 36px;
+    line-height: 36px;
+  }
+  .form .book {
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 22px;
+  }
+  .submit {
+    margin: 48px auto 30px;
+  }
+  .form .submit span {
+    width: 260px;
+    line-height: 44px;
+  }
+  .form-con textarea {
+    height: 120px;
+    resize: none;
+  }
+  .form-con .form-conR .abort {
+    margin-bottom: 122px;
+  }
+  .business > label {
+    width: 136px;
+  }
+  .upImgTitle {
+    margin: 62px 0 0 40px;
+  }
+  #businessDiv,
+  #environmentDiv {
+    width: 212px;
+  }
+  .form-con .cooperation {
+    height: 1720px;
+  }
+  .shape ul li span,
+  .shape ul li {
+    width: 80px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .content {
+    width: 1200px;
+    margin: auto;
+  }
+  /*.mainBg {*/
+    /*height: 3700px;*/
+  /*}*/
+  .content {
+    height: 2900px;
+  }
+  .demand h3 {
+    margin: 80px 0 14px;
+    font-size: 24px;
+  }
+  .capacity {
+    font-size: 18px;
+  }
+  .demand hr {
+    width: 28px;
+    margin: 16px auto 0;
+  }
+  .demandList {
+    background-size: 100% 267px;
+    height: 304px;
+    width: 820px;
+  }
+  .demandIcon {
+    width: 210px;
+    margin: 156px auto 0;
+  }
+  .demandIcon p {
+    font-size: 20px;
+  }
+  .demandIcon p span {
+    width: 30px;
+    line-height: 30px;
+    margin-right: 16px;
+  }
+  .demandList p {
+    line-height: 26px;
+    font-size: 16px;
+  }
+  .demandList h4 {
+    font-size: 20px;
+    background-size: 40px 32px;
+    line-height: 32px;
+    text-indent: 50px;
+  }
+  .demandListR {
+    margin-top: -70px;
+  }
+  .ability {
+    margin: 108px -16px 0 0;
+  }
+  .job {
+    margin: 138px 0 0 -6px;
+  }
+  .form {
+    margin-top: 62px;
+  }
+  .form .title {
+    width: 1054px;
+  }
+  .form h4 {
+    line-height: 46px;
+  }
+  .form .title ul li {
+    margin-right: 10px;
+  }
+  .form .title ul li:after {
+    right: -4px;
+    top: 8px;
+  }
+  .form .title span {
+    width: 934px;
+    margin: 14px 0 0 10px;
+  }
+  .form .title span:after {
+    width: 4px;
+    height: 4px;
+    left: 0;
+    top: -2px;
+  }
+  .form-con {
+    width: 1050px;
+    height: 1650px;
+    margin: auto;
+  }
+  .form-con > li {
+    width: 1050px;
+    /*height: 1884px;*/
+  }
+  .form-con label {
+    padding-right: 20px;
+    font-size: 16px;
+    line-height: 38px;
+  }
+  .form-conL label {
+    width: 132px;
+  }
+  .form-conR label {
+    width: 116px;
+  }
+  .form-conL {
+    margin-top: 40px;
+  }
+ .sexSelect{height: 40px;line-height: 40px;margin-bottom: 40px;}
+  .form-conR {
+    margin: 96px 46px 0 0;
+  }
+  .form-con input[type="text"],
+  .form-con select,
+  .form-con option,
+  .form-con textarea {
+    width: 360px;
+    line-height: 38px;
+    /*height: 40px;*/
+    margin-bottom: 40px;
+    text-indent: 10px;
+    border: 1px solid #dfdfdf;
+  }
+  .form-con h3 {
+    font-size: 18px;
+    margin: 0 30px 40px;
+    text-indent: 14px;
+  }
+  .form-con h3:before {
+    width: 3px;
+    height: 18px;
+  }
+  .form-con .registered select,
+  .form-con .registered option {
+    width: 172px;
+  }
+  .registered > div {
+    width: 360px;
+  }
+  .sex ul {
+    margin-bottom: 40px;
+  }
+  .sex ul li,
+  .charge li {
+    width: 56px;
+    height: 38px;
+    text-indent: 22px;
+  }
+  .sex ul li span,
+  .charge li span {
+    line-height: 38px;
+    background: url("../images/talents/sexN.png") no-repeat 0 10px;
+    background-size: 20px;
+    width: 56px;
+    margin-left: -22px;
+  }
+  .sex ul li .sexY,
+  .charge li .chargeY {
+    background: url("../images/talents/sexY.png") no-repeat 0 10px;
+  }
+  .sex ul li input,
+  .charge li input {
+    opacity: 0;
+    z-index: 99;
+    width: 56px;
+    height: 38px;
+    left: 0;
+    top: 0;
+  }
+  .form-tab {
+    margin: 40px 0;
+  }
+  .form-tab li:first-child {
+    margin-right: 80px;
+  }
+  .form-tab li {
+    width: 116px;
+    line-height: 54px;
+    height: 64px;
+    font-size: 18px;
+  }
+  .form-tab .formTabBg {
+    background: url("../images/talents/formTabBg.png");
+    background-size: 116px 64px;
+  }
+  .form-con .professional input,
+  .form-con .major input,
+  .major textarea {
+    margin-bottom: 96px;
+  }
+  #imgdiv,
+  #businessDiv,
+  #environmentDiv {
+    width: 180px;
+    height: 212px;
+    margin-bottom: 24px;
+  }
+  .imgdiv img,
+  #businessDiv img,
+  #environmentDiv img {
+    width: 100%;
+    height: 212px;
+  }
+  .upImg p {
+    line-height: 28px;
+  }
+  .upImg input {
+    width: 130px;
+    line-height: 40px;
+    margin: 42px 0 48px;
+    opacity: 0;
+  }
+  .upImg label {
+    width: 130px;
+    line-height: 40px;
+    left: 0;
+    top: 0;
+    font-size: 18px;
+    padding: 0;
+  }
+  .charge {
+    margin-left: 22px;
+  }
+  .commitment p {
+    margin-left: 34px;
+  }
+  .commitment,
+  .commitment .charge span {
+    line-height: 32px;
+    font-size: 16px;
+  }
+  .commitment .charge span {
+    background: url("../images/talents/sexN.png") no-repeat 0 6px;
+  }
+  .commitment .charge li .chargeY {
+    background: url("../images/talents/sexY.png") no-repeat 0 6px;
+  }
+  .charge li input {
+    height: 32px;
+  }
+  .form .book {
+    font-size: 22px;
+    line-height: 22px;
+    margin-bottom: 22px;
+  }
+  .submit {
+    margin: 58px auto 40px;
+  }
+  .form .submit span {
+    width: 280px;
+    line-height: 50px;
+  }
+  .shape ul li input,
+  .shape ul li,
+  .shape li span {
+    width: 80px;
+  }
+  .form-con textarea {
+    height: 130px;
+    resize: none;
+  }
+  .form-con .form-conR .abort {
+    margin-bottom: 140px;
+  }
+  .business > label {
+    width: 136px;
+  }
+  .upImgTitle {
+    margin: 72px 0 0 40px;
+  }
+  #businessDiv,
+  #environmentDiv {
+    width: 212px;
+  }
+  .form-con .cooperation {
+    height: 2060px;
+  }
+}

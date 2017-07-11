@@ -1,0 +1,234 @@
+.contentR h3:before {
+  background: #29a9ff;
+}
+.content .contentL .balckBg {
+  background: #fff;
+  border: 1px solid #29a9ff;
+  color: #29a9ff;
+}
+.model-two .title {
+  margin: 0;
+}
+.content .editR {
+  background: url("../images/businessManagement/editB.png") no-repeat;
+  color: #29a9ff;
+}
+.content .deleteR {
+  background: url("../images/businessManagement/delectB.png") no-repeat;
+  color: #29a9ff;
+}
+.content .product .mr0 {
+  margin-right: 0;
+}
+.news > li {
+  border-bottom: 1px dashed #dfdfdf;
+}
+.contentR .news-con > ul {
+  text-align: right;
+}
+.product > li {
+  text-align: center;
+}
+.poppingCon h3 {
+  color: #29a9ff;
+}
+.up_imgT label,
+.poppingCon .save {
+  background: #29a9ff;
+}
+.recommend > li .recommendY {
+  background: url("../images/businessManagement/yes.png") no-repeat;
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  .contentL{position:relative;}
+  .phone_posi{
+position:absolute;left:0;top:32px;
+  }
+  .contentL li {
+    width: 102px;
+  }
+  .content .contentL .balckBg {
+   width:100px;line-height:22px;
+  }
+  .content {
+    height: 1550px;
+  }
+  .contentR .news-con {
+    width: 180px;
+    margin-right: 10px;
+  }
+  .contentR .pic {
+    margin: 20px;
+  }
+  .contentR .pic img {
+    height: 60px;
+    width:90px;
+  }
+  .contentR .news-con p {
+    line-height: 16px;
+    margin-top: 8px;
+    font-size: 12px;
+  }
+  .contentR .news-con > ul li,
+  .model-three .product ul > li {
+    width: 38px;
+    line-height: 12px;
+    background-size: 12px;
+    margin: 0 0 10px 2px;
+  }
+  .contentR select {
+    width:140px;
+  }
+  .product > li img {
+    height: 72px;width: 100px;
+    margin: 8px 0 6px;
+  }
+  .product > li {
+    margin-right: 4px;
+  }
+  .product > li h4 {
+   width:100px;overflow:hidden;height:14px;
+  }
+
+  .product > li ul > li {
+    margin-top: 8px;
+    text-indent: 8px;
+  }
+  .product > li ul > li:first-child {
+    margin-right: 2px;
+  }
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .contentL li {
+    width: 120px;
+  }
+  .contentR .pic img {
+    height: 120px;
+    width:160px;
+  }
+  .content {
+    height: 1800px;
+  }
+  .contentR .news-con {
+    width: 400px;
+    margin-right: 10px;
+  }
+  .contentR .pic {
+    margin: 24px 0;
+  }
+  .contentR .news-con p {
+    line-height: 18px;
+    margin-top: 28px;
+    font-size: 12px;
+  }
+  .contentR .news-con > ul li,
+  .model-three .product ul > li {
+    width: 48px;
+    line-height: 16px;
+    background-size: 16px;
+    margin: 0 0 0 6px;
+  }
+  .contentR select {
+    width: 140px;
+  }
+  .product > li img {
+    height: 100px;width: 140px;
+    margin: 14px 0 8px;
+  }
+  .product > li {
+    margin-right: 6px;
+  }
+  .product > li ul > li {
+    margin-top: 10px;
+    text-indent: 18px;
+  }
+  .product > li ul > li:first-child {
+    margin-right: 14px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .contentL li {
+    width: 180px;
+  }
+  .content {
+    height: 2100px;
+  }
+  .contentR .news-con {
+    width: 550px;
+    margin-right: 10px;
+  }
+  .contentR .pic {
+    margin: 24px 0;
+  }
+  .contentR .news-con p {
+    line-height: 24px;
+    margin-top: 32px;
+    font-size: 14px;
+  }
+  .contentR .news-con > ul li,
+  .model-three .product ul > li {
+    width: 48px;
+    line-height: 22px;
+    background-size: 22px;
+    margin-left: 10px;
+  }
+  .product > li img {
+    height: 124px;width: 174px;
+    margin: 24px 0 18px;
+  }
+  .product > li {
+    margin-right: 20px;
+  }
+  .product > li ul > li {
+    margin-top: 16px;
+    text-indent: 24px;
+  }
+  .product > li ul > li:first-child {
+    margin-right: 14px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .contentL li {
+    width: 200px;
+  }
+  .content {
+    height:2600px;
+  }
+  .contentR .news-con {
+    width: 630px;
+  }
+  .contentR .pic {
+    width:180px;height:160px;
+    margin: 30px 0;
+  }
+  .contentR .news-con p {
+    line-height: 26px;
+    margin-top: 36px;
+    font-size: 14px;
+  }
+  .contentR .news-con > ul li,
+  .model-three .product ul > li {
+    width: 48px;
+    line-height: 22px;
+    background-size: 22px;
+    margin:4px 0 0 10px;
+  }
+  .product > li img {
+    height: 140px;width: 198px;
+    margin: 30px 0 12px;
+  }
+  .product > li {
+    margin-right: 18px;
+  }
+  .product > li ul > li {
+    margin-top: 20px;
+    text-indent: 24px;
+  }
+  .product > li ul > li:first-child {
+    margin-right: 20px;
+  }
+}

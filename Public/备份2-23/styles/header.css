@@ -1,0 +1,410 @@
+body {
+  background: #f0f0f0;
+}
+ul,
+li,
+p {
+  margin-bottom: 0;
+}
+a:hover {
+  text-decoration: none;
+}
+li {
+  cursor: pointer;
+}
+.SEO a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+body i {
+  font-weight: 500;
+}
+h3 i {
+  margin-right: 14px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-style: normal;
+}
+html,
+body {
+  height: 100%;
+  margin: auto;
+  padding: 0;
+}
+input,
+textarea {
+  border: none;
+}
+.planApply button {
+  border: none;
+}
+.topNavBg {
+  background: #fafafa;
+  border-bottom: 1px solid #dfdfdf;
+}
+.suspend ul li:first-child {
+  background: rgba(0, 0, 0, 0.3);
+}
+.suspend ul li:nth-child(2) {
+  background: rgba(0, 0, 0, 0.4);
+}
+.suspend ul li:nth-child(3) {
+  background: rgba(0, 0, 0, 0.6);
+}
+.suspend ul li img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.menu {
+  width: 100%;
+  background: #1e1e1e;
+}
+.menu:after {
+  content: "";
+  width: 100%;
+  height: 50px;
+  background: #1e1e1e;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.business .listBg,
+.navbar-inverse .navbar-nav .listBg {
+  background: #9ab126;
+}
+.navbar-toggle {
+  float: none;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+  text-align: center;
+}
+.carousel-indicators li {
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -moz-border-radius: 2px;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+}
+.carousel-indicators .active {
+  background: #fff;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -o-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+.carousel-control {
+  display: none;
+}
+.logo {
+  margin: 0 auto;
+}
+.navbar-nav {
+  margin: auto;
+  float: none;
+  background: #1e1e1e;
+}
+.navbar-nav li {
+  background: #1e1e1e;
+  color: #fff;
+}
+.share-platform .bds_weixin {
+  background: url('../images/postDetails/css-bg_share.png') no-repeat;
+  background-position: -22px -7px !important;
+}
+.share-platform .bds_tsina {
+  background: url('../images/postDetails/css-bg_share.png') no-repeat;
+  background-position: -62px -7px !important;
+}
+.share-platform .bds_sqq {
+  background: url('../images/postDetails/css-bg_share.png') no-repeat;
+  background-position: -101px -7px !important;
+}
+.share-platform .bds_weixin_color {
+  background: url('../images/postDetails/css-bg.png') no-repeat;
+  background-position: -22px -7px !important;
+}
+.share-platform .bds_tsina_color {
+  background: url('../images/postDetails/css-bg.png') no-repeat;
+  background-position: -62px -7px !important;
+}
+.share-platform .bds_sqq_color {
+  background: url('../images/postDetails/css-bg.png') no-repeat;
+  background-position: -101px -7px !important;
+}
+.share-platform a {
+  display: inline-block;
+  margin: 0!important;
+}
+.share-platform a {
+  width: 32px;
+  height: 32px;
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  .topNav {
+    width: 320px;
+    margin: 0 auto;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 8px;
+  }
+  .logo > div {
+    width: 320px;
+    height: 34px;
+    line-height: 34px;
+    margin: auto;
+  }
+  .logo a img {
+    height: 24px;
+    margin: 8px 60px 0 40px;
+  }
+  .logo h1 {
+    line-height: 34px;
+  }
+  .navbar-nav > li > a {
+    width: 92px;
+  }
+  .carousel-indicators li {
+    width: 30px;
+    height: 4px;
+    margin: 100px 18px 0 0;
+  }
+  .carousel-indicators .active {
+    width: 30px;
+    height: 4px;
+    margin: 100px 18px 0 0;
+  }
+  .thumbnail > img,
+  .thumbnail a > img,
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+    height: 140px;
+  }
+  .suspend {
+    width: 140px;
+    height: 90px;
+    position: fixed;
+    top: 300px;
+    right: 0;
+  }
+  .suspend a {
+    background: url("../images/index/suspendEWM.png") no-repeat 100%;
+    background-size: 80%;
+    width: 94px;
+    height: 120px;
+    margin-top: 0;
+  }
+  .suspend a p {
+    padding-top: 124px;
+    margin-left: 6px;
+    width: 143px;
+  }
+  .suspend ul li {
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+  .suspend ul li img {
+    height: 20px;
+  }
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .topNav {
+    width: 768px;
+    margin: 0 auto;
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
+  }
+  .logo > div {
+    width: 768px;
+    height: 64px;
+    line-height: 64px;
+    margin: auto;
+  }
+  .logo a img {
+    height: 48px;
+    margin: 8px 200px 0 50px;
+  }
+  .logo h1 {
+    line-height: 64px;
+  }
+  .navbar-nav {
+    width: 768px;
+  }
+  .navbar-nav > li > a {
+    width: 92px;
+  }
+  .carousel-indicators li {
+    width: 54px;
+    height: 6px;
+    margin: 40px 18px 0 0;
+  }
+  .carousel-indicators .active {
+    width: 54px;
+    height: 6px;
+    margin: 40px 18px 0 0;
+  }
+  .suspend {
+    width: 210px;
+    height: 120px;
+    position: fixed;
+    top: 400px;
+    right: 0;
+  }
+  .suspend a {
+    background: url("../images/index/suspendEWM.png") no-repeat 100%;
+    width: 143px;
+    height: 149px;
+    margin-top: 10px;
+    background-size: 100%;
+  }
+  .suspend a p {
+    padding-top: 124px;
+    margin-left: 6px;
+    width: 143px;
+  }
+  .suspend ul li {
+    width: 40px;
+    height: 40px;
+    position: relative;
+  }
+  .suspend ul li img {
+    height: 20px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .topNav {
+    width: 992px;
+    margin: 0 auto;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 ;
+  }
+  .logo > div {
+    width: 992px;
+    height: 94px;
+    line-height: 94px;
+    margin: auto;
+  }
+  .logo a img {
+    height: 78px;
+    margin: 8px 260px 0 30px;
+  }
+  .logo h1 {
+    line-height: 94px;
+  }
+  .navbar-nav {
+    width: 992px;
+  }
+  .navbar-nav > li > a {
+    width: 132px;
+  }
+  .carousel-indicators li {
+    width: 54px;
+    height: 6px;
+    margin: 0 18px 0 0;
+  }
+  .carousel-indicators .active {
+    width: 54px;
+    height: 6px;
+    margin: 0 18px 0 0;
+  }
+  .suspend {
+    width: 210px;
+    height: 180px;
+    position: fixed;
+    top: 400px;
+    right: 0;
+  }
+  .suspend a {
+    background: url("../images/index/suspendEWM.png") no-repeat 100%;
+    width: 143px;
+    height: 149px;
+    margin-top: 10px;
+  }
+  .suspend a p {
+    padding-top: 124px;
+    margin-left: 6px;
+    width: 143px;
+  }
+  .suspend ul li {
+    width: 60px;
+    height: 60px;
+    position: relative;
+  }
+  .suspend ul li img {
+    height: 30px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .topNav {
+    width: 1200px;
+    margin: 0 auto;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 ;
+  }
+  .logo > div {
+    width: 1200px;
+    height: 134px;
+    line-height: 134px;
+    margin: auto;
+  }
+  .logo a {
+    height: 118px;
+    margin: 8px 290px 0 0;
+  }
+  .logo h1 {
+    line-height: 134px;
+  }
+  .navbar-nav {
+    width: 1200px;
+  }
+  .navbar-nav > li > a {
+    width: 152px;
+  }
+  .carousel-indicators li {
+    width: 54px;
+    height: 6px;
+    margin: 0 18px 0 0;
+  }
+  .carousel-indicators .active {
+    width: 54px;
+    height: 6px;
+    margin: 0 18px 0 0;
+  }
+  .suspend {
+    width: 210px;
+    height: 180px;
+    position: fixed;
+    top: 460px;
+    right: 0;
+  }
+  .suspend a {
+    background: url("../images/index/suspendEWM.png") no-repeat 100%;
+    width: 143px;
+    height: 149px;
+    margin-top: 10px;
+  }
+  .suspend a p {
+    padding-top: 124px;
+    margin-left: 6px;
+    width: 143px;
+  }
+  .suspend ul li {
+    width: 60px;
+    height: 60px;
+    position: relative;
+  }
+}

@@ -1,0 +1,740 @@
+input {
+  border: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+.mainBg {
+  background: url("../images/trained/bg.jpg") no-repeat 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.contentL {
+  border-radius: 4px;
+}
+.model-one > li {
+  border: 1px solid #cfcfcf;
+  text-align: center;
+}
+.content .model-mar h3 {
+  margin: 0 20px;
+}
+.model-one > li:last-child {
+  margin-right: 0;
+}
+.content h3 {
+  border-bottom: 1px solid #dfdfdf;
+}
+.content h3:before {
+  content: "";
+  background: #9ab126;
+  position: absolute;
+  left: 0;
+}
+.model-one ul > li:after,
+.model-two .message li:after {
+  content: "";
+  width: 1px;
+  background: #dfdfdf;
+  position: absolute;
+  right: 0;
+}
+.model-two:before {
+  content: "";
+  border-top: 1px solid #dfdfdf;
+  position: absolute;
+  top: 0;
+}
+input[type="button"] {
+  border: 1px solid #9ab126;
+  border-radius: 2px;
+}
+.message {
+  border-top: 1px dashed #dfdfdf;
+  border-bottom: 1px solid #dfdfdf;
+}
+.business-over {
+  overflow: hidden;
+}
+.business {
+  width: 3000px;
+  transform: translateX(0);
+}
+.business li {
+  text-align: center;
+}
+.model-three .title {
+  border-bottom: 1px solid #dfdfdf;
+}
+.model-three .title h3 {
+  border: none;
+}
+.contentR .case {
+  border-radius: 4px;
+}
+.banner img {
+  width: 100%;
+}
+input {
+  background: none;
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  .customization {
+    left: 42%;
+    top: 42px;
+    cursor: pointer;
+  }
+  /*.mainBg {*/
+    /*height: 1810px;*/
+  /*}*/
+  .content > li {
+    width: 320px;
+    height: 1892px;
+  }
+  .content {
+    width: 320px;
+    margin: 20px auto 0;
+  }
+  .contentL {
+    width: 320px;
+    padding: 0 4px 0;
+  }
+  .contentR {
+    width: 320px;
+    float: left;
+  }
+  .model-one {
+    padding: 0 6px;
+  }
+  .model-one video {
+    width: 120px;
+    height: 92px;
+    margin-top: -10px;
+  }
+  .model-one .play {
+    left: 0;
+    top: 22px;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+  .video .course {
+    height: 60px;
+    width: 80px;
+  }
+  .model-one .play img {
+    height: 22px;
+    width: 22px;
+  }
+  .model-one > li {
+    width: 96px;
+    height: 126px;
+    padding: 6px 4px 20px;
+    margin: 8px 10px 8px 0;
+  }
+    .model-one > li h4{height:14px;overflow:hidden;margin-top: 6px;}
+  .content .model-mar h3 {
+    margin: 0 8px;
+  }
+  .model-one > li:last-child {
+    margin-right: 0;
+  }
+  .content h3 {
+    line-height: 24px;
+    text-indent: 10px;
+    padding-top: 6px;
+  }
+  .content h3:before {
+    width: 2px;
+    height: 14px;
+    top: 10px;
+    margin-right: 14px;
+  }
+  .model-one ul > li {
+    width: 80px;
+    margin-top: 2px;
+  }
+  .model-one ul > li:after,
+  .model-two .message li:after {
+    height:0;
+    /*top: 14px;*/
+    /*right: 0;*/
+  }
+  .model-one ul > li p {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .model-one input[type="button"] {
+    width: 60px;
+    line-height: 20px;
+    margin-top: 4px;
+  }
+  .model-one > li:nth-child(2) {
+    margin-right: 0;
+  }
+  .model-two:before {
+    width: 300px;
+    left: 6px;
+  }
+  .model-two {
+    padding: 0 6px;
+  }
+  .model-two > li h4 {
+    font-size: 14px;
+  }
+  .title {
+    padding: 12px 0 8px;
+  }
+  .model-two > li h5 {
+    font-size: 12px;
+    margin-bottom: 8px;
+    line-height: 16px;
+    text-align: justify;
+  }
+  .model-two .message li {
+    width: 72px;
+    margin-right: 28px;
+    padding: 10px 0;
+  }
+  .model-two .message li p {
+    line-height: 24px;
+  }
+  .model-two .message li:after {
+    top: 24px;
+  }
+  input[type="button"] {
+    width: 88px;
+    line-height: 24px;
+    margin: 0 0 12px;
+  }
+  .model-three {
+    margin-top: 10px;
+    padding: 0 6px;
+  }
+  .business-over {
+    width: 300px;
+    /*height: 66px;*/
+    margin-top:10px;
+  }
+  .business li {
+    margin-right: 4px;
+  }
+  .business img {
+    height: 52px;
+    width: 72px;
+  margin-bottom: 6px;
+  }
+  .business p {
+    margin: 22px 0 30px;
+    font-size: 16px;
+  }
+  .business-click img {
+    margin: 8px 0 0 0;
+    height: 20px;
+  }
+  .contentR .case {
+    padding: 0 20px 24px;
+    margin-bottom: 20px;
+  }
+  .contentR .case h4 {
+    line-height: 20px;
+  }
+  .contentR .case li p {
+    line-height: 24px;
+  }
+  .contentR .case .caseBar {
+    margin: 30px 0 16px;
+    height: 64px;
+  }
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .customization {
+    left: 46%;
+    top: 110px;
+  }
+  /*.mainBg {*/
+    /*height: 2320px;*/
+  /*}*/
+  .content > li {
+    width: 768px;
+    height: 1892px;
+  }
+  .content {
+    width: 768px;
+    margin: 40px auto 0;
+  }
+  .contentL {
+    width: 768px;
+    padding: 0 18px 8px;
+  }
+  .contentR {
+    width: 768px;
+    float: left;
+  }
+  .model-one {
+    padding: 0 20px;
+  }
+  .model-one video {
+    width: 192px;
+    height: 150px;
+    margin-top: -20px;
+  }
+  .model-one .play {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+  .video .course {
+    height: 140px;
+    width: 186px;
+  }
+  .model-one .play {
+    height: 42px;
+    width: 42px;
+  }
+  .model-one .play img {
+    width: 42px;
+    height: 42px;
+  }
+  .model-one > li {
+    width: 220px;
+    height: 256px;
+    padding: 12px 14px 20px;
+    margin: 24px 10px 24px 0;
+  }
+  .model-one > li:nth-child(2) {
+    margin-right: 10px;
+  }
+  .content .model-mar h3 {
+    margin: 0 20px;
+  }
+  .model-one > li:last-child {
+    margin-right: 0;
+  }
+  .content h3 {
+    line-height: 44px;
+    text-indent: 14px;
+    padding-top: 8px;
+  }
+  .content h3:before {
+    width: 3px;
+    height: 18px;
+    top: 22px;
+    margin-right: 14px;
+  }
+  .model-one ul > li {
+    width: 62px;
+    margin-top: 2px;
+  }
+  .model-one ul > li:after,
+  .model-two .message li:after {
+    height: 18px;
+    top: 14px;
+    right: 0;
+  }
+  .model-one ul > li p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .model-one input[type="button"] {
+    width: 190px;
+    line-height: 28px;
+    margin-top: 16px;
+  }
+  .model-two:before {
+    width: 680px;
+    left: 20px;
+  }
+  .model-two {
+    padding: 0 20px;
+  }
+  .model-two > li h4 {
+    font-size: 16px;
+  }
+  .title {
+    padding: 20px 0 10px;
+  }
+  .model-two > li h5 {
+    font-size: 14px;
+    margin-bottom: 14px;
+    line-height: 22px;
+  }
+  .model-two .message li {
+    width: 98px;
+    margin-right: 28px;
+    padding: 10px 0;
+  }
+  .model-two .message li p {
+    line-height: 30px;
+  }
+  .model-two .message li:after {
+    top: 24px;
+  }
+  input[type="button"] {
+    width: 148px;
+    line-height: 32px;
+    margin: 20px 0 0;
+  }
+  .model-three {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+  .business-over {
+    width: 688px;
+    height: 212px;
+    margin-top: 30px;
+  }
+  .business li {
+    margin-right: 8px;
+  }
+  .business img {
+    height: 140px;
+    width: 166px;
+      margin-bottom: 0;
+  }
+  .business p {
+    margin: 22px 0 30px;
+    font-size: 16px;
+  }
+  .business-click img {
+    margin: 22px 0 0 8px;
+    height: 28px;
+  }
+  .contentR .case {
+    padding: 0 20px 24px;
+    margin-bottom: 20px;
+  }
+  .contentR .case h4 {
+    line-height: 20px;
+  }
+  .contentR .case li p {
+    line-height: 24px;
+  }
+  .contentR .case .caseBar {
+    margin: 30px 0 16px;
+    height: 64px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .customization {
+    left: 47%;
+    top: 160px;
+  }
+  /*.mainBg {*/
+    /*height: 2600px;*/
+  /*}*/
+  .content > li {
+    width: 992px;
+    height: 1892px;
+  }
+  .content {
+    width: 992px;
+    margin: 30px auto 0;
+  }
+  .contentL {
+    width: 720px;
+    padding-bottom: 10px;
+  }
+  .contentR {
+    float: right;
+    width: 256px;
+  }
+  .model-one {
+    padding: 0 20px;
+  }
+  .model-one video {
+    width: 192px;
+    height: 150px;
+    margin-top: -20px;
+  }
+  .video .course {
+    height: 140px;
+    width: 180px;
+  }
+  .model-one > li {
+    width: 208px;
+    height: 296px;
+    margin: 24px 8px 24px 0;
+    padding: 12px 14px 20px;
+  }
+  .content .model-mar h3 {
+    margin: 0 20px;
+  }
+  .model-one > li:last-child {
+    margin-right: 0;
+  }
+  .content h3 {
+    line-height: 44px;
+    text-indent: 14px;
+    padding-top: 8px;
+  }
+  .content h3:before {
+    width: 3px;
+    height: 18px;
+    top: 20px;
+    margin-right: 14px;
+  }
+  .model-one ul > li {
+    width: 58px;
+    margin-top: 2px;
+  }
+  .model-one ul > li:after,
+  .model-two .message li:after {
+    height: 18px;
+    top: 14px;
+    right: 0;
+  }
+  .model-one ul > li p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .model-one input[type="button"] {
+    width: 180px;
+    line-height: 28px;
+    margin-top: 16px;
+  }
+  .model-one .play {
+    height: 62px;
+    width: 62px;
+  }
+  .model-one .play img {
+    height: 62px;
+    width: 62px;
+  }
+  .model-two:before {
+    width: 648px;
+    left: 20px;
+  }
+  .model-two {
+    padding: 0 20px;
+  }
+  .model-two > li h4 {
+    font-size: 16px;
+  }
+  .title {
+    padding: 20px 0 10px;
+  }
+  .model-two > li h5 {
+    font-size: 14px;
+    margin-bottom: 14px;
+    line-height: 22px;
+  }
+  .model-two .message li {
+    width: 90px;
+    margin-right: 24px;
+    padding: 10px 0;
+  }
+  .model-two .message li p {
+    line-height: 30px;
+  }
+  .model-two .message li:after {
+    top: 24px;
+  }
+  input[type="button"] {
+    width: 148px;
+    line-height: 32px;
+    margin-top: 20px;
+  }
+  .model-three {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+  .business-over {
+    width: 650px;
+    height: 180px;
+    margin-top: 30px;
+  }
+  .business li {
+    margin-right: 8px;
+  }
+  .business img {
+    height: 120px;width: 154px;
+  }
+  .business p {
+    margin: 12px 0 30px;
+    font-size: 16px;
+  }
+  .business-click img {
+    margin: 22px 0 0 8px;
+    height: 28px;
+  }
+  .contentR .case {
+    padding: 0 20px 24px;
+    margin-bottom: 20px;
+  }
+  .contentR .case h4 {
+    line-height: 20px;
+  }
+  .contentR .case li p {
+    line-height: 24px;
+  }
+  .contentR .case .caseBar {
+    margin: 30px 0 16px;
+    height: 64px;
+    width: 194px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .customization {
+    left: 47%;
+    top: 220px;
+  }
+  /*.mainBg {*/
+    /*height: 2946px;*/
+  /*}*/
+  .content {
+    width: 1200px;
+    margin: 40px auto 0;
+  }
+  .contentL {
+    width: 872px;
+    padding-bottom: 10px;
+  }
+  .contentR {
+    width: 310px;
+  }
+  .model-one {
+    padding: 0 20px;
+  }
+  .model-one video {
+    width: 236px;
+    height: 180px;
+    margin-top: -20px;
+  }
+  .model-one .play {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+  .model-one > li {
+    width: 258px;
+    height: 340px;
+    margin: 30px 10px 30px 0;
+  }
+  .content .model-mar h3 {
+    margin: 0 20px;
+  }
+  .model-one > li:last-child {
+    margin-right: 0;
+  }
+  .content h3 {
+    line-height: 58px;
+    text-indent: 14px;
+    padding-top: 8px;
+  }
+  .content h3:before {
+    width: 3px;
+    height: 18px;
+    top: 28px;
+    margin-right: 14px;
+  }
+  .model-one ul > li {
+    width: 74px;
+    margin-top: 12px;
+  }
+  .model-one ul > li:after,
+  .model-two .message li:after {
+    height: 18px;
+    top: 14px;
+    right: 0;
+  }
+  .model-one ul > li p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .model-one input[type="button"] {
+    width: 228px;
+    line-height: 30px;
+    margin-top: 16px;
+  }
+  .video .course {
+    height: 180px;
+    width: 228px;
+  }
+  .model-two:before {
+    width: 832px;
+    left: 20px;
+  }
+  .model-two {
+    padding: 0 20px;
+  }
+  .model-two > li h4 {
+    font-size: 22px;
+  }
+  .title {
+    padding: 30px 0 14px;
+  }
+  .model-two > li h5 {
+    font-size: 16px;
+    margin-bottom: 14px;
+    line-height: 28px;
+  }
+  .model-two .message li {
+    width: 108px;
+    margin-right: 34px;
+    padding: 10px 0;
+  }
+  .model-two .message li p {
+    line-height: 34px;
+  }
+  .model-two .message li:after {
+    top: 24px;
+  }
+  input[type="button"] {
+    width: 158px;
+    line-height: 40px;
+    margin-top: 20px;
+  }
+  .model-three {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+  .business-over {
+    width: 800px;
+    height: 212px;
+    margin-top: 30px;
+  }
+  .business li {
+    margin-right: 10px;
+  }
+  .business img {
+    height: 140px;
+    width: 190px;
+  }
+  .business p {
+    margin: 14px 0 30px;
+    font-size: 16px;
+  }
+  .business-click img {
+    margin: 22px 0 0 8px;
+    height: 28px;
+  }
+  .contentR .case {
+    padding: 0 20px 24px;
+    margin-bottom: 20px;
+  }
+  .contentR .case h4 {
+    line-height: 20px;
+  }
+  .contentR .case li p {
+    line-height: 28px;
+  }
+  .contentR .case .caseBar {
+    margin: 30px 0 16px;
+    height: 84px;
+    width: 252px;
+  }
+}

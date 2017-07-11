@@ -1,0 +1,330 @@
+.share-platform {
+  text-align: right;
+  border-top: 1px solid #c4c4c4;
+}
+.share-platform p {
+  line-height: 38px;
+}
+.line {
+  width: 100%;
+  background: #1e1e1e;
+}
+.model-one {
+  text-align: center;
+}
+.content h3 {
+  border-bottom: 1px solid #dfdfdf;
+  text-align: left;
+}
+.content h3:before {
+  content: "";
+  background: #9ab126;
+  position: absolute;
+  left: 0;
+}
+.model-one .video {
+  border-radius: 4px;
+  margin: auto;
+}
+.model-one .play {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 80px;
+  height: 80px;
+}
+.model-two h3 {
+  border: none;
+}
+.model-two .title {
+  border-bottom: 1px solid #dfdfdf;
+}
+.business > li {
+  text-align: center;
+}
+.business-over {
+  overflow: hidden;
+}
+.business {
+  width: 3000px;
+  transform: translateX(0);
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  .line {
+    width: 100%;
+    height: 32px;
+  }
+  .content {
+    width: 320px;
+    margin: 24px auto;
+  }
+  .model-one {
+    padding: 0 12px;
+  }
+  .content h3 {
+    padding: 20px 0 10px;
+    font-size: 12px;
+    text-indent: 10px;
+    margin-bottom: 12px;
+  }
+  .content h3:before {
+    width: 2px;
+    height: 14px;
+    left: 0;
+    top: 22px;
+  }
+  .model-one .video {
+    width: 200px;
+    height: 120px;
+  }
+  .model-one video {
+    width: 200px;
+    height: 120px;
+  }
+  .model-one .play {
+    width: 24px;
+    height: 24px;
+  }
+  .model-one .play img {
+    height: 24px;
+  }
+  .model-one h4 {
+    font-size: 12px;
+  }
+  .share-platform {
+    width: 260px;
+    padding: 12px 0;
+  }
+  .model-two {
+    padding: 0 12px;
+  }
+  .business-click {
+    margin-top: 20px;
+  }
+  .business > li {
+    margin: 12px 6px 0 0;
+  }
+  .business-over {
+    width: 296px;
+  }
+  .business > li img {
+    height: 36px;
+  }
+  .business > li p {
+    padding: 6px 0 2px;
+    font-size: 12px;
+    width: 48px;
+  }
+  .business-click img {
+    height: 16px;
+  }
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .line {
+    width: 100%;
+    height: 32px;
+  }
+  .business-click img {
+    height: 28px;
+  }
+  .content {
+    width: 768px;
+    margin: 24px auto;
+  }
+  .model-one {
+    padding: 0 20px;
+  }
+  .content h3 {
+    padding: 28px 0 12px;
+    font-size: 16px;
+    text-indent: 20px;
+    margin-bottom: 24px;
+  }
+  .content h3:before {
+    width: 3px;
+    height: 18px;
+    left: 0;
+    top: 26px;
+  }
+  .model-one .video {
+    width: 400px;
+    height: 260px;
+  }
+  .model-one video {
+    width: 400px;
+    height: 260px;
+  }
+  .model-one .play {
+    width: 40px;
+    height: 40px;
+  }
+  .model-one .play img {
+    height: 40px;
+  }
+  .model-one h4 {
+    font-size: 14px;
+  }
+  .share-platform {
+    width: 660px;
+    padding: 12px 0;
+  }
+  .model-two {
+    padding: 0 12px;
+  }
+  .business-click {
+    margin-top: 14px;
+  }
+  .business > li {
+    margin: 20px 10px 0 0;
+  }
+  .business-over {
+    width: 720px;
+  }
+  .business > li img {
+    height: 98px;
+  }
+  .business > li p {
+    padding: 16px 0 12px;
+    font-size: 14px;
+    width: 130px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .line {
+    width: 100%;
+    height: 50px;
+  }
+  .content {
+    width: 992px;
+    margin: 32px auto;
+  }
+  .model-one {
+    padding: 0 20px;
+  }
+  .content h3 {
+    padding: 28px 0 20px;
+    font-size: 18px;
+    text-indent: 20px;
+    margin-bottom: 30px;
+  }
+  .content h3:before {
+    width: 3px;
+    height: 18px;
+    left: 0;
+    top: 26px;
+  }
+  .model-one .video {
+    width: 660px;
+    height: 400px;
+  }
+  .model-one video {
+    width: 660px;
+    height: 400px;
+  }
+  .model-one .play {
+    width: 80px;
+    height: 80px;
+  }
+  .model-one .play img {
+    height: 80px;
+  }
+  .model-one h4 {
+    font-size: 18px;
+  }
+  .share-platform {
+    width: 860px;
+    padding: 20px 0;
+  }
+  .model-two {
+    padding: 0 20px;
+  }
+  .business-click {
+    margin-top: 14px;
+  }
+  .business > li {
+    margin: 20px 10px 0 0;
+  }
+  .business-over {
+    width: 952px;
+  }
+  .business > li img {
+    height: 130px;
+  }
+  .business > li p {
+    padding: 20px 0 16px;
+    width: 174px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .line {
+    width: 100%;
+    height: 50px;
+  }
+  .content {
+    width: 1200px;
+    margin: 40px auto;
+  }
+  .model-one {
+    padding: 0 20px;
+    overflow: hidden;
+  }
+  .content h3 {
+    padding: 28px 0 20px;
+    font-size: 18px;
+    text-indent: 20px;
+    margin-bottom: 36px;
+  }
+  .content h3:before {
+    width: 3px;
+    height: 18px;
+    left: 0;
+    top: 26px;
+  }
+  .model-one .video {
+    width: 960px;
+    height: 600px;
+  }
+  .model-one video {
+    width: 960px;
+    height: 600px;
+  }
+  .model-one .play {
+    width: 120px;
+    height: 120px;
+  }
+  .model-one .play img {
+    height: 120px;
+  }
+  .model-one h4 {
+    font-size: 18px;
+  }
+  .share-platform {
+    width: 960px;
+    padding: 20px 0;
+  }
+  .model-two {
+    padding: 0 20px;
+  }
+  .business-click {
+    margin-top: 14px;
+  }
+  .business > li {
+    margin: 20px 10px 0 0;
+  }
+  .business-over {
+    width: 1160px;
+  }
+  .business > li img {
+    height: 160px;
+  }
+  .business > li p {
+    padding: 24px 0 20px;
+    width: 214px;
+  }
+}

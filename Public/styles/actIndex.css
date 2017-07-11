@@ -1,0 +1,417 @@
+.page>div{text-align: center}
+.hostName img{border-radius: 50%;overflow: hidden; border: 1px solid #eee;}
+@media (max-width: 767px) {
+  .actListImg img{
+    width: 100px;height: 80px;
+  }
+  .main {
+    width: 100%;
+    margin: 6px auto;
+  }
+  .main .mainHeader {
+    padding: 10px;
+  }
+  .main .mainHeader .wonderful {
+    font-size: 16px;
+  }
+  .main .mainHeader .wonder {
+    font-size: 14px;
+  }
+  .main .reviewWrap {
+    margin-top: 10px;
+  }
+  .main .reviewWrap .reviewLeft {
+    display: none;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct div:nth-of-type(1) {
+    width: 100%;
+    overflow: hidden;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct img {
+    height: 120px;width: 190px;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct .actDescribe {
+    margin: 10px;
+    line-height: 28px;
+  }
+  .main .reviewWrap .reviewRight {
+    margin-top: 10px;
+  }
+  .main .reviewWrap .reviewRight ul {
+    padding: 4px;
+    line-height: 32px;
+  }
+  .main .mainDetail {
+    margin-top: 6px;
+  }
+  .main .mainDetail ul {
+    overflow: hidden;
+    border-bottom: 1px solid #eeeeee;
+  }
+  .main .mainDetail ul li {
+    float: left;
+    line-height: 30px;
+    padding: 2px 6px;
+    margin: 0 4px;
+    border-radius: 4px;
+  }
+  .main .mainDetail .leftNav {
+    padding-top: 6px;
+  }
+  .main .mainDetail .rightDetail .navHeader {
+    padding: 10px;
+  }
+  .main .mainDetail .rightDetail .navHeader ul li {
+    margin: 0 2px;
+  }
+  .main .mainDetail .rightDetail .navHeader .byTime,
+  .main .mainDetail .rightDetail .navHeader .byCost {
+    padding: 0 12px;
+  }
+  .main .mainDetail .rightDetail .needMoney .money {
+    font-size: 16px;
+  }
+  .main .actListWrap {
+    margin-top: 4px;
+  }
+  .main .actListWrap .actList .actListImg {
+    text-align: center;
+  }
+  .main .actListWrap .actList .actListImg img {
+    width: 100%;
+  }
+  .page {
+    margin: 10px auto;
+  }
+  .page ul li {
+    padding: 2px 8px;
+    margin: auto 4px;
+  }
+  .pubAct {
+    bottom: 20px;
+    left: 40%;
+  }
+  .pubAct input {
+    padding: .2rem .8rem;
+    border-radius: 4px;
+    line-height: 1rem;
+  }
+  .hostName img{width: 24px;height: 24px;}
+  .main .mainDetail .rightDetail .actList .actDetail .hostName{margin: 2px 0 6px;line-height: 24px;}
+  .actTime img{width: 18px;height: 18px;}
+  .main .mainDetail .rightDetail .actList .actDetail .actAddress{
+    width: 410px;
+    line-height: 24px;
+    margin: 6px 0
+  }
+  .actAddress img{width: 12px;height: 20px;}
+  .needMoney p{padding-right:0;text-align: right}
+  .lookDetailA{margin-top: -4px;}
+  .lookDetailA input{width: 96px;line-height: 36px;border-radius: 4px;}
+  .main .mainDetail .rightDetail .actList .actDetail .actTime{margin-top: -10px;}
+  .actDetail span{display: inline-block;margin-left: 6px;}
+  .actDetail{padding: 0 10px;}
+}
+@media (min-width: 768px) {
+  .actListImg img{
+    width: 160px;height: 120px;
+    margin: 12px;
+  }
+  .reviewLeft img{
+    width: 200px;height: 300px;
+  }
+  .main {
+    width: 100%;
+    margin: 20px auto;
+  }
+  .main .mainHeader {
+    padding: .2rem;
+  }
+  .main .reviewWrap {
+    margin-top: 20px;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .main .reviewWrap .reviewLeft,
+  .main .reviewWrap .reviewMiddle,
+  .main .reviewWrap .reviewRight {
+    margin-right: .2rem;
+  }
+  .main .reviewWrap .reviewMiddle {
+    width: 5rem;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct {
+    margin-bottom: 10px;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct img {
+    height: 120px;width: 190px;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct .actDescribe {
+    margin-top: 4px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .main .reviewWrap .reviewRight {
+    width: 8rem;
+  }
+  .main .reviewWrap .reviewRight ul {
+    padding: 10px 4px 10px 10px;
+    line-height: 40px;
+  }
+  .main .reviewWrap .reviewRight ul li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .main .mainDetail {
+    margin-top: 10px;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .main .mainDetail .leftNav {
+    width: 27%;
+  }
+  .main .mainDetail .leftNav ul {
+    line-height: 60px;
+  }
+  .main .mainDetail .leftNav ul li {
+    border-bottom: 1px solid #efefef;
+  }
+  .main .mainDetail .rightDetail {
+    width: 80%;
+    margin-left: 10px;
+  }
+  .main .mainDetail .rightDetail .navHeader {
+    padding: 10px;
+  }
+  .main .mainDetail .rightDetail .navHeader ul {
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .main .mainDetail .rightDetail .navHeader ul li {
+    padding: 6px 24px;
+  }
+  .main .mainDetail .rightDetail .actListWrap {
+    margin-top: 10px;
+  }
+  .main .mainDetail .rightDetail .actList {
+    margin-bottom: 10px;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .main .mainDetail .rightDetail .actList .actDetail {
+    width: 70%;
+    padding:0 20px;
+  }
+  .main .page {
+    margin: 60px auto;
+  }
+  .main .page ul li {
+    padding: 10px 16px ;
+    margin: auto 10px;
+  }
+  .pubAct {
+    bottom: 20px;
+    left: 45%;
+  }
+  .pubAct input {
+    padding: 8px 24px;
+    border-radius: 4px;
+  }
+  .hostName img{width: 24px;height: 24px;}
+  .main .mainDetail .rightDetail .actList .actDetail .hostName{margin: 2px 0 6px;line-height: 24px;}
+  .actTime img{width: 18px;height: 18px;}
+  .main .mainDetail .rightDetail .actList .actDetail .actAddress{
+    width: 410px;
+    line-height: 24px;
+    margin: 6px 0
+  }
+  .actAddress img{width: 12px;height: 20px;}
+  .needMoney p{padding-right:0;text-align: right}
+  .lookDetailA{margin-top: -4px;}
+  .lookDetailA input{width: 96px;line-height: 36px;border-radius: 4px;}
+  .main .mainDetail .rightDetail .actList .actDetail .actTime{margin-top: -10px;}
+  .actDetail span{display: inline-block;margin-left: 6px;}
+}
+@media (min-width: 992px) {
+  .reviewLeft img{
+    width: 200px;height: 300px;
+  }
+  .actListImg img{
+    width: 300px;height: 200px;
+  }
+  .main {
+    width: 992px;
+  }
+  .main .reviewWrap {
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .main .reviewWrap .reviewMiddle {
+    width: 50%;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct {
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct img {
+    height: 140px;
+    width: 224px;
+  }
+  .main .reviewWrap .reviewMiddle .reviewAct .actDescribe {
+    margin: 10px;
+    line-height: 28px;
+    white-space: normal;
+  }
+  .hostName img{width: 28px;height: 28px;}
+  .main .mainDetail .rightDetail .actList .actDetail .hostName{margin: 20px 0 36px;line-height: 28px;}
+  .actTime img{width: 20px;height: 20px;}
+  .main .mainDetail .rightDetail .actList .actDetail .actAddress{width: 400px;line-height: 24px;margin: 16px 0}
+  .actAddress img{width: 16px;height: 24px;}
+  .needMoney p{padding-right:0;text-align: right}
+  .lookDetailA{margin-top: -4px;}
+  .lookDetailA input{width: 96px;line-height: 36px;border-radius: 4px;}
+  .main .mainDetail .rightDetail .actList .actDetail .actTime{margin-top: -10px;}
+  .actDetail span{display: inline-block;margin-left: 6px;}
+  .actAddress div span{width: 320px;}
+  .main .mainDetail .rightDetail .actList .actDetail .needMoney{margin-right: 30px;}
+}
+@media (min-width: 1200px) {
+  .reviewLeft img {
+    width: 200px;
+    height: 300px;
+  }
+
+  .actListImg img {
+    width: 332px;
+    height: 214px;
+  }
+
+  .main {
+    width: 1200px;
+  }
+
+  .main .reviewWrap {
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .main .reviewWrap .reviewMiddle {
+    width: 80%;
+  }
+
+  .main .mainDetail .leftNav {
+    width: 240px;
+  }
+
+  .main .mainHeader {
+    width: 100%;
+  }
+
+  .main .reviewWrap .reviewMiddle .reviewAct {
+    border: 1px solid #efefef;
+  }
+
+  .main .reviewWrap .reviewMiddle .reviewAct:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .main .reviewWrap .reviewRight ul li {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .main .mainDetail {
+    width: 100%;
+  }
+
+  .main .mainDetail .leftNav ul {
+    text-align: center;
+  }
+
+  .main .mainDetail .rightDetail .navHeader ul .wh {
+    border-radius: 4px;
+  }
+
+  .main .mainDetail .rightDetail .navHeader ul:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .main .mainDetail .rightDetail .actList {
+    padding: 4px;
+    border: 1px solid #efefef;
+  }
+
+  .main .mainDetail .rightDetail .actList .actDetail .hostName,
+  .main .mainDetail .rightDetail .actList .actDetail .actTime,
+  .main .mainDetail .rightDetail .actList .actDetail .actAddress {
+    /*display: -ms-flexbox;*/
+    /*display: flex;*/
+    line-height: 30px;
+    margin: 6px auto;
+  }
+
+  .main .mainDetail .rightDetail .actList .actDetail .hostName span,
+  .main .mainDetail .rightDetail .actList .actDetail .actTime span,
+  .main .mainDetail .rightDetail .actList .actDetail .actAddress span {
+    margin-left: 10px;
+  }
+
+  .main .mainDetail .rightDetail .actList .actDetail .actTime,
+  .main .mainDetail .rightDetail .actList .actDetail .actAddress {
+    line-height: 20px;
+  }
+
+  .main .mainDetail .rightDetail .actList .actDetail .needMoney {
+    text-align: right;
+  }
+
+  .main .mainDetail .rightDetail .actList .actDetail .actAddress .lookDetail {
+    /*padding: 6px 20px;*/
+    border-radius: 4px;
+  }
+
+  .main .mainDetail .rightDetail .actList:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .main .page ul {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .main .page ul li {
+    border-radius: 4px;
+  }
+
+  .main .page ul .bd,
+  .main .page ul .one {
+    background: #fafafa;
+    border: 1px solid #dddddd;
+  }
+.needMoney p{padding-right: 20px;}
+  .main .page ul .one {
+    border: 1px solid #9ab126;
+  }
+  .hostName img{width: 30px;height: 30px;}
+  .main .mainDetail .rightDetail .actList .actDetail .hostName{margin: 20px 0 36px;line-height: 30px;}
+  .actTime img{width: 20px;height: 20px;}
+  .main .mainDetail .rightDetail .actList .actDetail .actAddress{width: 570px;line-height: 24px;margin: 16px 0}
+  .actAddress img{width: 16px;height: 24px;}
+  .needMoney p{padding-right: 8px;}
+  .lookDetailA{margin-top: -4px;}
+  .main .mainDetail .rightDetail .actList .actDetail .actTime{margin-top: -10px;}
+  .actAddress div span{width: 440px;}
+  .main .mainDetail .rightDetail .actList .actDetail .needMoney{margin-right:0 30px;}
+}

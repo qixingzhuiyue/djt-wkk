@@ -1,0 +1,657 @@
+.contentR .post .postBg {
+  background: #9ab126;
+  color: #fff;
+}
+h3,
+h4,
+h5,
+h6,
+h2,
+h1 {
+  margin: 0;
+}
+i {
+  font-style: normal;
+  color: #b2b2b2;
+}
+textarea {
+  resize: none;
+}
+.post {
+  text-align: center;
+}
+label,
+p {
+  margin: 0;
+  text-align: justify;
+}
+.post input {
+  border: 1px solid #9ab126;
+  border-radius: 4px;
+  text-align: center;
+}
+hr {
+  background: #e6e6e6;
+  height: 1px;
+  border-top: none;
+  margin: 30px 0 0 0;
+}
+.case h3 {
+  border-bottom: 1px solid #e6e6e6;
+}
+.case h3:before {
+  content: "";
+  background: #9ab126;
+  position: absolute;
+}
+.case h3 i {
+  font-size: 12px;
+  font-style: normal;
+  text-transform: uppercase;
+}
+.contentL .title {
+  text-align: center;
+}
+.contentL .title .collect-green {
+  background: url("../images/postDetails/collectGreen.png") no-repeat 44px 0;
+  color: #9ab126;
+}
+.tjpl {
+  position: relative;
+}
+.tjpl span {
+  position: absolute;
+  right: 0;
+  top: 2em;
+  cursor: pointer;
+}
+.pinghuifu {
+  width: 100%;
+  background-position: center center;
+}
+.pl-touxang img{
+  /*background: url("../images/postDetails/header.png") no-repeat;*/
+  border-radius: 50%;
+  overflow: hidden;
+}
+.huifu-s {
+  text-align: right;
+}
+.re-tijiao {
+  text-align: right;
+}
+.re-hide,
+.reply {
+  display: none;
+}
+.contentL .title h3 {
+  border-bottom: 1px solid #dfdfdf;
+}
+.share-platform a {
+  width: 32px;
+  height: 32px;
+}
+.huifu-s {
+  background: url("../images/postDetails/comment.png") no-repeat;
+  cursor: pointer;
+}
+.support {
+  background: url("../images/postDetails/support.png") no-repeat;
+  cursor: pointer;
+}
+.contentL .huifu-s-green {
+  background: url("../images/postDetails/commentGreen.png") no-repeat;
+  color: #9ab126;
+}
+.contentL .support-green {
+  background: url("../images/postDetails/supportGreen.png") no-repeat;
+  color: #9ab126;
+}
+textarea {
+  width: 100%;
+  border: 1px solid #dfdfdf;
+}
+.tjpl input,
+.re-tijiao input {
+  border: none;
+  border-radius: 2px;
+}
+.articleDetails .contentL .title h4 {
+  margin-top: 24px;
+}
+.contentL p{padding:0!important;margin:0!important;}
+.contentL p img{height:auto;}
+
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  .pl-touxang img{
+    /*background: url("../images/postDetails/header.png") no-repeat;*/
+    border-radius:0;
+    width:38px;height:38px;
+  }
+  .content > li {
+    width: 320px;
+    height: 1892px;
+  }
+  .content {
+    width: 320px;
+    margin: 20px auto 0;
+  }
+  .contentL {
+    width: 320px;
+    padding: 0 10px 0;
+  }
+  hr {
+    margin: 8px 0 0 0;
+  }
+  .contentL .title h3 {
+    padding: 10px 0 6px;
+    font-size: 14px;
+  }
+  .contentL .title .header {
+    height: 44px;
+    margin: 16px 0 16px;
+  }
+  .contentL .title h4 {
+    margin: 0 0 12px;
+  }
+  .articleDetails .contentL .title h4 {
+    margin-top: 24px;
+  }
+  .contentL .title p {
+    line-height: 18px;
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+  .interaction {
+    margin-bottom: 6px;
+  }
+  .contentL .title .pic {
+    height: 160px;
+    width: 214px;
+    margin: 6px 0 10px;
+  }
+  .contentL .title .collect{margin-bottom:0;line-height:40px;}
+  .contentL .collect,
+  .contentL .share-platform p {
+    line-height: 40px;
+    margin: 0;
+  }
+  .contentL .collect {
+    background: url("../images/postDetails/collect.png") no-repeat 44px 7px;
+    width: 100px;
+    height: 40px;
+    margin: 0 32px 0 0;
+    background-size: 30px 30px;
+  }
+  .collect {
+    cursor: pointer;
+  }
+  .share-platform a {
+    width: 32px;
+    height: 32px;
+  }
+  .pl-touxang {
+    background-size: 38px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 20px 12px 0 0;
+  }
+  .commentTitle h5 {
+    margin: 24px 0 8px ;
+    font-size: 12px;
+  }
+  .commentTitle i {
+    font-size: 12px;
+    margin: 24px 0 8px 10px;
+  }
+  .commentTitle .phPar {
+    line-height: 18px;
+    margin: 0 0 24px;
+    font-size: 12px;
+    width: 250px;
+  }
+  .huifu-s {
+    background-size: 18px;
+    text-indent: 24px;
+    line-height: 18px;
+    margin-right: 16px;
+  }
+  .support {
+    background: url("../images/postDetails/support.png") no-repeat;
+    background-size: 18px;
+    line-height: 18px;
+    text-indent: 24px;
+  }
+  textarea {
+    width:100%;
+    height: 98px;
+    margin: 6px 0 10px;
+  }
+  .reply .hfCon{width:80%;}
+  .tjpl input,
+  .re-tijiao input {
+    width: 108px;
+    line-height: 32px;
+    margin:0 96px 10px 96px;
+  }
+  .contentR {
+    width: 320px;
+    float: left;
+  }
+  .post {
+    text-align: center;
+  }
+  .post input {
+    border: 1px solid #9ab126;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .contentL .title img{max-width:272px!important;height:auto;}
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .content > li {
+    width: 768px;
+    height: 1892px;
+  }
+  .content {
+    width: 768px;
+    margin: 20px auto 0;
+  }
+  .contentL {
+    width: 768px;
+    padding: 0 18px 8px;
+  }
+  .contentL .title {
+    font-size: 14px;
+  }
+  hr {
+    margin: 12px 0 0 0;
+  }
+  .contentL .title h3 {
+    padding: 20px 0 12px;
+    font-size: 16px;
+  }
+  .contentL .title .header {
+    height: 44px;
+    margin: 20px 0 16px;
+  }
+  .contentL .title h4 {
+    margin: 0 0 12px;
+  }
+  .contentL .title p {
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+  .interaction {
+    margin-bottom: 10px;
+  }
+  .contentL .title .pic {
+    height: 260px;
+    width: 348px;
+    margin: 10px 0 22px;
+  }
+  .contentL .collect,
+  .contentL .share-platform p {
+    line-height: 32px;
+    margin: 0;
+  }
+  .contentL .collect {
+    background: url("../images/postDetails/collect.png") no-repeat 44px 0;
+    width: 100px;
+    height: 22px;
+    margin: 6px 32px 0 0;
+    background-size: 20px 20px;
+  }
+  .collect {
+    cursor: pointer;
+  }
+  .share-platform a {
+    width: 32px;
+    height: 32px!important;
+  }
+  .pl-touxang img{
+    background-size: 58px;
+    width: 58px;
+    height: 58px;
+    margin: 28px 16px 0 0;
+  }
+  .commentTitle h5 {
+    margin: 44px 0 30px ;
+    font-size: 16px;
+  }
+  .commentTitle i {
+    font-size: 14px;
+    margin: 44px 0 30px 10px;
+  }
+  .commentTitle .phPar {
+    line-height: 24px;
+    margin: 0 0 24px;
+    font-size: 14px;
+    width: 658px;
+  }
+  .huifu-s {
+    background-size: 18px;
+    text-indent: 24px;
+    line-height: 18px;
+    margin-right: 16px;
+  }
+  .support {
+    background: url("../images/postDetails/support.png") no-repeat;
+    background-size: 18px;
+    line-height: 18px;
+    text-indent: 24px;
+  }
+  textarea {
+    width: 100%;
+    height: 118px;
+    margin: 40px 0 20px;
+  }
+  .tjpl input,
+  .re-tijiao input {
+    width: 158px;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+  .contentR {
+    width: 768px;
+    float: left;
+  }
+  .post {
+    margin-bottom: 16px;
+  }
+  .post input {
+    width: 200px;
+    line-height: 32px;
+    margin: 0 auto 20px;
+  }
+  .contentL .title img{max-width:274px!important;height:auto;}
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .content > li {
+    width: 992px;
+    height: 1892px;
+  }
+  .content {
+    width: 992px;
+    margin: 40px auto 0;
+  }
+  .contentL {
+    width: 720px;
+    padding: 0 18px 8px;
+  }
+  .contentL .title h3 {
+    padding: 22px 0 16px;
+    font-size: 18px;
+  }
+  .contentL .title .header {
+    height: 56px;
+    margin: 18px 0 14px;
+  }
+  .contentL .title h4 {
+    margin: 0 0 10px;
+  }
+  .contentL .title p {
+    line-height: 24px;
+    margin-bottom: 8px;
+  }
+  .interaction {
+    margin-bottom: 10px;
+  }
+  .contentL .title .pic {
+    height: 260px;
+    width: 348px;
+    margin: 8px 0 16px;
+  }
+  .contentL .collect,
+  .contentL .share-platform p {
+    line-height: 30px;
+    margin: 0;
+  }
+  .contentL .collect {
+    background: url("../images/postDetails/collect.png") no-repeat 44px 0;
+    width: 100px;
+    height: 30px;
+    margin: 0 32px 0 0;
+    background-size: 30px 30px;
+  }
+  .collect {
+    cursor: pointer;
+  }
+  .share-platform a {
+    width: 32px;
+    height: 32px!important;
+  }
+  .pl-touxang img{
+    background-size: 52px;
+    width: 52px;
+    height: 52px;
+    margin: 20px 16px 0 0;
+  }
+  .commentTitle h5 {
+    margin: 24px 0 12px ;
+    font-size: 16px;
+  }
+  .commentTitle i {
+    font-size: 14px;
+    margin: 24px 0 12px 24px;
+  }
+  .commentTitle .phPar {
+    line-height: 24px;
+    margin: 0 0 16px;
+    width: 600px;
+  }
+  .huifu-s {
+    background-size: 18px;
+    text-indent: 24px;
+    line-height: 18px;
+    margin-right: 16px;
+  }
+  .support {
+    background: url("../images/postDetails/support.png") no-repeat;
+    background-size: 18px;
+    line-height: 18px;
+    text-indent: 24px;
+  }
+  textarea {
+    width: 100%;
+    height: 118px;
+    margin: 40px 0 20px;
+  }
+  .tjpl input,
+  .re-tijiao input {
+    width: 148px;
+    line-height: 38px;
+    margin-bottom: 16px;
+  }
+  hr {
+    margin: 20px 0 0 0;
+  }
+  .contentR {
+    width: 256px;
+    float: right;
+  }
+  .post {
+    margin-bottom: 16px;
+  }
+  .post input {
+    width: 200px;
+    line-height: 32px;
+    margin: 18px auto;
+  }
+  .case {
+    padding: 8px 16px 16px;
+    margin-bottom: 16px;
+  }
+  .case h3 {
+    font-size: 16px;
+    line-height: 48px;
+    margin-bottom: 18px;
+    text-indent: 14px;
+  }
+  .case h3:before {
+    width: 3px;
+    height: 18px;
+    left: 0;
+    top: 16px;
+  }
+  .case h3 i {
+    font-size: 12px;
+    margin-left: 14px;
+  }
+  .case p {
+    margin: 0 0 8px;
+  }
+  .contentR img {
+    height: 82px;
+    width: 308px;
+    margin-bottom: 16px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .content > li {
+    width: 1200px;
+    height: 1892px;
+  }
+  .content {
+    width: 1200px;
+    margin: 40px auto 0;
+  }
+  .contentL {
+    width: 872px;
+    padding: 0 20px 10px;
+  }
+  hr {
+    margin: 30px 0 0 0;
+  }
+  .contentL .title h3 {
+    padding: 28px 0 20px;
+    font-size: 18px;
+  }
+  .contentL .title .header {
+    height: 58px;
+    margin: 20px 0 16px;
+  }
+  .contentL .title h4 {
+    margin: 0 0 12px;
+  }
+
+  .contentL .title p {
+    line-height: 20px;
+    margin-bottom: 10px;
+  }
+  .contentL .title img{max-width:640px!important;height:auto;}
+  .interaction {
+    margin-bottom: 12px;
+  }
+  .contentL .title .pic {
+    height: 376px;
+    width: 504px;
+    margin: 10px 0 22px;
+  }
+  .contentL .collect,
+  .contentL .share-platform p {
+    line-height: 40px;
+    margin: 0;
+  }
+  .contentL .title .collect{margin:0;line-height:40px;}
+  .contentL .collect {
+    background: url("../images/postDetails/collect.png") no-repeat 44px 6px;
+    width: 100px;
+    height: 40px;
+    margin: 12px 32px 0 0;
+    background-size: 30px 30px;
+  }
+  .collect {
+    cursor: pointer;
+  }
+  .share-platform a {
+    width: 32px;
+    height: 32px!important;
+  }
+  .pl-touxang img{
+    background-size: 58px;
+    width: 58px;
+    height: 58px;
+    margin: 28px 16px 0 0;
+  }
+  .commentTitle h5 {
+    margin: 44px 0 30px ;
+    font-size: 16px;
+  }
+  .commentTitle i {
+    font-size: 14px;
+    margin: 44px 0 30px 10px;
+  }
+  .commentTitle .phPar {
+    line-height: 24px;
+    margin: 0 0 24px;
+    width: 700px;
+  }
+  .huifu-s {
+    background-size: 18px;
+    text-indent: 24px;
+    line-height: 18px;
+    margin-right: 16px;
+  }
+  .support {
+    background: url("../images/postDetails/support.png") no-repeat;
+    background-size: 18px;
+    line-height: 18px;
+    text-indent: 24px;
+  }
+  textarea {
+    width: 100%;
+    height: 118px;
+    margin: 40px 0 20px;
+  }
+  .tjpl input,
+  .re-tijiao input {
+    width: 158px;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+  .contentR {
+    width: 310px;
+  }
+  .post {
+    margin-bottom: 20px;
+  }
+  .post input {
+    width: 268px;
+    line-height: 40px;
+    margin: 20px auto;
+  }
+  .case {
+    padding: 8px 20px 16px;
+    margin-bottom: 20px;
+  }
+  .case h3 {
+    font-size: 18px;
+    line-height: 58px;
+    margin-bottom: 24px;
+    text-indent: 14px;
+  }
+  .case h3:before {
+    width: 3px;
+    height: 18px;
+    left: 0;
+    top: 22px;
+  }
+  .case h3 i {
+    font-size: 12px;
+    margin-left: 14px;
+  }
+  .case li {
+    margin: 0 ;
+  }
+  .contentR img {
+    height: 98px;
+    margin-bottom: 20px;
+  }
+}

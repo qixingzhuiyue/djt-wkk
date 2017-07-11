@@ -1,0 +1,216 @@
+.apple {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.apple .apple-bg {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+.apple .apple-con {
+  text-align: center;
+  border-radius: 4px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+}
+.apple .apple-con input,
+.apple-con textarea {
+  border: 1px solid #c4c4c4;
+  border-radius: 1px;
+}
+.apple .apple-con textarea {
+  resize: none;
+  margin-bottom: 20px;
+}
+.formSubmit {
+  border-radius: 1px;
+  margin-top: 0;
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  .apple .apple-con {
+    width: 300px;height: 360px;
+    padding: 0 30px 30px;
+    /*top: 60px;*/
+    /*left: 10%;*/
+  }
+  .apple .apple-con h4 {
+    font-size: 18px;
+    line-height: 52px;
+  }
+  .apple .apple-con .formClose {
+    height: 24px;
+    right: -10px;
+    top: 20px;
+  }
+  .apple .apple-con input,
+  .apple-con textarea {
+    background-size: 20px;
+    width: 240px;
+    line-height: 34px;
+    margin-bottom: 20px;
+    text-indent: 14px;
+  }
+  .apple-con textarea {
+    height: 80px;
+  }
+  .formName {
+    background: url("../images/trained/formName.png") no-repeat 210px 10px;
+  }
+  .formAddress {
+    background: url("../images/trained/formAddress.png") no-repeat 210px 10px;
+  }
+  .formTel {
+    background: url("../images/trained/formTel.png") no-repeat 210px 10px;
+  }
+  .formGPRS {
+    background: url("../images/trained/formGPRS.png") no-repeat 210px 10px;
+  }
+  .formSubmit {
+    width: 300px;
+    line-height: 44px;
+  }
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .apple .apple-con {
+    width: 320px;height: 400px;
+    padding: 0 24px 30px;
+    /*top: 100px;*/
+    /*left: 28%;*/
+  }
+  .apple .apple-con h4 {
+    font-size: 20px;
+    line-height: 72px;
+  }
+  .apple .apple-con .formClose {
+    height: 24px;
+    right: -10px;
+    top: 16px;
+  }
+  .apple .apple-con input,
+  .apple-con textarea {
+    background-size: 24px;
+    width: 280px;
+    line-height: 40px;
+    margin-bottom: 20px;
+    text-indent: 14px;
+  }
+  .apple-con textarea {
+    height: 100px;
+  }
+  .formName {
+    background: url("../images/trained/formName.png") no-repeat 240px 10px;
+  }
+  .formAddress {
+    background: url("../images/trained/formAddress.png") no-repeat 240px 10px;
+  }
+  .formTel {
+    background: url("../images/trained/formTel.png") no-repeat 240px 10px;
+  }
+  .formGPRS {
+    background: url("../images/trained/formGPRS.png") no-repeat 240px 10px;
+  }
+  .formSubmit {
+    width: 300px;
+    line-height: 44px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .apple .apple-con {
+    width: 360px;height: 440px;
+    padding: 0 30px 30px;
+    /*top: 12%;*/
+    /*left: 30%;*/
+  }
+  .apple .apple-con h4 {
+    font-size: 22px;
+    line-height: 82px;
+  }
+  .apple .apple-con .formClose {
+    height: 24px;
+    right: -10px;
+    top: 20px;
+  }
+  .apple .apple-con input,
+  .apple-con textarea {
+    background-size: 24px;
+    width: 300px;
+    line-height: 44px;
+    margin-bottom: 20px;
+    text-indent: 14px;
+  }
+  .apple-con textarea {
+    height: 130px;
+  }
+  .formName {
+    background: url("../images/trained/formName.png") no-repeat 262px 10px;
+  }
+  .formAddress {
+    background: url("../images/trained/formAddress.png") no-repeat 262px 10px;
+  }
+  .formTel {
+    background: url("../images/trained/formTel.png") no-repeat 262px 10px;
+  }
+  .formGPRS {
+    background: url("../images/trained/formGPRS.png") no-repeat 262px 10px;
+  }
+  .formSubmit {
+    width: 300px;
+    line-height: 44px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .apple .apple-con {
+    width: 360px;
+    padding: 0 30px 30px;
+    height: 440px;
+  }
+  .apple .apple-con h4 {
+    font-size: 22px;
+    line-height: 82px;
+  }
+  .apple .apple-con .formClose {
+    height: 24px;
+    right: -10px;
+    top: 20px;
+  }
+  .apple .apple-con input,
+  .apple-con textarea {
+    background-size: 24px;
+    width: 300px;
+    line-height: 44px;
+    margin-bottom: 20px;
+    text-indent: 14px;
+  }
+  .apple-con textarea {
+    height: 150px;
+  }
+  .formName {
+    background: url("../images/trained/formName.png") no-repeat 262px 10px;
+  }
+  .formAddress {
+    background: url("../images/trained/formAddress.png") no-repeat 262px 10px;
+  }
+  .formTel {
+    background: url("../images/trained/formTel.png") no-repeat 262px 10px;
+  }
+  .formGPRS {
+    background: url("../images/trained/formGPRS.png") no-repeat 262px 10px;
+  }
+  .formSubmit {
+    width: 300px;
+    line-height: 44px;
+  }
+}

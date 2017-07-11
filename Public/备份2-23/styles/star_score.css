@@ -1,0 +1,18 @@
+
+/* 重置文本格式元素 */
+/*星星样式*/
+.block .star_score{ float:left;width:320px!important;height: 24px!important;}
+.star_list{height:21px;margin:50px; line-height:21px;}
+.star_score { background:url(../images/trained/stark2.png); width:300px; height:24px;  position:relative;overflow: hidden }
+.star_score a{height:24px; display:block; text-indent:-999em; position:absolute;left:0;overflow: hidden}
+.star_score a:hover{ background:url(../images/trained/stars2.png) 0 1px;left:0;}
+.star_score a.clibg{ background:url(../images/trained/stars2.png) 0 1px;left:0;}
+#starttwo .star_score { background:url(../images/trained/starky.png) 0 1px;}
+#starttwo .star_score a:hover{ background:url(../images/trained/starsy.png) 0 1px;left:0;}
+#starttwo .star_score a.clibg{ background:url(../images/trained/starsy.png) 0 1px;left:0;}
+/*星星样式*/
+.show_number{ padding-left:50px; padding-top:20px;}
+.show_number li{ width:240px; border:1px solid #ccc; padding:10px; margin-right:5px; margin-bottom:20px;}
+.atar_Show{background:url(../images/trained/stark2.png) 0 1px; width:160px; height:21px;  position:relative; float:left; }
+.atar_Show p{ background:url(../images/trained/stars2.png) 0 1px;left:0; height:21px; width:134px;}
+.show_number li span{ display:inline-block; line-height:21px;}

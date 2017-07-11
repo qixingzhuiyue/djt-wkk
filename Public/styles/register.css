@@ -1,0 +1,274 @@
+.tabMenu  li{
+  width: 50%;
+  cursor: pointer;
+}
+.identifyingCode {
+    margin: 0 auto;
+    width: 100%
+}
+.tabMenu{
+  line-height: 40px;
+  margin: 12px 0;
+}
+.remPass label {
+  text-align: left;
+  text-indent: 0;
+}
+.regName {
+  background: url("../images/login/regName.png") no-repeat 94% 50%;
+}
+.user {
+  background: #9ab126;
+  color: #fff;
+}
+/*.loginForm form {*/
+  /*padding: 0;*/
+/*}*/
+.information {
+  left: 0;
+  top: 0;
+}
+.regPhone {
+  background: url("../images/login/regPhone.png") no-repeat 94% 50%;
+}
+.regKey {
+  background: url("../images/login/regKey.png") no-repeat 94% 50%;
+}
+.information li input {
+  margin-bottom: 20px;
+}
+.remPass {
+  width: 100%;
+  margin: 0 auto 20px;
+}
+.remPass label {
+  text-indent:0;
+}
+.information input {
+  background-size: 12px 12px;
+}
+.information_per {
+  display: none;
+}
+.information li {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.information .identifyingCode  .code {
+    width: 120px;
+    height: 38px;
+    line-height:38px;
+    right: 1px;
+    top: 1px;
+    text-indent:0;
+    background: #9ab126;
+    border:none;
+    border-left: 1px solid #dcdcdc;
+}
+.loginForm form{border-top:1px solid #dcdcdc}
+@media(max-width: 768px){
+  .agreement_box{width:100%;border-top:1px solid #e6e6e6;}
+  .agreement{width:100%;margin:auto;color:#333;padding:0 10px;}
+  .agreement h1{font-size:20px;text-align:center;line-height:60px;margin-top:10px;}
+  .agreement h2{font-size:18px;line-height:30px;margin-bottom:10px;}
+  .agreement p{font-size:12px;line-height:30px;text-indent:16px;}
+  .agreement p span{display:block;margin-left:16px;font-size:12px;}
+
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .loginForm form{border-top:none}
+  .tabMenu{margin: 0;}
+  .remPass {
+    width: 200px;
+    margin: 0 auto;
+  }
+  .loginForm form {
+    width: 240px;
+    padding: 0;
+    height: 320px;
+    margin-top:16px;
+  }
+  .remPass .confirm {
+    background-size: 20px;
+  }
+  .tabMenu {
+    border-bottom: 1px solid #dcdcdc;
+    line-height: 28px;
+    height:28px;
+    margin-bottom: 16px;
+  }
+  .information li input {
+    width:200px;
+    line-height: 28px;
+    height: 28px;
+    margin-bottom: 6px;
+  }
+  .information button {
+    width: 116px;
+  }
+  .remPass {
+    width: 200px;
+    margin: 0 auto 4px
+  }
+  .remPass a {
+    top: -6px;
+  }
+  .remPass label {
+    margin-bottom: 0;
+    height: 12px;
+    text-indent: 20px;
+    line-height: 12px;
+  }
+  .information input {
+    background-size: 10px 10px;
+  }
+    .identifyingCode {
+        width: 200px;
+    }
+    .information .identifyingCode  .code {
+        width: 70px;
+        height: 26px;
+        line-height: 26px;
+        right: 1px;
+        top: 1px;
+    }
+  .agreement_box{width:100%;border-top:1px solid #e6e6e6;}
+  .agreement{width:100%;margin:auto;color:#333;padding:0 30px;}
+  .agreement h1{font-size:24px;text-align:center;line-height:60px;margin-top:10px;}
+  .agreement h2{font-size:20px;line-height:30px;margin-bottom:10px;}
+  .agreement p{font-size:12px;line-height:30px;text-indent:24px;}
+  .agreement p span{display:block;margin-left:48px;font-size:12px;}
+
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .loginForm form {
+    width: 224px;
+    padding: 0;
+    height: 336px;
+    margin-top: 36px;
+  }
+  .tabMenu {
+    border-bottom: 1px solid #dcdcdc;
+    line-height: 34px;
+    height: 34px;
+    margin-bottom: 20px;
+  }
+  .information li {
+    width: 224px;
+  }
+  .information li a {
+    top: -6px;
+  }
+  .information li input {
+    width: 182px;
+    line-height: 24px;
+    height: 24px;
+    margin-bottom: 10px;
+  }
+  .remPass {
+    width: 182px;
+    margin: 0 auto 10px;
+  }
+  .remPass .confirm {
+    background-size:20px;
+  }
+  .remPass label {
+    margin-bottom: 4px;
+    text-indent: 20px;
+  }
+  .information input {
+    background-size: 16px 16px;
+  }
+  .information input[type="button"] {
+    width: 182px;
+    margin-bottom: 8px;
+  }
+    .identifyingCode {
+        width: 182px;
+    }
+    .information .identifyingCode .code {
+        width: 70px;
+        height: 22px;
+        line-height: 22px;
+        right: 1px;
+        top: 1px;
+    }
+  .agreement_box{width:100%;border-top:1px solid #e6e6e6;}
+  .agreement{width:992px;margin:auto;color:#333;}
+  .agreement h1{font-size:28px;text-align:center;line-height:100px;margin-top:30px;}
+  .agreement h2{font-size:22px;line-height:60px;margin-bottom:10px;}
+  .agreement p{font-size:16px;line-height:30px;text-indent:36px;}
+  .agreement p span{display:block;margin-left:60px;font-size:16px;}
+
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .loginForm form {
+    width: 360px;
+    padding: 0;
+    height: 570px;
+    margin-top: 60px;
+  }
+  .tabMenu {
+    border-bottom: 1px solid #dcdcdc;
+    line-height: 58px;
+    height: 58px;
+    margin-bottom: 42px;
+  }
+  .information li {
+    width: 300px;
+  }
+  .information li input {
+    width: 300px;
+    line-height: 42px;
+    height: 42px;
+    margin-bottom: 20px;
+  }
+  .information li a {
+    top: -2px;
+  }
+  .remPass {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .remPass .confirm {
+    background-size: 20px 20px;
+  }
+  .remPass label {
+    margin-bottom: 20px;
+  }
+  .information input[type="button"] {
+    width: 300px;
+  }
+  .remPass a {
+    background-size: 20px 20px;
+  }
+    .identifyingCode {
+        width: 300px;
+    }
+    .information .identifyingCode .code {
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        right: 1px;
+        top: 1px;
+    }
+    .agreement_box{width:100%;border-top:1px solid #e6e6e6;}
+  .agreement{width:1200px;margin:auto;color:#333;}
+  .agreement h1{font-size:28px;text-align:center;line-height:100px;margin-top:30px;}
+  .agreement h2{font-size:22px;line-height:60px;margin-bottom:10px;}
+  .agreement p{font-size:16px;line-height:30px;text-indent:36px;}
+  .agreement p span{display:block;margin-left:60px;font-size:16px;}
+}
+/*单独处理协议处input框覆盖label框无法打开查看协议链接的问题*/
+.remPass a input{
+  width:1px;
+}
+.remPass .js-agreement{
+  cursor:pointer;
+}

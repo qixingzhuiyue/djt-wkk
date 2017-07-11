@@ -1,0 +1,238 @@
+.content ul li .greenBor {
+  border: 1px solid #9ab126;
+}
+.content ul .greenColor {
+  color: #9ab126;
+}
+.content {
+  margin: auto;
+  text-align: center;
+  border-radius: 4px;
+}
+.content h3 {
+  text-align: left;
+  border-bottom: 1px solid #dfdfdf;
+}
+.content ul li:last-child {
+  margin-right: 0;
+}
+.content a {
+  display: block;
+  border: 1px solid #dfdfdf;
+}
+.content input {
+  border-radius: 2px;
+}
+.succeed {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: none;
+}
+.succeed .succeed-bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  left: 0;
+  top: 0;
+}
+.succeed .succeed-con {
+  border-radius: 4px;
+  text-align: center;
+}
+.succeed .succeed-con a input {
+  border-radius: 2px;
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  .content {
+    width: 320px;
+    padding: 0 10px;
+    margin-top: 12px;
+  }
+  .content h3 {
+    font-size: 14px;
+    padding: 14px 0 10px;
+  }
+  .content ul li {
+    margin: 14px 4px 0 0;
+  }
+  .content a {
+    padding: 6px;
+  }
+  .content a img {
+    height: 98px;
+  }
+  .content ul li p {
+    line-height: 36px;
+    font-size: 12px;
+  }
+  .content input[type="button"] {
+    width: 120px;
+    line-height: 24px;
+    margin-bottom: 24px;
+  }
+  .succeed .succeed-con {
+    left: 20%;
+    top: 24%;
+    width: 240px;
+  }
+  .succeed .succeed-con img {
+    height: 44px;
+    margin: 30px 0 10px;
+  }
+  .succeed .succeed-con p {
+    font-size: 14px;
+  }
+  .succeed .succeed-con a input {
+    width: 150px;
+    height:30px;
+    line-height: 30px;
+    margin: 24px 0 26px;
+    font-size: 12px;
+  }
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .content {
+    width: 768px;
+    padding: 0 14px;
+    margin-top: 24px;
+  }
+  .content h3 {
+    font-size: 14px;
+    padding: 22px 0 16px;
+  }
+  .content ul li {
+    margin: 24px 10px 0 0;
+  }
+  .content a {
+    padding: 12px;
+  }
+  .content a img {
+    height: 252px;
+  }
+  .content ul li p {
+    line-height: 56px;
+    font-size: 14px;
+  }
+  .content input[type="button"] {
+    width: 180px;
+    line-height: 32px;
+    margin-bottom: 24px;
+  }
+  .succeed .succeed-con {
+    left: 28%;
+    top: 24%;
+    width: 300px;
+  }
+  .succeed .succeed-con img {
+    height: 44px;
+    margin: 62px 0 26px;
+  }
+  .succeed .succeed-con p {
+    font-size: 18px;
+  }
+  .succeed .succeed-con a input {
+    width: 180px;
+    line-height: 36px;
+    margin: 44px 0 30px;
+    font-size: 14px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .content {
+    width: 992px;
+    padding: 0 18px;
+    margin-top: 34px;
+  }
+  .content h3 {
+    font-size: 16px;
+    padding: 24px 0 18px;
+  }
+  .content ul li {
+    margin: 30px 12px 0 0;
+  }
+  .content a {
+    padding: 12px;
+  }
+  .content a img {
+    height: 336px;
+  }
+  .content ul li p {
+    line-height: 66px;
+    font-size: 16px;
+  }
+  .content input[type="button"] {
+    width: 216px;
+    line-height: 36px;
+    margin-bottom: 30px;
+  }
+  .succeed .succeed-con {
+    left: 36%;
+    top: 24%;
+    width: 326px;
+  }
+  .succeed .succeed-con img {
+    height: 48px;
+    margin: 68px 0 30px;
+  }
+  .succeed .succeed-con p {
+    font-size: 20px;
+  }
+  .succeed .succeed-con a input {
+    width: 210px;
+    line-height: 40px;
+    margin: 68px 0 30px;
+    font-size: 16px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .content {
+    width: 1200px;
+    padding: 0 20px;
+    margin-top: 40px;
+  }
+  .content h3 {
+    font-size: 18px;
+    padding: 28px 0 20px;
+  }
+  .content ul li {
+    margin-right: 14px;
+  }
+  .content a {
+    padding: 20px;
+  }
+  .content a img {
+    height: 396px;
+  }
+  .content ul li p {
+    line-height: 76px;
+  }
+  .content input[type="button"] {
+    width: 236px;
+    line-height: 38px;
+    margin-bottom: 36px;
+  }
+  .succeed .succeed-con {
+    left: 36%;
+    top: 24%;
+    width: 326px;
+  }
+  .succeed .succeed-con img {
+    height: 48px;
+    margin: 68px 0 30px;
+  }
+  .succeed .succeed-con p {
+    font-size: 20px;
+  }
+  .succeed .succeed-con a input {
+    width: 210px;
+    line-height: 40px;
+    margin: 68px 0 30px;
+  }
+}

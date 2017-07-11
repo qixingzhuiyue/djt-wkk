@@ -1,0 +1,415 @@
+
+.content {
+  width: 1200px;
+  margin: 20px auto 0;
+  padding: 30px 0 0 30px;
+}
+.content h2 {
+  width: 170px;
+  line-height: 60px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.content label {
+  width: 130px;
+  line-height: 50px;
+}
+.content b {
+  color: #ff6060;
+}
+.content input[type="text"],
+.content select,
+.content textarea {
+  border: 1px solid #dfdfdf;
+}
+.content .actTime .startTime,
+.content .actTime .endTime {
+  background: url(../images/personal/calender_bg.png) no-repeat;
+}
+.up_img input,
+.up_img label {
+  background: #9ab126;
+  color: #fff;
+  border-radius: 2px;
+  text-align: center;
+}
+.up_img input {
+  left: 0;
+  top: 0;
+  opacity: 0;
+  z-index: 99;
+}
+.content textarea {
+  resize: none;
+  vertical-align: top;
+}
+.content .signCost input {
+  text-align: center;
+}
+.content .signCost .freeAct {
+  color: #9ab126;
+  border: 1px solid #9ab126;
+}
+.affirm {
+  text-align: center;
+}
+.affirm input {
+  border-radius: 2px;
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  .edui-default .edui-toolbar .edui-button,
+  .edui-default .edui-toolbar .edui-splitbutton,
+  .edui-default .edui-toolbar .edui-menubutton,
+  .edui-default .edui-toolbar .edui-combox {
+    margin:0 4px!important;
+  }
+
+  .edui-editor-iframeholder,#edui1{width: 280px;}
+  .js-content{margin-left:0;width: 280px;}
+  .js-content,.edui-editor{width: 280px;}
+  .content {
+    width: 320px;
+    margin: 20px auto 0;
+    padding: 20px 0 0 20px;
+  }
+  .content h2 {
+    width: 80px;
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+  .content label {
+    width: 220px;
+    line-height: 30px;
+  }
+  .content input[type="text"],
+  .content select,
+  .content textarea {
+    width: 280px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    text-indent: 4px;
+  }
+  .content .actTime input {
+    width: 170px;
+  }
+  .content .actTime .startTime,
+  .content .actTime .endTime {
+    width: 110px;
+    background-size: 16px;
+    background-position: 16px 6px;
+    text-indent: 44px;
+  }
+  .registered input {
+    display: block;
+  }
+  .content .registered select {
+    width: 100px;
+  }
+  .content .registered span {
+    margin: 0 10px 0 6px;
+  }
+  .content .imgdiv,
+  .content .imgShow {
+    width: 140px;
+    height: 80px;
+    margin: 0 0 30px 0;
+  }
+  .up_img {
+    width: 100px;
+    height: 30px;
+  }
+  .poster p {
+    margin-bottom: 14px;
+  }
+  .up_img input,
+  .up_img label {
+    width: 80px;
+    line-height: 30px;
+    height: 30px;
+    margin-top: 50px;
+  }
+  .content textarea {
+    height: 100px;
+  }
+  .activityType select {
+    width: 100px;
+  }
+  .content .signCost input {
+    width: 120px;
+  }
+  .content .signCost .other {
+    margin-right: 40px;
+  }
+  .content .number input {
+    width: 120px;
+  }
+  .affirm {
+    text-align: center;
+    padding: 30px 0 44px;
+    margin-left:-20px;
+  }
+  .affirm input {
+    width: 200px;
+    line-height: 54px;
+  }
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+    .edui-editor-iframeholder,#edui1{width:560px;}
+  .js-content{margin-left: 122px;}
+  .js-content,.edui-editor{width: 600px;}
+  .content {
+    width: 768px;
+    margin: 20px auto 0;
+    padding: 20px 0 0 20px;
+  }
+  .content h2 {
+    width: 120px;
+    line-height: 50px;
+    margin-bottom: 20px;
+  }
+  .content label {
+    width: 120px;
+    line-height: 38px;
+  }
+  .content input[type="text"],
+  .content select,
+  .content textarea {
+    width: 340px;
+    height: 38px;
+    line-height: 38px;
+    margin-bottom: 20px;
+    text-indent: 14px;
+    cursor:pointer;
+  }
+  .pointer{
+    cursor:pointer;
+  }
+  .content .actTime input {
+    width: 120px;
+  }
+  .content .actTime .startTime,
+  .content .actTime .endTime {
+    width: 100px;
+    background-size: 20px;
+    background-position: 16px 6px;
+    text-indent: 44px;
+  }
+  .registered input {
+    display: block;
+  }
+  .content .registered select {
+    width: 120px;
+  }
+  .content .registered span {
+    margin: 0 24px 0 10px;
+  }
+  .content .imgdiv,
+  .content .imgShow {
+    width: 200px;
+    height: 180px;
+    margin: 0 30px 50px 0;
+  }
+  .poster p {
+    margin-bottom: 14px;
+  }
+  .up_img input,
+  .up_img label {
+    width: 130px;
+    line-height: 50px;
+    height: 50px;
+    margin-top: 0;
+  }
+  .content textarea {
+    height: 200px;
+  }
+  .activityType select {
+    width: 200px;
+  }
+  .content .signCost input {
+    width: 120px;
+  }
+  .content .signCost .other {
+    margin-right: 40px;
+  }
+  .content .number input {
+    width: 120px;
+  }
+  .affirm {
+    text-align: center;
+    padding: 50px 0 124px;
+  }
+  .affirm input {
+    width: 200px;
+    line-height: 54px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .js-content{margin-left: 122px;}
+  .js-content,.edui-editor{width: 824px;}
+  .registered input {
+    display: inline-block;
+  }
+  .content {
+    width: 992px;
+    margin: 20px auto 0;
+    padding: 24px 0 0 24px;
+  }
+  .content h2 {
+    width: 150px;
+    line-height: 56px;
+    margin-bottom: 24px;
+  }
+  .content label {
+    width: 120px;
+    line-height: 44px;
+  }
+  .content input[type="text"],
+  .content select,
+  .content textarea {
+    width: 400px;
+    height: 44px;
+    line-height: 44px;
+    margin-bottom: 44px;
+    text-indent: 14px;
+  }
+  .content .actTime input {
+    width: 200px;
+  }
+  .content .actTime .startTime,
+  .content .actTime .endTime {
+    width: 170px;
+    background-size: 26px;
+    background-position: 16px 6px;
+    text-indent: 64px;
+  }
+  .content .registered select {
+    width: 120px;
+  }
+  .content .registered span {
+    margin: 0 24px 0 10px;
+  }
+  .content .imgdiv,
+  .content .imgShow {
+    width: 300px;
+    height: 220px;
+    margin: 0 30px 50px 0;
+  }
+  .poster p {
+    margin-bottom: 14px;
+  }
+  .up_img input,
+  .up_img label {
+    width: 130px;
+    line-height: 50px;
+    height: 50px;
+  }
+  .content textarea {
+    height: 200px;
+  }
+  .activityType select {
+    width: 200px;
+  }
+  .content .signCost input {
+    width: 120px;
+  }
+  .content .signCost .other {
+    margin-right: 40px;
+  }
+  .content .number input {
+    width: 120px;
+  }
+  .affirm {
+    text-align: center;
+    padding: 50px 0 124px;
+  }
+  .affirm input {
+    width: 200px;
+    line-height: 54px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .js-content,.edui-editor{width: 1000px;}
+  .js-content{margin-left: 130px;}
+  .content {
+    width: 1200px;
+    margin: 20px auto 0;
+    padding: 30px 0 0 30px;
+  }
+  .content h2 {
+    width: 170px;
+    line-height: 60px;
+    margin-bottom: 30px;
+  }
+  .content label {
+    width: 130px;
+    line-height: 50px;
+  }
+  .content input[type="text"],
+  .content select,
+  .content textarea {
+    width: 450px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 50px;
+    text-indent: 14px;
+  }
+  .content .actTime input {
+    width: 264px;
+  }
+  .content .actTime .startTime,
+  .content .actTime .endTime {
+    width: 170px;
+    background-size: 32px;
+    background-position: 16px 6px;
+    text-indent: 64px;
+  }
+  .content .registered select {
+    width: 142px;
+  }
+  .content .registered span {
+    margin: 0 32px 0 10px;
+  }
+  .content .imgdiv,
+  .content .imgShow {
+    width: 350px;
+    height: 220px;
+    margin: 0 30px 50px 0;
+  }
+  .poster p {
+    margin-bottom: 14px;
+  }
+  .up_img input,
+  .up_img label {
+    width: 130px;
+    line-height: 50px;
+    height: 50px;
+  }
+  .content textarea {
+    height: 248px;
+  }
+  .activityType select {
+    width: 220px;
+  }
+  .content .signCost input {
+    width: 160px;
+  }
+  .content .signCost .other {
+    margin-right: 60px;
+  }
+  .content .number input {
+    width: 160px;
+  }
+  .affirm {
+    text-align: center;
+    padding: 50px 0 124px;
+  }
+  .affirm input {
+    width: 220px;
+    line-height: 60px;
+  }
+}

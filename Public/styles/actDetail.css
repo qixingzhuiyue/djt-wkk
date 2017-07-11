@@ -1,0 +1,601 @@
+.share-platform p,.js-collect{line-height: 32px;}
+.js-collect img{margin: 4px 16px 0 0;}
+.store .js-collect img{margin: 0;}
+.shareRight{width: 100%;text-align: right}
+.actWrap table,.actWrap td{width: 100%!important;}
+.hostInform img,.main .actWrap .left .replayAbout img{border-radius: 50%;overflow: hidden}
+.main .actWrap .right .reAct li:last-child{border: none!important;}
+.main .actWrap .left .replayAbout img{border:1px solid #eee;}
+.bdsharebuttonbox{margin-top: 0!important;}
+@media (max-width: 767px) {
+  .immediately,.immediately input{
+    width: 80px;height:32px;
+    line-height: 32px;
+    margin:12px auto 0;
+  }
+  .reAct ul li a,  .brilliant ul li a{display: inline-block}
+  .reAct ul li img{width: 280px;height: 150px;}
+  .brilliant ul li img{width: 160px;height: 120px;}
+  .main {
+    width: 100%;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    margin-bottom: 50px;
+    overflow: hidden;
+  }
+  .main .thisAct {
+    padding: 0 10px;
+    background: white;
+    overflow: hidden;
+  }
+  .main .thisAct .thisImg{width: 100%}
+  .main .thisAct .thisImg img{
+    width: 100%;height: 200px;
+  }
+  .main .thisAct .thisWrap {
+    padding-left: .5rem;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  .main .thisAct .thisWrap h5 {
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis ;
+    white-space: nowrap;
+  }
+  .main .thisAct .thisWrap .hostInform {
+    margin-top: 10px;
+    display: -ms-flexbox;
+    display: flex;
+    line-height: 30px;
+  }
+    .main .thisAct .thisWrap .hostInform img{width: 30px;height: 30px;}
+  .main .thisAct .thisWrap .hostInform .hostName {
+    margin-left: 10px;
+  }
+  .main .thisAct .thisWrap .hostInform .bd9 {
+    margin-left: 20px;
+    padding: 0 14px;
+  }
+  .main .thisAct .thisWrap .hostTime,
+  .main .thisAct .thisWrap .hostAdd,
+  .main .thisAct .thisWrap .hostNum {
+    line-height: 30px;
+  }
+  .main .thisAct .thisWrap .payMon {
+    display: -ms-flexbox;
+    display: flex;
+    bottom: 0;
+  }
+  .main .thisAct .thisWrap .payMon input {
+    padding: 14px 20px;
+    line-height: 0;
+  }
+  .main .thisAct .thisWrap .payMon .g3c {
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: 100px;
+    line-height: 30px;
+  }
+  .main .actWrap {
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 1%;
+  }
+  .main .actWrap .left {
+    padding: 1%;
+    background: white;
+    width: 100%;
+  }
+  .main .actWrap .left h3 {
+    font-weight: bold;
+  }
+  .main .actWrap .left .costType {
+    padding: 30px 0;
+  }
+  .main .actWrap .left .costType span {
+    padding: 8px 2px;
+  }
+  .main .actWrap .left h3:nth-of-type(2) {
+    margin: 20px 0 10px;
+  }
+  .main .actWrap .left .detailWord {
+    line-height: 24px;
+  }
+  .main .actWrap .left .actImgBig {
+    margin: 20px 0;
+    overflow: hidden;
+  }
+  .main .actWrap .left .store {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  .main .actWrap .left .store div {
+    margin-bottom: 8px
+  }
+  .main .actWrap .left .user {
+    margin-top: 40px;
+    line-height: 30px;
+  }
+  .main .actWrap .left textarea {
+    width: 100%;
+    height: 130px;
+    margin-top: 20px;
+    resize: none;
+    background: #fafafa;
+  }
+  .main .actWrap .left .pubComment {
+    margin-top: .5rem;
+    text-align: right;
+  }
+  .main .actWrap .left .pubComment input {
+    padding: 14px 16px;
+    line-height: 0;
+  }
+  .main .actWrap .left .replayAbout {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px 0 10px 20px;
+    border-top: 1px solid #eeeeee;
+    line-height: 50px;
+  }
+  .main .actWrap .left .replayAbout img {
+    margin :18px 10px 0 0;
+  }    .replayAbout .contentImg{width: 30px;height:30px;}
+
+  .main .actWrap .left .replayAbout i {
+    font-style: normal;
+    margin-left: 4px;
+  }
+  .main .actWrap .left .replayAbout b {
+    right: 0;
+    font-weight: normal;
+  }
+  .main .actWrap .left .replayAbout .content {
+    text-indent: 44px;
+    line-height: 18px;
+  }
+  .main .actWrap .left .brilliant ul {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+    padding-left: 4px;
+  }
+  .main .actWrap .left .brilliant ul li {
+    float: left;
+    margin-right: 7px;
+    margin-bottom: 20px;
+    line-height: 24px;
+  }
+  .main .actWrap .left .brilliant ul li div {
+    width: 9rem;
+    overflow: hidden;
+  }
+  .main .actWrap .left .brilliant ul li .liDescribe {
+    margin-top: 10px;
+  }
+  .main .actWrap .left .brilliant ul li:nth-child(2n) {
+    margin-right: 0;
+  }
+  .main .actWrap .right {
+    display: none;
+  }
+  .signWrap form {
+    width: 300px;
+    margin-left: -150px;
+  }
+  .signWrap form input {
+    width: 100%;
+    margin: 10px auto;
+  }
+  .signWrap form input[type=button] {
+    height: 40px;
+    line-height: 40px;
+  }
+  .contentL div p img{max-width:300px!important;}
+}
+@media (min-width: 768px) {
+  .immediately,.immediately input{
+    width: 180px;height:44px;
+    line-height: 44px;
+    margin:20px auto 0;
+  }
+  .reAct ul li img{width: 280px;height: 150px;}
+  .brilliant ul li img{width: 160px;height: 120px;}
+  .main {
+    width: 100%;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    margin-bottom: 50px;
+    overflow: hidden;
+  }
+  .main .thisAct {
+    display: -ms-flexbox;
+    display: flex;
+    padding: 20px;
+    background: white;
+    overflow: hidden;
+  }
+  .main .thisAct .thisImg {
+    width: 300px;
+    /*margin-top: 24px;*/
+  }
+  .main .thisAct .thisImg img{
+    width: 300px;height: 230px;
+  }
+  .main .thisAct .thisWrap {
+    margin-left: 16px;
+    width: 10rem;
+  }
+  .main .thisAct .thisWrap h3 {
+    font-size: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis ;
+    white-space: nowrap;
+  }
+  .main .thisAct .thisWrap .hostInform {
+    margin-top: 10px;
+    display: -ms-flexbox;
+    display: flex;
+    line-height: 30px;
+  }
+    .main .thisAct .thisWrap .hostInform img{width: 36px;height: 36px;}
+  .main .thisAct .thisWrap .hostInform .hostName {
+    margin-left: 10px;
+      line-height: 36px;
+  }
+  .main .thisAct .thisWrap .hostInform .bd9 {
+    margin-left: 20px;
+    padding: 0 14px;
+  }
+  .main .thisAct .thisWrap .hostTime,
+  .main .thisAct .thisWrap .hostAdd,
+  .main .thisAct .thisWrap .hostNum {
+    line-height: 24px;
+  }
+  .main .thisAct .thisWrap .payMon {
+    display: -ms-flexbox;
+    display: flex;
+    bottom: 0;
+  }
+  .main .thisAct .thisWrap .payMon input {
+    padding: 0 30px;
+    line-height: 30px;
+    margin-top: 10px;
+  }
+  .main .thisAct .thisWrap .payMon .g3c {
+    display: -ms-flexbox;
+    display: flex;
+    margin:10px 0 0 200px;
+    line-height: 30px;
+  }
+  .main .actWrap {
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 1%;
+  }
+  .main .actWrap .left {
+    padding: 1%;
+    background: white;
+    width: 70%;
+  }
+  .main .actWrap .left h3 {
+    font-weight: bold;
+  }
+  .main .actWrap .left .costType {
+    padding: 30px 0;
+  }
+  .main .actWrap .left .costType span {
+    padding: 8px;
+    margin-right: 20px;
+  }
+  .main .actWrap .left h3:nth-of-type(2) {
+    margin: 20px 0 10px;
+  }
+  .main .actWrap .left .detailWord {
+    line-height: 24px;
+  }
+  .main .actWrap .left .actImgBig img{
+    margin: 20px 0;
+    overflow: hidden;
+    width: 830px;height: 394px;
+  }
+  .main .actWrap .left .store {
+    margin-top: 80px;
+    text-align: center;
+  }
+  .main .actWrap .left .store div {
+    margin-bottom: 20px;
+  }
+  .main .actWrap .left .user {
+    margin-top: 40px;
+    line-height: 30px;
+  }
+  .main .actWrap .left textarea {
+    width: 100%;
+    height: 130px;
+    margin-top: 20px;
+    resize: none;
+    background: #fafafa;
+  }
+  .main .actWrap .left .pubComment {
+    margin: 20px 0 64px;
+    text-align: right;
+  }
+  .main .actWrap .left .pubComment input {
+    padding: 2px 20px;
+  }
+  .main .actWrap .left .replayAbout {
+    margin-top: 20px;
+    padding: 20px 0 20px 20px;
+    border-top: 1px solid #eeeeee;
+    line-height: 24px;
+  }
+  .replayAbout .contentImg{width: 40px;height: 40px;}
+  .main .actWrap .left .replayAbout img {
+    margin:2px 10px 20px 0;
+  }
+  .main .actWrap .left .replayAbout i {
+    font-style: normal;
+    margin-left: 4px;
+  }
+  .main .actWrap .left .replayAbout b {
+    right: 0;
+    font-weight: normal;
+  }
+  .main .actWrap .left .replayAbout .f20 {
+    text-indent: 64px;
+    line-height: 18px;
+  }
+  .main .actWrap .left .brilliant ul {
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    padding-left: 30px;
+    overflow: hidden;
+  }
+  .main .actWrap .left .brilliant ul li {
+    float: left;
+    margin-right: 7px;
+    margin-bottom: 20px;
+    line-height: 24px;
+  }
+  .main .actWrap .left .brilliant ul li .liDescribe {
+    margin-top: 10px;
+  }
+  .main .actWrap .right {
+    width: 29%;
+    margin-left: 1%;
+  }
+  .main .actWrap .right .actAddress {
+    padding: 10px 2%;
+  }
+  .main .actWrap .right .actAddress .map {
+    overflow: hidden;
+  }
+  .main .actWrap .right .reAct {
+    margin-top: 1%;
+    padding-top: 10px;
+    /*height: 100%;*/
+  }
+  .main .actWrap .right .reAct li {
+    padding: 2%;
+    margin: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+  }
+  .main .actWrap .right .reAct li div {
+    overflow: hidden;
+  }
+  .main .actWrap .right .reAct li .reWord {
+    margin-top: 10px;
+  }
+  .signWrap form {
+    width: 360px;
+    margin-left: -180px;
+  }
+  .signWrap form input {
+    width: 80%;
+    margin: 10px;
+  }
+  .contentL div p img{max-width:300px!important;}
+}
+@media (min-width: 992px) {
+    .replayAbout .contentImg{width: 50px;height: 50px;}
+  /*.main .thisAct .thisImg {*/
+    /*margin-top:10px;*/
+  /*}*/
+  .immediately,.immediately input{
+    width: 190px;height:48px;
+    line-height: 48px;
+    margin:20px auto 0;
+  }
+  .reAct ul li img{width: 280px;height: 150px;}
+  .brilliant ul li img{width: 196px;height: 140px;}
+  .main {
+    width: 100%;
+  }
+  .main .thisAct .thisImg{width: 500px;}
+  .main .thisAct .thisImg img{
+    width: 500px;height: 280px;
+  }
+  .main .thisAct .thisWrap {
+    margin-left: 30px;
+    margin-top: 24px;
+  }
+  .main .thisAct .thisWrap .hostInform {
+    margin: 12px 0 0 0;
+  }
+  .main .thisAct .thisWrap .hostAdd,
+  .main .thisAct .thisWrap .hostTime,
+  .main .thisAct .thisWrap .hostNum {
+    line-height: 28px;
+  }
+  .main .thisAct .thisWrap .payMon .g3c {
+    margin:10px 0 0 180px;
+  }
+  .main .actWrap .brilliant ul {
+    padding-left: 0;
+  }
+  .main .actWrap .brilliant ul li {
+    width: 32%;
+    margin-right: 1%;
+  }
+  .main .actWrap .right .actAddress,
+  .main .actWrap .right .reAct {
+    padding: 10px 16px ;
+  }
+  .main .actWrap .right .actAddress p,
+  .main .actWrap .right .reAct p {
+    text-indent: 6px;
+    line-height: 40px;
+  }
+  .main .actWrap .right .actAddress .g9a,
+  .main .actWrap .right .reAct .g9a {
+    margin-right: 4px;
+    font-weight: bolder;
+  }
+  .main .actWrap .right .reAct li {
+    padding: 20px 0;
+    overflow: hidden;
+  }
+  .main .actWrap .right .reAct li:first-of-type {
+    padding-top: 0;
+  }
+  .main .actWrap .right .reAct .reWord p {
+    line-height: 24px;
+    text-indent: 0;
+  }
+}
+@media (min-width: 1200px) {
+  .main .thisAct .thisWrap .payMon .g3c {
+    margin:8px 0 0 360px;
+  }
+  .immediately,.immediately input{
+    width: 200px;height:52px;
+    line-height: 52px;
+    margin:20px auto 0;
+  }
+  .reAct ul li img{width: 280px;height: 150px;}
+  .main {
+    width: 1200px;
+  }
+  .main .thisAct .thisImg img{
+    width: 500px;height: 280px;
+    margin-right: 60px;
+  }
+  .main .actWrap {
+    margin-top: 20px;
+  }
+  .main .actWrap .left {
+    width: 870px;
+    padding: 20px;
+  }
+  .brilliant ul li img{width: 196px;height: 140px;}
+  .main .actWrap .left .brilliant ul {
+    padding-left: 0;
+  }
+  .main .actWrap .left .brilliant ul li {
+    width: 200px;
+  }
+  .main .actWrap .right {
+    margin-left: 20px;
+    width: 310px;
+  }
+  .contentL div p img{max-width:640px!important;}
+}
+@media (max-width: 320px) {
+  .main .thisAct .thisWrap {
+    padding-left: 0;
+    padding-bottom: 50px;
+  }
+  .main .thisAct .thisWrap .hostInform span {
+    height: 22px;
+  }
+  .main .thisAct .thisWrap .hostInform,
+  .main .thisAct .thisWrap .hostNum,
+  .main .thisAct .thisWrap .hostTime,
+  .main .thisAct .thisWrap .hostAdd {
+    line-height: 20px;
+  }
+  .main .thisAct .thisWrap .payMon input {
+    padding: 14px;
+  }
+  .main .thisAct .thisWrap .payMon .g3c {
+    margin-left: 88px;
+  }
+  .main .actWrap .left {
+    padding-top: 10px;
+  }
+  .main .actWrap .left .costType {
+    padding: 10px 0;
+  }
+  .main .actWrap .left .costType span {
+    position: relative;
+    left: 50%;
+    display: block;
+    width: 60%;
+    margin-left: -30%;
+    text-align: center;
+    margin-top: 6px;
+  }
+  .main .actWrap .left .store {
+    margin-bottom: 10px;
+  }
+  .main .actWrap .left .store div {
+    margin-bottom: 10px;
+  }
+  .main .actWrap .left .brilliant ul {
+    padding-left: 4px;
+  }
+  .main .actWrap .left .brilliant ul li {
+    margin-right: 6px;
+  }
+}
+.signWrap {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+.signWrap h3 {
+  margin-bottom: 20px;
+}
+.signWrap .close {
+  right: 20px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  margin: 0!important;
+  background: url("../images/actIndex/close.png");
+}
+.signWrap form {
+  left: 50%;
+  top: 20%;
+  padding: 30px;
+  border-radius: 6px;
+}
+.signWrap form input {
+  line-height: 40px;
+  text-indent: 10px;
+}
+.signWrap form .user {
+  background: url('../images/actIndex/sign_icon_1.png') no-repeat;
+  background-position: 210px 12px;
+}
+.signWrap form .number {
+  background: url('../images/actIndex/sign_icon_2.png') no-repeat;
+  background-position: 210px 12px;
+}
+.signWrap form .company {
+  background: url('../images/actIndex/sign_icon_3.png') no-repeat;
+  background-position: 210px 12px;
+}
+section .main {
+  margin: auto;
+}
+.brilliant {
+  border-top: 1px solid #eeeeee;
+}

@@ -1,0 +1,806 @@
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+body hr{margin: 6px 0;}
+.pl-touxang img{border:1px solid #eee;}
+.pinghuifu{width: 100%;}
+i {
+  font-style: normal;
+}
+.star{text-align: left}
+.content {
+  margin: auto;
+}
+.model-one .play {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.course li {
+  text-align: center;
+}
+.course li:first-child {
+  margin-left: 0;
+}
+.course li:last-child {
+  margin-right: 0;
+}
+.course li:after {
+  content: "";
+  background: #dfdfdf;
+  position: absolute;
+}
+.model-one .title h5 {
+  color: #ff9900;
+}
+.model-one .title input[type="button"] {
+  border-radius: 1px;
+}
+.contentL {
+  border-radius: 4px;
+}
+.contentL h4 {
+  text-indent: 0;
+}
+h3 {
+  border-bottom: 1px solid #dfdfdf;
+    text-align: left;
+}
+h3:before {
+  content: "";
+  background: #9ab126;
+  position: absolute;
+  left: 0;
+}
+.contentL textarea {
+  border: 1px solid #dfdfdf;
+  resize: none;
+}
+form .publish input {
+  border-radius: 1px;
+}
+.pl-touxang img{
+  border-radius: 50%;
+  overflow: hidden;
+}
+form .publish p,
+.contentL .commentTitle h5,
+.contentL .commentTitle .star {
+  margin: 0;
+}
+.commentTitle{
+  border-bottom: 1px solid #dfdfdf;
+}
+.more {
+  text-align: center;
+}
+.contentR h3 {
+  text-align: left;
+}
+.contentR ul h4 {
+  color: #ff9900;
+}
+.case {
+  border-radius: 4px;
+  text-align: center;
+}
+/* 超小屏幕（手机，小于 768px） */
+@media (max-width: 768px) {
+  table{width:312px;}
+    .floatOther{float: left;margin:0 0 6px 8px;}
+    .video img{width: 316px;}
+  .content {
+    width: 320px;
+  }
+  .model-one {
+    width: 320px;
+    padding: 0 2px;
+    margin: 24px 0 12px;
+  }
+  .model-one video {
+    width: 320px;
+    height: 240px;
+    text-align: center;
+  }
+  .model-one .play {
+    height: 62px;
+    width: 62px;
+  }
+  .model-one .title {
+    width: 320px;
+    padding: 0 2px;
+  }
+  .model-one .title h4 {
+    margin: 4px 0 6px 6px;
+    font-size: 14px;
+  }
+  .star {
+    margin-top: 12px;
+    line-height: 16px;
+  }
+  .star ul li img {
+    height: 20px;
+  }
+  .model-one .title p {
+    line-height: 22px;
+    font-size: 12px;
+      padding-left: 8px;
+  }
+  .course {
+    margin-top: 10px;
+  }
+  .course li {
+    width: 72px;
+    line-height: 22px;
+    margin: 0 4px;
+  }
+  .course li:after {
+    width: 1px;
+    height: 18px;
+    right: -4px;
+    top: 22px;
+  }
+  .model-one .title h5 {
+    margin: 6px 0 0 8px;
+  }
+  .model-one .title h5 i {
+    font-size: 24px;
+  }
+  .model-one .title input[type="button"] {
+    width: 80px;
+    line-height: 24px;
+    margin:6px 0 6px 8px;
+  }
+  .model-one .title .share-platform p {
+    line-height: 32px;
+  }
+  .model-one .collect {
+    background: url(../images/postDetails/collect.png) no-repeat 44px 0;
+    width:80px;
+    height: 22px;
+    margin: 6px 0 0 0;
+    background-size: 20px 20px;
+  }
+  .model-one .collect_green {
+    background: url(../images/postDetails/collectGreen.png) no-repeat 44px 0;
+    width: 100px;
+    height: 22px;
+    margin: 6px 0 0 0;
+    background-size: 20px 20px;
+  }
+  .contentL {
+    width: 320px;
+    padding: 4px;
+  }
+  .contentR {
+    width: 320px;
+    float: left;
+    margin-top: 10px;
+  }
+  .contentL h4 {
+    margin-bottom: 12px;
+  }
+  .contentL h6 {
+    margin-bottom: 23px;
+    text-indent: 36px;
+  }
+  .contentL p {
+    line-height: 20px;
+    margin: 8px 0 0 0;
+    text-indent: 0;
+  }
+  .contentL h5 {
+    margin-bottom: 12px;
+  }
+  .conList {
+    text-indent: 20px;
+  }
+  .comment {
+    margin-top: 20px;
+  }
+  h3 {
+    line-height: 52px;
+    text-indent: 14px;
+  }
+  h3:before {
+    width: 3px;
+    height: 18px;
+    left: 0;
+    top: 22px;
+  }
+  .contentL .star {
+    margin-top: 20px;
+  }
+  .contentL textarea {
+    width: 312px;
+    height: 100px;
+    margin: 12px 0 8px;
+  }
+  form .publish input {
+    width: 80px;
+    line-height: 24px;
+  }
+  form .publish p {
+    line-height: 24px;
+  }
+  .pl-touxang img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin:18px 0 0 0;
+  }
+  .commentTitle > div {
+    margin: 18px 0 12px;
+  }
+  .contentL .commentTitle h5 {
+    line-height: 18px;
+  }
+  .contentL .commentTitle i {
+    line-height: 18px;
+    margin-left: 12px;
+  }
+  .contentL .commentTitle p {
+    line-height: 18px;
+    margin: 0 0 42px 0;
+  }
+  .more {
+    line-height: 54px;
+  }
+  .contentR ul {
+    padding-bottom: 12px;
+  }
+  .contentR ul img {
+    height: 80px;
+    width: 108px;
+    margin: 18px 0;
+  }
+  .contentR ul h4 {
+    margin-top: 10px;
+  }
+  .case {
+    margin-bottom: 20px;
+    padding: 8px 8px 0;
+    width: 320px;
+  }
+  .sign_btn{width:100px;height:30px;line-height:30px;text-align:center;margin:24px auto 0 auto;}
+  /*控制富文本编辑器图片最大尺寸*/
+  .contentL .conList img{
+    max-width:300px!important;
+    height:auto;
+  }
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .content {
+    width: 768px;
+  }
+  .model-one {
+    width: 768px;
+    padding: 20px;
+    margin: 24px 0 12px;
+  }
+  .model-one .video img{
+    width: 260px;
+    height: 290px;
+  }
+  .model-one .play {
+    height: 62px;
+    width: 62px;
+  }
+  .model-one .title {
+    width: 450px;
+  }
+  .model-one .title h4 {
+    margin: 10px 0 16px 0;
+    font-size: 20px;
+  }
+  .star {
+    margin-top: 14px;
+    line-height: 20px;
+  }
+  .star ul li img {
+    height: 20px;
+  }
+  .model-one .title p {
+    line-height: 22px;
+    font-size: 12px;
+    margin-top: 8px;
+      padding-left: 0;
+  }
+  .course {
+    margin-top: 10px;
+  }
+  .course li {
+    width: 58px;
+    line-height: 22px;
+    margin: 0 12px;
+  }
+  .course li:after {
+    width: 1px;
+    height: 18px;
+    right: -16px;
+    top: 22px;
+  }
+  .model-one .title h5 {
+    margin: 16px 0;
+  }
+  .model-one .title h5 i {
+    font-size: 24px;
+  }
+  .model-one .title input[type="button"] {
+    width: 120px;
+    line-height: 32px;
+      margin-left: 0;
+  }
+  .model-one .collect {
+    background: url(../images/postDetails/collect.png) no-repeat 44px 0;
+    width: 100px;
+    height: 22px;
+    margin: 6px 0 0 0;
+    background-size: 20px 20px;
+  }
+  .model-one .collect_green {
+    background: url(../images/postDetails/collectGreen.png) no-repeat 44px 0;
+    width: 100px;
+    height: 22px;
+    margin: 6px 0 0 0;
+    background-size: 20px 20px;
+  }
+  .contentL {
+    width: 768px;
+    padding: 20px;
+  }
+  .contentR {
+    width: 768px;
+    float: left;
+    margin-top: 20px;
+  }
+  .contentL h4 {
+    margin-bottom: 18px;
+  }
+  .contentL h6 {
+    margin-bottom: 20px;
+    text-indent: 46px;
+  }
+  .contentL p {
+    line-height: 24px;
+    margin: 10px 0 0 66px;
+    text-indent: 0;
+  }
+  .contentL h5 {
+    margin-bottom: 20px;
+  }
+  .conList {
+    text-indent: 20px;
+  }
+  .comment {
+    margin-top: 40px;
+  }
+  h3 {
+    line-height: 52px;
+    text-indent: 14px;
+  }
+  h3:before {
+    width: 3px;
+    height: 18px;
+    left: 0;
+    top: 22px;
+  }
+  .contentL .star {
+    margin-top: 30px;
+  }
+  .contentL textarea {
+    width: 720px;
+    height: 110px;
+    margin: 20px 0 10px;
+  }
+  form .publish input {
+    width: 120px;
+    line-height: 32px;
+  }
+  form .publish p {
+    line-height: 32px;
+  }
+  .pl-touxang  img{
+    width: 58px;
+    height: 58px;
+    margin: 30px 32px 0 0;
+  }
+  .commentTitle > div {
+    margin: 34px 0 24px;
+  }
+  .contentL .commentTitle h5 {
+    line-height: 24px;
+  }
+  .contentL .commentTitle i {
+    line-height: 24px;
+    margin-left: 12px;
+  }
+  .contentL .commentTitle p {
+    line-height: 24px;
+    margin: 0 0 42px 0;
+  }
+  .more {
+    line-height: 84px;
+  }
+  .contentR ul {
+    padding-bottom: 18px;
+  }
+  .contentR ul img {
+    height: 180px;
+    width: 244px;
+    margin: 18px 0;
+  }
+  .contentR ul h4 {
+    margin-top: 10px;
+  }
+  .case {
+    margin-bottom: 20px;
+    padding: 8px 18px 0;
+    width: 768px;
+  }
+  .sign_btn{width:120px;height:30px;line-height:30px;text-align:center;margin:24px auto 0 auto;}
+  /*控制富文本编辑器图片最大尺寸*/
+  .contentL .conList img{
+    max-width:400px!important;
+    height:auto;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .content {
+    width: 992px;
+  }
+  .model-one {
+    width: 992px;
+    padding: 24px;
+    margin: 32px 0 18px;
+  }
+  .model-one .video img{
+    width: 380px;
+    height: 340px;
+  }
+  .model-one .play {
+    height: 62px;
+    width: 62px;
+  }
+  .model-one .title {
+    width: 530px;
+  }
+  .model-one .title h4 {
+    margin: 12px 0 20px;
+    font-size: 22px;
+  }
+  .star {
+    margin-top: 14px;
+    line-height: 24px;
+  }
+  .star ul li img {
+    height: 24px;
+  }
+  .model-one .title p {
+    line-height: 20px;
+    font-size: 14px;
+  }
+  .course {
+    margin-top: 20px;
+  }
+  .course li {
+    width: 58px;
+    line-height: 24px;
+    margin: 0 16px;
+  }
+  .course li:after {
+    width: 1px;
+    height: 18px;
+    right: -16px;
+    top: 22px;
+  }
+  .model-one .title h5 {
+    margin: 20px 0;
+  }
+  .model-one .title h5 i {
+    font-size: 24px;
+  }
+  .model-one .title input[type="button"] {
+    width: 160px;
+    line-height: 40px;
+  }
+  .model-one .title .collect{margin-top:4px; line-height:30px;}
+  .model-one .collect {
+    background: url(../images/postDetails/collect.png) no-repeat 44px 0;
+
+    width: 100px;
+    height: 30px;
+    background-size: 30px 30px;
+  }
+  .model-one .title .collect_green{margin-top:4px; line-height:30px;}
+
+  .model-one .collect_green {
+    background: url(../images/postDetails/collectGreen.png) no-repeat 44px 0;
+    width: 100px;
+    height: 30px;
+    margin:0;
+    background-size: 30px 30px;
+  }
+  .contentL {
+    width: 720px;
+    padding: 24px;
+  }
+  .contentR {
+    float: right;
+    width: 256px;
+    margin-top: 0;
+  }
+  .contentL h4 {
+    margin-bottom: 30px;
+  }
+  .contentL h6 {
+    margin-bottom: 40px;
+    text-indent: 66px;
+  }
+  .contentL p {
+    line-height: 30px;
+    margin-top: 10px;
+  }
+  .contentL h5 {
+    margin-bottom: 40px;
+  }
+  .conList {
+    text-indent: 40px;
+  }
+  .comment {
+    margin-top: 40px;
+  }
+  h3 {
+    line-height: 58px;
+    text-indent: 14px;
+  }
+  h3:before {
+    width: 3px;
+    height: 18px;
+    left: 0;
+    top: 22px;
+  }
+  .contentL .star {
+    margin-top: 30px;
+  }
+  .contentL textarea {
+    width: 700px;
+    height: 110px;
+    margin: 20px 0 10px;
+  }
+  form .publish input {
+    width: 160px;
+    line-height: 40px;
+  }
+  form .publish p {
+    line-height: 40px;
+  }
+  .pl-touxang img{
+    width: 58px;
+    height: 58px;
+    margin: 48px 36px 0 0;
+    overflow: hidden;
+  }
+  .commentTitle > div {
+    margin: 44px 0 30px;
+  }
+  .contentL .commentTitle h5 {
+    line-height: 24px;
+  }
+  .contentL .commentTitle i {
+    line-height: 24px;
+    margin-left: 12px;
+  }
+  .contentL .commentTitle p {
+    line-height: 24px;
+    margin: 0 0 42px 0;
+  }
+  .more {
+    line-height: 84px;
+  }
+  .contentR ul {
+    padding-bottom: 18px;
+  }
+  .contentR ul img {
+    height: 180px;
+    width: 220px;
+    margin: 18px 0;
+  }
+  .contentR ul h4 {
+    margin-top: 10px;
+  }
+  .case {
+    margin-bottom: 20px;
+    padding: 8px 18px 0;
+    width: 256px;
+  }
+  .sign_btn{width:160px;height:40px;line-height:40px;text-align:center;margin:24px auto 0 auto;}
+  /*控制富文本编辑器图片最大尺寸*/
+  .contentL .conList img{
+    max-width:500px!important;
+    height:auto;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .content {
+    width: 1200px;
+  }
+  .model-one {
+    width: 1200px;
+    padding: 24px;
+    margin: 40px 0 20px;
+  }
+  .model-one .video img{
+    width: 440px;
+    height: 360px;
+  }
+  .model-one .play {
+    height: 62px;
+    width: 62px;
+  }
+  .model-one .title {
+    width: 686px;
+  }
+  .model-one .title h4 {
+    margin: 14px 0 24px;
+    font-size: 24px;
+  }
+  .star {
+    margin-top: 14px;
+    line-height: 24px;
+  }
+  .star ul li img {
+    height: 24px;
+  }
+  .model-one .title p {
+    line-height: 30px;
+    font-size: 16px;
+    height: 30px;
+  }
+  .model-one .title h4 {
+    font-size: 24px;
+  }
+  .course {
+    margin-top: 20px;
+  }
+  .course li {
+    width: 78px;
+    line-height: 24px;
+    margin: 0 20px;
+  }
+  .course li:after {
+    width: 1px;
+    height: 18px;
+    right: -22px;
+    top: 22px;
+  }
+  .model-one .title h5 {
+    margin: 20px 0;
+  }
+  .model-one .title input[type="button"] {
+    width: 160px;
+    line-height: 40px;
+  }
+  .model-one .collect {
+    background: url(../images/postDetails/collect.png) no-repeat 44px 0;
+    width: 100px;
+    height: 22px;
+    margin: 2px 0 0 0;
+    background-size: 30px 30px;
+  }
+  .model-one .collect_green {
+    background: url(../images/postDetails/collectGreen.png) no-repeat 44px 0;
+    width: 100px;
+    height: 22px;
+    margin: 6px 0 0 0;
+    background-size: 30px 30px;
+  }
+  .contentL {
+    width: 872px;
+    padding: 30px;
+  }
+  .contentR {
+    width: 310px;
+  }
+  .contentL h4 {
+    margin-bottom: 32px;
+  }
+  .contentL h6 {
+    margin-bottom: 44px;
+    text-indent: 70px;
+  }
+  .contentL p {
+    line-height: 30px;
+    margin-top: 12px;
+  }
+  .contentL h5 {
+    margin-bottom: 44px;
+  }
+  .conList {
+    text-indent: 40px;
+  }
+  .comment {
+    margin-top: 44px;
+  }
+  h3 {
+    line-height: 58px;
+    text-indent: 14px;
+  }
+  h3:before {
+    width: 3px;
+    height: 18px;
+    left: 0;
+    top: 22px;
+  }
+  .contentL .star {
+    margin-top: 30px;
+  }
+  .contentL textarea {
+    width: 810px;
+    height: 120px;
+    margin: 20px 0 10px;
+  }
+  form .publish input {
+    width: 160px;
+    line-height: 40px;
+  }
+  form .publish p {
+    line-height: 40px;
+  }
+  .pl-touxang{width: 40px;}
+  .pl-touxang img{
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 38px 36px 0 0;
+  }
+  .commentTitle > div {
+    margin: 44px 0 30px;
+  }
+  .contentL .commentTitle h5 {
+    line-height: 24px;
+  }
+  .contentL .commentTitle i {
+    line-height: 24px;
+    margin-left: 12px;
+  }
+  .contentL .commentTitle p {
+    line-height: 24px;
+    margin: 0 0 42px 0;
+  }
+  .more {
+    line-height: 84px;
+  }
+  .contentR ul {
+    padding-bottom: 20px;
+  }
+  .contentR ul img {
+    height: 200px;
+    width: 272px;
+    margin: 20px 0;
+  }
+  .contentR ul h4 {
+    margin-top: 10px;
+  }
+  .case {
+    margin-bottom: 20px;
+    padding: 8px 18px 0;
+    width: 310px;
+  }
+  .sign_btn{width:160px;height:40px;line-height:40px;text-align:center;margin:24px auto 0 auto;}
+  /*控制富文本编辑器图片最大尺寸*/
+  .contentL .conList img{
+    max-width:640px!important;
+    height:auto;
+  }
+}
