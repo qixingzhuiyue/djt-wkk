@@ -1,0 +1,310 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/bounced.css">
+    <link rel="stylesheet" href="__PUBLIC__/styles/trained.css">
+<meta name="description" content="{$key.intro}" />
+<meta name="keywords" content="{$key.keyword}" />
+<title>{$key.title}</title>
+</head>
+<body>
+<!--企业培训trained-->
+<div class="mainBg">
+    <!--header登录注册-->
+    <include file="Public/top"/>
+    <!--header登录注册 end-->
+    <!--header logo-->
+    <!--header logo end-->
+    <!--导航条-->
+    <include file="Public/nav"/>
+    <!--导航条 end-->
+    <!--banner-->
+    <div class="banner rel">
+        <if condition="$banner.picture eq ''">
+            <img src="__PUBLIC__/images/trained/banner.jpg" alt="banner">
+            <else/>
+            <img src="__PUBLIC__{$banner.picture}" alt="banner">
+        </if>
+        <!--<a href="#" class="customization abs"><input class="f22 g9a" type="button" value="我要定制&gt&gt"></a>-->
+    </div>
+    <!--banner end-->
+    <!--content-->
+    <div class="content fn-clear">
+        <div class="contentL l">
+            <!--模块一-->
+            <div class="bgwh model-mar">
+                <h3 class="g3c rel f18">企业推广课程<i class="dib g8c f12">Promotion</i></h3>
+                <ul class="model-one fn-clear">
+                    <volist name="course" id="vo" offset="0" length="3">
+                        <li  onclick="window.open('/index.php/Home/Course/trainedDetails/id/{$vo.courseid}','_self')" class="l ">
+                            <div class="video videoS rel">
+                                <img class="course" src="__PUBLIC__{$vo.picture}" alt="course">
+                                <div class="play abs" ><img src="__PUBLIC__/images/trained/play.png" alt=""></div>
+                            </div>
+                            <h4 class="visible-xs g3c f18">课程课程发的我ziaiza</h4>
+                            <ul class="fn-clear   hidden-xs">
+                                <li class="l rel">
+                                    <p class="g8c">授课地点</p>
+                                    <p class="g3c">{:mb_substr($vo['address'],0,3)}</p>
+                                </li>
+                                <li class="l rel">
+                                    <p class="g8c">市场价格</p>
+                                    <p class="g3c">{$vo.vcoin}维币</p>
+                                </li>
+                                <li class="l">
+                                    <p class="g8c">培训讲师</p>
+                                    <p class="g3c">{$vo.teacher}</p>
+                                </li>
+                            </ul>
+                            <input  class="wh b9a apple-click" type="button" value="我要报名">
+                        </li>
+                    </volist>
+                    <!--<li   onclick="window.open('Course/trainedDetails','_self')" class="l ">-->
+                        <!--<div class="video videoS rel">-->
+                            <!--<img class="course" src="__PUBLIC__/images/trained/course.jpg" alt="course">-->
+                            <!--<div class="play abs" id="playS"><img src="__PUBLIC__/images/trained/play.png" alt=""></div>-->
+                        <!--</div>-->
+                        <!--<ul class="fn-clear">-->
+                            <!--<li class="l rel">-->
+                                <!--<p class="g8c">授课地点</p>-->
+                                <!--<p class="g3c">上海</p>-->
+                            <!--</li>-->
+                            <!--<li class="l rel">-->
+                                <!--<p class="g8c">市场价格</p>-->
+                                <!--<p class="g3c">1888</p>-->
+                            <!--</li>-->
+                            <!--<li class="l">-->
+                                <!--<p class="g8c">培训讲师</p>-->
+                                <!--<p class="g3c">上海家</p>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                        <!--<input class="wh b9a apple-click" type="button" value="我要报名">-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <!--模块二-->
+            <ul class="model-two bgwh rel">
+                <volist name="course" id="vo" offset="2" length="6">
+                    <li>
+                        <div class="fn-clear title">
+                            <h4 class="g9a l">{$vo.title}</h4>
+                            <!--<div  id="starttwo" class="clearfix">-->
+                            <!--<div  class="star_score"></div>-->
+                            <!--</div>-->
+                            <div class="star r hidden-xs">
+                                <ul class="fn-clear dib">
+                                    <for start="0" end="$vo['star']">
+                                        <li class="l"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                                    </for>
+                                    <for start="0" end="5 - $vo['star']">
+                                        <li class="l"><img src="__PUBLIC__/images/trained/star.png" alt="star"></li>
+                                    </for>
+                                </ul>
+                                <span class="g8c">{$vo.score}.0分</span>
+                            </div>
+                        </div>
+                        <h5 class="g3c">{$vo.intro}</h5>
+                        <div class="fn-clear message ">
+                            <ul class="l  hidden-xs">
+                                <li class="l rel">
+                                    <p class="g8c">开课时间</p>
+                                    <p class="g3c">{$vo.starttime|date='Y.m.d',###}</p>
+                                </li>
+                                <li class="l rel">
+                                    <p class="g8c">授课地点</p>
+                                    <p class="g3c">{:mb_substr($vo['address'],0,3)}</p>
+                                </li>
+                                <li class="l rel">
+                                    <p class="g8c">市场价格</p>
+                                    <p class="g3c">{$vo.vcoin}维币</p>
+                                </li>
+                                <li class="l ">
+                                    <p class="g8c">培训讲师</p>
+                                    <p class="g3c">{$vo.teacher}</p>
+                                </li>
+                            </ul>
+                            <input onclick="window.open('/index.php/Home/Course/trainedDetails/id/{$vo.courseid}','_self')" class="g9a bgwh r apple-click" type="button" value="我要报名">
+                        </div>
+                    </li>
+                </volist>
+                <!--<li>-->
+                    <!--<div class="fn-clear title">-->
+                        <!--<h4 class="g9a l">HR如何做用人需求分析</h4>-->
+                        <!--&lt;!&ndash;<div  id="starttwo" class="clearfix">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div  class="star_score"></div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--<div class="star r hidden-xs">-->
+                            <!--<ul class="fn-clear dib">-->
+                                <!--<li class="l"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>-->
+                                <!--<li class="l"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>-->
+                                <!--<li class="l"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>-->
+                                <!--<li class="l"><img src="__PUBLIC__/images/trained/star.png" alt="star"></li>-->
+                                <!--<li class="l"><img src="__PUBLIC__/images/trained/star.png" alt="star"></li>-->
+                            <!--</ul>-->
+                            <!--<span class="g8c">10.0分</span>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<h5 class="g3c">当企业出现用人过剩，用人需求与实际不成正比，企业效率难以提升，HR应该如何做好用人需求分析才能避免这些问题的发生？本课程为你系统介绍用人需求分析的具体流程，通过掌握行之有效的用人需求分析工具，帮助HR完美匹配人才，提升工作效率,企业效率难以提升，HR应该如何做好用人需求分析才能避免这些问题的发生。</h5>-->
+                    <!--<div class="fn-clear message">-->
+                        <!--<ul class="l">-->
+                            <!--<li class="l rel">-->
+                                <!--<p class="g8c">开课时间</p>-->
+                                <!--<p class="g3c">2016.11.10</p>-->
+                            <!--</li>-->
+                            <!--<li class="l rel">-->
+                                <!--<p class="g8c">授课地点</p>-->
+                                <!--<p class="g3c">上海</p>-->
+                            <!--</li>-->
+                            <!--<li class="l rel">-->
+                                <!--<p class="g8c">市场价格</p>-->
+                                <!--<p class="g3c">1888</p>-->
+                            <!--</li>-->
+                            <!--<li class="l hidden-xs">-->
+                                <!--<p class="g8c">培训讲师</p>-->
+                                <!--<p class="g3c">上海家</p>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                        <!--<input class="g9a bgwh r" type="button" value="我要报名">-->
+                    <!--</div>-->
+                <!--</li>-->
+            </ul>
+            <!--模块三-->
+            <div class="model-three bgwh">
+                <div class="fn-clear title">
+                    <h3 class="g3c rel l f18">企业培训精彩瞬间<i class="dib g8c f12 hidden-xs">splendid moment</i></h3>
+                    <ul class="r business-click">
+                        <input type="hidden" class="js-review-num" value="{$num}"/>
+                        <li class="dib" id="left"><img src="__PUBLIC__/images/trained/left.png" alt="left"></li>
+                        <li class="dib" id="right"><img src="__PUBLIC__/images/trained/right.png" alt="right"></li>
+                    </ul>
+                </div>
+                <div class="business-over">
+                    <ul id="business" class="business fn-clear">
+                        <foreach name="review" item="vo">
+                            <li class="f14 g3c  l">
+                                <a class="g3c" href="{:U('Home/Course/moments',array('id'=>$vo['id']))}"><img src="__PUBLIC__{$vo.picture}" alt="pic"/>
+                                <p class="hidden-xs">{:mb_substr($vo['title'],0,10)}</p></a>
+                            </li>
+                        </foreach>
+                        <!--<li class="f14 g3c l">-->
+                            <!--<a><img src="__PUBLIC__/images/trained/pic04.jpg" alt="pic"/></a>-->
+                            <!--<p>团队作业点评</p>-->
+                        <!--</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contentR r">
+            <div class="g3c bgwh case hidden-xs hidden-sm">
+                <h3 class="rel f18">企业成功案例<i class="g8c dib f12">case</i></h3>
+                <!--<if condition="$goodCourse neq null">-->
+                    <!--<a href="{:U('Home/Course/moments',array('id'=>$goodCourse[0]['id']))}">-->
+                        <!--<img class="caseBar" src="__PUBLIC__{$goodCourse[0]['picture']}" alt="bar">-->
+                        <!--<h4 class="g3c f12">{:mb_substr($goodCourse[0]['intro'],0,15)}</h4></a>-->
+                <!--</if>-->
+                <ul>
+                    <volist name="goodCourse" id="vo" key="k" offset="0" length="7">
+                        <li class="fn-clear g3c f12">
+                            <a  class="g3c" href="{:U('Home/Course/moments',array('id'=>$vo['id']))}">
+                                <p class="l">{$k}  {:mb_substr($vo['title'],0,12)}</p>
+                            <p class="r">&lt {$vo.created|date='Y.m.d',###} &gt</p>
+                            </a>
+                        </li>
+                    </volist>
+                    <!--<li class="fn-clear g3c f12">-->
+                        <!--<p class="l">1  企业培训案例...</p>-->
+                        <!--<p class="r">&lt 2016.11.28 &gt</p>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <div class="g3c bgwh case hidden-xs hidden-sm">
+                <h3 class="rel f18">培训资讯<i class="g8c dib f12">case </i></h3>
+                <ul>
+                    <foreach name="courseArticle" item="vo" key="k">
+                        <li class="fn-clear g3c f12">
+                            <a class="g3c" href="{:U('Home/Article/articleDetails',array('id'=>$vo['articleid']))}">
+                            <p class="l">{$key+1}  {:mb_substr($vo['title'],0,10)}</p>
+                            <p class="r">&lt {$vo.created|date='Y.m.d',###} &gt</p>
+                            </a>
+                        </li>
+                    </foreach>
+                    <!--<li class="fn-clear g3c f12">-->
+                        <!--<p class="l">1  企业培训案例...</p>-->
+                        <!--<p class="r">&lt 2016.11.28 &gt</p>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--底部导航&footer-->
+   <include file="Public/footer3"/>
+    <!--底部导航&footer end-->
+</div>
+<!--我要定制-->
+<form class="apple js-sub-form" action="{:U('Home/Course/addNeed')}" method="post" id="customization">
+    <div class="apple-bg abs"></div>
+    <div class="apple-con bgwh g3c abs">
+        <div class="formTitle rel">
+            <h4 class="g9a">我要定制</h4>
+            <img class="formClose abs" src="__PUBLIC__/images/trained/formClose.png" alt="close">
+        </div>
+        <input class="formName js-name" name="name" type="text" placeholder="请输入姓名">
+        <input class="formAddress js-company" name="company" type="text" placeholder="请输入公司名">
+        <input class="formTel js-mobile" name="mobile"  type="text" placeholder="请输入电话">
+        <input class="formGPRS js-address" name="address" type="text" placeholder="请输入地址">
+        <textarea name="intro" class="js-intro" placeholder="请输入您的需求"></textarea>
+        <input class="formSubmit b9a wh js-sub" type="button" value="提交定制">
+        <p class="f14 g3c">咨询电话（免费长途）: <span class="f16 g9a b dib">400-555-555-23</span></p>
+    </div>
+</form>
+<!--我要定制 end-->
+<!--&lt;!&ndash;评分&ndash;&gt;-->
+<!--<link rel="stylesheet" href="styles/star_score.css">-->
+<!--<script type="text/javascript" src="scripts/startScore.js"></script>-->
+<!--<script>-->
+    <!--scoreFun($("#startone"))-->
+    <!--scoreFun($("#starttwo"),-->
+        <!--fen_d:32,//每一个a的宽度-->
+        <!--ScoreGrade:5//a的个数 10或者-->
+    <!--)-->
+<!--</script>-->
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/bootstrap.min.js"></script>
+<script src="__PUBLIC__/scripts/trained.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(".js-sub").click(function(){
+            var name = $(".js-name").val();
+            var company = $(".js-company").val();
+            var mobile = $(".js-mobile").val();
+            var address = $(".js-address").val();
+            var intro = $(".js-intro").val();
+            var flag = true;
+            var msg='';
+            if(name==''){
+                flag = false;
+                msg+='姓名,';
+            }
+            if(company==''){
+                flag = false;
+                msg+='公司,';
+            }
+            if(mobile==''){
+                flag = false;
+                msg+='手机号,';
+            }
+            if(intro==''){
+                flag = false;
+                msg+='需求,';
+            }
+            if(!flag){
+                msg = msg.replace(',','');
+                alert(msg);
+            }else{
+                alert(3);
+                $(".js-sub-form").submit();
+            }
+        });
+    });
+</script>
+</body>
+</html>

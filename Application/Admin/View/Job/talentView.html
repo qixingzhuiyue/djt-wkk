@@ -1,0 +1,147 @@
+<include file='Common:top'/>
+<!--引入日期插件文件开始-->
+<script language="javascript" type="text/javascript" src="__ROOT__/Public/datepicker/WdatePicker.js"></script>
+<!--引入日期插件文件结束-->
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>人才管理>推荐人才详情</h1>
+        </div>
+        <div class="template_top_right">
+            <a href="{:U('Admin/Job/talent')}" class="ul_button">返回</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+
+        <form name="adminForm" id="js-form" action="{:U('Admin/Job/talentView')}" method="post" enctype="multipart/form-data">
+            <ul class="add_blank">
+                <li><div class="blank_left">人才id</div><div class="blank_right">{$talent.pid}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">姓名</div><div class="blank_right">{$talent.name}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">身份证号码</div><div class="blank_right">{$talent.card}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">民族</div><div class="blank_right">{$talent.national}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">性别</div><div class="blank_right"><if condition="$talent.sex eq 1">男<else/>女</if></div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">学校名称</div><div class="blank_right">{$talent.school}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">身高</div><div class="blank_right">{$talent.height}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">体重</div><div class="blank_right">{$talent.weight}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">健康状况</div><div class="blank_right">{$talent.health}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">照片</div><div class="blank_right"><a href="__ROOT__/Public{$talent.picture}" target="_blank">预览</a></div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">电子邮箱</div><div class="blank_right">{$talent.email}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">出生日期</div><div class="blank_right">{$talent.birth}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">微信</div><div class="blank_right">{$talent.openid}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">户口所在地</div><div class="blank_right">{$talent.hometown}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">现居住地</div><div class="blank_right">{$talent.address}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">联系电话</div><div class="blank_right">{$talent.phone}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">紧急联系人</div><div class="blank_right">{$talent.secondcontact}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">紧急联系人电话</div><div class="blank_right">{$talent.contactphone}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">驾照类型</div><div class="blank_right">{$talent.drivertype}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">婚姻状况</div><div class="blank_right"><if condition="$talent.marital eq 1">未婚<elseif condition="$talent.marital eq 2"/>未婚<else/>已孕</if></div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">技术职称</div><div class="blank_right">{$talent.title}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">英语等级</div><div class="blank_right">{$talent.english}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">第二外语</div><div class="blank_right">{$talent.secondlanguage}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">计算机应用水平</div><div class="blank_right">{$talent.computer}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">家庭住址</div><div class="blank_right">{$talent.familyaddress}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">教育经历</div><div class="blank_right">
+                    <foreach name="talent['education']"  item="v">
+                        <div class="js-education">
+                            开始时间：<input type="text" name="start[]" value="{$v.start}" class="js-start"  disabled/>&nbsp;&nbsp;
+                            结束时间：<input type="text" name="end[]" value="{$v.end}"  class="js-end" disabled />&nbsp;&nbsp;<br/><br/>
+                            学&nbsp;&nbsp;&nbsp;&nbsp;校：<input type="text" value="{$v.school}" name="eduschool[]" disabled />&nbsp;&nbsp;
+                            专&nbsp;&nbsp;&nbsp;&nbsp;业：<input type="text" value="{$v.professional}" name="professional[]" disabled/><br /><br/>
+                            学&nbsp;&nbsp;&nbsp;&nbsp;历：{$v.record}<br/><br/>
+                            学&nbsp;&nbsp;&nbsp;&nbsp;位：{$v.degree}<br/><br/>
+                            教育形式：{$v.degree}
+                            <br/><br/>
+                        </div>
+                    </foreach>
+                    <!--<div class="js-education">-->
+                        <!--开始时间：<input type="text" name="start[]" onClick="WdatePicker()" class="js-start"  />&nbsp;&nbsp;-->
+                        <!--结束时间：<input type="text" name="end[]" onClick="WdatePicker()" class="js-end"  />&nbsp;&nbsp;<br/><br/>-->
+                        <!--学&nbsp;&nbsp;&nbsp;&nbsp;校：<input type="text" name="eduschool[]"  />&nbsp;&nbsp;-->
+                        <!--专&nbsp;&nbsp;&nbsp;&nbsp;业：<input type="text" name="professional[]"/><br /><br/>-->
+                        <!--学&nbsp;&nbsp;&nbsp;&nbsp;历：<select name="record[]">-->
+                        <!--<option value="">请选择</option>-->
+                        <!--<foreach name="records" item="vo">-->
+                            <!--<option value="{$vo.name}">{$vo.name}</option>-->
+                        <!--</foreach>-->
+                    <!--</select><br/><br/>-->
+                        <!--学&nbsp;&nbsp;&nbsp;&nbsp;位：<select name="degree[]">-->
+                        <!--<option value="">请选择</option>-->
+                        <!--<option value="学士">学士</option>-->
+                        <!--<option value="硕士">硕士</option>-->
+                        <!--<option value="博士">博士</option>-->
+                    <!--</select><br/><br/>-->
+                        <!--教育形式：<select name="type[]">-->
+                        <!--<option value="">请选择</option>-->
+                        <!--<option value="全日制">全日制</option>-->
+                        <!--<option value="自考">自考</option>-->
+                        <!--<option value="函授">函授</option>-->
+                        <!--<option value="其他">其他</option>-->
+                    <!--</select>-->
+                        <!--其他：<input type="text" name="descp[]" />-->
+                        <!--<br/><br/>-->
+                    <!--</div>-->
+                </div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">工作经历</div><div class="blank_right">
+                    <foreach name="talent['experience']" item="vo">
+                        <div class="js-experience">
+                            开始时间：<input type="text" name="expstart[]" value="{$vo.start}" class="js-start" disabled />&nbsp;&nbsp;
+                            结束时间：<input type="text" name="expend[]" value="{$vo.end}" class="js-end" disabled />&nbsp;&nbsp;<br/><br/>
+                            工作单位及部门：<input type="text" value="{$vo.company}" name="expcompany[]" disabled />&nbsp;&nbsp;<br/><br/>
+                            职&nbsp;&nbsp;&nbsp;&nbsp;位：<input type="text" value="{$vo.position}" name="position[]" disabled/><br /><br/>
+                            前台座机或行政电话：<input type="text" value="{$vo.telphone}" name="telphone[]" disabled/><br /><br/>
+                            <br/><br/>
+                        </div>
+                    </foreach>
+                    <!--<div class="js-experience">-->
+                        <!--开始时间：<input type="text" name="expstart[]" onClick="WdatePicker()" class="js-start"  />&nbsp;&nbsp;-->
+                        <!--结束时间：<input type="text" name="expend[]" onClick="WdatePicker()" class="js-end"  />&nbsp;&nbsp;<br/><br/>-->
+                        <!--工作单位及部门：<input type="text" name="expcompany[]" />&nbsp;&nbsp;<br/><br/>-->
+                        <!--职位：<input type="text" name="position[]"/><br /><br/>-->
+                        <!--前台座机或行政电话：<input type="text" name="telphone[]"/><br /><br/>-->
+                        <!--<br/><br/>-->
+                    <!--</div>-->
+                </div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">家庭成员</div><div class="blank_right">
+                    <foreach name="talent['family']" item="val">
+                        <div class="js-family">
+                            姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" value="{$val.name}" name="fname[]" class="js-fname" disabled />&nbsp;&nbsp;
+                            关&nbsp;&nbsp;&nbsp;&nbsp;系：<input type="text" value="{$val.relation}" name="relation[]" class="js-relation" disabled  />&nbsp;&nbsp;<br/><br/>
+                            工作单位：<input type="text" value="{$val.company}" name="fcompany[]" disabled />&nbsp;&nbsp;<br/><br/>
+                            职&nbsp;&nbsp;&nbsp;&nbsp;位：<input type="text" value="{$val.position}" name="fposition[]"disabled /><br /><br/>
+                            联系电话：<input type="text" value="{$val.phone}" name="fphone[]" disabled/><br /><br/>
+                            <br/><br/>
+                        </div>
+                    </foreach>
+                    <!--<div class="js-family">-->
+                        <!--姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" name="fname[]" class="js-fname"  />&nbsp;&nbsp;-->
+                        <!--关&nbsp;&nbsp;&nbsp;&nbsp;系：<input type="text" name="relation[]" class="js-relation"  />&nbsp;&nbsp;<br/><br/>-->
+                        <!--工作单位：<input type="text" name="fcompany[]" />&nbsp;&nbsp;<br/><br/>-->
+                        <!--职&nbsp;&nbsp;&nbsp;&nbsp;位：<input type="text" name="fposition[]"/><br /><br/>-->
+                        <!--联系电话：<input type="text" name="fphone[]"/><br /><br/>-->
+                        <!--<br/><br/>-->
+                    <!--</div>-->
+                </div><div class="fn-clear"></div></li>
+                <li><div class="blank_left"><span class="blank_color">*</span>是否免费</div><div class="blank_right">
+                   <if condition="$talent.isfree eq 1">免费<else/>收费</if>
+                </div><div class="fn-clear"></div></li>
+                <li><div class="blank_left"><span class="blank_color">*</span>状态</div><div class="blank_right">
+                    <input type="radio" name="status" value="1"  class="ul_middle" checked/>&nbsp;正常&nbsp;&nbsp;
+                    <input type="radio" name="status" value="0" class="ul_middle" />&nbsp;屏蔽
+                </div><div class="fn-clear"></div></li>
+                <input type="hidden" name="id" value="{$talent.id}" />
+                <li class="ul_word"><input type="button" class="ul_add js-sub" value="保存"/><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/></li>
+            </ul></form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+       $(".js-sub").click(function(){
+          $("#js-form").submit();
+       });
+    });
+</script>
+</body>
+</html>

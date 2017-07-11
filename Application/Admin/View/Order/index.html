@@ -1,0 +1,72 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>订单管理>订单列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+    <table class="ul_table">
+         	<tbody class="ul_table">
+    		<tr>
+    		<td width="60%" style="text-align:left">
+	    		<form action="{:U('Admin/Order/index')}" method="get">
+				订单号：<input type="text" name="ordernum" value="{$Think.get.ordernum}" />
+				<select name="types">
+				<option value="">类型</option>
+                 <foreach name="types" item="vo" key="k">
+                     <option value="{$k}">{$vo}</option>
+                 </foreach>
+				</select>
+				<input type="submit" value="查询" />
+				<input type="reset" value="清空" />
+	      		</form>
+    		</td>
+      	</tr></tbody>
+     	</table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:5%">订单号</th>
+                 <th style="width:10%">类型</th>
+                <th style="width:30%">描述</th>
+                <th style="width:10%">订单状态</th>
+                <!--<th style="width:5%">推荐</th>-->
+                <!--<th style="width:5%">权重</th>-->
+                <th style="width:20%">日期</th>
+                <th style="width:10%">操作</th>
+            </tr>
+                <foreach name="orders" item="v">
+                    <tr class="ul_box1">
+                        <td>{$v.id}</td>
+                        <td>{$v.ordernum}</td>
+                        <td>{$v.type}</td>
+                        <td>{$v.descp}</td>
+                        <td>{$v.orderstatus}</td>
+                        <td>{$v.created|date='y-m-d H:i',###}</td>
+                        <!--<td><if condition="$v.status eq 1">正常<else />屏蔽</if></td>-->
+                        <td><a href="{:U('Admin/Order/view', array('id' => $v['id']))}">编辑</a></td>
+                    </tr>
+                </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

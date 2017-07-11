@@ -1,0 +1,58 @@
+<include file='Common:top'/>
+<!--引入日期插件文件开始-->
+<script language="javascript" type="text/javascript" src="__ROOT__/Public/datepicker/WdatePicker.js"></script>
+<!--引入日期插件文件结束-->
+<style>
+    .recruit{margin-left:-70px;}
+    .blank_right .post{width:500px;}
+</style>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>人才管理>企业简章详情</h1>
+        </div>
+        <div class="template_top_right">
+            <a href="{:U('Admin/Job/company')}" class="ul_button">返回</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+
+        <form name="adminForm" id="js-form" action="{:U('Admin/Job/jobView')}" method="post" enctype="multipart/form-data">
+            <ul class="add_blank">
+                <li><div class="blank_left">企业名称</div><div class="blank_right">{$job.name}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">类型</div><div class="blank_right">{$job.type}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">公司规模</div><div class="blank_right">{$job.scale}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">公司座机</div><div class="blank_right">{$job.telphone}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">公司地址</div><div class="blank_right">{$job.address}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">联系人QQ</div><div class="blank_right">{$job.qq}</div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">招聘日期</div><div class="blank_right"><input type="text" name="starttime" onClick="WdatePicker()" <if condition="$job['starttime'] neq 0"> value="{$job.starttime|date='Y-m-d',###}" </if> class="js-starttime" /></div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">截止日期</div><div class="blank_right"><input type="text" name="endtime" onClick="WdatePicker()" <if condition="$job['starttime'] neq 0"> value="{$job.endtime|date='Y-m-d',###}"</if>   class="js-endtime"  /></div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">公司联系人</div><div class="blank_right"><input type="text" class="js-contact" name="contact" value="{$job.contact}"/></div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">联系人手机</div><div class="blank_right"><input type="text" class="js-phone" name="phone" value="{$job.phone}"/></div><div class="fn-clear"></div></li>
+                <li><div class="blank_left recruit">招聘</div><div class="blank_right">
+                <div class="js-job">
+                    招聘职位：<input type="text" name="job" value="{$job.job}" size="15" />&nbsp;&nbsp;
+                    招聘人数：<input type="text" name="num"  value="{$job.num}" size="5" />人&nbsp;&nbsp;
+                    薪资范畴：<input type="text" name="wage"  value="{$job.wage}" size="10"/><br /><br/>
+                </div>
+                <!--<div><input type="button"value="添加职位" class="js-add-job"/></div>-->
+            </div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">职位要求</div><div class="blank_right"><textarea name="intro" class="post">{$job.intro}</textarea></div><div class="fn-clear"></div></li>
+                <li><div class="blank_left"><span class="blank_color">*</span>状态</div><div class="blank_right">
+                    <input type="radio" name="status" value="1"  class="ul_middle" <eq name="job['status']" value="1">checked</eq>/>&nbsp;正常&nbsp;&nbsp;
+                    <input type="radio" name="status" value="0" class="ul_middle" <eq name="job['status']" value="0">checked</eq>/>&nbsp;屏蔽
+                </div><div class="fn-clear"></div></li>
+                <input type="hidden" name="id" value="{$job.id}" />
+                <li class="ul_word"><input type="submit" class="ul_add" value="保存"/><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/></li>
+            </ul></form>
+    </div>
+</div>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

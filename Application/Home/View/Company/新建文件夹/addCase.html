@@ -1,0 +1,119 @@
+<include file="Public/header" />
+  <link rel="stylesheet" href="__PUBLIC__/css/decoration.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/webuploader.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/diyUpload.css">
+  <script src="__PUBLIC__/frameworks/jquery-1.11.3.js"></script>
+  <script src="__PUBLIC__/frameworks/webuploader.html5only.min.js"></script>
+  <script src="__PUBLIC__/js/diyUpload.js"></script>
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!--页面头部-->
+<include file="Public/top" />
+<!--搜索框-->
+<div id="top-main">
+  <div class="breadcrumbs bbsbread">
+    当前位置：<a href="{:U('Home/Index/index')}">首页</a>&nbsp;＞&nbsp;<a href="{:U('Home/Detail/index')}">装潢公司</a>&nbsp;＞&nbsp;<span>案例添加</span>
+  </div>
+</div>
+<!--主导航-->
+<!--侧边栏-->
+<!--主体内容-->
+<section id="main" class="bcyellow">
+  <div class="decorationTitle">
+    案例添加
+  </div>
+  <div class="decorationBox w60">
+    <form id="tform" action="" method="post" enctype="multipart/form-data">
+    <ul>
+      <li class="clear">
+        <h3 class="dib">案例名称<i class="selectColor dib">*</i>:</h3>
+        <input type="text"  name="name"  class="dib bcyellow form-base formg w90" value="{$panyworks.name}">
+      </li>
+      <li>
+        <h3 class="dib">区域选择<i class="selectColor dib">*</i>:</h3>
+        <select name="proid" id="city" class="bcyellow seladdress form-base formg w40">
+          <option value="0" selected>省份</option>
+          <option value="1">上海</option>
+          <option value="2">北京</option>
+          <option value="3">天津</option>
+        </select>
+        <select name="cityid" id="district" class="bcyellow seladdress form-base rt formg w40">
+          <option value="0" selected>城市</option>
+          <option value="1">松江区</option>
+          <option value="2">闵行区</option>
+          <option value="3">浦东新区</option>
+        </select>
+      </li>
+      <li>
+        <h3 class="dib">风格选择<i class="selectColor dib">*</i>:</h3>
+          <select name="type" class="bcyellow seladdress form-base formg w40">
+            <option value="0" selected>类别</option>
+            <option value="1">酒店</option> 
+            <option value="2">购物</option>
+            <option value="3">文化</option>
+            <option value="4">办公</option>
+            <option value="5">餐饮</option>
+          </select>
+        <h4 class="dib f08">价格:</h4>
+        <select name="price" id="price" class="bcyellow seladdress form-base rt formg w40">
+          <option value="0" selected>价格区间</option>
+          <option value="1">120-500</option>
+          <option value="2">500-1500</option>
+          <option value="3">1500-3000</option>
+          <option value="4">3000以上</option>
+        </select>
+      </li>
+      <li>
+        <h3 class="dib info appInfo">商品介绍:</h3>
+        <textarea name="content" class="dib f08 w90 formg appSize">{$panyworks.content}</textarea>
+      </li>
+      <li>
+        <h3 class="dib info">上传图片<i class="selectColor dib">*</i>:</h3>
+        <div class="dib w90 rtImg">
+          <div id="test">
+            <div id="objId" class="uploader-list" id="">选择图片</div>
+            <div class="dib f08 w10 formg appInfoStyle appSize clear">
+              <input type="file" name="picture" >选择图片
+            </div>
+            <span class="f06 gc vm">按住ctrl键选择多张图片，单张图片10M以内</span>
+          </div>
+          <div class="f08 rules clear">
+            <span class="dib chkStyle bcyellow">
+            <input type="checkbox">
+          </span>
+            我保证所上传的商品是正品，并非无质量保障的商品,如果有侵权，我将承担一些版权纠纷责任。
+          </div>
+          <div>
+            
+            <span class="btnSubmit" id="sub" >开始上传</span>
+          </div>
+        </form>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<!--页面底部-->
+<div class="returnHome"><a href="/">返回首页</a></div>
+<include file="Public/bottom" /> 
+<script>
+$(document).ready(function(){
+  $('#sub').click(function(){
+    $('#tform').submit();
+  })
+  $('#test').diyUpload({
+    url: 'server/fileupload.php',
+    success: function (data) {
+      console.info(data);
+    },
+    error: function (err) {
+      console.info(err);
+    }
+  });
+})
+</script>
+<include file="Public/footer" />

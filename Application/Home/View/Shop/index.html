@@ -1,0 +1,134 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/businesses.css">
+<meta name="description" content="{$key.intro}" />
+<meta name="keywords" content="{$key.keyword}" />
+<title>{$key.title}</title>
+</head>
+<body>
+<!--企业店铺businesses-->
+<div class="mainBg">
+    <!--header登录注册-->
+    <include file="Public/top"/>
+    <!--header登录注册 end-->
+    <!--header logo-->
+    <!--header logo end-->
+    <!--导航条-->
+    <include file="Public/nav"/>
+    <!--导航条 end-->
+    <!--banner-->
+    <div class="banner rel">
+        <if condition="$banner.picture eq ''">
+            <img src="__PUBLIC__/images/businesses/banner.jpg" alt="banner">
+            <else/>
+            <img src="__PUBLIC__{$banner.picture}" alt="banner">
+        </if>
+    </div>
+    <!--banner end-->
+    <!--<if condition="$status eq 0">-->
+        <!--<a href="{:U('Home/Shop/apply')}" class=""><input class="f20 g3c" type="button" value="申请入驻"></a>-->
+        <!--<else/>-->
+        <!--<a class="" href="{:U('Home/Shop/shop',array('temptype'=>$shop['temptype'],'id'=>$shop['shopid']))}"><input class="f20 wh" type="button" value="我的店铺"></a>-->
+    <!--</if>-->
+    <!--content-->
+    <div class="content fn-clear">
+        <div class="contentL l">
+            <!--模块一-->
+            <div class="bgwh model-one">
+                <div class="title fn-clear">
+                    <h3 class="g3c l rel">店铺<i class="f12 g8c dib">Promotion</i></h3>
+                    <ul class="r type-tab hidden-xs" id="type-tab">
+                        <a href="{:U('Home/Shop/index')}"><li class="f16 g8c dib greenColor">最新更新</li></a>
+                        <a href="{:U('Home/Shop/index',array('ispush'=>1))}"><li  class="f16 g8c dib">精选推荐</li></a>
+                    </ul>
+                </div>
+                <ul id="type-list" class="rel type-list bgwh">
+                    <!--最近更新-->
+                    <li  class="update abs">
+                        <ul class="typeList fn-clear">
+                            <foreach name="shops" item="vo" key="k">
+                                <li class="l <?php if(($k+1)%3==0){echo 'mr0';};?> ">
+                                    <a href="{:U('Home/Shop/shop',array('temptype'=>$vo['temptype'],'id'=>$vo['shopid']))}">
+                                        <img  src="__PUBLIC__{$vo.logo}" alt="pic">
+                                    <h4 class="g3c f16">{$vo.name}</h4>
+                                    </a>
+                                </li>
+                            </foreach>
+                        </ul>
+                        <!--<ul class="paging" id="paging">-->
+                            <!--<li id="first">首页</li>-->
+                            <!--<li id="top" onclick="topclick()">上一页</li>-->
+                            <!--<li class="xifenye fn-clear   mr0" id="xifenye">-->
+                                <!--<a id="xiye" class="l xiye whiteness" >1</a>-->
+                                <!--<a id="mo" class="r mo">66</a>-->
+                                <!--<div class="xab" id="xab" style="display:none">-->
+                                    <!--<ul id="uljia">-->
+                                    <!--</ul>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li id="down" onclick="downclick()">下一页</a></li>-->
+                            <!--<li id="last">末页</li>-->
+                        <!--</ul>-->
+                        <div class="template_page paging" id="paging" style="font-size: 20px;">
+                            {$page}
+                        </div>
+                    </li>
+                    <!--精选推荐-->
+                    <!--<li  class="update abs">-->
+                        <!--<ul class="typeList fn-clear">-->
+                           <!---->
+                        <!--</ul>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+            <!--模块二-->
+            <div class="model-two bgwh">
+                <h3 class="g3c rel">活动店铺推荐<i class="f12 g8c dib">Promotion</i></h3>
+                <ul class="typeList fn-clear">
+                    <foreach name="pushs" item="vo" key="k">
+                        <li class="l <?php if(($k+1)%3==0){echo 'mr0';};?> ">
+                            <a href="{:U('Home/Shop/shop',array('temptype'=>$vo['temptype'],'id'=>$vo['shopid']))}">
+                                <img  src="__PUBLIC__{$vo.logo}" alt="pic">
+                                <h4 class="g3c f16">{$vo.name}</h4>
+                            </a>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+        </div>
+        <div class="contentR r bgwh hidden-xs hidden-sm">
+            <h3 class="g3c rel">商品<i class="f12 g8c dib">goods</i></h3>
+            <ul>
+                <foreach name="goods" item="vo">
+                    <li>
+                        <!--<a href="{:U('Home/Shop/shopPay',array('id'=>$vo['goodid']))}">-->
+                            <img src="__PUBLIC__{$vo.picture}" alt="pic">
+                        <h4 class="g9a">{$vo.vcoin}维币</h4>
+                        <p class="g3c">{$vo.name}</p>
+                        <!--</a>-->
+                    </li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+    <!--底部导航&footer-->
+    <include file="Public/footer3"/>
+    <!--底部导航&footer end-->
+</div>
+<script src="__PUBLIC__/scripts/bootstrap.min.js"></script>
+<!--分页效果-->
+<script src="__PUBLIC__/scripts/public.js"></script>
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/exhibition.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".navbar-nav li:nth-child(2)").mouseout(function () {
+            $(this).removeClass('listBg') ;
+        });
+        $(".navbar-nav li:nth-child(3)").mouseout(function () {
+            $(this).addClass('listBg') ;
+        });
+    })
+</script>
+</body>
+</html>

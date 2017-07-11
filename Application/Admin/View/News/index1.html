@@ -1,0 +1,95 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>新闻管理>新闻列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+            <!--<a href="{:U('Admin/Role/add', array('rpid' => $date['id'],'uid' => $_SESSION[C('USER_AUTH_KEY')]))}" class="ul_button">添加企业组</a>-->
+            <a href="{:U('Admin/News/add')}" class="ul_button">添加平台资讯</a>
+            <!--<a href="#" onclick="del();" class="ul_button">删除企业组</a>-->
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+    <table class="ul_table">
+         	<tbody class="ul_table">
+    		<tr>
+    		<td width="60%" style="text-align:left">
+	    		<form action="{:U('Admin/Company/index')}" method="get">
+				企业名：<input type="text" name="keyword" value="{$Think.get.keyword}" />
+				<select name="status">
+				<option value="">状态</option>
+				<option value="1" <if condition="$Think.get.status eq 1">selected</if>>正常</option>
+				<option value="0" <if condition="$Think.get.status eq '0'">selected</if>>屏蔽</option>
+				</select>
+				<select name="recommend">
+                    <option value="">公司性质</option>
+                    <option value="1" <if condition="$Think.get.type eq 1">selected</if>>国营</option>
+                    <option value="2" <if condition="$Think.get.type eq '2'">selected</if>>私营</option>
+                    <option value="3" <if condition="$Think.get.type eq '3'">selected</if>>外资</option>
+                    <option value="4" <if condition="$Think.get.type eq '4'">selected</if>>工作室</option>
+				</select>
+				<input type="submit" value="查询" />
+				<input type="reset" value="清空" />
+	      		</form>
+    		</td>
+      	</tr></tbody>
+     	</table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:5%">UID</th>
+                <th style="width:30%">名称</th>
+                <th style="width:30%">类型</th>
+                <th style="width:10%">Logo</th>
+                <!--<th style="width:5%">推荐</th>-->
+                <!--<th style="width:5%">权重</th>-->
+                <th style="width:20%">日期</th>
+                <th style="width:10%">状态</th>
+                <th style="width:10%">操作</th>
+            </tr>
+                <foreach name="companys" item="v">
+                    <tr class="ul_box1">
+                        <td>{$v.companyid}</td>
+                        <td>{$v.uid}</td>
+                        <td>{$v.name}</td>
+                        <td><if condition="$v.type eq 0">暂无信息
+                            <elseif condition="$v.type eq 1"/>国营
+                            <elseif condition="$v.type eq 2"/>私营
+                            <elseif condition="$v.type eq 3"/>外资
+                            <elseif condition="$v.type eq 4"/>工作室
+                        </if>
+                        <td><a href="/Public/{$v.logo}" target="_blank">预览</a></td>
+                        </td>
+                        <td>{$v.created|date='y-m-d H:i',###}</td>
+                        <td><if condition="$v.companystatus eq 1">正常<else />屏蔽</if></td>
+                        <td>
+                            <if condition="$v['companystatus']">
+                                <a href="{:U('Admin/Company/changeStatus',array('companyid'=>$v['companyid'],'companystatus'=>0))}">屏蔽</a>
+                                <else/>
+                                <a href="{:U('Admin/Company/changeStatus',array('companyid'=>$v['companyid'],'companystatus'=>1))}">开启</a>
+                            </if>
+                        </td>
+                        <!--<td><a href="{:U('Admin/Company/view', array('id' => $v['id']))}">编辑</a> <a href="{:U('Admin/Company/work', array('id' => $v['id']))}">案例</a></td>-->
+                    </tr>
+                </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<include file='Common:top'/>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/Public/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__ROOT__/Public/ueditor/ueditor.all.min.js"> </script>
+<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+<script type="text/javascript" charset="utf-8" src="__ROOT__/Public/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>系统管理>编辑平台地图</h1>
+        </div>
+        <!--<div class="template_top_right">-->
+            <!--<a href="{:U('Admin/Index/index')}" class="ul_button">返回</a>-->
+        <!--</div>-->
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+    
+    <form name="adminForm" action="{:U('Admin/Index/navView')}"  method="post" enctype="multipart/form-data">
+        <ul class="add_blank">                       
+            <!--<li><div class="blank_left">平台名称</div><div class="blank_right"><input type="text" value="{$intro.name}" name="name" /></div><div class="fn-clear"></div></li>-->
+            <li><div class="blank_left">标题</div><div class="blank_right"><input type="text" value="{$intro.title}" name="title" /></div><div class="fn-clear"></div></li>
+            <!--<li><div class="blank_left">视频地址</div><div class="blank_right"><input type="text" name="url" /></div><div class="fn-clear"></div></li>-->
+            <!--<li><div class="blank_left">图片</div><div class="blank_right"><input type="file" name="picture"/></div><div class="fn-clear"></div></li>-->
+            <!--<if condition="$intro.picture neq ''">-->
+                <!--<li><div class="blank_left">图片</div><div class="blank_right">-->
+                    <!--<a href="/Public/{$intro.picture}" target="_blank">预览</a></div><div class="fn-clear"></div></li>-->
+            <!--</if>-->
+            <!--<li><div class="blank_left">介绍</div><div class="blank_right"><textarea cols="45" rows="4" name="intro">{$intro.intro}</textarea></div><div class="fn-clear"></div></li>-->
+            <li><div class="blank_left">内容</div><div class="blank_right"><script id="editor" name="content" type="text/plain" style="width:700px;height:500px;">{$intro.content}</script></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left"><span class="blank_color">*</span>状态</div><div class="blank_right">
+            <input type="radio" name="status" value="1"  class="ul_middle" <if condition="$intro.status neq 0">checked</if>/>&nbsp;正常&nbsp;&nbsp;
+            <input type="radio" name="status" value="0" class="ul_middle" <if condition="$intro.status eq 0">checked</if> />&nbsp;屏蔽
+            </div><div class="fn-clear"></div></li>
+            <input type="hidden" name="id" value="{$intro.id}" />
+            <li class="ul_word"><input type="submit" class="ul_add" value="保存"/><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/></li>
+        </ul></form>
+    </div>
+</div>
+<script>
+    var ue = UE.getEditor('editor');
+</script>
+</body>
+</html>

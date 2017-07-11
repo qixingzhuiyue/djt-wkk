@@ -1,0 +1,213 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/businesses.css">
+    <title>企业店铺</title>
+</head>
+<body>
+<!--企业店铺businesses-->
+<div class="mainBg">
+    <!--header登录注册-->
+  <include file="Public/top"/>
+    <!--header登录注册 end-->
+    <!--header logo-->
+    <!--header logo end-->
+    <!--导航条-->
+    <include file="Public/nav"/>
+    <!--导航条 end-->
+    <!--banner-->
+    <div class="banner rel">
+        <img src="__PUBLIC__/images/businesses/banner.jpg" alt="banner">
+        <a href="{:U('Home/Shop/shopsForm')}" class="applyFor abs g3c"><input class="f20 g3c" type="button" value="申请入驻"></a>
+    </div>
+    <!--banner end-->
+    <!--content-->
+    <div class="content fn-clear">
+        <div class="contentL l">
+            <!--模块一-->
+            <div class="bgwh model-one">
+                <div class="title fn-clear">
+                    <h3 class="g3c l rel">店铺<i class="gf12 g8c dib">Promotion</i></h3>
+                    <ul class="r type-tab hidden-xs" id="type-tab">
+                        <li class="f16 g8c dib greenColor">最新更新</li>
+                        <li  class="f16 g8c dib">精选推荐</li>
+                    </ul>
+                </div>
+                <ul id="type-list" class="rel type-list bgwh">
+                    <!--最近更新-->
+                    <li  class="update abs">
+                        <ul class="typeList fn-clear">
+                            <!--<li class="l">-->
+                                <!--<img  src="images/businesses/pic01.jpg" alt="pic">-->
+                                <!--<div class="fn-clear purchase ">-->
+                                    <!--<h4 class="g9a l">¥1999.00</h4>-->
+                                    <!--<span class="f12 g8c r hidden-xs"> 已有99人付款</span>-->
+                                <!--</div>-->
+                                <!--<p class="f12 g3c hidden-xs">主要生产板式套房家具、实木家具、床垫、沙发、软床和定制衣柜、工程家具等系列产品</p>-->
+                                <!--<ul class="interaction fn-clear">-->
+                                    <!--<li class="f12 g8c shopsIcon l"><p class="hidden-xs">全友家居</p> </li>-->
+                                    <!--<li class="f12 g8c gprsIcon r"> <p class="hidden-xs">上海松江</p></li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                            <li class="l">
+                                <img  src="__PUBLIC__/images/businesses/pic01.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l">
+                                <img  src="__PUBLIC__/images/businesses/pic02.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l mr0">
+                                <img  src="__PUBLIC__/images/businesses/pic03.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l">
+                                <img  src="__PUBLIC__/images/businesses/pic04.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l">
+                                <img  src="images/businesses/pic05.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l mr0">
+                                <img  src="__PUBLIC__/images/businesses/pic06.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l">
+                                <img  src="__PUBLIC__/images/businesses/pic07.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l">
+                                <img  src="__PUBLIC__/images/businesses/pic08.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l mr0">
+                                <img  src="__PUBLIC__/images/businesses/pic09.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l">
+                                <img  src="__PUBLIC__/images/businesses/pic10.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l">
+                                <img  src="__PUBLIC__/images/businesses/pic11.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l mr0">
+                                <img  src="__PUBLIC__/images/businesses/pic12.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                        </ul>
+                        <ul class="paging" id="paging">
+                            <li id="first">首页</li>
+                            <li id="top" onclick="topclick()">上一页</li>
+                            <li class="xifenye fn-clear   mr0" id="xifenye">
+                                <a id="xiye" class="l xiye whiteness" >1</a>
+                                <a id="mo" class="r mo">66</a>
+                                <div class="xab" id="xab" style="display:none">
+                                    <ul id="uljia">
+                                    </ul>
+                                </div>
+                            </li>
+                            <li id="down" onclick="downclick()">下一页</a></li>
+                            <li id="last">末页</li>
+                        </ul>
+                    </li>
+                    <!--精选推荐-->
+                    <li style="display: none"  class="update abs">
+                        <ul class="typeList fn-clear">
+                            <li class="l">
+                                <img  src="__PUBLIC__/images/businesses/pic10.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l">
+                                <img  src="__PUBLIC__/images/businesses/pic11.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                            <li class="l mr0">
+                                <img  src="__PUBLIC__/images/businesses/pic12.jpg" alt="pic">
+                                <h4 class="g3c f16">全家综合店铺</h4>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--模块二-->
+            <div class="model-two bgwh">
+                <h3 class="g3c rel">活动店铺推荐<i class="gf12 g8c dib">Promotion</i></h3>
+                <ul class="typeList fn-clear">
+                    <li class="l">
+                        <img  src="__PUBLIC__/images/businesses/pic10.jpg" alt="pic">
+                        <h4 class="g3c f16">全家综合店铺</h4>
+                    </li>
+                    <li class="l">
+                        <img  src="__PUBLIC__/images/businesses/pic11.jpg" alt="pic">
+                        <h4 class="g3c f16">全家综合店铺</h4>
+                    </li>
+                    <li class="l mr0">
+                        <img  src="__PUBLIC__/images/businesses/pic12.jpg" alt="pic">
+                        <h4 class="g3c f16">全家综合店铺</h4>
+                    </li>
+                    <li class="l">
+                        <img  src="__PUBLIC__/images/businesses/pic10.jpg" alt="pic">
+                        <h4 class="g3c f16">全家综合店铺</h4>
+                    </li>
+                    <li class="l">
+                        <img  src="images/businesses/pic11.jpg" alt="pic">
+                        <h4 class="g3c f16">全家综合店铺</h4>
+                    </li>
+                    <li class="l mr0">
+                        <img  src="__PUBLIC__/images/businesses/pic12.jpg" alt="pic">
+                        <h4 class="g3c f16">全家综合店铺</h4>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="contentR r bgwh hidden-xs hidden-sm">
+            <h3 class="g3c rel">店铺<i class="gf12 g8c dib">company</i></h3>
+            <ul>
+                <li>
+                    <img src="__PUBLIC__/images/businesses/bar01.jpg" alt="pic">
+                    <h4 class="g9a">¥1999.00</h4>
+                    <p class="g3c">索尼单反</p>
+                </li>
+                <li>
+                    <img src="__PUBLIC__/images/businesses/bar01.jpg" alt="pic">
+                    <h4 class="g9a">¥1999.00</h4>
+                    <p class="g3c">索尼单反</p>
+                </li>
+                <li>
+                    <img src="__PUBLIC__/images/businesses/bar01.jpg" alt="pic">
+                    <h4 class="g9a">¥1999.00</h4>
+                    <p class="g3c">索尼单反</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--底部导航&footer-->
+    <div class="footer">
+        <div class="rel f16 wh">
+            <img src="__PUBLIC__/images/index/footerEWM.png" alt="EWM">
+            <h4 class="f16 wh">上海维沃珂自助营销平台版权所有</h4>
+            <p class=" hidden-xs">地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇</p>
+            <p class=" hidden-xs">电话：0000-0000-88<span class="dib">传真：0000-0000-88</span>邮箱：9937088888@163.com</p>
+        </div>
+    </div>
+    <!--底部导航&footer end-->
+</div>
+<script src="__PUBLIC__/scripts/bootstrap.min.js"></script>
+<!--分页效果-->
+<script src="__PUBLIC__/scripts/public.js"></script>
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/exhibition.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".navbar-nav li:nth-child(2)").mouseout(function () {
+            $(this).removeClass('listBg') ;
+        });
+        $(".navbar-nav li:nth-child(3)").mouseout(function () {
+            $(this).addClass('listBg') ;
+        });
+    })
+</script>
+</body>
+</html>

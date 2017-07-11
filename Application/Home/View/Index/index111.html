@@ -1,0 +1,636 @@
+<include file="Public/header"/>
+<!--引入微信jssdk解决微信分享-->
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    wx.config({
+        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '<?php echo $signPackage["appId"];?>', // 必填，公众号的唯一标识
+        timestamp: '<?php echo $signPackage["timestamp"];?>', // 必填，生成签名的时间戳
+        nonceStr: '<?php echo $signPackage["nonceStr"];?>', // 必填，生成签名的随机串
+        signature: '<?php echo $signPackage["signature"];?>',// 必填，签名，见附录1
+        jsApiList: [
+            onMenuShareTimeline,
+            onMenuShareAppMessage,
+            onMenuShareQQ,
+            onMenuShareWeibo,
+            onMenuShareQZone,
+            startRecord,
+            stopRecord,
+            onVoiceRecordEnd
+        ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    wx.ready(function () {
+        // 在这里调用 API
+        wx.onMenuShareTimeline({
+            title: '维沃珂', // 分享标题
+            link:"<?php if(empty($info['uid'])){ echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'?fromid='.$info['uid'];  } ?>", // 分享链接
+            imgUrl: "<?php echo 'www.91wework.com/Public/images/index/logo.png'; ?>", // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+</script>
+<!--微信引用结束-->
+
+<link rel="stylesheet" href="__PUBLIC__/styles/index.css">
+<meta name="description" content="{$keys.intro}" />
+<meta name="keywords" content="{$keys.keyword}" />
+    <title>{$keys.title}</title>
+</head>
+<body>
+<!--维沃柯首页index-->
+<!--header登录注册-->
+<include file="Public/top"/>
+<!--header logo end-->
+<!--导航条-->
+<include file="Public/nav"/>
+<!--导航条 end-->
+<!--图片轮播-->
+<div class="carousel slide" id="myCarousel"  data-ride="carousel" data-interval="5000">
+    <ol class="carousel-indicators icon">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner imgco">
+        <foreach name="topsBanner" item="v" key="k">
+            <div class="item <if condition="$k eq 0">active</if>" >
+                <img src="__PUBLIC__{$v.picture}" alt="banner"/>
+            </div>
+        </foreach>
+        <!--<div class="item">-->
+            <!--<img src="__PUBLIC__/images/index/banner.jpg" alt="banner"/>-->
+        <!--</div>-->
+    </div>
+    <a class="left carousel-control" href="#myCarousel"  data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel"  data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!--图片轮播 end-->
+<!--关键词搜索-->
+<form action="{:U('Home/Index/search')}" method="post" class="antistopBg js-key-form">
+    <div class="antistop fn-clear">
+        <div class="l">
+            <h3 class="f18 wh dib">热门关键词:</h3>
+            <p class="f16 g8c dib"><a class="wh" href="{:U('Home/Company/index')}">企业推广平台</a></p>
+            <p class="f16 g8c dib hidden-xs"><a class="wh" href="{:U('Home/Shop/index')}">企业营销平台</a></p>
+            <p class="f16 g8c dib hidden-xs hidden-sm"><a class="wh" href="{:U('Home/Course/index')}">企业网络营销</a></p>
+            <p class="f16 g8c dib hidden-xs hidden-sm"><a class="wh" href="{:U('Home/Article/index')}">企业自助推广</a></p>
+        </div>
+        <div class="r search rel">
+            <input class="f16 wh js-key-name" name="name" type="search" placeholder="">
+            <a class="abs js-key-sub" href="javascript:;"></a>
+        </div>
+    </div>
+</form>
+<!--关键词搜索 end-->
+<!--主营业务-->
+<div class="main">
+    <!--数据-->
+    <div class="f30 g3c date">
+        <p>截止</p>
+        <p id="time"></p>
+        <p>已为</p>
+        <a href="#" class="f36 g9a">{$companyNum}</a>
+        <p>家企业服务</p>
+    </div>
+    <!--主营业务-->
+    <ul class="business fn-clear">
+        <li class="f22 l ml0"><a class="g8c dib enterprise" href="{:U('Home/Company/apply')}" target="_blank">企业入驻</a></li>
+        <li class="f22 l"><a class="g8c dib website" href="{:U('Home/Company/businessManagement')}" target="_blank">自助建站</a></li>
+        <li class="f22 l"><a class="g8c dib activity" href="{:U('Home/Activity/activityPublish')}" target="_blank">活动发布</a></li>
+        <li class="f22 l mr0"><a class="g8c dib generalize" href="{:U('Home/Company/index')}">自助推广</a></li>
+    </ul>
+    <!--优秀企业展示-->
+    <div class="excellent bgwh">
+        <h3 class="f20 g3c">优秀企业展示<i class="f12 g8c">Excellent show</i></h3>
+        <ul class="fn-clear">
+            <foreach name="goodCompany" item="v" key="k">
+                <li class="l <if condition="$k gt 8">hidden-xs</if>">
+                    <if condition="$v.uid eq 0">
+                        <a href="{:U('Home/Article/articleDetails',array('id'=>26))}"><img  src="__PUBLIC__{$v.logo}" alt="pic"></a>
+                        <p class="f16 g3c">{:mb_substr($v['name'],0,6)}</p>
+                        <else/>
+                        <a href="{:U('Home/Company/company',array('id'=>$v['companyid']))}" target="_blank"> <img src="__PUBLIC__{$v.logo}" alt="pic"></a>
+                        <p class="f16 g3c">{:mb_substr($v['name'],0,6)}</p>
+                    </if>
+                </li>
+            </foreach>
+            <!--<li class="l hidden-xs">-->
+                <!--<img src="__PUBLIC__/images/index/excellent10.jpg" alt="pic">-->
+                <!--<p class="f16 g3c">优秀企业展示</p>-->
+            <!--</li>-->
+            <!--<li class="l visible-lg">-->
+                <!--<img src="__PUBLIC__/images/index/excellent11.jpg" alt="pic">-->
+                <!--<p class="f16 g3c">优秀企业展示</p>-->
+            <!--</li>-->
+            <!--<li class="l visible-lg ">-->
+                <!--<img src="__PUBLIC__/images/index/excellent12.jpg" alt="pic">-->
+                <!--<p class="f16 g3c">优秀企业展示</p>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+<!--主营业务 end-->
+<!--优化排名-->
+<div class="SEO">
+    <!--<div class="wh">-->
+        <!--<h4 class="f18 rel">教您如何提高网站关键词排名</h4>-->
+        <!--<p class="f12 hidden-xs">Teach you how to improve the site keywords <br/> ranking</p>-->
+        <!--<a href="{$companyBanner.url}" target="_blank">了解更多</a>-->
+    <!--</div>-->
+    <img src="__PUBLIC__{$companyBanner.picture}" alt="pic">
+</div>
+<!--优化排名 end-->
+<!--活动组织-->
+<div class="planning fn-clear bgwh">
+    <div class="planningL l">
+        <div class="title fn-clear">
+            <h3 class="f20 g3c l rel">活动组织<i class="f12 g8c">activity</i></h3>
+            <div class="r hidden-xs" id="planningTab">
+                <a  href ="javascript:void(0);" class="f16 g9a">热门活动召集</a>
+                <a  href ="javascript:void(0);" class="f16 g8c">往期活动回顾</a>
+                <a  href ="{:U('Home/Activity/index')}" class="f16 g8c">更多活动</a>
+            </div>
+        </div>
+        <div class="planningList rel" id="planningList">
+            <!--热门活动-->
+            <div class="ads">
+                <ul class="list">
+                    <foreach name="hotActivitys" item="vo">
+                        <li onclick="window.open('/index.php/Home/Activity/actDetail/id/{$vo.activityid}','_blank')" class="fn-clear">
+                            <div class="l pic">
+                                <img src="__PUBLIC__{$vo.picture}" alt="">
+                            </div>
+                            <div class="l title-con hidden-xs">
+                                <h4 class="f16 g3c">{$vo.title}</h4>
+                                <div class="fn-clear">
+                                    <div class="l">
+                                        <if condition="$vo.avatar eq ''">
+                                            <img class="dib" src="__PUBLIC__/images/index/activityLHea.png" alt="header">
+                                            <else/>
+                                            <img class="dib" src="__PUBLIC__{$vo.avatar}" alt="header">
+                                        </if>
+                                        <div class="f14 g8c dib">
+                                            <p>{$vo.organizer}</p>
+                                            <p>{$vo.city}</p>
+                                        </div>
+                                    </div>
+                                    <span class="f14 g8c r dib">{$vo.starttime|date='Y-m-d H:i',###}</span>
+                                </div>
+                            </div>
+                            <div class="l planApply">
+                                <i class="f28 g3c b db yuan">{$vo.price}</i>
+                                <i class="f12 g8c db vBi hidden-xs">
+                                    <if condition="$vo['isfree'] eq 1">
+                                        {$vo.vcoin}
+                                    </if>
+                                </i>
+                                <a  href ="javascript:void(0);"  class="f14 wh"><button>立即报名</button></a>
+                            </div>
+                        </li>
+                    </foreach>
+                </ul>
+            </div>
+            <!--活动回顾-->
+            <div class="ads" style="display: none;">
+                <ul class="list">
+                    <foreach name="overActivitys" item="vo">
+                        <li onclick="window.open('/index.php/Home/Activity/actDetail/id/{$vo.activityid}','_blank')" class="fn-clear">
+                            <div class="l pic"><img src="__PUBLIC__{$vo.picture}" alt=""></div>
+                            <div class="l title-con hidden-xs">
+                                <h4 class="f16 g3c">{$vo.title}</h4>
+                                <div>
+                                    <div class="l">
+                                        <if condition="$vo.avatar eq ''">
+                                            <img class="dib" src="__PUBLIC__/images/index/activityLHea.png" alt="header">
+                                            <else/>
+                                            <img class="dib" src="__PUBLIC__{$vo.avatar}" alt="header">
+                                        </if>
+                                        <div class="f14 g8c dib">
+                                            <p>{$vo.organizer}</p>
+                                            <p>{$vo.city}</p>
+                                        </div>
+                                    </div>
+                                    <span class="f14 g8c r dib">{$vo.starttime|date='Y-m-d H:i',###}</span>
+                                </div>
+                            </div>
+                            <div class="l planApply">
+                                <i class="f28 g3c b db yuan">{$vo.price}</i>
+                                <if condition="$vo['isfree'] eq 0">
+                                    <i class="f12 g8c db vBi hidden-xs"></i>
+                                    <else/>
+                                    <i class="f12 g8c db vBi hidden-xs">{$vo.vcoin}</i>
+                                </if>
+                                <a  href ="javascript:volid(0);"  class="f14 wh"><button>查看详情</button></a>
+                            </div>
+                        </li>
+                    </foreach>
+                    <!--<li onclick="window.open('template/activityIndex.html','_self')" class="fn-clear">-->
+                        <!--<div class="l pic"><img src="images/index/activityL03.jpg" alt=""></div>-->
+                        <!--<div class="l title-con hidden-xs">-->
+                            <!--<h4 class="f16 g3c">[崇文] 球行天下广渠门汇文中学成人羽毛球培训</h4>-->
+                            <!--<div>-->
+                                <!--<div class="l">-->
+                                    <!--<img class="dib" src="images/index/activityLHea.png" alt="header">-->
+                                    <!--<div class="f14 g8c dib">-->
+                                        <!--<p>主办方名称</p>-->
+                                        <!--<p>嘉定区</p>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<span class="f14 g8c r dib">2016.10.31 15:30</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="l planApply">-->
+                            <!--<i class="f28 g3c b db">¥ 100</i>-->
+                            <!--<a  href ="javascript:volid(0);"  class="f14 wh"><button>立即报名</button></a>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="planningR r">
+        <div class="title fn-clear">
+            <h3 class="f18 g3c l rel">精选课程<i class="f12 g8c hidden-xs">Featured</i></h3>
+        </div>
+        <div class="listPic">
+            <foreach name="course" item="v">
+                <a href="{:U('Home/Course/trainedDetails',array('id'=>$v['courseid']))}"><img src="__PUBLIC__{$v.picture}" alt="pic"></a>
+            </foreach>
+            <!--<img src="__PUBLIC__/images/index/activityR02.jpg" alt="pic">-->
+        </div>
+    </div>
+</div>
+<!--活动组织 end-->
+<!--企业招聘-->
+<div class="recruit bgwh g3c f16">
+    <h3 class="f20 g3c rel">企业招聘<i class="f12 g8c">recruitment</i></h3>
+    <div class="fn-clear">
+        <div class="recruitL l">
+            <a href="{:U('Home/Job/jobs',array('id'=>$jobs[0]['id']))}"><img src="__PUBLIC__{$jobs[0]['picture']}" alt="recruitL"></a>
+            <p>{$jobs[0]['job']}</p>
+        </div>
+        <ul class="recruitR fn-clear r">
+            <foreach name="jobs" item="v" key="k">
+                <li class="l <if condition="$k gt 5">hidden-xs</if>"  onclick="window.open('/index.php/Home/Job/jobs/id/{$v.id}','_self')" >
+                    <img src="__PUBLIC__{$v.picture}" alt="picture">
+                    <p>{:mb_substr($v['job'],0,4)}</p>
+                </li>
+            </foreach>
+            <!--<li class="l"   onclick="window.open('Job/jobs','_self')" >-->
+                <!--<img src="__PUBLIC__/images/index/recruit6.jpg" alt="picture">-->
+                <!--<p>商品展示</p>-->
+            <!--</li>-->
+            <!--<li class="l hidden-xs"   onclick="window.open('Job/jobs','_self')" >-->
+                <!--<img src="__PUBLIC__/images/index/recruit8.jpg" alt="picture">-->
+                <!--<p>商品展示</p>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+<!--企业招聘 end-->
+<!--关键词排名banner-->
+<div class="keyword">
+    <!--<div class="keywordCon">-->
+        <!--&lt;!&ndash;<div>&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;<h4 class="f16 wh">关键词排名</h4>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;&lt;!&ndash;<span class="f12 wh db">keywords</span>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<h5 class="f18 wh">教您如何提高网站关键词排名</h5>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p class="f12 wh hidden-xs">Teach you how to improve the site keywords </p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p class="f12 wh hidden-xs">ranking</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a href="{$talentBanner.url}" class="arrow db  hidden-xs"><img src="__PUBLIC__/images/index/SEOdown.png" alt="arrow"></a>&ndash;&gt;-->
+    <!--</div>-->
+    <img src="__PUBLIC__{$talentBanner.picture}" alt="pic">
+</div>
+<!--关键词排名banner end-->
+<!--人才应聘 talents-->
+<div class="recruit bgwh g3c f16">
+    <h3 class="f20 g3c rel">人才应聘<i class="f12 g8c">recruitment</i></h3>
+    <div class="fn-clear">
+        <div class="recruitL l">
+            <a href="{:U('Home/Job/recruit',array('id'=>$talents[0]['id']))}"><img src="__PUBLIC__{$talents[0]['picture']}" alt="recruitL"></a>
+            <p>{$talents[0]['name']}</p>
+        </div>
+        <ul class="recruitR fn-clear r">
+            <foreach name="talents" item="v" key="k">
+                <li class="l <if condition="$k gt 5">hidden-xs"</if>" onclick="window.open('/index.php/Home/Job/recruit/id/{$v.id}','_self')" >
+                    <img src="__PUBLIC__{$v.picture}" alt="picture">
+                    <p>{:mb_substr($v['name'],0,5)}</p>
+                </li>
+            </foreach>
+            <!--<li class="l"    onclick="window.open('Job/recruit','_self')" >-->
+                <!--<img src="__PUBLIC__/images/index/talentsR01.jpg" alt="picture">-->
+                <!--<p>商品展示</p>-->
+            <!--</li>-->
+            <!--<li class="l hidden-xs"   onclick="window.open('Job/recruit','_self')" >-->
+                <!--<img src="__PUBLIC__/images/index/talentsR01.jpg" alt="picture">-->
+                <!--<p>商品展示</p>-->
+            <!--</li>-->
+        </ul>
+    </div>
+</div>
+<!--人才应聘 talents end-->
+<!--维沃柯简介-->
+<div class="introduction fn-clear bgwh">
+    <div class="introductionL bgwh l">
+        <h3 class="f18 g3c rel">关于我们<i class="f12 g8c">About Us</i></h3>
+        <div class="fn-clear">
+            <div class="l">
+                <div class="video rel" onclick="window.open('http://v.youku.com/v_show/id_XMTcwNTcxMDQzNg==.html?from=s1.8-1-1.2&spm=a2h0k.8191407.0.0','_blank')">
+                    <!--<video id="video">-->
+                        <!--<source src="__PUBLIC__{$intro.url}" type="video/mp4" />-->
+                        <!--<source src="__PUBLIC__{$intro.url}" type="video/ogg" />-->
+                        <!--<source src="__PUBLIC__{$intro.url}" type="video/webm" />-->
+                        <!--<object data="__PUBLIC__{$intro.url}" width="242" height="188">-->
+                            <!--<embed src="__PUBLIC__{$intro.url}" width="242" height="188"/>-->
+                        <!--</object>-->
+                    <!--</video>-->
+                    <img class="width:100%;"  src="__PUBLIC__{$intro.picture}" alt="">
+                    <div class="play abs" id="play"><img src="__PUBLIC__/images/trained/play.png" alt="">
+                    </div>
+                </div>
+                <p class="f18 g3c  hidden-xs">{$intro.title}</p>
+            </div>
+            <div class="title r hidden-xs">
+                <h4 class="f26 g3c">平台简介</h4>
+                <p class="f16 g8c">{$intro.intro}</p>
+                <a href="{:U('Home/Index/aboutUs')}" class="f16 wh b9a db">了解更多</a>
+            </div>
+        </div>
+    </div>
+    <div class="introductionR bgwh r fn-clear">
+        <h3 class="f18 g3c rel">企业动态<i class="f12 g8c hidden-xs">Dynamic</i></h3>
+        <ul class="fn-clear">
+            <foreach name="dynmic" item="v">
+                <li    onclick="window.open('/index.php/Home/Dynmic/view/id/{$v.id}','_self')"  class="fn-clear rel">
+                    <img class="l" src="__PUBLIC__{$v.picture}" alt="">
+                    <div class="f16 g3c l">
+                        <h4 class="hidden-xs f16">{$v.title}</h4>
+                        <p>热度：{$v.num}</p>
+                    </div>
+                </li>
+            </foreach>
+        </ul>
+    </div>
+</div>
+<!--维沃柯简介  end-->
+<!--企业类型-->
+<div class="bgwh type">
+    <div class="title fn-clear">
+        <h3 class="f20 g3c l rel">企业类型<i class="f12 g8c">Company Type</i></h3>
+        <ul class="r type-tab hidden-xs" id="type-tab">
+            <foreach  name="types" item="v" key="k">
+                <li value="{$k}" class="f16 js-company g8c dib <if condition="$k eq 0">greenColor</if> ">{$v.name}</li>
+            </foreach>
+        </ul>
+    </div>
+    <ul id="type-list" class="rel type-list bgwh">
+        <!--生产型企业-->
+        <foreach  name="tcompanys" item="v" key="k">
+            <li class=" js-all-company js-{$k}">
+                <ul class="typeList fn-clear">
+                    <?php $ke=0; ?>
+                    <foreach name="v" item="vo" key="ke">
+                        <li>
+                            <if condition="$vo.uid eq 0">
+                                <a href="{:U('Home/Article/articleDetails',array('id'=>26))}"><img  src="__PUBLIC__{$vo.logo}" alt="pic"></a>
+                                <h4 class="f14 g3c">{$vo.name}</h4>
+                                <p class="f12 g8c hidden-xs">{$v.intro}</p>
+                                <else/>
+                                <a href="{:U('Home/Company/company',array('id'=>$vo['companyid']))}"><img  src="__PUBLIC__{$vo.logo}" alt="pic"></a>
+                                <h4 class="f14 g3c">{$vo.name}</h4>
+                                <p class="f12 g8c hidden-xs">{$v.intro}</p>
+                            </if>
+                        </li>
+                    </foreach>
+                </ul>
+                <if condition="$ke eq 11">
+                    <div class="more"><a class="f14 g3c" href="{:U('Home/Company/index')}">查看更多&gt&gt</a></div>
+                </if>
+            </li>
+        </foreach>
+        <!--贸易型企业-->
+    </ul>
+</div>
+<!--企业类型 end-->
+<!--滑动banner-->
+<div  class="typeBar" >
+    <div class="type-con rel">
+        <div class="type-over">
+            <ul id="type-business" class="type-business">
+                <foreach name="shops" item="v">
+                    <li class="f14 wh">
+                        <a href="{:U('Home/Article/articleDetails',array('id'=>26))}"><img src="__PUBLIC__{$v.logo}"/></a>
+                        <p>{$v.name}</p>
+                    </li>
+                </foreach>
+            </ul>
+            <div id="type-left" class="type-left"><img src="__PUBLIC__/images/index/type-left.png" alt="type-left"></div>
+            <div id="type-right" class="type-right"><img src="__PUBLIC__/images/index/type-right.png" alt="type-right"></div>
+        </div>
+    </div>
+</div>
+<!--滑动banner end-->
+<!--合作企业-->
+<div class="collaborate bgwh" >
+    <h3 class="f20 g3c rel">合作企业<i class="f12 g8c">Cooperative</i></h3>
+    <ul class="fn-clear">
+        <foreach name="contactCompany" item="v" >
+            <li class="l">
+                <!--<a href="{$v.url}">-->
+                    <img src="__PUBLIC__{$v.picture}" alt="collaborate">
+                <!--</a>-->
+            </li>
+        </foreach>
+    </ul>
+</div>
+<!--合作企业 end-->
+<!--新闻、资讯、客服-->
+<ul class="fn-clear service f16 g3c">
+    <li class="l news bgwh">
+        <div class="fn-clear title">
+            <h3 class="f20 g3c rel l">新闻资讯 <i class="f12 g8c">news</i></h3>
+            <a href="{:U('Home/News/newsMore')}" class="f14 g8c r">更多</a>
+        </div>
+        <if condition="$news neq null">
+            <div class="fn-clear sumTitle">
+                <a href="{:U('Home/News/newsDetails',array('id'=>$news[0]['id']))}" class="l"><img src="__PUBLIC__{$news[0]['picture']}" alt="news"></a>
+                <h4 class="r">{:mb_substr($news[0]['title'],0,18)}</h4>
+            </div>
+        </if>
+        <foreach name="news" item="v">
+            <p onclick="window.open('/index.php/Home/News/newsDetails/id/{$v.id}','_self')"  >{:mb_substr($v['title'],0,25)}</p>
+        </foreach>
+    </li>
+    <li class="l news bgwh inf">
+        <div class="fn-clear title">
+            <h3 class="f20 g3c rel l">企业资讯<i class="f12 g8c hidden-xs">news</i></h3>
+            <a href="{:U('Home/News/newsMore')}" class="f14 g8c r">更多</a>
+        </div>
+        <foreach name="companyNews" item="v">
+            <p onclick="window.open('/index.php/Home/News/newsDetails/id/{$v.id}','_self')"  >{:mb_substr($v['title'],0,20)}</p>
+        </foreach>
+    </li>
+    </li>
+    <li class="l news bgwh tel-service">
+        <a name="maodian"></a>
+        <h3 class="f20 g3c rel">联系客服<i class="f12 g8c hidden-xs">Contact us</i></h3>
+        <div class="f16 g3c">
+            <label for="name" >姓      名</label>
+            <input id="name" name="name" class="js-name" type="text">
+        </div>
+        <div class="f16 g3c">
+            <label for="tel" >联系方式</label>
+            <input id="tel" name="phone" class="js-phone" type="text">
+        </div>
+        <div class="f16 g3c">
+            <label for="address" >联系地址</label>
+            <input id="address" name="address" class="js-address" type="text">
+        </div>
+        <div class="f16 g3c">
+            <label for="message" >留言内容</label>
+            <textarea id="message" name="content" class="js-content"></textarea>
+        </div>
+        <input class="wh f16 js-sub" type="submit" value="提交"  >
+    </li>
+</ul>
+<!--新闻、资讯、客服 end-->
+<!--友情链接-->
+<div class="bgwh link">
+    <div class="fn-clear title">
+        <h3 class="f20 g3c rel l">友情链接<i class="f12 g8c">Link</i></h3>
+        <!--<a href="javascript:void(0)" class="f14 g8c r">入口</a>-->
+    </div>
+    <div class="f14 g1e">
+        <foreach name="link" item="v">
+            <a class="g1e" href="{$v.url}" target="_blank"><p class="dib">{$v.title}</p></a>
+        </foreach>
+    </div>
+</div>
+<!--友情链接 end-->
+<!--底部导航&footer-->
+<include file="Public/footer"/>
+<!--底部导航&footer end-->
+<!--悬浮链接-->
+<div class="suspend fn-clear" id="suspend">
+    <!--<a href="#" class="l weChat dn"><p class="f12 g28">微信号：123546</p></a>-->
+    <ul class="r">
+        <li class="serviceBtn"><img src="__PUBLIC__/images/index/suspend01.png" alt=""></li>
+        <li class="shareBtn" id="shareBtn"><img src="__PUBLIC__/images/index/fenxiang.png" alt=""></li>
+        <li class="topBtn"><img src="__PUBLIC__/images/index/suspend03.png" alt=""></li>
+    </ul>
+    <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+    <div id="share" class="dib share bdsharebuttonbox">
+        <a href="#" class="bds_weixin db" data-cmd="weixin" title="分享到微信">
+            <!--<img src="__PUBLIC__/images/index/wechatW.png" alt="wechat">-->
+        </a>
+        <a href="#" class="bds_tsina db" data-cmd="tsina" title="分享到新浪微博">
+            <!--<img src="__PUBLIC__/images/index/sinaW.png" alt="sina">-->
+        </a>
+        <a href="#" class="bds_qzone slide-sqq db" data-cmd="sqq" title="分享到QQ空间">
+            <!--<img src="__PUBLIC__/images/index/qqW.png" alt="qq">-->
+        </a>
+    </div>
+</div>
+<!--悬浮链接 end-->
+<script src="__PUBLIC__/scripts/bootstrap.min.js"></script>
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/index.js"></script>
+<script type="text/javascript">
+    $(function(){
+        //  微信号
+        $('#shareBtn').click(function () {
+            $('#share').toggle();
+        });
+        //分类企业切换
+        $(".js-company").click(function(){
+            var k = $(this).attr('value');
+            $(".js-all-company").hide();
+            $(".js-"+k).show();
+        });
+        //留言
+        $(".js-sub").click(function(){
+            var name = $(".js-name").val();
+            var phone = $(".js-phone").val();
+            var address = $(".js-address").val();
+            var content = $(".js-content").val();
+            var preg = /^1[34578]\d{9}$/gi;
+            var flag=true;
+            var msg = '';
+            if(name==''){
+                flag = false;
+                msg+="姓名不能为空";
+            }
+            if(address==''){
+                flag = false;
+                msg+="地址不能为空";
+            }
+            if(content==''){
+                flag = false;
+                msg+="内容不能为空";
+            }
+            if(phone==''){
+                flag = false;
+                msg+="手机号不能为空";
+            }else{
+                var preg = /^1[34578]\d{9}$/gi;
+                if(!(preg.test(phone))){
+                    flag = false;
+                    msg+="手机号格式不正确";
+                }
+            }
+            if(!flag){
+                alert(msg);
+            }else{
+                $.post("{:U('Home/Index/note')}",{name:name,phone:phone,address:address,content:content},function(data){
+                    if(data.status==1){
+                        alert(data.msg);
+                       $(".js-name").val('');
+                       $(".js-phone").val('');
+                       $(".js-address").val('');
+                       $(".js-content").val('');
+                    }else{
+                        alert(data.msg);
+                    }
+                });
+            }
+        });
+        //搜索
+        $(".js-key-sub").click(function(){
+            var name = $(".js-key-name").val();
+            if(name==''){
+                alert("请输入搜索内容");
+                return false;
+            }
+            $(".js-key-form").submit();
+        }) ;
+    });
+</script>
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdUrl":"<?php if(!empty($info['uid'])){ echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'?fromid='.$info['uid'];  } ?>","bdPopTitle":"<?php echo $keys['title']; ?>","bdDesc":"<?php echo $keys['intro']; ?>","bdText":"<?php $keys['title']; ?>","bdMini":"2","bdMiniList":["sqq","tsina","weixin","qzone"],"bdPic":"<?php echo 'www.91wework.com/Public/images/index/logo.png'; ?>","bdStyle":"0","bdSize":"32"},
+        "slide":{"type":"slide","bdImg":"2","bdPos":"right","bdTop":"128.9974365234375"},
+        "share":{}};
+//    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/share.js?v=89860593.js?cdnversion=" + Math.ceil(new Date()/3600000);
+//window._bd_share_config={
+//    "common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["tsina","qzone","weixin","tqq","tqf","renren","kaixin001","mshare","tieba","douban","sqq","meilishuo","mogujie","huaban","ty","fbook","twi","linkedin"],"bdPic":"http://wework.51ruanron.com/Public/images/index/logo1.jpg","bdStyle":"0","bdSize":"16"},
+//    "slide":{"type":"slide","bdImg":"2","bdPos":"left","bdTop":"128.9974365234375"}
+//};
+//with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+</body>
+</html>

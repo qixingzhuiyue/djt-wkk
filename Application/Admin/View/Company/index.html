@@ -1,0 +1,102 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>企业管理>企业列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+            <!--<a href="{:U('Admin/Role/add', array('rpid' => $date['id'],'uid' => $_SESSION[C('USER_AUTH_KEY')]))}" class="ul_button">添加企业组</a>-->
+            <!--<a href="{:U('Admin/Company/add')}" class="ul_button">添加企业</a>-->
+            <!--<a href="#" onclick="del();" class="ul_button">删除企业组</a>-->
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+    <table class="ul_table">
+         	<tbody class="ul_table">
+    		<tr>
+    		<td width="60%" style="text-align:left">
+	    		<form action="{:U('Admin/Company/index')}" method="get">
+				企业名：<input type="text" name="keyword" value="{$Think.get.keyword}" />
+				<select name="companystatus">
+				<option value="">状态</option>
+				<option value="1" <if condition="$Think.get.companystatus eq 1">selected</if>>正常</option>
+				<option value="0" <if condition="$Think.get.companystatus eq '0'">selected</if>>屏蔽</option>
+				</select>
+                    <select name="isgood">
+                        <option value="">优秀企业</option>
+                        <option value="1" <if condition="$Think.get.isgood eq 1">selected</if>>是</option>
+                        <option value="0" <if condition="$Think.get.isgood eq '0'">selected</if>>否</option>
+                    </select>
+				<select name="type">
+                    <option value="">公司性质</option>
+                    <foreach name="types" item="v">
+                        <option value="{$v.name}" <if condition="$Think.get.type eq 1">selected</if>>{$v.name}</option>
+                    </foreach>
+				</select>
+				<input type="submit" value="查询" />
+				<input type="reset" value="清空" />
+	      		</form>
+    		</td>
+      	</tr></tbody>
+     	</table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:5%">UID</th>
+                <th style="width:20%">名称</th>
+                <th style="width:15%">类型</th>
+                <th style="width:5%">Logo</th>
+                <!--<th style="width:5%">推荐</th>-->
+                <th style="width:5%">权重</th>
+                <th style="width:15%">日期</th>
+                <th style="width:8%">状态</th>
+                <th style="width:5%">优秀企业</th>
+                <th style="width:20%">操作</th>
+            </tr>
+                <foreach name="companys" item="v">
+                    <tr class="ul_box1">
+                        <td>{$v.companyid}</td>
+                        <td>{$v.uid}</td>
+                        <td>{$v.name}</td>
+                        <td>{$v.type}</td>
+                        <td><a href="/Public/{$v.logo}" target="_blank">预览</a></td>
+                        <td>{$v.weight}</td>
+                        <td>{$v.created|date='y-m-d H:i',###}</td>
+                        <td><if condition="$v.companystatus eq 1">正常<else />屏蔽</if></td>
+                        <td><if condition="$v.isgood eq 1">是<else />否</if></td>
+                        <td>
+                            <a href="{:U('Admin/Company/view', array('id' => $v['companyid']))}">编辑</a>
+                            <!--<if condition="$v['companystatus']">-->
+                                <!--<a href="{:U('Admin/Company/changeStatus',array('companyid'=>$v['companyid'],'companystatus'=>0))}">屏蔽</a>-->
+                                <!--<else/>-->
+                                <!--<a href="{:U('Admin/Company/changeStatus',array('companyid'=>$v['companyid'],'companystatus'=>1))}">开启</a>-->
+                            <!--</if>-->
+                            <!--<if condition="$v['isgood']">-->
+                                <!--<a href="{:U('Admin/Company/changeStatus',array('companyid'=>$v['companyid'],'isgood'=>0))}">取消优秀</a>-->
+                                <!--<else/>-->
+                                <!--<a href="{:U('Admin/Company/changeStatus',array('companyid'=>$v['companyid'],'isgood'=>1))}">标记为优秀</a>-->
+                            <!--</if>-->
+                        </td>
+                        <!--<td><a href="{:U('Admin/Company/view', array('id' => $v['id']))}">编辑</a> <a href="{:U('Admin/Company/work', array('id' => $v['id']))}">案例</a></td>-->
+                    </tr>
+                </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

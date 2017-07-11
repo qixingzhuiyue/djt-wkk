@@ -1,0 +1,95 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/exhibition.css">
+<meta name="description" content="{$key.intro}" />
+<meta name="keywords" content="{$key.keyword}" />
+<title>{$key.title}</title>
+</head>
+<body>
+<!--企业展示exhibition-->
+<div class="mainBg">
+    <!--header登录注册-->
+   <include file="Public/top"/>
+    <!--header logo end-->
+    <!--导航条-->
+  <include file="Public/nav" />
+    <!--导航条 end-->
+    <!--banner-->
+    <div class="banner rel">
+        <img src="__PUBLIC__{$banner.picture}" alt="banner">
+        <!--<if condition="$status eq 0">-->
+            <!--<a class="applyFor abs" href="{:U('Home/Company/apply')}"><input class="f20 wh" type="button" value="申请入驻"></a>-->
+            <!--<else/>-->
+            <!--<a class="applyFor abs" href="{:U('Home/Company/company',array('id'=>$company['companyid']))}"><input class="f20 wh" type="button" value="我的企业"></a>-->
+        <!--</if>-->
+    </div>
+    <!--banner end-->
+    <!--企业-->
+    <div class="company bgwh">
+        <div class="title fn-clear">
+            <h3 class="f20 g3c l rel">企业<i class="gf12 g8c dib">company</i></h3>
+            <ul class="r type-tab hidden-xs" id="type-tab">
+                <a href="{:U('Home/Company/index',array('isgood'=>0))}"><li class="f16 g8c dib <if condition="$isgood neq 1">greenColor</if> ">最新更新</li></a>
+                <a href="{:U('Home/Company/index',array('isgood'=>1))}"><li  class="f16 g8c dib <if condition="$isgood eq 1">greenColor</if> ">优秀企业</li></a>
+            </ul>
+        </div>
+        <ul id="type-list" class="type-list bgwh">
+            <!--最近更新-->
+            <li  class="update">
+                <ul class="typeList fn-clear">
+                    <foreach name="companys" item="v">
+                        <li>
+                            <if condition="$v.uid eq 0">
+                                <a href="{:U('Home/Article/articleDetails',array('id'=>26))}"><img  src="__PUBLIC__{$v.logo}" alt="pic"></a>
+                                <h4 class="f16 g3c">{:mb_substr($v['name'],0,12)}</h4>
+                                <else/>
+                                <a href="{:U('Home/Company/company',array('id'=>$v['companyid']))}" target="_blank"> <img src="__PUBLIC__{$v.logo}" alt="pic"></a>
+                                <h4 class="f16 g3c">{:mb_substr($v['name'],0,12)}</h4>
+                            </if>
+                        </li>
+                    </foreach>
+                    <!--<li>-->
+                        <!--<img  src="../images/exhibition/pic01.jpg" alt="pic">-->
+                        <!--<h4 class="f16 g3c">企福集团</h4>-->
+                        <!--&lt;!&ndash;<p class="f12 g8c hidden-xs">以精益求精的生产工艺，严格品质管理，周到的服务体系与客户共同营造双赢的发展未来</p>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<ul class="interaction">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li class="f12 gc4 seeIcon dib"><p class="hidden-xs">8653497</p> </li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li class="f12 gc4 commentIcon dib"> <p class="hidden-xs">497</p></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--</li>-->
+                </ul>
+                <div class="template_page paging" id="paging" style="font-size: 20px;">
+                    {$page}
+                </div>
+                <!--<ul class="paging" id="paging">-->
+                    <!--<li id="first">首页</li>-->
+                    <!--<li id="top" onclick="topclick()">上一页</li>-->
+                    <!--<li class="xifenye fn-clear" id="xifenye">-->
+                        <!--<a id="xiye" class="l xiye whiteness" >1</a>-->
+                        <!--<a id="mo" class="r mo">66</a>-->
+                        <!--<div class="xab" id="xab" style="display:none">-->
+                            <!--<ul id="uljia">-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</li>-->
+                    <!--<li id="down" onclick="downclick()">下一页</a></li>-->
+                    <!--<li id="last">末页</li>-->
+                <!--</ul>-->
+            </li>
+        </ul>
+    </div>
+    <!--企业 end-->
+    <!--底部导航&footer-->
+   <include file="Public/footer3"/>
+    <!--底部导航&footer end-->
+    <!--悬浮链接-->
+   <include file="Public/footer2"/>
+    <!--悬浮链接 end-->
+</div>
+<script src="__PUBLIC__/scripts/bootstrap.min.js"></script>
+<!--分页效果-->
+<script src="__PUBLIC__/scripts/public.js"></script>
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/exhibition.js"></script>
+</body>
+</html>

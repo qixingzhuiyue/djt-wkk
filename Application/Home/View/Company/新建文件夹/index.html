@@ -1,0 +1,66 @@
+<include file="Public/header" />
+<title>全部企业-建材装潢</title>
+<link rel="stylesheet" href="__PUBLIC__/css/category.css">
+<!--[if lt IE 9]>
+  <script src="__PUBLIC__/js/html5shiv.min.js"></script>
+  <script src="__PUBLIC__/js/respond.min.js"></script>
+  <![endif]-->
+<style>
+  .css-company{
+    margin-left:38px;
+    font-size: 1.3em;
+  }
+</style>
+</head><body>
+<!--页面头部-->
+<include file="Public/top" />
+<!--广告-->
+<div id="top_main">
+  <div class="banner-top" style="text-align: center;"> <img src="__PUBLIC__/images/banner-bg_03.png" alt="">
+    <div class="module-top"></div>
+    <img class="square" src="__PUBLIC__/images/banner-ctn.png" alt=""> </div>
+</div>
+<!--面包屑导航-->
+<div id="nav">
+  <div class="breadcrumbs"> 我的位置：<a href="/">首页</a><span>&nbsp;&gt;&nbsp;装潢公司</span> </div>
+  <h1 class="">
+    <if condition="$role eq 3">
+      <a href="{:U('Home/Company/Show',array('id'=>$companyid))}" class="rl f08 titleTop selectColor css-company">我的公司</a>
+    <elseif condition="$role eq 0"/>
+      <a href="{:U('Home/Settled/settledCompany')}" class="rl f08 titleTop selectColor css-company">我想出现在这里</a>
+      <else/>
+    </if>
+  </h1>
+</div>
+<!--主体内容-->
+<section id="main">
+  <div class="theme"> <img class="styleTitle" src="__PUBLIC__/images/styletitle.png" alt=""> <span class="textBg">金牌装修公司</span> <span class="textSm">环保家具 / 精品装饰</span> </div>
+  <div class="container">
+    <div class="row">
+      <foreach name="recommendCompanys" item="v"> <a href='<if condition="$v.applyid neq 0">{:U('Home/Company/Show', array('id' => $v['id']))}
+        <else/>
+        {$v.url}
+        </if>
+        ' target="_blank"><img src="/Public/{$v.logo}" alt="{$v.name}" title="{$v.name}" style="width:141px;height:87px;padding:3px;"></a> </foreach>
+    </div>
+  </div>
+  </div>
+  <div class="theme"> <img class="styleTitle" src="__PUBLIC__/images/styletitle.png" alt=""> <span class="textBg">普通装修公司</span> <span class="textSm">环保家具 / 精品装饰</span> </div>
+  <div class="container">
+    <div class="row">
+      <ul>
+        <foreach name="companys" item="v">
+          <li style="float:left;font-size:16px;padding:3px;"> <a href='<if condition="$v.applyid neq 0">{:U('Home/Company/Show', array('id' => $v['id']))}
+            <else/>
+            {$v.url}
+            </if>
+            ' target="_blank">{$v.name}</a></li>
+        </foreach>
+      </ul>
+    </div>
+  </div>
+</section>
+<!--页面底部-->
+<!--页面底部-->
+<div class="returnHome"> 返回首页 </div>
+<include file="Public/bottom" /> <include file="Public/footer" />

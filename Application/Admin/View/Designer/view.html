@@ -1,0 +1,59 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>设计师管理>设计师详情</h1>
+        </div>
+        <div class="template_top_right">
+            <a href="{:U('Admin/Company/index')}" class="ul_button">返回</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+    
+    <form name="adminForm" method="post">
+        <ul class="add_blank">
+            <li><div class="blank_left">姓名 </div><div class="blank_right">{$designer.realname}</div><div class="fn-clear"></div></li>            
+                
+            <li><div class="blank_left">头像</div><div class="blank_right"><a href="{$designer.avatar}" target="_blank">预览</a></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">Banner</div><div class="blank_right"><a href="{$designer.banner}" target="_blank">预览</a></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">身份证号</div><div class="blank_right"><a href="{$designer.idcard}" target="_blank">预览</a></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">身份图片</div><div class="blank_right"><a href="{$designer.picture}" target="_blank">预览</a></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">性别</div><div class="blank_right"><if condition="$designer.sex eq 1">男<elseif condistion="$designer.sex eq 2">女<else/>保密</if></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">生日</div><div class="blank_right">{$designer.birthday|date='y-m-d H:i',###}</div><div class="fn-clear"></div></li>
+            
+            
+            <li><div class="blank_left">个人网址</div><div class="blank_right"><input type="text" name="url" value="{$designer.url}" class="ul_text"/></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">电话</div><div class="blank_right"><input type="text" name="tel" value="{$designer.tel}" class="ul_text"/></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">邮箱</div><div class="blank_right"><input type="text" name="email" value="{$designer.email}" class="ul_text"/></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">工作经验</div><div class="blank_right"><input type="text" name="workexp" value="{$designer.workexp}" class="ul_text"/>年</div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">擅长</div><div class="blank_right"><input type="text" name="goodat" value="{$designer.goodat}" class="ul_text"/></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">QQ</div><div class="blank_right"><input type="number" name="qq" value="{$designer.qq}" class="ul_text"/></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">微信</div><div class="blank_right"><input type="text" name="wx" value="{$designer.wx}" class="ul_text"/></div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">地址</div><div class="blank_right">{$designer.address}</div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left">服务</div><div class="blank_right">{$designer.intro}</div><div class="fn-clear"></div></li>       
+            <li><div class="blank_left">描述</div><div class="blank_right">{$designer.content}</div><div class="fn-clear"></div></li>  
+            <li><div class="blank_left">浏览数</div><div class="blank_right">{$designer.viewnum}</div><div class="fn-clear"></div></li> 
+            <li><div class="blank_left">评价数</div><div class="blank_right">{$designer.commentnum}</div><div class="fn-clear"></div></li>      
+            <li><div class="blank_left"><span class="blank_color">*</span>状态</div><div class="blank_right">
+            <input type="radio" name="status" value="1"  class="ul_middle" <eq name="designer['status']" value="1">checked</eq>/>&nbsp;正常&nbsp;&nbsp;
+            <input type="radio" name="status" value="0" class="ul_middle" <eq name="designer['status']" value="0">checked</eq>/>&nbsp;屏蔽
+            </div><div class="fn-clear"></div></li>
+            
+            <li><div class="blank_left"><span class="blank_color">*</span>推荐</div><div class="blank_right">
+            <input type="radio" name="recommend" value="1"  class="ul_middle" <eq name="designer['recommend']" value="1">checked</eq>/>&nbsp;是&nbsp;&nbsp;
+            <input type="radio" name="recommend" value="0" class="ul_middle" <eq name="designer['recommend']" value="0">checked</eq>/>&nbsp;否
+            </div><div class="fn-clear"></div></li>
+            
+            <li><div class="blank_left">权重</div><div class="blank_right"><input type="number" name="weight" value="{$designer.weight}" class="ul_text"/>值越大越靠前</div><div class="fn-clear"></div></li>            
+            
+            
+            <input type="hidden" name="id" value="{$designer.id}" />
+            <li class="ul_word"><input type="submit" class="ul_add" value="保存"/><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/></li>
+        </ul></form>
+    </div>
+</div>
+</body>
+</html>

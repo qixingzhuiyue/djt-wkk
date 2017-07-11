@@ -1,0 +1,403 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/bounced.css">
+    <link rel="stylesheet" href="__PUBLIC__/styles/trainedDetails.css">
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/trained.js"></script>
+<!--分享-->
+<script src="__PUBLIC__/scripts/ZeroClipboard.js"></script>
+<script src="__PUBLIC__/scripts/postDetails.js"></script>
+<!--微信分享显示图片描述的配置-->
+<script>
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '<?php echo $signPackage["appId"];?>', // 必填，公众号的唯一标识
+        timestamp: '<?php echo $signPackage["timestamp"];?>', // 必填，生成签名的时间戳
+        nonceStr: '<?php echo $signPackage["nonceStr"];?>', // 必填，生成签名的随机串
+        signature: '<?php echo $signPackage["signature"];?>',// 必填，签名，见附录1
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone','startRecord', 'stopRecord','onVoiceRecordEnd'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    wx.ready(function () {
+        // 在这里调用 API
+        var desc = $('.js-intro').text();
+        //分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: '{$course.title}', // 分享标题
+            link:"http://www.91wework.com/index.php/Home/Course/trainedDetails/id/{$course.courseid}/fromid/{$info.uid}", // 分享链接
+            imgUrl: "http://www.91wework.com/Public{$course.picture}", // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: '{$course.title}', // 分享标题
+            desc: desc, // 分享描述
+            link: "http://www.91wework.com/index.php/Home/Course/trainedDetails/id/{$course.courseid}/fromid/{$info.uid}", // 分享链接
+            imgUrl: "http://www.91wework.com/Public{$course.picture}", // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+</script>
+<!--微信分享显示图片描述的配置-->
+    <title>{$course.title}</title>
+</head>
+<body>
+<!--培训详情trainedDetails-->
+<div class="mainBg">
+    <!--header登录注册-->
+   <include file="Public/top"/>
+    <!--header logo end-->
+    <!--导航条-->
+    <inlcude file="Public/nav"/>
+    <!--导航条 end-->
+    <!--content-->
+    <div class="content">
+            <!--模块一-->
+        <div class="model-one bgwh fn-clear">
+                <!--<div class="video rel l">-->
+                    <!--<video id="video">-->
+                        <!--<source src="__PUBLIC__{$course.courseurl}" type="video/mp4" />-->
+                        <!--<source src="__PUBLIC__{$course.courseurl}" type="video/ogg" />-->
+                        <!--<source src="__PUBLIC__{$course.courseurl}" type="video/webm" />-->
+                        <!--<object data="__PUBLIC__{$course.courseurl}" width="242" height="188">-->
+                            <!--<embed src="__PUBLIC__{$course.courseurl}" width="242" height="188"/>-->
+                        <!--</object>-->
+                    <!--</video>-->
+                    <!--<div class="play abs" id="play"><img src="__PUBLIC__/images/trained/play.png" alt=""></div>-->
+                <!--</div>-->
+            <div class="video rel l">
+                <img src="__PUBLIC__{$course.picture}" alt="">
+             </div>
+                <div class="title r">
+                    <div class="fn-clear">
+                        <h4 class="g9a l f24">{$course.title}</h4>
+                        <div class="star r hidden-xs">
+                            <ul class="fn-clear dib">
+                                <for start="0" end="$course['star']">
+                                    <li class="l"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                                </for>
+                                <for start="0" end="5 -$course['star']">
+                                    <li class="l"><img src="__PUBLIC__/images/trained/star.png" alt="star"></li>
+                                </for>
+                            </ul>
+                            <span class="g8c">{$course['scorseAvg']}分</span>
+                        </div>
+                    </div>
+                    <p class="g8c f16 js-intro">{$course.intro}</p>
+                    <ul class="fn-clear course">
+                        <li class="l rel">
+                            <p class="g8c">授课讲师</p>
+                            <p class="g3c">{$course.teacher}</p>
+                        </li>
+                        <li class="l rel">
+                            <p class="g8c">开课时间</p>
+                            <p class="g3c">{$course.starttime|date='Y.m.d',###}</p>
+                        </li>
+                        <!--<li class="l rel">-->
+                            <!--<p class="g8c">授课地点</p>-->
+                            <!--<p class="g3c">{$course.address}</p>-->
+                        <!--</li>-->
+                        <li class="l rel">
+                            <p class="g8c">授课周期</p>
+                            <p class="g3c">{$course.cycle}天</p>
+                        </li>
+                        <!--<li class="l rel">-->
+                            <!--<p class="g8c">培训讲师</p>-->
+                            <!--<p class="g3c">上海家</p>-->
+                        <!--</li>-->
+                        <li class="l ">
+                            <p class="g8c">学习人数</p>
+                            <p class="g3c">{$course.applyNum}</p>
+                        </li>
+                    </ul>
+                    <hr/>
+                    <ul class="fn-clear">
+                        <li class="l rel">
+                            <p>
+                            <span class="g8c">授课地点</span>
+                            <span class="g3c">{$course.address}</span>
+                            </p>
+                        </li>
+                    </ul>
+                    <h5 class="f14"><i class="f24 b">{$course.vcoin}</i><b class="f14">维币</b><span class="g58">（￥<if condition="$course.nowprice eq ''">{$course.price}<else/>{$course.nowprice}</if>）</span></h5>
+                    <div class="fn-clear">
+                        <if condition="$apply eq 0">
+                            <input  class="f18 wh b9a l apple-click" type="button" value="我要报名">
+                        </if>
+                        <if condition="$apply eq 2">
+                            <input  class="f18 wh b9 l apple-click" type="button" disabled value="已报名">
+                        </if>
+                        <if condition="$apply eq 1">
+                            <input  class="f18 wh b9a l" onclick="window.open('/index.php/Home/Course/applyPay/id/{$orderId}')" type="button"  value="已报名，前往支付">
+                        </if>
+                        <div class="g3c  floatOther">
+                            <p class="dib js-collect <if condition="$collectStatus eq 1">collect<else/>collect</if> " value="{$course.courseid}">收藏&nbsp:</p>
+                            <div class="share-platform dib">
+                                <p class="dib">分享：</p>
+                                <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare bdsharebuttonbox dib" data="{'url':<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'/fromid/'.$info['uid']; ?>,'title':'<?php echo $article['title'] ?>','pic':'<?php echo 'http://www.91wework.com/Public/'.$article['picture'] ?>'}">
+                                    <a href="javascript:;" class="bds_weixin js-share" data-cmd="weixin" title="分享到微信"></a>
+                                    <a href="javascript:;" class="bds_tsina js-share" data-cmd="tsina" title="分享到新浪微博"></a>
+                                    <a href="javascript:;" class="bds_qzone js-share" data-cmd="qzone" title="分享到QQ空间"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!--模块二-->
+        <div class="model-two fn-clear tc">
+            <div class="contentL l g3c bgwh">
+                <div class="conList"  id="edit">
+                   {$course.content}
+                </div>
+                <div class="fn-clear">
+                    <if condition="$apply eq 0">
+                        <input  class="f18 wh b9a  apple-click sign_btn" type="button" value="我要报名">
+                    </if>
+                    <if condition="$apply eq 2">
+                        <input  class="f18 wh b9 apple-click sign_btn" type="button" disabled value="已报名">
+                    </if>
+                    <if condition="$apply eq 1">
+                        <input  class="f18 wh b9a apple-click sign_btn" onclick="window.open('/index.php/Home/Course/applyPay/id/{$orderId}')" type="button"  value="已报名，前往支付">
+                    </if>
+                </div>
+                <div class="comment">
+                    <h3 class="f18 gray_38 rel">讲师评论<i class="f12 g8c">（<span class="js-pl-num">{$commentNum}</span>条评论）</i></h3>
+                    <div class="star">
+                        <label>我要评分</label>
+                        <ul class="fn-clear dib" id="star">
+                            <li class="l" index="1"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                            <li class="l" index="2"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                            <li class="l" index="3"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                            <li class="l" index="4"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                            <li class="l" index="5"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                        </ul>
+                        <form action="#">
+                            <input type="hidden" value="5" class="js-star-num"/>
+                            <input type="hidden" value="{$course.courseid}" class="js-courseid"/>
+                            <textarea id="text" class="js-content"></textarea>
+                            <div class="fn-clear publish">
+                                <input class="f18 wh b9a l" id="publish" type="button" value="发表评论">
+                                <p class="f14 g8c r">您还可以输入200字</p>
+                            </div>
+                            <table class="pinghuifu">
+                                <!--复制的模板-->
+                                <tr class="js-clone" style="display: none;">
+                                    <td valign="top" align="left"  class="pl-touxang">
+                                        <div>
+                                            <if condition="$avatar eq ''">
+                                                <img src="__PUBLIC__/images/postDetails/header.png" alt="">
+                                                <else/>
+                                                <img src="__PUBLIC__{$avatar}" alt="">
+                                            </if>
+                                        </div>
+                                    </td>
+                                    <td valign="top" class="commentTitle">
+                                        <div class="fn-clear">
+                                            <h5 class="g3c l js-name">{$Think.session.userinfo.name}</h5>
+                                            <i class="l"></i>
+                                            <div class="star r hidden-xs">
+                                                <ul class="fn-clear dib js-star-img">
+                                                    <li class="l" index="1"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                                                    <li class="l" index="2"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                                                    <li class="l" index="3"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                                                    <li class="l" index="4"><img src="__PUBLIC__/images/trained/star.png" alt="star"></li>
+                                                    <li class="l" index="5"><img src="__PUBLIC__/images/trained/star.png" alt="star"></li>
+                                                </ul>
+                                                <span class="g8c"><strong></strong>分</span>
+                                            </div>
+                                        </div>
+                                        <p class="phPar g8c tl"></p><!--phPar/-->
+                                    </td>
+                                </tr>
+                                <!--复制的模板-->
+                                <foreach name="comment" item="vo">
+                                    <tr>
+                                        <td valign="top"  align="left" >
+                                            <div class="pl-touxang">
+                                                <if condition="$vo.avatar eq ''">
+                                                    <img src="__PUBLIC__/images/postDetails/header.png" alt="">
+                                                    <else/>
+                                                    <img src="__PUBLIC__{$vo.avatar}" alt="">
+                                                </if>
+                                            </div>
+                                        </td>
+                                        <td valign="top" class="commentTitle">
+                                            <div class="fn-clear">
+                                                <h5 class="g3c l">{$vo.name}</h5>
+                                                <i class="l">{$vo.created|date='Y-m-d',###}</i>
+                                                <div class="star r">
+                                                    <ul class="fn-clear dib hidden-xs">
+                                                        <for start="0" end="(int)$vo['score']/2">
+                                                            <li class="l"><img src="__PUBLIC__/images/trained/starY.png" alt="star"></li>
+                                                        </for>
+                                                        <for start="0" end="5 - (int)$vo['score']/2">
+                                                            <li class="l"><img src="__PUBLIC__/images/trained/star.png" alt="star"></li>
+                                                        </for>
+                                                    </ul>
+                                                    <span class="g8c"><strong>{$vo.score}</strong>分</span>
+                                                </div>
+                                            </div>
+                                            <p class="phPar g8c tl">{$vo.content}</p><!--phPar/-->
+                                        </td>
+                                    </tr>
+                                </foreach>
+                            </table>
+                            <!--<span class="f16 g3c db more">查看更多评论</span>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="contentR r">
+                <div class="case bgwh dib">
+                    <h3 class="f18 g3c rel">课程推荐  <i class="f12 g8c dib">case</i></h3>
+                    <ul>
+                        <foreach name="pushs" item="vo">
+                            <li>
+                                <a href="{:U('Home/Course/trainedDetails',array('id'=>$vo['courseid']))}">
+                                <img src="__PUBLIC__{$vo.picture}" alt="pic">
+                                <p class="f16 g3c">{$vo.title}</p>
+                                <h4 class="f16 b"><i class="f24 b">{$vo.showprice}</i><b class="f14">维币</b><span class="g58">（￥<if condition="$vo.nowprice eq ''">{$vo.price}<else/>{$vo.nowprice}</if>）</span></h4>
+                                </a>
+                            </li>
+                        </foreach>
+                    </ul>
+                </div>
+                <!--<div class="case bgwh dib">-->
+                    <!--<h3 class="f18 g3c rel">课程推荐  <i class="f12 g8c dib">case</i></h3>-->
+                    <!--<ul>-->
+                        <!--<li>-->
+                            <!--<img src="__PUBLIC__/images/trained/trainedDetails.jpg" alt="pic">-->
+                            <!--<p class="f16 g3c">HR如何作用人分析</p>-->
+                            <!--<h4 class="f16 b"><i class="f24 b">1600</i>维币<span class="g58">（￥1600.00）</span></h4>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<img src="__PUBLIC__/images/trained/trainedDetails.jpg" alt="pic">-->
+                            <!--<p class="f16 g3c">HR如何作用人分析</p>-->
+                            <!--<h4 class="f16 b"><i class="f24 b">1600</i>维币<span class="g58">（￥1600.00）</span></h4>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                            <!--<img src="__PUBLIC__/images/trained/trainedDetails.jpg" alt="pic">-->
+                            <!--<p class="f16 g3c">HR如何作用人分析</p>-->
+                            <!--<h4 class="f16 b"><i class="f24 b">1600</i>维币<span class="g58">（￥1600.00）</span></h4>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+    <!--底部导航&footer-->
+    <include file="Public/footer3"/>
+    <!--底部导航&footer end-->
+<!--我要报名-->
+<form action="{:U('Home/Course/apply')}" method="post" class="apple" id="apple">
+    <div class="apple-bg abs"></div>
+    <div class="apple-con bgwh g3c abs js-apple">
+        <div class="formTitle rel">
+            <h4 class="g9a">报名信息</h4>
+            <img class="formClose abs" src="__PUBLIC__/images/trained/formClose.png" alt="close">
+        </div>
+        <input class="formName js-name" notNull="姓名" value="{$info.name}" name="name" type="text" placeholder="请输入姓名">
+        <input class="formId js-id" notNull="参数" name="id" type="hidden" value="{$course.courseid}">
+        <input class="js-uid" name="uid" type="hidden" value="{$info.uid}">
+        <input class="formAddress js-company" notNull="公司名称" name="company" value="{$company.name}" type="text" placeholder="请输入公司名">
+        <input class="formTel js-phone" notMull="电话" name="mobile" value="{$info.phone}"  type="text" placeholder="请输入电话">
+        <input class="formGPRS js-address" notNull="地址" name="address" value="{$address}" type="text" placeholder="请输入地址">
+        <a class="db" href="javascript:;"><input class="formSubmit b9a wh js-sub" type="button" value="提交报名"></a>
+    </div>
+</form>
+<!--我要报名 end-->
+    <script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+    <script type="text/javascript">
+        window._bd_share_config={"common":{"bdSnsKey":{},"bdUrl":"<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'/fromid/'.$info['uid'];  ?>","bdPopTitle":"<?php echo $article['title'] ?>","bdText":"<?php echo $article['title'] ?>","bdMini":"1","bdMiniList":["bdxc","tqf","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],"bdPic":"<?php echo 'http://106.14.65.213/Public/'.$article['picture'] ?>","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        //    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/share.js?v=89860593.js?cdnversion=" + Math.ceil(new Date()/3600000);
+    </script>
+    <script src="__PUBLIC__/scripts/trainedDetails.js"></script>
+ <script type="text/javascript">
+     $(function(){
+         //点击收藏
+         $('.js-collect').click(function(){
+             var status = $(this).hasClass("collect_green");
+             var id = $(".js-id").val();
+             var uid = $(".js-uid").val();
+             if(uid==''){
+                 var flag = confirm("您还未登录，是否现在去登录");
+                 var url = location.href;
+                 if(flag){
+                     window.location.href="/index.php/Home/User/login?url="+url;
+                 }
+                 return false;
+             }
+             if(id==0||id==undefined){
+                 alert("参数错误");
+                 return false;
+             }
+             if(!status){
+                 //收藏
+                 $.post("/index.php/Home/Course/addCollect",{'id':id},function(data){
+                     if(data.status==1){
+                         alert(data.msg);
+                         $(".js-collect").removeClass('collect');
+                         $(".js-collect").addClass('collect_green');
+                     }else{
+                         alert(data.msg);
+                     }
+                 });
+             }
+             if(status){
+                 //取消收藏
+                 var flag = confirm("您确定取消收藏吗？");
+                 if(!flag){
+                     return false;
+                 }
+                 $.post("/index.php/Home/Course/delCollect",{'id':id},function(data){
+                     if(data.status==1){
+                         alert(data.msg);
+                         $(".js-collect").removeClass('collect_green');
+                         $(".js-collect").addClass('collect');
+                     }else{
+                         alert(data.msg);
+                     }
+                 });
+             }
+             //if(cc){
+             //    $(this).css('color','#9ab126').find('img').attr('src','/Public/images/postDetails/collectGreen.png');
+             //    cc=false;
+             //}
+             //else{
+             //    $(this).css('color','#3c3c3c').find('img').attr('src','/Public/images/postDetails/collect.png');
+             //    cc=true;
+             //}
+         });
+         //报名
+         $(".js-sub").click(function(){
+             var input = $("#apple .js-apple input");
+             var msg = '';
+             var flag = true;
+             input.each(function(){
+                if($(this).val()==''){
+                    msg+=$(this).attr("notNull");
+                    flag = false;
+                }
+             });
+             if(!flag){
+                 alert(msg+"不能为空");
+             }else{
+                 $("#apple").submit();
+             }
+         });
+     });
+ </script>
+</body>
+</html>

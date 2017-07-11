@@ -1,0 +1,108 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>人才管理>人才详情</h1>
+        </div>
+        <div class="template_top_right">
+            <a href="{:U('Admin/Job/apply')}" class="ul_button">返回</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+
+        <form name="adminForm" id="js-form" action="{:U('Admin/Job/applyView')}" method="post" enctype="multipart/form-data">
+            <ul class="add_blank">
+                <li><div class="blank_left">身份证号码：</div><div class="blank_right">{$info.cardnum} </div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">姓名：</div><div class="blank_right">{$info.name}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">性别：</div><div class="blank_right"><if condition="$info['sex'] eq 1">男<elseif condition="$info['sex'] eq 2" />女<else/>保密</if>&nbsp;&nbsp;</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">生日：</div><div class="blank_right">{$info.birth}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">民族：</div><div class="blank_right">{$info.national}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">身高：</div><div class="blank_right">{$info.height}cm</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">体重：</div><div class="blank_right">{$info.weight}Kg</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">健康状况：</div><div class="blank_right">{$info.health}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left"> E-mail：</div><div class="blank_right">{$info.email}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">微信号码：</div><div class="blank_right">{$info.openid}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">户口所在地：</div><div class="blank_right">{$info.hometown}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">现居住地：</div><div class="blank_right">{$info.address}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">联系电话：</div><div class="blank_right">{$info.phone}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">紧急联系人及联系方式：</div><div class="blank_right">{$info.secondcontact}：{$info.contactphone}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">驾照类型：</div><div class="blank_right">{$info.drivertype}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">婚姻状况：</div><div class="blank_right"><if condition="$info['marital'] eq 1">未婚<elseif condition="$info['marital'] eq 2"/>已婚<if condition="$info['marital'] eq 3"/>已孕<else/>保密</if></div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">技术职称：</div><div class="blank_right">{$info.title}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">教育经历：</div><div class="blank_right">                    <foreach name="$info['educaiton']" item="v">
+                    <div>
+                        起止时间：{$v.start}--{$v.end}&nbsp;&nbsp;
+                        学校：{$v.school}&nbsp;&nbsp;
+                        专业：{$v.professional}&nbsp;&nbsp;
+                        学历：{$v.record}&nbsp;&nbsp;
+                        学位：{$v.degree}&nbsp;&nbsp;
+                        教育形式：{$v.type}&nbsp;&nbsp;
+                        <!--<input type="button" value="删除职位" class="js-job-del"/>-->
+                        <br/><br/>
+                    </div>
+                    <!--<div><input type="button"value="添加职位" class="js-add-job"/></div>-->
+                </foreach>
+                </div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">英语等级：</div><div class="blank_right">{$info.englishlevel}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">第二外语：</div><div class="blank_right">{$info.secondlanguage}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">计算机应用水平：</div><div class="blank_right">{$info.computerlevel}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">工作经历：</div><div class="blank_right">
+                    <foreach name="$info['experience']" item="val">
+                        <div>
+                            起止时间：{$val.start}--{$v.end}&nbsp;&nbsp;
+                            工作单位及部门：{$val.companypart}&nbsp;&nbsp;
+                            职位：{$val.position}&nbsp;&nbsp;
+                            前台座机或者行政电话：{$val.telphone}&nbsp;&nbsp;
+                            <br/><br/>
+                        </div>
+                    </foreach>
+                </div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left">家庭成员：</div><div class="blank_right">
+                    <foreach name="$info['familymember']" item="val">
+                        <div>
+                            姓名：{$val.name}&nbsp;&nbsp;
+                            关系：{$val.relation}&nbsp;&nbsp;
+                            工作单位：{$val.company}&nbsp;&nbsp;
+                            职位：{$val.position}&nbsp;&nbsp;
+                            联系方式：{$val.phone}&nbsp;&nbsp;
+                        </div>
+                    </foreach>
+                </div><div class="fn-clear"></div></li>
+                <li><div class="blank_left">家庭住址:</div><div class="blank_right">{$info.familyaddress}</div><div class="fn-clear"></div>
+                </li>
+                <li><div class="blank_left"><span class="blank_color">*</span>状态</div><div class="blank_right">
+                    <input type="radio" name="status" value="1"  class="ul_middle" <eq name="info['status']" value="1">checked</eq>/>&nbsp;正常&nbsp;&nbsp;
+                    <input type="radio" name="status" value="0" class="ul_middle" <eq name="info['status']" value="0">checked</eq>/>&nbsp;屏蔽
+                </div><div class="fn-clear"></div></li>
+                <input type="hidden" name="id" value="{$info.id}" />
+                <li class="ul_word"><input type="submit" class="ul_add" value="保存"/><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/><a href="{:U('Admin/Job/addTalent',array('id'=>$info['id']))}">添加到推荐</a></li>
+            </ul></form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/shopsForm.css">
+    <link rel="stylesheet" href="__PUBLIC__/styles/businessForm.css">
+    <title>企业入驻申请</title>
+</head>
+<body>
+<!--企业入驻申请businessForm-->
+<!--header登录注册-->
+<include file="Public/top"/>
+<!--导航条 end-->
+<!--content-->
+<form id="js-form" action="{:U('Home/Company/apply')}" method="post" enctype="multipart/form-data" class="content g3c bgwh">
+    <h3 class="g3c rel">入驻申请信息<i class="dib g8c f12">Application</i></h3>
+    <div>
+        <label for="name">公司全称</label>
+        <input id="name" class="js-name" name="name" type="text">
+    </div>
+        <label>类型</label>
+        <select class="js-type" name="type">
+            <option value=""></option>
+            <foreach name="types" item="v">
+                <option value="{$v.name}">{$v.name}</option>
+            </foreach>
+        </select>
+    </div>
+    <div>
+        <label>营业执照号</label>
+        <input type="text" class="js-licensenum" name="licensenum" placeholder="请输入营业执照号" >
+    </div>
+    <div>
+        <label>营业执照</label>
+        <div class="dib upImg fn-clear">
+            <lable  class="imgdiv l" id="imgdiv" for="up_img"><img id="imgShow" width="100" height="100" /></lable>
+            <div class="l">
+                <p class="g8c  hidden-xs">图片不得大于4M (jpg、gif、png、bmp)</p>
+                <p class="g8c  hidden-xs">推荐尺寸 472*280 px的图片</p>
+                <p class="g8c  hidden-xs">温馨提示：一张漂亮的海报，会起到意想不到的效果，</p>
+                <p class="g8c  hidden-xs">它会让你的活动显得更加有吸引力，更有品质；</p>
+                <p class="g8c  hidden-xs">它会让你的活动显得更加有吸引力，更有品质；</p>
+                <div class="up_img rel">
+                    <input type="file" id="up_img" class="js-picture1" name="picture[0]" value="上传"/>
+                    <label class="abs" for="up_img">上传</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label for="tel">主营业务</label>
+        <input id="tel" class="js-business" name="business" type="text">
+    </div>
+    <div>
+        <label for="introduce">企业简介</label>
+        <textarea class="js-intro" name="intro" id="introduce" ></textarea>
+        <div class="dib g8c explain fn-clear">
+            <h4 class="l hidden-xs">上传海报:</h4>
+            <ul class="l">
+                <li class="hidden-xs">图片不得大于4M (jpg、gif、png、bmp)</li>
+                <li class="hidden-xs">推荐尺寸 472*280 px的图片</li>
+                <li class="hidden-xs">温馨提示：一张漂亮的海报，会起到意想不到的效果,</li>
+                <li class="hidden-xs">它会让你的活动显得更加有吸引力，更有品质；</li>
+                <li class="hidden-xs">这将会为您的活动带来更多的用户报名哦！</li>
+            </ul>
+        </div>
+    </div>
+    <div>
+        <label>logo图片</label>
+        <div class="dib upImg fn-clear">
+            <lable  class="imgdiv l" id="logodiv" for="up_img"><img id="logoShow" width="100" height="100" /></lable>
+            <div class="l">
+                <p class="g8c  hidden-xs">图片不得大于4M (jpg、gif、png、bmp)</p>
+                <p class="g8c  hidden-xs">推荐尺寸 472*280 px的图片</p>
+                <p class="g8c  hidden-xs">温馨提示：一张漂亮的海报，会起到意想不到的效果，</p>
+                <p class="g8c  hidden-xs">它会让你的活动显得更加有吸引力，更有品质；</p>
+                <p class="g8c  hidden-xs">它会让你的活动显得更加有吸引力，更有品质；</p>
+                <div class="up_img rel">
+                    <input type="file" id="up_logo" class="js-picture2" name="picture[1]" value="上传"/>
+                    <label class="abs" for="up_logo">上传</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <label>网址</label>
+        <input type="text" class="js-link" name="link" placeholder="http://" >
+    </div>
+    <div class="registered">
+        <label>地址</label>
+        <div class="dib">
+            <div class="address" data-toggle="distpicker">
+                <select name="prov" class="dib select f16 js-prov">
+                    <option>请选择</option>
+                </select>
+                <span class="f16 g3c province dib">省</span>
+                <select name="city" class="dib select f16 js-city">
+                    <option>请选择</option>
+                </select>
+                <span class="f16 g3c">市</span>
+            </div>
+            <textarea name="address" class="js-address" placeholder="请输入详细地址"></textarea>
+        </div>
+    </div>
+    <div>
+        <label>联系人</label>
+        <input class="js-contact" name="contact" type="text" placeholder="请输入名称" >
+    </div>
+    <div>
+        <label>联系电话</label>
+        <input class="js-mobile" name="mobile" type="text" placeholder="请输入联系电话" >
+    </div>
+    <a class="js-sub" href="javascript:;">
+        <input class="b9a wh"  type="button" value="提交申请并支付">
+        <span class="f18 g8c hidden-xs">申请需支付{$value}维币，方可入助</span>
+    </a>
+</form>
+<!--content end-->
+<!--底部导航&footer-->
+<div class="footer">
+    <div class="rel f16 wh">
+        <img src="__PUBLIC__/images/index/footerEWM.png" alt="EWM">
+        <h4 class="f16 wh">上海维沃珂自助营销平台版权所有</h4>
+        <p class=" hidden-xs">地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇</p>
+        <p class=" hidden-xs">电话：0000-0000-88<span class="dib">传真：0000-0000-88</span>邮箱：9937088888@163.com</p>
+    </div>
+</div>
+<!--底部导航&footer end-->
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<!--图片上传-->
+<script src="__PUBLIC__/scripts/uploadPreview.js" ></script>
+<script>
+    $(document).ready(function () {
+        $(".navbar-nav li:nth-child(2)").mouseout(function () {
+            $(this).addClass('listBg') ;
+        });
+        // 上传图片预览
+        window.onload = function () {
+            new uploadPreview({ UpBtn: "up_img", DivShow: "imgdiv", ImgShow: "imgShow" });
+            new uploadPreview({ UpBtn: "up_logo", DivShow: "logodiv", ImgShow: "logoShow" });
+        }
+        //提交表单
+        $(".js-sub").click(function(){
+            var name = $(".js-name").val();
+            var type = $(".js-type").val();
+            var licensenum = $(".js-licensenum").val();
+            var picture1 = $(".js-picture1").val();
+            var picture2 = $(".js-picture2").val();
+            var business = $(".js-business").val();
+            var intro = $(".js-intro").val();
+            var link = $(".js-link").val();
+            var contact = $(".js-contact").val();
+            var mobile = $(".js-mobile").val();
+            var prov = $(".js-prov").val();
+            var city = $(".js-city").val();
+            var address = $(".js-address").val();
+            var status = true;
+            var msg = '';
+            if(name==''){
+                status = false;
+                msg+="企业名称不能为空";
+            }
+            if(type==''){
+                status = false;
+                msg+="企业类型不能为空";
+            }
+            if(licensenum==''){
+                status = false;
+                msg+="营业执照号不能为空";
+            }
+            if(picture1==''){
+                status = false;
+                msg+="营业执照图片不能为空";
+            }
+            if(picture2==''){
+                status = false;
+                msg+="LOGO图片不能为空";
+            }
+            if(business==''){
+                status = false;
+                msg+="主营业务不能为空";
+            }
+            if(intro==''){
+                status = false;
+                msg+="简介不能为空";
+            }
+            if(contact==''){
+                status = false;
+                msg+="联系人不能为空";
+            }
+            if(mobile==''){
+                status = false;
+                msg+="联系人电话不能为空";
+            }
+            if(prov==''){
+                status = false;
+                msg+="省份不能为空";
+            }
+            if(city==''){
+                status = false;
+                msg+="市区不能为空";
+            }
+            if(address==''){
+                status = false;
+                msg+="联系详细地址不能为空";
+            }
+            if(!status){
+                alert(msg);
+            }else{
+                $("#js-form").submit();
+            }
+        });
+    })
+</script>
+<!--城市选择-->
+<script src="__PUBLIC__/scripts/distpicker.data.js"></script>
+<script src="__PUBLIC__/scripts/distpicker.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<inlcude file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/Cloudally.css">
+    <title>商家云盟</title>
+</head>
+<body>
+<!--商家云盟Cloudally-->
+<div class="mainBg">
+    <!--header登录注册-->
+   <include file="Public/top"/>
+    <!--header logo end-->
+    <!--导航条-->
+  <include file="Public/nav"/>
+    <!--导航条 end-->
+    <!--banner-->
+    <div class="banner"><img src="__PUBLIC__/images/Cloudally/banner.jpg" alt="banner"></div>
+    <!--banner end-->
+    <div class="content">
+        <!--入驻流程-->
+        <div class="process">
+            <h3 class="f24 g3c b">入驻流程 </h3>
+            <p class="f18 g8c">只需4步，便可轻松入驻 </p>
+            <hr>
+            <ul class="processList fn-clear">
+                <li><a href="{:U('Home/User/register')}" class="dib g3c dib registerOption">注册账号</a></li>
+                <li><a href="{:U('Home/Company/apply')}" class="dib g3c dib apply">申请入驻</a></li>
+                <li><a class="dib g3c dib from">填写并提交表单</a></li>
+                <li><a class="dib g3c dib generalize">自助推广</a></li>
+            </ul>
+        </div>
+        <!--入驻流程 end-->
+        <!--公司优势-->
+        <div class="advantage">
+            <h3 class="f24 g3c b">平台优势  </h3>
+            <p class="f18 g8c">比行业内其他公司更有竞争力，选择我们没问题</p>
+            <hr>
+            <ul class="fn-clear">
+                <foreach name="advs" item="vo">
+                    <li><img src="__PUBLIC__{$vo.picture}" alt="pic"></li>
+                    <span>{$vo.title}</span>
+                </foreach>
+                <!--<li><img src="__PUBLIC__/images/Cloudally/pic06.jpg" alt="pic"></li>-->
+            </ul>
+            <h4 class="g8c hidden-xs">当企业出现用人过剩，用人需求与实际不成正比，企业效率难以提升，HR应该如何做好用人需求分析才能避免这些问题的发生？本课程为你系统介绍用人需求分析的具体流程，通过掌握行之有效的用人需求分析工具，帮助HR完美匹配人才，提升工作效率,企业效率难以提升，HR应该如何做好用人需求分析才能避免这些问题的发生。HR应该如何做好用人需求分析才能避免这些问题的发生。           </h4>
+        </div>
+        <!--公司优势 end-->
+        <!--免费注册-->
+        <a class="registerBtn dib" href="{:U('Home/User/register')}"><input class="wh" type="text" value="免费注册" readonly="readonly"></a>
+        <!--免费注册 end-->
+    </div>
+    <!--我要加盟banner-->
+    <div class="join">
+        <h5 class="g3c">维沃珂</h5>
+        <p  class="g3c">周到的服务体系与客户共同营造双赢的发展未来</p>
+        <a class="db" href="{:U('Home/Company/apply')}">申请入驻</a>
+    </div>
+    <!--我要加盟banner end-->
+    <!--底部导航&footer-->
+    <div class="footer">
+        <div class="rel f16 wh">
+            <img src="__PUBLIC__/images/index/footerEWM.png" alt="EWM">
+            <h4 class="f16 wh">上海维沃珂自助营销平台版权所有</h4>
+            <p class=" hidden-xs">地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇</p>
+            <p class=" hidden-xs">电话：0000-0000-88<span class="dib">传真：0000-0000-88</span>邮箱：9937088888@163.com</p>
+        </div>
+    </div>
+    <!--底部导航&footer end-->
+    <!--悬浮链接-->
+    <div class="suspend fn-clear">
+        <a href="#" class="l weChat dn"><p class="f12 g28">微信号：123546</p></a>
+        <ul class="r">
+            <li class="serviceBtn"><img src="__PUBLIC__/images/index/suspend01.png" alt=""></li>
+            <li class="weChatBtn"><img src="__PUBLIC__/images/index/suspend02.png" alt=""></li>
+            <li class="topBtn"><img src="__PUBLIC__/images/index/suspend03.png" alt=""></li>
+        </ul>
+    </div>
+    <!--悬浮链接 end-->
+</div>
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/bootstrap.min.js"></script>
+<script src="__PUBLIC__/scripts/Cloudally.js"></script>
+</body>
+</html>

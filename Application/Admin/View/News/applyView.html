@@ -1,0 +1,40 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>申请管理>申请详情</h1>
+        </div>
+        <div class="template_top_right">
+            <a href="{:U('Admin/Company/apply')}" class="ul_button">返回</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+    
+    <form name="adminForm" method="post" action="{:U('Admin/Company/applyView')}">
+        <ul class="add_blank">
+            <li><div class="blank_left">企业名称</div><div class="blank_right">{$apply.name}</div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">营业执照</div><div class="blank_right"><a href="/Public/{$apply.licensepic}" target="_blank">预览</a></div><div class="fn-clear"></div></li>
+            <!--<li><div class="blank_left">身份证</div><div class="blank_right"><a href="{$apply.idcard}" target="_blank">预览</a></div><div class="fn-clear"></div></li>            -->
+            <li><div class="blank_left"><span class="blank_color">*</span>状态</div><div class="blank_right">
+            <input type="radio" name="status" value="0" class="ul_middle" <eq name="apply['status']" value="0">checked</eq>/>&nbsp;未审核
+            <input type="radio" name="status" value="1"  class="ul_middle" <eq name="apply['status']" value="1">checked</eq>/>通过
+            <input type="radio" name="status" value="2"  class="ul_middle" <eq name="apply['status']" value="2">checked</eq>/>未通过
+            	<br/><span class="blank_color">审核通过后，会进入到平台，谨慎操作</span>
+            </div><div class="fn-clear"></div></li>
+            <!--<li><div class="blank_left"><span class="blank_color">*</span>备注</div><div class="blank_right">-->
+            <!--<textarea type="text" name="remark" style="width:238px;height:98px;"/>{$apply.remark}</textarea>-->
+            <!---->
+            <!--</div><div class="fn-clear"></div></li>-->
+            
+            
+            
+            <input type="hidden" name="id" value="{$apply.companyid}" />
+            <li class="ul_word"><input type="submit" class="ul_add" value="保存"/><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/></li>
+        </ul></form>
+    </div>
+</div>
+</body>
+</html>

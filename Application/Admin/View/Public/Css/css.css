@@ -1,0 +1,174 @@
+@charset "utf-8";
+
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+html {
+    color: #000;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+body, button, input, select, textarea {
+    font: 12px/1.5 tahoma, arial, "Hiragino Sans GB", \5b8b\4f53;
+}
+
+input, select, textarea {
+    font-size: 100%;
+}
+
+/* 去掉各Table  cell 的边距并让其边重合 */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* IE bug fixed: th 不继承 text-align*/
+th {
+    text-align: inherit;
+}
+
+/* 去除默认边框 */
+fieldset, img {
+    border: 0;
+}
+
+/* ie6 7 8(q) bug 显示为行内表现 */
+iframe {
+    display: block;
+}
+
+/* 去掉 firefox 下此元素的边框 */
+abbr, acronym {
+    border: 0;
+    font-variant: normal;
+}
+
+/* 一致的 del 样式 */
+del {
+    text-decoration: line-through;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* 去掉列表前的标识, li 会继承 */
+ol, ul {
+    list-style: none;
+}
+
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+caption, th {
+    text-align: left;
+}
+
+/* 来自yahoo, 让标题都自定义, 适应多个系统应用 */
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 500;
+}
+
+q:before, q:after {
+    content: '';
+}
+
+/* 统一上标和下标 */
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* 正常链接 未访问 */
+a:link {
+    color: #08c;
+}
+
+/* 鼠标悬停 */
+a:hover {
+    color: #08c;
+}
+
+/* 默认不显示下划线，保持页面简洁 */
+ins, a {
+    text-decoration: none;
+}
+
+/* 清理浮动 */
+.fn-clear:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0px;
+    line-height: 0px;
+}
+
+.fn-clear {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0px;
+    line-height: 0px;
+    zoom: 1; /* for IE6 IE7 */
+}
+body{background:#f7f7f7;font-family:"微软雅黑";}
+.cont{width:1200px;margin:0px auto;}
+/*首页样式*/
+.head{height:30px;line-height:30px;background:#f1f1f1;border-bottom:1px solid #dfdfdf;font-size:14px;color:#666;}
+.top{text-align:right;}
+.top span{padding:0px 10px;}
+.top a{color:#666;text-decoration:none;}
+.logo{margin:30px 0px;font-size:18px;color:#4c4c4c;height:40px;}
+.logo img{width:auto;height:50px;margin-right:20px;vertical-align:text-bottom;}
+.nav{height:40px;line-height:40px;background:#383838;color:#f7f7f7;font-size:18px;margin-bottom:10px}
+.nav .nav_left{width:180px;float:left;background:url("../Image/nav.png") 22px 9px no-repeat #a8c905;text-align:center;}
+.nav .nav_right{width:1020px;float:right;}
+.nav .nav_right ul li{float:left;width:120px;text-align:center;}
+.nav .nav_right ul li a{text-decoration:none;color:#fff;}
+.nav .nav_right ul li a:hover{border-bottom:2px solid #fff;padding-bottom:3px;}
+.main_left{width:180px;float:left;font-size:16px;text-align:center;padding-top:10px;}
+.main_left .main_box{height:40px;line-height:40px;border-radius:5px;margin-top:10px;background:url("../image/nav.png") 22px -46px no-repeat #e6e6e6;cursor:pointer;}
+.main_left .main_box2{display:none;}
+.main_left .main_box2 ul li a{display:block;color:#666;font-size:14px;height:30px;line-height:30px;}
+.main_left .main_font{background:#ffffff;border-bottom:1px solid #e5e5e5;border-left:1px solid #e5e5e5;border-bottom-left-radius:5px;}
+.main_left .main_one{background-position:22px -99px;}
+.main_left .main_two{background-position:22px -154px;}
+.main_left .main_there{background-position:22px -208px;}
+.main_left .main_four{background-position:22px -262px;}
+.main_left .main_five{background-position:22px -316px;}
+.main_left .main_six{background-position:22px -369px;}
+.main_left .main_seven{background-position:22px -424px;}
+.main_right{border:1px solid #e5e5e5;border-radius:5px;float:left;width:1018px;min-height:650px;background:#ffffff;}
+.button{height:100px;background:#383838;margin-top:20px;}

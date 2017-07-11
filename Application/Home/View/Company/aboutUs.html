@@ -1,0 +1,37 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/company_intro.css">
+    <title>{$intro.title}</title>
+<meta name="description" content="<?php  echo mb_substr($intro['intro'],0,200,'utf-8');  ?>" />
+<meta name="keywords" content="{$intro.title}" />
+</head>
+<style>
+    html, body,.content{height: 100%;}
+    .content {height: auto; min-height: 100%;}
+    .content::after {content: ".";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;}
+    .content{display: inline-block;}
+    .content{display:block;}
+    .footer,.footerT{position: relative;
+        clear:both;}
+</style>
+
+<body>
+<!--header登录注册-->
+<include file="Public/top" />
+<!--header logo end-->
+<!--导航条-->
+<include file="Public/nav"/>
+<!--导航条 end-->
+<div class="content">
+    <h2 class="f24 g3c b">{$intro.name}</h2>
+    <img src="__PUBLIC__{$intro.companypic}" title="" alt="">
+    <p class="f18 g3">{$intro.intro}</p>
+</div>
+<!--底部导航&footer-->
+<include file="Public/footer3"/>
+<!--底部导航&footer end-->
+</body>
+</html>

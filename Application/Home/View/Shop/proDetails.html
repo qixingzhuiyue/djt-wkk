@@ -1,0 +1,417 @@
+<include file="Public/header"/>
+    <link href="__PUBLIC__/styles/template.css" rel="stylesheet">
+    <link href="__PUBLIC__/styles/proDetails.css" rel="stylesheet">
+<!--微信分享显示图片描述的配置-->
+<script>
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '<?php echo $signPackage["appId"];?>', // 必填，公众号的唯一标识
+        timestamp: '<?php echo $signPackage["timestamp"];?>', // 必填，生成签名的时间戳
+        nonceStr: '<?php echo $signPackage["nonceStr"];?>', // 必填，生成签名的随机串
+        signature: '<?php echo $signPackage["signature"];?>',// 必填，签名，见附录1
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone','startRecord', 'stopRecord','onVoiceRecordEnd'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    wx.ready(function () {
+        // 在这里调用 API
+        wx.onMenuShareTimeline({
+            title: '{$good.name}', // 分享标题
+            desc: '{$good.intro}', // 分享描述
+            link: "http://www.91wework.com/index.php/Home/Shop/proDetails/id/{$good.goodid}/fromid/{$info.uid}", // 分享链接
+            imgUrl: "http://www.91wework.com/Public{$good.picture}", // 分享图标
+            success: function () {
+                share();
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: '{$good.name}', // 分享标题
+            desc: '{$good.intro}', // 分享描述
+            link: "http://www.91wework.com/index.php/Home/Shop/proDetails/id/{$good.goodid}/fromid/{$info.uid}", // 分享链接
+            imgUrl: "http://www.91wework.com/Public{$good.picture}", // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                share();
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+    var share =  function(){
+        var id = $(".js-good-id").val();
+        if(id==''||id==undefined){
+            alert("参数错误");
+            return false;
+        }
+        $.post("{:U('Home/Shop/addshare')}",{id:id},function(data){
+            if(data.status==1){
+//                        alert(data.msg);
+                $(".js-share").attr("disabled",true);
+                setTimeout($('.js-share').attr("disabled",false),5000);
+            }else{
+//                        alert(data.msg);
+            }
+        });
+    };
+</script>
+<!--微信分享显示图片描述的配置-->
+    <title>{$good.name}</title>
+</head>
+<body>
+<div class="mainBg">
+<!--proDetails-->
+    <div class="bgwh">
+        <include file="Public/top1"/>
+        <hr>
+        <div class="shops fn-clear">
+            <!--<a href="shopsManagement.html"><input class="f16 wh l" type="button" value="管理店铺"></a>-->
+            <if condition="$shop.logo eq ''">
+                <a href="javascript:;"><img src="__PUBLIC__/images/shops/1.png" alt="logo"></a>
+                <else/>
+                <a href="javascript:;"><img src="__PUBLIC__{$shop.logo}" alt="logo"></a>
+            </if>
+            <!--<div class="r search rel hidden-xs"><input class="f16 g3c" type="search" placeholder="搜索您感兴趣的内容"></div>-->
+        </div>
+        <!--导航-->
+        <div class="navbar-nav navbar-inverse">
+            <div class="navbar-header">
+                <button class="navbar-toggle" data-toggle="collapse" data-target="#mycollapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!--折叠部分-->
+            <div class="collapse navbar-collapse" id="mycollapse">
+                <!--当屏幕宽度小于768px时 会将ul列表隐藏-->
+                <ul class="nav navbar-nav">
+                    <li class="indexNav rel"><a href="{:U('Home/Shop/shop',array('id'=>$good['shopid']))}">首页</a></li>
+                    <li><a href="/index.php/Home/Shop/shop/id/{$good.shopid}/#all">全部商品 </a></li>
+                    <li><a href="/index.php/Home/Shop/shop/id/{$good.shopid}/#dis">店铺活动</a></li>
+                    <li><a href="/index.php/Home/Shop/shop/id/{$good.shopid}/#new">最新商品 </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+<!--导航 end-->
+    <!--content-->
+    <div class="content">
+        <!--模块一-->
+        <div class="model-one fn-clear bgwh">
+            <a class="dib l pic" href="javascript:void(0)"><img src="__PUBLIC__{$good.picture}" alt="pic"></a>
+            <div class="title r">
+                <h4 class="f26 g3c b">{$good.name}</h4>
+                <p class="f16 g8c">{$good.intro}</p>
+                <h5>¥{$good.money}</h5>
+                <div class="fn-clear">
+                    <input type="hidden" class="js-good-id" name="id" value="{$good.goodid}"/>
+                    <input type="hidden" class="js-user" name="user" value="{$Think.session.userinfo.name}"/>
+                    <input class="f18 wh l js-buy" type="button" value="立刻购买">
+                    <div class="g3c r">
+                        <p value="{$good.goodid}" class="dib collect <if condition="$good.collect eq 1">collect-green</if>">
+                        <if condition="$good.collect eq 1">
+                            已收藏&nbsp;
+                            <else/>
+                            收藏&nbsp;
+                        </if>
+                        </p>
+                        <div class="share-platform dib">
+                            <p class="dib">分享：</p>
+                            <div class="bdsharebuttonbox dib">
+                                <a href="#" class="bds_weixin js-share" data-cmd="weixin" title="分享到微信"></a>
+                                <a href="#" class="bds_tsina js-share" data-cmd="tsina" title="分享到新浪微博"></a>
+                                <a href="#" class="bds_qzone js-share" data-cmd="qzone" title="分享到QQ空间"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--模块二-->
+        <div class="model-two fn-clear">
+            <div class="contentL l">
+                <!--产品详情-->
+                <div class="details bgwh">
+                    <div id="edit" class="tc">{$good.content}</div>
+                    <div class="g3c" style="width:280px;margin:auto;line-height:30px;">
+                        <p value="{$good.goodid}" class="dib collect <if condition="$good.collect eq 1">collect-green</if>">
+                        <if condition="$good.collect eq 1">
+                            已收藏&nbsp;
+                            <else/>
+                            收藏&nbsp;
+                        </if>
+                        </p>
+                        <div class="share-platform dib">
+                            <p class="dib">分享：</p>
+                            <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare bdsharebuttonbox dib" data="{'url':<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'/fromid/'.$info['uid']; ?>,'title':'<?php echo $article['title'] ?>','pic':'<?php echo 'http://106.14.65.213/Public/'.$article['picture'] ?>'}">
+                                <a href="javascript:;" class="bds_weixin js-share" data-cmd="weixin" title="分享到微信"></a>
+                                <a href="javascript:;" class="bds_tsina js-share" data-cmd="tsina" title="分享到新浪微博"></a>
+                                <a href="javascript:;" class="bds_qzone js-share" data-cmd="qzone" title="分享到QQ空间"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="f18 g3c rel">用户评论<i class="f12 g8c"> ({$good.commentNum}条评论)</i></h3>
+                    <form action="#" method="get" class="tjpl-form">
+                        <textarea class="js-good-comment"></textarea>
+                        <div class="tjpl">
+                            <input class="wh js-good-submitPL" type="button" value="发表评论" />
+                        </div><!--tjpl/-->
+                    </form>
+                    <!--评论回复-->
+                    <div>
+                        <table class="pinghuifu">
+                            <tr style="display: none;">
+                                <td valign="top"  align="left" >
+                                    <div class="pl-touxang">
+                                        <if condition="$avatar eq ''">
+                                            <img src="__PUBLIC__/images/postDetails/header.png">
+                                            <else/>
+                                            <img src="__PUBLIC__{$avatar}">
+                                        </if>
+                                    </div>
+                                </td>
+                                <td valign="top" class="commentTitle">
+                                    <h5 class="dib g3c">{$info.name}</h5>
+                                    <i class="dib time"></i>
+                                    <p class="phPar g8c"></p><!--phPar/-->
+                                    <!--<div class="g8c">-->
+                                    <!--<div class="huifu-s dib">-->
+                                    <!--<span class="re-show">回复</span>-->
+                                    <!--<span class="re-hide">收起回复</span>-->
+                                    <!--</div>&lt;!&ndash;huifu-s/&ndash;&gt;-->
+                                    <!--<div class="dib support">支持</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="reply">-->
+                                    <!--<form action="#" method="get">-->
+                                    <!--<textarea></textarea>-->
+                                    <!--<div class="re-tijiao">-->
+                                    <!--<input class="wh" type="submit" value="提交回复" />-->
+                                    <!--</div>&lt;!&ndash;re-tijiao/&ndash;&gt;-->
+                                    <!--</form>-->
+                                    <!--</div>&lt;!&ndash;reply/&ndash;&gt;-->
+                                </td>
+                            </tr>
+                            <foreach name="comments" item="val">
+                                <tr>
+                                    <td valign="top"  align="left" >
+                                        <div class="pl-touxang">
+                                            <if condition="$val.avatar eq ''">
+                                                <img src="__PUBLIC__/images/postDetails/header.png">
+                                                <else/>
+                                                <img src="__PUBLIC__{$val.avatar}">
+                                            </if>
+                                        </div>
+                                    </td>
+                                    <td valign="top" class="commentTitle">
+                                        <h5 class="dib g3c">{$val.name}</h5>
+                                        <i class="dib time">{$val.created|date='Y-m-d H:i:s',###}</i>
+                                        <p class="phPar g8c">{$val.content}</p><!--phPar/-->
+                                        <foreach name="val.reply" item="value">
+                                            <p>{$value.content}</p>
+                                        </foreach>
+                                        <if condition="$val.replyStatus eq 1">
+                                            <div class="g8c">
+                                                <div class="huifu-s dib">
+                                                    <span class="re-show">回复</span>
+                                                    <span class="re-hide">收起回复</span>
+                                                </div><!--huifu-s/-->
+                                                <!--<div class="dib support">支持</div>-->
+                                                <div value="{$val.commentid}" user="{$Think.session.userinfo.name}" class="dib js-support support <if condition="$val.support neq 0">support-green</if> ">支持</div>
+                                            </div>
+                                            <div class="reply">
+                                                <form action="#" method="get">
+                                                    <input type="hidden" value="{$val.commentid}" user="{$Think.session.userinfo.name}" class="js-hufui-id" name="commentid"/>
+                                                    <textarea></textarea>
+                                                    <div class="re-tijiao">
+                                                        <input class="wh submitHF" type="button" value="提交回复" />
+                                                    </div><!--re-tijiao/-->
+                                                </form>
+                                            </div><!--reply/-->
+                                        </if>
+                                    </td>
+                                </tr>
+                            </foreach>
+                        </table>
+                    </div>
+                    <a class="pl_more f16">查看更多评论</a>
+                </div>
+                <div class="market bgwh">
+                    <h3 class="f18 g3c rel">推荐店铺<i class="f12 g8c">SPLENDID MOMENT</i></h3>
+                    <foreach name="shops" item="v">
+                        <div class="market_one">
+                            <a href="{:U('Home/Shop/shop',array('id'=>$v['shopid']))}">
+                                <if condition="$v.logo eq ''">
+                                    <img src="__PUBLIC__/images/shops/6.png">
+                                    <else/>
+                                    <img src="__PUBLIC__{$v.logo}">
+                                </if>
+                            </a>
+                            <h2 class="f16">{:mb_substr($v['name'],0,6)}</h2>
+                        </div>
+                    </foreach>
+                    <!--<div class="market_one">-->
+                        <!--<a><img src="__PUBLIC__/images/shops/6.png"></a>-->
+                        <!--<h2 class="f16">企业店铺</h2>-->
+                    <!--</div>-->
+
+                </div>
+            </div>
+            <div class="contentR r">
+                <div class="head_pic">
+                    <a href="{:U('Home/Shop/shop',array('id'=>$good['shopid']))}">
+                        <img src="__PUBLIC__{$shop.logo}">
+                    </a>
+                    <h1 class="f18">{:mb_substr($shop['name'],0,6)}</h1>
+                    <a href="{:U('Home/Shop/shop',array('id'=>$good['shopid']))}" class="inter f18">进入店铺</a>
+                </div>
+                <div class="pro_intro">
+                    <h3 class="f18 g3c rel">产品推荐<i class="f12 g8c"> product</i></h3>
+                    <foreach name="goods" item="vo">
+                        <img onclick="window.open('/index.php/Home/Shop/proDetails/id/{$vo.goodid}')"; src="__PUBLIC__{$vo.picture}">
+                        <h4 class="f18">¥{$vo.money}</h4>
+                        <h5 class="f14">{:mb_substr($vo['name'],0,6)}</h5>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--content end-->
+    <!-- 底部-->
+    <include file="Public/footer3"/>
+    <!-- 底部end-->
+</div>
+<!--分享-->
+<script src="__PUBLIC__/scripts/ZeroClipboard.js"></script>
+<script src="__PUBLIC__/scripts/postDetails.js"></script>
+<script src="__PUBLIC__/scripts/trainedDetails.js"></script>
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdUrl":"<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'/fromid/'.$info['uid'];  ?>","bdPopTitle":"<?php echo $article['title'] ?>","bdText":"<?php echo $article['title'] ?>","bdMini":"1","bdMiniList":["bdxc","tqf","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],"bdPic":"<?php echo 'http://106.14.65.213/Public/'.$article['picture'] ?>","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    //        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<script type="text/javascript">
+    var href = this.location.href;
+    var fromid = "{$info.uid}";
+    href+="/fromid/"+fromid;
+    $(function(){
+        //获取用户信息
+        var user = $(".js-user").val();
+        //获取商品ID
+        var id = $(".js-good-id").val();
+        //获取当前URL地址
+        var url = location.href;
+        //支持
+        $(".js-support").click(function(){
+            var flag = $(this).hasClass("support-green");
+            var commentid = $(this).attr("value");
+            if(!flag){
+                if(user==''){
+                    var flag = confirm("您还未登录，是否现在登录");
+                    var url = location.href;
+                    if(flag){
+                        window.location.href="/index.php/Home/User/login?url="+url;
+                    }
+                    return false;
+                }else if(commentid==''){
+                    alert("操作异常");
+                }else{
+                    $(this).toggleClass('support-green');
+                    $.post("{:U('Home/Article/support')}",{'commentid':commentid},function(data){
+                        if(data.status==1){
+                            alert(data.msg);
+                        }else{
+                            alert(data.msg);
+                        }
+                    });
+                }
+            }
+        });
+//        //收藏
+        $('.collect').click(function () {
+            var user = $(".js-user").val();
+            var flag = $(this).hasClass("collect-green");
+            var collect = $('.collect');
+            if(user==''){
+                var flags = confirm("您还未登录，是否现在登录");
+                var url = location.href;
+                if(flags){
+                    window.location.href="/index.php/Home/User/login?url="+url;
+                }
+                return false;
+            }
+//            alert(id);
+            if(id==''||id==undefined){
+                alert("操作异常");
+                return false;
+            }
+            //添加收藏
+            if(flag==false){
+                $.post("{:U('Home/Shop/addGoodCollect')}",{id:id},function(data){
+                    if(data.status==1){
+                        alert(data.msg);
+                        collect.html('已收藏&nbsp;');
+                        collect.toggleClass('collect-green');
+                    }else{
+                        alert(data.msg);
+                    }
+                });
+            }
+            if(flag==true){
+                $.post("{:U('Home/Shop/delGoodCollect')}",{id:id},function(data){
+                    if(data.status==1){
+                        alert(data.msg);
+                        collect.html('收藏&nbsp;');
+                        collect.toggleClass('collect-green');
+                    }else{
+                        alert(data.msg);
+                    }
+                });
+            }
+//            $(this).toggleClass('collect-green')
+        });
+        //分享
+        $('.js-share').click(function () {
+            var id = $(".js-good-id").val();
+            if(id==''||id==undefined){
+                alert("参数错误");
+                return false;
+            }
+            $.post("{:U('Home/Shop/addshare')}",{id:id},function(data){
+                if(data.status==1){
+//                        alert(data.msg);
+                    $(".js-share").attr("disabled",true);
+                    setTimeout($('.js-share').attr("disabled",false),5000);
+                }else{
+//                        alert(data.msg);
+                }
+            });
+//            $(this).toggleClass('collect-green')
+        });
+        //购买
+        $('.js-buy').click(function(){
+            if(user==''||user==undefined){
+                var flag = confirm('你还没有登录，是否现在去登录？');
+                if(flag){
+                    window.location.href="/index.php/Home/User/login/url/"+url;
+                }else{
+                    return false;
+                }
+            };
+            if(id==''||id==undefined){
+                alert('操作异常');
+                return false;
+            }
+            window.location.href="{:U('Home/Shop/shopPay',array('id'=>$good['goodid']))}";
+        });
+    });
+
+
+</script>
+</body>
+</html>

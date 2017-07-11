@@ -1,0 +1,66 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>维币管理>维币充值记录列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+            <!--<a href="{:U('Admin/Role/add', array('rpid' => $date['id'],'uid' => $_SESSION[C('USER_AUTH_KEY')]))}" class="ul_button">添加企业组</a>-->
+            <!--<a href="{:U('Admin/Company/add')}" class="ul_button">添加企业</a>-->
+            <!--<a href="#" onclick="del();" class="ul_button">删除企业组</a>-->
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+    <table class="ul_table">
+         	<tbody class="ul_table">
+    		<tr>
+    		<td width="60%" style="text-align:left">
+	    		<form action="{:U('Admin/Vcoin/vcoinLog')}" method="get">
+				用户名：<input type="text" name="keyword" value="{$Think.get.keyword}" />
+				<input type="submit" value="查询" />
+				<input type="reset" value="清空" />
+	      		</form>
+    		</td>
+      	</tr></tbody>
+     	</table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:5%">用户名</th>
+                <th style="width:30%">操作</th>
+                <th style="width:30%">说明</th>
+                <th style="width:30%">维币数</th>
+                <th style="width:20%">日期</th>
+            </tr>
+                <foreach name="vcoin" item="v">
+                    <tr class="ul_box1">
+                        <td>{$v.id}</td>
+                        <td>{$v.name}</td>
+                        <!--<td>{$v.name}</td>-->
+                        <td>{$v.action}</td>
+                        <td>{$v.intro}</td>
+                        <td>{$v.value}</td>
+                        <td>{$v.created|date='y-m-d H:i',###}</td>
+                        <!--<td><a href="{:U('Admin/Company/view', array('id' => $v['id']))}">编辑</a> <a href="{:U('Admin/Company/work', array('id' => $v['id']))}">案例</a></td>-->
+                    </tr>
+                </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

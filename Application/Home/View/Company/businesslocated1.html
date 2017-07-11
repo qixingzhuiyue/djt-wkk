@@ -1,0 +1,80 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/shopsLocated.css">
+    <title>企业入驻</title>
+</head>
+<body>
+<!--企业入驻businesslocated-->
+<!--header登录注册-->
+<include file="Public/top"/>
+<!--导航条 end-->
+<!--content-->
+<div class="content g3c bgwh">
+    <h3>请选择一套企业模板</h3>
+    <ul class="fn-clear">
+        <li class="l greenColor">
+            <a  href ="javascript:void(0);" class="greenBor" value="templateOne"><img src="__PUBLIC__/images/shopsLocated/businessPic01.jpg" alt="pic"></a>
+            <p>方案一</p>
+        </li>
+        <li class="l">
+            <a value="templateTwo"  href ="javascript:void(0);"><img src="__PUBLIC__/images/shopsLocated/businessPic02.jpg" alt="pic"></a>
+            <p>方案二</p>
+        </li>
+        <li class="l">
+            <a value="templateThree"  href ="javascript:void(0);"><img src="__PUBLIC__/images/shopsLocated/businessPic03.jpg" alt="pic"></a>
+            <p>方案三</p>
+        </li>
+    </ul>
+    <input class="b9a wh sure js-sub" type="button" value="确定">
+</div>
+<!--底部导航&footer-->
+<div class="footer">
+    <div class="rel f16 wh">
+        <img src="__PUBLIC__/images/index/footerEWM.png" alt="EWM">
+        <h4 class="f16 wh">上海维沃珂自助营销平台版权所有</h4>
+        <p class=" hidden-xs">地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇</p>
+        <p class=" hidden-xs">电话：0000-0000-88<span class="dib">传真：0000-0000-88</span>邮箱：9937088888@163.com</p>
+    </div>
+</div>
+<!--底部导航&footer end-->
+<!--模板创建成功-->
+<div class="succeed f js-succeed" id="succeed">
+    <div class="succeed-bg abs"></div>
+    <div class="succeed-con bgwh abs">
+        <img src="__PUBLIC__/images/shopsLocated/sure.png" alt="sure">
+        <p class="g9a">企业模板已创建成功！</p>
+        <a href="javescript:volid(0)" class="js-href" ><input class="b9a wh" type="button" value="进入企业主页 "></a>
+    </div>
+</div>
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<!--模板创建成功 end-->
+<script src="__PUBLIC__/scripts/shopsLocated.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".navbar-nav li:nth-child(3)").mouseout(function () {
+            $(this).removeClass('listBg');
+        });
+        $(".navbar-nav li:nth-child(2)").mouseout(function () {
+            $(this).addClass('listBg');
+        });
+        $(".js-sub").click(function(){
+            var temptype = $(".greenBor").attr('value');
+            if(temptype==''){
+                alert("你还未选择模板");
+            }else{
+                $.post("{:U('Home/Company/addCompanyTemplate')}",{temptype:temptype},function(data){
+                   if(data.status==1){
+                           var url = "company/temptype/"+temptype+"/"+"id/"+data.uid;
+                           $(".js-href").attr('href',url);
+                           $('#succeed').css('display','block');
+                   }else{
+                       $('#succeed').css('display','none');
+                       alert(data.msg);
+                   }
+                });
+            }
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--ie-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- [if lt IE 9]>-->
+    <script src="__PUBLIC__/scripts/html5shiv.min.js"></script>
+    <script src="__PUBLIC__/scripts/respond.min.js"></script>
+    <!-- <![endif]-->
+    <script src="__PUBLIC__/scripts/common.js"></script>
+    <script src="__PUBLIC__/scripts/jquery-1.12.4.min.js"></script>
+    <link href="__PUBLIC__/styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/styles/base.css" rel="stylesheet" />
+    <link rel="stylesheet" href="__PUBLIC__/styles/footer.css">
+    <link href="__PUBLIC__/styles/template.css" rel="stylesheet" />
+    <link href="__PUBLIC__/styles/shopsManagement.css" rel="stylesheet" />
+    <link href="__PUBLIC__/styles/orderManagement.css" rel="stylesheet" />
+    <title>商品管理</title>
+    <style>
+        .model-two{position:inherit;}
+        .contentR{position:inherit;height:auto;}
+    </style>
+</head>
+<body>
+<div class="bgwh">
+    <!--店铺管理shopsManagement-->
+    <include file="Public/top1"/>
+    <hr>
+    <div class="shops fn-clear">
+        <!--<input class="f16 wh l" type="button" value="管理店铺">-->
+        <if condition="$shop.logo eq ''">
+            <a href="#"><img src="__PUBLIC__/images/shops/twoLogo.jpg" alt="logo"></a>
+            <else/>
+            <a href="#"><img src="__PUBLIC__{$shop.logo}" alt="logo"></a>
+        </if>
+        <!--<div class="r search rel hidden-xs"><input class="f16 g3c" type="search" placeholder="搜索您感兴趣的内容"></div>-->
+    </div>
+    <!--导航-->
+    <div class=" navbar-nav  navbar-inverse">
+        <div class="navbar-header">
+            <button class="navbar-toggle " data-toggle="collapse" data-target="#mycollapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <!--折叠部分-->
+        <div class="collapse navbar-collapse" id="mycollapse" >
+            <!--当屏幕宽度小于768px时 会将ul列表隐藏-->
+            <ul class="nav navbar-nav">
+                <li class="indexNav rel"><a href="{:U('Home/Index/index')}">首页</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--导航 end-->
+</div>
+<!--banner上传-->
+<div id="banner" class="dib upImg fn-clear rel">
+    <lable  class="imgdiv" id="imgdiv" for="up_img"><img id="imgShow" src="<?php if(empty($shop['banner'])){echo '__PUBLIC__/images/shops/twoBanner.jpg';}else{
+    echo'__PUBLIC__'.$shop['banner'];}   ?>"  /></lable>
+</div>
+<!--banner上传 end-->
+<!--content-->
+<div class="content bgwh fn-clear">
+    <ul class="contentL l" id="tab-icon">
+        <li class="f18 g3c l"><a href="{:U('Home/Shop/shopsManagement')}">店铺资料</a></li>
+        <li class="f18 g3c l"><a href="{:U('Home/Shop/goodsManagement')}">商品管理</a></li>
+        <li class="f18 g3c balckBg l"><a href="{:U('Home/Shop/goodsManagement')}">订单管理</a></li>
+    </ul>
+    <ul class="contentR r rel" id="content">
+        <!--商品管理-->
+        <li class="abs model-two">
+            <div class="title fn-clear">
+                <h3 class="f18 rel l">订单列表</h3>
+            </div>
+            <div class="tarns_status">
+                <p class="f14 g3c hidden-xs">交易状态：</p>
+                <a href="{:U('Home/Shop/orderManagement')}" class="f14 <if condition="$Think.get.orderstatus eq null">green<else/>g8c</if>">全部</a>
+                <a href="{:U('Home/Shop/orderManagement',array('orderstatus'=>0))}" class="f14 <?php if(isset($_GET['orderstatus'])){if($_GET['orderstatus']==0){echo 'green';}else{echo 'g8c';}}else{echo 'g8c';} ?> ">待付款</a>
+                <a href="{:U('Home/Shop/orderManagement',array('orderstatus'=>1))}" class="f14 <if condition="$Think.get.orderstatus eq 1">green<else/>g8c</if>">待发货</a>
+                <a href="{:U('Home/Shop/orderManagement',array('orderstatus'=>2))}" class="f14 <if condition="$Think.get.orderstatus eq 2">green<else/>g8c</if>">已发货</a>
+                <a href="{:U('Home/Shop/orderManagement',array('orderstatus'=>4))}" class="f14 <if condition="$Think.get.orderstatus eq 4">green<else/>g8c</if>">交易成功</a>
+                <a href="{:U('Home/Shop/orderManagement',array('orderstatus'=>3))}" class="f14 <if condition="$Think.get.orderstatus eq 3">green<else/>g8c</if> hidden-xs" style="margin:0;">交易关闭</a>
+            </div>
+            <div class="sta_name hidden-xs">
+                <h2 class="f16 g9 sn">名称</h2>
+                <h2 class="f16 g9 s_num">数量</h2>
+                <h2 class="f16 g9 s_reve">收货人</h2>
+                <h2 class="f16 g9 s_money">金额</h2>
+                <h2 class="f16 g9 status">状态</h2>
+                <h2 class="f16 g9 s_hand">操作</h2>
+            </div>
+            <foreach name="orders" item="vo">
+                <if condition="$vo.orderstatus eq 0">
+                    <div class="order_box">
+                        <div class="order_ti">
+                            <h1 class="f14 g9">订单号：{$vo.ordernum}</h1>
+                            <h2 class="f14 g9 visible-xs">待付款</h2>
+                        </div>
+                        <div class="order">
+                            <div class="order_l">
+                                <img src="__PUBLIC__{$vo.picture}">
+                                <p class="f14 g6">{$vo.goodname}</p>
+                            </div>
+                            <p class="f14 g6 order_num">X1</p>
+                            <p class="f14 g6 order_reve hidden-xs">{$vo.name}</p>
+                            <p class="f14 g6 order_money">￥{$vo.amount}</p>
+                            <p class="f14 g6 order_sta red hidden-xs">待付款</p>
+                            <input type="button" value="取消订单" orderid="{$vo.id}" class="f14 green cancel hidden-xs">
+                        </div>
+                        <div class="order_control visible-xs">
+                            <!--<p class="f14 g6 visible-xs">共1件商品-->
+                                <!--合计￥<span class="f18">{$vo.amount}</span>-->
+                            <!--</p>-->
+                            <input type="button" orderid="{$vo.id}" value="取消订单" class="f14 green cancel_s">
+                        </div>
+                    </div>
+                    <elseif condition="$vo.orderstatus eq 1"/>
+                    <div class="order_box js-order-box">
+                        <div class="order_ti">
+                            <h1 class="f14 g9">订单号：{$vo.ordernum}</h1>
+                            <h2 class="f14 g9 visible-xs">待发货</h2>
+                        </div>
+                        <div class="order">
+                            <div class="order_l">
+                                <img src="__PUBLIC__{$vo.picture}">
+                                <p class="f14 g6">{$vo.goodname}</p>
+                            </div>
+                            <p class="f14 g6 order_num">X1</p>
+                            <p class="f14 g6 order_reve hidden-xs">{$vo.name}</p>
+                            <p class="f14 g6 order_money">￥{$vo.amount}</p>
+                            <p class="f14 g6 order_sta green hidden-xs">待发货</p>
+                            <input type="button" value="发货"  class="f14 wh green_control js-send hidden-xs">
+                        </div>
+                        <div class="order_control visible-xs">
+                            <!--<p class="f14 g6 visible-xs">共1件商品-->
+                                <!--合计￥<span class="f18">100</span>.00-->
+                            <!--</p>-->
+                            <input type="button" orderid="{$vo.id}" onclick="to()" value="发货" class="f14 wh green_control">
+                        </div>
+                        <div class="order_sure" style="display:none;">
+                            <h1 class="f14 g3c">确认收货信息</h1>
+                            <div class="consignee">
+                                <h2 class="f14 g9">收货人姓名：<span class="g3c">{$vo.name}</span></h2>
+                                <h4 class="f14 g9">联系方式：<span class="g3c">{$vo.phone}</span></h4>
+                            </div>
+                            <p class="f14 g9">买家收货信息：<span class="g3c">{$vo.prov}{$vo.city}.{$vo.area}</span></p>
+                            <h1 class="f14 g3c" style="border:none;">输入相关物流信息</h1>
+                            <div class="wuliu">
+                                <div class="wuliu_name wuliu_margin">
+                                    <label class="f14 g9">快递公司</label>
+                                    <input type="text" class="f14 g3c js-expressname">
+                                </div>
+                                <div class="wuliu_name">
+                                    <label class="f14 g9">运单编号</label>
+                                    <input type="text"  class="f14 g3c js-expressnum">
+                                </div>
+                                <input type="button" orderid="{$vo.id}" value="确认" class="f14 wh wuliu_sure js-wuliu-sure">
+                            </div>
+                        </div>
+                    </div>
+                    <elseif condition="$vo.orderstatus eq 2"/>
+                    <div class="order_box">
+                        <div class="order_ti">
+                            <h1 class="f14 g9">订单号：{$vo.ordernum}</h1>
+                            <h2 class="f14 g9 visible-xs">已发货</h2>
+                        </div>
+                        <div class="order">
+                            <div class="order_l">
+                                <img src="__PUBLIC__{$vo.picture}">
+                                <p class="f14 g6">{$vo.goodname}</p>
+                            </div>
+                            <p class="f14 g6 order_num">X1</p>
+                            <p class="f14 g6 order_reve hidden-xs">{$vo.name}</p>
+                            <p class="f14 g6 order_money">￥{$vo.amount}</p>
+                            <p class="f14 g6 order_sta green hidden-xs">已发货</p>
+                            <!--<input type="button" value="确认" class="f14 wh green_control hidden-xs">-->
+                        </div>
+                        <div class="order_control visible-xs">
+                            <!--<p class="f14 g6 visible-xs">共1件商品合计￥<span class="f18">100</span>.00</p>-->
+                            <!--<input type="button" value="确认" class="f14 wh green_control">-->
+                        </div>
+                    </div>
+                    <elseif condition="$vo.orderstatus eq 3"/>
+                    <div class="order_box hidden-xs">
+                        <div class="order_ti">
+                            <h1 class="f14 g9">订单号：{$vo.ordernum}</h1>
+                            <h2 class="f14 g9 visible-xs">订单已取消</h2>
+                        </div>
+                        <div class="order">
+                            <div class="order_l">
+                                <img src="__PUBLIC__{$vo.picture}">
+                                <p class="f14 g6">{$vo.goodname}</p>
+                            </div>
+                            <p class="f14 g6 order_num">X1</p>
+                            <p class="f14 g6 order_reve hidden-xs">{$vo.name}</p>
+                            <p class="f14 g6 order_money">￥{$vo.amount}</p>
+                            <p class="f14 g6 order_sta red hidden-xs">已关闭</p>
+                            <!--<input type="button" value="关闭" class="f14 wh green_control hidden-xs">-->
+                        </div>
+                    </div>
+                    <else/>
+                    <div class="order_box">
+                        <div class="order_ti">
+                            <h1 class="f14 g9">订单号：{$vo.ordernum}</h1>
+                            <h2 class="f14 g9 visible-xs">完成</h2>
+                        </div>
+                        <div class="order">
+                            <div class="order_l">
+                                <img src="__PUBLIC__{$vo.picture}">
+                                <p class="f14 g6">{$vo.goodname}</p>
+                            </div>
+                            <p class="f14 g6 order_num">X1</p>
+                            <p class="f14 g6 order_reve hidden-xs">{$vo.name}</p>
+                            <p class="f14 g6 order_money">￥{$vo.amount}</p>
+                            <p class="f14 g6 order_sta green hidden-xs">完成</p>
+                            <input type="button" value="完成" class="f14 wh green_control hidden-xs">
+                        </div>
+                        <div class="order_control visible-xs">
+                            <!--<p class="f14 g6 visible-xs">共1件商品合计￥<span class="f18">100</span>.00</p>-->
+                            <input type="button" value="完成" class="f14 wh green_control">
+                        </div>
+                    </div>
+                </if>
+            </foreach>
+        </li>
+    </ul>
+</div>
+<!--发货订单创建成功弹窗-->
+<div class="pop_box" style="display:none;">
+    <div class="order_pop">
+        <img src="__PUBLIC__/images/shopsLocated/sure.png">
+        <h1 class="f20 green">发货订单创建成功!</h1>
+    </div>
+</div>
+<div class="dele_box">
+    <div class="dele_pop">
+        <h1 class="f24 green">提示</h1>
+        <p class="f20 g3c">是否确定取消当前订单？</p>
+        <div class="sure">
+            <input type="button" value=确定 class="f16 wh dele">
+            <input type="button" value="取消" class="f16 green quxiao">
+        </div>
+    </div>
+</div>
+<script>
+    //取消订单小屏下
+    $(".cancel_s").click(function(){
+        var orderid = $(this).attr('orderid');
+        if(orderid==''||orderid==undefined){
+            alert('参数错误');
+            return false;
+        }
+        $(".dele_box").show();
+        var n=$(".cancel_s").index(this);
+        $(".dele").click(function(){
+            window.location.href="/index.php/Home/Shop/closeOrder/orderId/"+orderid;
+//            //ajax请求
+//            $.post("{:U('Home/Shop/closeOrder')}",{id:orderid},function(data){
+//               if(data.status==1){
+//                   $(".order_box:eq("+n+")").hide();
+//                   $(".dele_box").hide();
+//               }else{
+//                  alert(data.msg);
+//               }
+//            });
+        })
+        $(".quxiao").click(function(){
+            $(".dele_box").hide();
+        })
+    })
+    //取消订单大屏下
+    $(".cancel").click(function(){
+        var orderid = $(this).attr('orderid');
+        if(orderid==''||orderid==undefined){
+            alert('参数错误');
+            return false;
+        }
+        $(".dele_box").show();
+        var n=$(".cancel").index(this);
+        $(".dele").click(function(){
+            window.location.href="/index.php/Home/Shop/closeOrder/orderId/"+orderid;
+//            //ajax请求
+//            $.post("{:U('Home/Shop/closeOrder')}",{id:orderid},function(data){
+//                if(data.status==1){
+//                    $(".order_box:eq("+n+")").hide();
+//                    $(".dele_box").hide();
+//                }else{
+//                    alert(data.msg);
+//                }
+//            });
+//            $(".order_box:eq("+n+")").hide();
+//            $(".dele_box").hide();
+        })
+        $(".quxiao").click(function(){
+            $(".dele_box").hide();
+        })
+    })
+    //收货信息
+ function to(){
+     var m = $('.js-send').index(this);
+     alert(m);return;
+     $(".order_sure:eq("+m+")").toggle();
+ }
+    //    订单延时消失
+    $(function () {
+        //点击发货显示表单
+        $(".js-send").click(function(){
+            var m = $('.js-send').index(this);
+            $(".order_sure:eq("+m+")").toggle();
+        });
+        //发货提交运单
+        $(".js-wuliu-sure").click(function(){
+            //获取点击按钮的索引值
+            var n = $(".js-wuliu-sure").index(this);
+            var wuliu = $(this).parent(".wuliu").parent(".order_sure");
+            //input对应属性的索引值
+            var expressname = $(".js-expressname:eq("+n+")").val();
+            var expressnum = $(".js-expressnum:eq("+n+")").val();
+            var orderId = $(this).attr('orderid');
+            if(orderId==''||orderId==undefined){
+                alert('参数异常');
+                return false;
+            }
+            if(expressname==''||expressname==undefined){
+                alert('快递公司不能为空');
+                return false;
+            }
+            if(expressnum==''||expressnum==undefined){
+                alert('运单编号不能为空');
+                return false;
+            }
+            $.post("{:U('Home/Shop/confirmOrder')}",{'orderId':orderId,'expressNum':expressnum,'expressName':expressname},function(data){
+              if(data.status==1){
+                  alert(data.msg);
+                  $(".js-order-box:eq("+n+")").hide();
+              }else{
+                  alert(data.msg);
+              }
+            });
+        });
+        setTimeout(function () {
+            $(".pop_box").hide();
+        },1500);
+    })
+
+</script>
+<!--底部导航&footer-->
+    <include file="Public/footer3"/>
+<script src="__PUBLIC__/scripts/uploadPreview.js" ></script>
+</body>
+</html>

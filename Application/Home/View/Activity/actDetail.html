@@ -1,0 +1,414 @@
+<include file="Public/header" />
+<link rel="stylesheet" href="__PUBLIC__/styles/personal.css"/>
+<link rel="stylesheet" href="__PUBLIC__/styles/actDetail.css"/>
+<!--微信分享显示图片描述的配置-->
+<script>
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '<?php echo $signPackage["appId"];?>', // 必填，公众号的唯一标识
+        timestamp: '<?php echo $signPackage["timestamp"];?>', // 必填，生成签名的时间戳
+        nonceStr: '<?php echo $signPackage["nonceStr"];?>', // 必填，生成签名的随机串
+        signature: '<?php echo $signPackage["signature"];?>',// 必填，签名，见附录1
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone','startRecord', 'stopRecord','onVoiceRecordEnd'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    wx.ready(function () {
+        // 在这里调用 API
+        wx.onMenuShareTimeline({
+            title: '{$activity.title}', // 分享标题
+            desc:'{$activity.title}',
+            link:"http://www.91wework.com/index.php/Home/Activity/actDetail/id/{$activity.activityid}/fromid/{$info.uid}", // 分享链接
+            imgUrl: "http://www.91wework.com/Public{$activity.picture}", // 分享图标
+            success: function () {
+                share();
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        wx.onMenuShareAppMessage({
+            title: '{$activity.title}', // 分享标题
+            desc: '{$activity.title}', // 分享描述
+            link: "http://www.91wework.com/index.php/Home/Activity/actDetail/id/{$activity.activityid}/fromid/{$info.uid}", // 分享链接
+            imgUrl: "http://www.91wework.com/Public{$activity.picture}", // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                share();
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+    var share =  function(){
+        var id = $(".js-acid").val();
+        if(id==''||id==undefined){
+            alert("参数错误");
+            return false;
+        }
+        $.post("{:U('Home/Activity/addShare')}",{'id':id},function(data){
+            if(data.status==1){
+//                    alert(data.msg);
+            }else{
+//                    alert(data.msg);
+            }
+        });
+    };
+</script>
+<!--微信分享显示图片描述的配置-->
+<!--引入百度地图-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=570E1e7563f6e47308e7928f68f9b6d3"></script>
+<!--地图结束-->
+<!--<meta name="description" content="{:mb_substr($activity['intro'])}"/>-->
+<title>{$activity.title}</title>
+</head>
+<body>
+<!--维沃柯首页-->
+<!--header登录注册-->
+<!--维沃柯首页-->
+<!--header登录注册-->
+<include file="Public/top"/>
+<!--header登录注册 end-->
+<!--header logo-->
+<!--header logo end-->
+<!--导航条-->
+<include file="Public/nav" />
+<!--导航条 end-->
+<section>
+    <div class="main">
+        <div class="thisAct bgwh">
+            <div class="thisImg">
+                <img src="__PUBLIC__{$activity.picture}" width="100%" alt="活动图"/>
+                <!--<img src="__PUBLIC__/images/actIndex/activity_detial_03.png" width="100%" alt="活动图"/>-->
+            </div>
+            <div class="thisWrap rel">
+                <div class="thisImg_right">
+                    <h3 class="g9a">{$activity.title}</h3>
+                </div>
+                <div class="hostInform">
+                    <if condition="$activity.avatar eq ''">
+                        <img src="__PUBLIC__/images/actIndex/actIndex_icon1.png" alt=""/>
+                        <else/>
+                        <img src="__PUBLIC__{$activity.avatar}" alt=""/>
+                    </if>
+                    <span class="hostName">{$activity.organizer}</span>
+                    <!--<span class="visit b9a wh bd9">关注TA</span>-->
+                    <!--<span class="tell g9a bd9">告诉TA</span>-->
+                </div>
+                <div class="hostTime">
+                    <p>
+                        时间：<span>{$activity.starttime|date='m-d H:i',###}~{$activity.endtime|date='m-d H:i',###}  {$activity.endtime|date='m-d H:i',###} 报名截止 </span>
+                    </p>
+                </div>
+                <div class="hostAdd">
+                    <p>
+                        地点：<span class="js-address">{$activity.city}{$activity.address}</span>
+                        <input type="hidden" value="{$activity.city}" class="js-prov"/>
+                    </p>
+                </div>
+                <div class="hostNum">
+                    <p>
+                        报名人数：<span>已有{$activity.applyNum}人报名     {$activity.applyStr}</span>
+                    </p>
+                    <p>
+                        联系人：<span>{$activity.contact}</span>
+                    </p>
+                    <p>
+                        联系方式：<span>{$activity.telephone}</span>
+                    </p>
+                </div>
+                <div class=" payMon">
+                    <div>
+                        <if condition="$activity.endStatus eq 0">
+                            <input class="onSign b9 wh abs"disabled="disabled" value="已结束" type="button"/>
+                            <else/>
+                            <?php if($applyStatus==1){ ?>
+                            <input class="onSign b9 wh abs" disabled="disabled" value="已报名" type="button"/>
+                            <?php }else{ ?>
+                            <input class="onSign <if condition="$activity.applyLimit neq 1">b9<else/>b9a</if> wh abs" <if condition="$activity.applyLimit neq 1">disabled="disabled" value="名额已满"</if> type="button" value="立即报名"/>
+                            <?php } ?>
+                        </if>
+                    </div>
+                    <div class="g3c">
+                            <if condition="$collectStatus eq 0">
+                                <p class="dib collect js-collect" value="{$collectStatus}"><span class="js-collect-span">收藏</span>&nbsp;
+                                <img class="js-collect-img" value="{$collectStatus}" src="__PUBLIC__/images/postDetails/collect.png" alt=""/>
+                                <else/>
+                                <p class="dib collect js-collect g9a" value="{$collectStatus}"><span class="js-collect-span">已收藏</span>&nbsp;
+                                <img class="js-collect-img" src="__PUBLIC__/images/postDetails/collectGreen.png" alt=""/>
+                            </if>
+                        </p>
+                        <div class="share-platform dib">
+                            <p class="dib">分享：</p>
+                            <div class="bdsharebuttonbox dib">
+                                <a href="javascript:;" class="bds_weixin js-share weixin_hover" data-cmd="weixin" title="分享到微信"></a>
+                                <a href="javascript:;" class="bds_tsina js-share" data-cmd="tsina" title="分享到新浪微博"></a>
+                                <a href="javascript:;" class="bds_qzone js-share" data-cmd="qzone" title="分享到QQ空间"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="actWrap">
+            <div class="left contentL">
+                <h5 class=" g6">收费类型</h5>
+                <div class="costType bbe">
+                    <span class="bd9">{$activity.vcoin} {$activity.organizer}</span>
+                    <input type="hidden" value="{$activity.vcoinNum}" class="js-vcoinNum"/>
+                    <!--<span class="bdc">￥100 球行天下体育俱乐部</span>-->
+                </div>
+                <h5 class=" g6">活动详情</h5>
+                <div class=" g6 detailWord tc" id="edit">
+                       {$activity.content}
+                </div>
+                <!--<div class="actImgBig">-->
+                    <!--<img src="__PUBLIC__/images/actIndex/activity_detial_11.png" width="100%" alt=""/>-->
+                <!--</div>-->
+                <!--<div class=" g6 detailWord">-->
+                    <!--<p>-->
+                        <!--自我蜕变：您是否像以前的我一样，浑身慢性病，免疫力低，非常爱生病？是否正在被每个月的那几天的疼痛折磨到无-->
+                        <!--法忍受了？是否经常为了一些琐事和家人或外人吵的翻天覆地或常常生闷气，事后又懊悔不已？您的路怒症还在时常发-->
+                        <!--作吗？-->
+                    <!--</p>-->
+                <!--</div>-->
+                <!--<div class="actImgBig">-->
+                    <!--<img src="__PUBLIC__/images/actIndex/activity_detial_11.png" width="100%" alt=""/>-->
+                <!--</div>-->
+                <!--<div class=" g6 detailWord">-->
+                    <!--<p>-->
+                        <!--自我蜕变：您是否像以前的我一样，浑身慢性病，免疫力低，非常爱生病？是否正在被每个月的那几天的疼痛折磨到无-->
+                        <!--法忍受了？是否经常为了一些琐事和家人或外人吵的翻天覆地或常常生闷气，事后又懊悔不已？您的路怒症还在时常发-->
+                        <!--作吗？成为一名瑜伽教师吧，还自己一个完美健康的身心，让您的心灵不再躁动不安，身体不再受病痛的困扰。不再成-->
+                        <!--为情绪的奴隶！-->
+                    <!--</p>-->
+                <!--</div>-->
+                <div class="immediately">
+                    <if condition="$activity.endStatus eq 0">
+                        <input class="onSign b9 wh abs"disabled="disabled" value="已结束" type="button"/>
+                        <else/>
+                        <?php if($applyStatus==1){ ?>
+                        <input class="onSign b9 wh abs" disabled="disabled" value="已报名" type="button"/>
+                        <?php }else{ ?>
+                        <input class="onSign <if condition="$activity.applyLimit neq 1">b9<else/>b9a</if> wh abs" <if condition="$activity.applyLimit neq 1">disabled="disabled" value="名额已满"</if> type="button" value="立即报名"/>
+                        <?php } ?>
+                    </if>
+                </div>
+                <div class="store">
+                    <div class="collect js-collect" value="{$collectStatus}">
+                        <if condition="$collectStatus eq 0">
+                            <img class="js-collect-img" value="{$collectStatus}" src="__PUBLIC__/images/postDetails/collect.png" width="40px" alt="收藏"/>
+                            <else/>
+                            <img class="js-collect-img" src="__PUBLIC__/images/postDetails/collectGreen.png" width="40px" alt="收藏" />
+                        </if>
+                    </div>
+                    <if condition="$collectStatus eq 0">
+                        <p class="js-collect-p">收藏</p>
+                        <else/>
+                        <p class="js-collect-p g9a">已收藏</p>
+                    </if>
+                </div>
+                <div class="shareRight">
+                    <div class="share-platform dib">
+                        <p class="dib">分享：</p>
+                        <div class="bdsharebuttonbox dib">
+                            <a href="javascript:;" class="bds_weixin js-share" data-cmd="weixin" title="分享到微信"></a>
+                            <a href="javascript:;" class="bds_tsina js-share" data-cmd="tsina" title="分享到新浪微博"></a>
+                            <a href="javascript:;" class="bds_qzone js-share" data-cmd="qzone" title="分享到QQ空间"></a>
+                        </div>
+                    </div>
+                </div>
+                <h5 class=" g6 user bbe">用户评论(<span class="js-pinglun-num">{$commentNum}</span>)</h5>
+                <textarea class="bdn bde js-pinglun-content"></textarea>
+                <div class="pubComment">
+                    <input class="pubContent b9a wh lh30 bdn" type="button" value="发表评论"/>
+                </div>
+                <ul class="contentList">
+                    <foreach name="comment" item="vo">
+                        <li class="li">
+                            <div class="replayAbout">
+                                <p class="rel">
+                                    <if condition="$vo.avatar eq ''">
+                                        <img class="contentImg" src="__PUBLIC__/images/actIndex/userHead.png" alt=""/>
+                                        <else/>
+                                        <img class="contentImg" width="50" height="51" src="__PUBLIC__{$vo.avatar}" alt=""/>
+                                    </if>
+                                    <span class="contentName g6" >{$vo.name}</span>
+                                    <i class="contentTime gray_b2">{$vo.created|date='Y-m-d H:i',###}</i>
+                                    <!--<b class="abs ">回复</b>-->
+                                </p>
+                                <p class="content ">{$vo.content}</p>
+                            </div>
+                        </li>
+                    </foreach>
+                    <li class="li" style="display: none;">
+                        <div class="replayAbout">
+                            <p class="rel">
+                                <if condition="$avatar eq ''">
+                                    <img class="contentImg" src="__PUBLIC__/images/actIndex/userHead.png" alt=""/>
+                                    <else/>
+                                    <img class="contentImg" width="50" height="51" src="__PUBLIC__{$avatar}" alt=""/>
+                                </if>
+                                <span class="contentName g6 js-info-name" >{$Think.session.userinfo.name}</span>
+                                <i class="contentTime gray_b2">昨天 12:00</i>
+                                <!--<b class="abs ">回复</b>-->
+                            </p>
+                            <p class="content ">请问这活动小孩子能参加吗?</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="brilliant">
+                    <h5 class=" lh30">为您推荐精彩活动</h5>
+                    <ul>
+                        <volist name="pushs" id="vo" offset="0" length="8">
+                            <li>
+                                <div>
+                                    <a href="{:U('Home/Activity/actDetail',array('id'=>$vo['activityid']))}">
+                                    <img src="__PUBLIC__{$vo.picture}" alt=""/>
+                                    </a>
+                                </div>
+                                <div class="liDescribe">
+                                    <p>{:mb_substr($vo['title'],0,15)}</p>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="right">
+                <div class="actAddress bgwh">
+                    <p><b class="g9a ">|</b> <b>活动地点</b></p>
+                    <div style="width:282px;height:189px;border:#ccc solid 1px;" id="dituContent" class="dib map"></div>
+                    <div class="map">
+                        <!--<img src="__PUBLIC__/images/actIndex/activity_detial_07.png" alt=""/>-->
+                    </div>
+                </div>
+                <div class="reAct bgwh">
+                    <p><b class="g9a">|</b> <b>推荐活动</b></p>
+                    <ul>
+                        <volist name="pushs" id="vo" offset="0" length="6">
+                            <li>
+                                <div>
+                                    <a href="{:U('Home/Activity/actDetail',array('id'=>$vo['activityid']))}">
+                                        <img src="__PUBLIC__{$vo.picture}" alt=""/>
+                                    </a>
+                                </div>
+                                <div class="reWord">
+                                    <p>{$vo.title}</p>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="signWrap abs dn">
+    <form class="bgwh rel js-form" action="{:U('Home/Activity/apply')}" method="post">
+        <h3 class="g9a">完善报名信息</h3>
+        <div class="abs close"></div>
+        <input type="hidden" name="id" class="js-acid" value="{$activity['activityid']}"/>
+        <input type="hidden" name="uid" class="js-uid" value="{$info['uid']}"/>
+        <input class="bdd user js-acname" name="name" type="text" value="{$info.name}" placeholder="请输入姓名"/>
+        <input class="bdd number js-mobile" name="mobile" type="tel" value="{$info.phone}" placeholder="请输入电话"/>
+        <input class="bdd company js-company"  name="company" value="{$company.name}" type="text" placeholder="请输入公司名"/>
+        <input class="wh bd9 b9a  js-sub" type="button" value="我要报名"/>
+    </form>
+</div>
+<include file="Public/footer3"/>
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/ZeroClipboard.js"></script>
+<script src="__PUBLIC__/scripts/postDetails.js"></script>
+<script src="__PUBLIC__/scripts/actDetail.js"></script>
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdUrl": "<?php  echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'/fromid/'.$info['uid'] ?>", "bdPopTitle":"<?php echo $activity['title'] ?>","bdText":"<?php echo $activity['title'] ?>","bdMini":"1","bdMiniList":["bdxc","tqf","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],"bdPic":"<?php echo $_SERVER['SERVER_NAME'].'/Public'.$activity['picture'] ?>","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    //        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<script type="text/javascript">
+    $(function(){
+        //分享
+        $('.js-share').click(function(){
+            var id = $(".js-acid").val();
+            if(id==''||id==undefined){
+                alert("参数错误");
+                return false;
+            }
+            $.post("{:U('Home/Activity/addShare')}",{'id':id},function(data){
+                if(data.status==1){
+//                    alert(data.msg);
+                }else{
+//                    alert(data.msg);
+                }
+            });
+//            $(this).toggleClass('collect-green')
+        });
+    });
+</script>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+    }
+    //创建地图函数：
+    function createMap(){
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var prov = '';
+        var provtxt = $('.js-prov').val();//获得详细地址
+        prov = provtxt;
+//    if (provtxt == '北京' || provtxt == '天津' || provtxt == '上海' || provtxt == '深圳') {
+//      prov = provtxt;
+//    } else {
+//      prov = provtxt;//这里设置默认中心
+//    }
+        map.centerAndZoom(prov, 11);//设定地图的中心点和坐标并将地图显示在地图容器中
+        var local = new BMap.LocalSearch(map, {
+            renderOptions:{map: map}
+        });//搜索地图方法
+        var address =$(".js-address").text();
+
+        local.search(address);//搜索地址
+        map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+        map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+        map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+        map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+        map.addControl(new BMap.MapTypeControl());
+//    var point = new BMap.Point(121.480237,31.236305);//定义一个中心点坐标
+//    map.centerAndZoom(point,12);//设定地图的中心点和坐标并将地图显示在地图容器中
+//    window.map = map;//将map变量存储在全局
+    }
+
+    //  //地图事件设置函数：
+    //  function setMapEvent(){
+    //    map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+    //    map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+    //    map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+    //    map.enableKeyboard();//启用键盘上下左右键移动地图
+    //  }
+
+    //  //地图控件添加函数：
+    //  function addMapControl(){
+    //    //向地图中添加缩放控件
+    //    var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+    //    map.addControl(ctrl_nav);
+    //    //向地图中添加缩略图控件
+    //    var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+    //    map.addControl(ctrl_ove);
+    //    //向地图中添加比例尺控件
+    //    var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+    //    map.addControl(ctrl_sca);
+    //  }
+
+
+    initMap();//创建和初始化地图
+</script>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/newsDetails.css">
+<!--微信分享显示图片描述的配置-->
+<script>
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '<?php echo $signPackage["appId"];?>', // 必填，公众号的唯一标识
+        timestamp: '<?php echo $signPackage["timestamp"];?>', // 必填，生成签名的时间戳
+        nonceStr: '<?php echo $signPackage["nonceStr"];?>', // 必填，生成签名的随机串
+        signature: '<?php echo $signPackage["signature"];?>',// 必填，签名，见附录1
+        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone','startRecord', 'stopRecord','onVoiceRecordEnd'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    wx.ready(function () {
+        // 在这里调用 API
+        var description = $("meta[name=description]");
+        var desc = description.attr("content");
+        //分享到朋友圈
+        wx.onMenuShareTimeline({
+            title: '{$news.title}', // 分享标题
+            link:"http://www.91wework.com/index.php/Home/News/newsDetails/id/{$news.id}/fromid/{$info.uid}", // 分享链接
+            imgUrl: "http://www.91wework.com/Public{$news.picture}", // 分享图标
+            success: function () {
+                share();
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+        //分享到朋友
+        wx.onMenuShareAppMessage({
+            title: '{$news.title}', // 分享标题
+            desc:desc, // 分享描述
+            link: "http://www.91wework.com/index.php/Home/News/newsDetails/id/{$news.id}/fromid/{$info.uid}", // 分享链接
+            imgUrl: "http://www.91wework.com/Public{$news.picture}", // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                share();
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+    });
+    var share = function () {
+        var id = $(".js-news-id").val();
+//            if(user==''){
+//                alert("请先登录");
+//                return false;
+//            }
+//            alert(id);
+        if(id==''||id==undefined){
+            alert("参数错误");
+            return false;
+        }
+        $.post("{:U('Home/news/addshare')}",{id:id},function(data){
+            if(data.status==1){
+//                        alert(data.msg);
+            }else{
+//                        alert(data.msg);
+            }
+        });
+    }
+</script>
+<!--微信分享显示图片描述的配置-->
+    <title>{$news.title}</title>
+<meta name="description" content="<?php  echo mb_substr($news['intro'],0,200,'utf-8');  ?>" />
+<meta name="keywords" content="{$news.title}" />
+</head>
+<body>
+<!--newsDetails-->
+<!--header登录注册-->
+<include file="Public/top" />
+<!--header logo end-->
+<!--导航条-->
+<include file="Public/nav"/>
+<!--导航条 end-->
+<!--content-->
+<div class="content fn-clear">
+    <div class="contentL l bgwh">
+        <h2 class="f18 g3c b">{$news.title}</h2>
+        <div class="g8c issue">
+            <h3 class="dib f12 ">浏览：<span>{$news.num} </span> </h3>
+            <h3 class="dib f12 ">|  发布时间：<span>{$news.created|date='Y.m.d',###}</span></h3>
+            <if condition="$news.row eq 2">
+                <h3 class="dib f12 ">|  V币：<span>{$coin.vcoin}</span></h3>
+            </if>
+        </div>
+        <div class="abstract">
+            <h4 class="dib f14 g8c"><span class="f14 g3c dib">摘要：</span>{$news.intro}</h4>
+            <if condition="$news.row eq 2">
+                <div class="tc"><img src="__PUBLIC__{$news.picture}" title="" alt=""  style="margin-bottom:20px;"></div>
+            </if>
+        </div>
+        <div class="fn-clear" id="edit">
+                {$news.content}
+        </div>
+        <div class="share-platform dib fn-clear">
+            <p class="dib l">分享：</p>
+            <input type="hidden" class="js-news-id" name="id" value="{$news.id}"/>
+            <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare bdsharebuttonbox dib" data="{'url':<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'/fromid/'.$info['uid']; ?>,'title':'<?php echo $news['title'] ?>','pic':'<?php echo 'http://www.91wework.com/Public'.$news['picture'] ?>'}">
+                <a href="javascript:;" class="bds_weixin js-share" data-cmd="weixin" title="分享到微信"></a>
+                <a href="javascript:;" class="bds_tsina js-share" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a href="javascript:;" class="bds_qzone js-share" data-cmd="qzone" title="分享到QQ空间"></a>
+            </div>
+        </div>
+        <div class="fn-clear link">
+            <div class="l">
+                <if condition="$prev neq null">
+                    <input class="f14 g8c" onclick="window.open('/index.php/Home/News/newsDetails/id/{$prev.id}','_self')" type="button" value="上一篇">
+                    <a href="{:U('Home/News/newsDetails',array('id'=>$prev['id']))}"><span class="f14 g8c">{:mb_substr($prev['title'],0,15)}</span></a>
+                </if>
+            </div>
+            <div class="r linkR">
+                <if condition="$next neq null">
+                    <input class="f14 g8c" onclick="window.open('/index.php/Home/News/newsDetails/id/{$next.id}','_self')" type="button" value="下一篇">
+                    <a href="{:U('Home/News/newsDetails',array('id'=>$next['id']))}"><span class="f14 g8c">{:mb_substr($next['title'],0,15)}</span></a>
+                </if>
+            </div>
+        </div>
+    </div>
+    <div class="contentR r bgwh">
+        <div class="g3c case f12">
+            <h3 class="rel f18">热门资讯<i class="g8c">hot</i></h3>
+            <foreach name="articles" item="v" key="k">
+                <a class="g8c" href="{:U('Home/News/newsDetails',array('id'=>$v['id']))}"><p>{$k + 1}&nbsp;{:mb_substr($v['title'],0,18)}</p></a>
+            </foreach>
+        </div>
+    </div>
+</div>
+<!--底部导航&footer-->
+<include file="Public/footer3"/>
+<!--底部导航&footer end-->
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/bootstrap.js"></script>
+<script src="__PUBLIC__/scripts/news.js"></script>
+<script src="__PUBLIC__/scripts/postDetails.js"></script>
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdUrl":"<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'/fromid/'.$info['uid'];  ?>","bdPopTitle":"<?php echo $news['title'] ?>","bdText":"<?php echo $news['title'] ?>","bdMini":"1","bdMiniList":["bdxc","tqf","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],"bdPic":"<?php echo 'http://www.91wework.com/Public'.$news['picture'] ?>","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    //    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/share.js?v=89860593.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<script>
+    $(function(){
+        //分享
+        $('.js-share').click(function () {
+            var id = $(".js-news-id").val();
+//            if(user==''){
+//                alert("请先登录");
+//                return false;
+//            }
+//            alert(id);
+            if(id==''||id==undefined){
+                alert("参数错误");
+                return false;
+            }
+            $.post("{:U('Home/news/addshare')}",{id:id},function(data){
+                if(data.status==1){
+//                        alert(data.msg);
+                    $(this).attr("disabled",true);
+                    setTimeout($('.js-share').attr("disabled",false),6000);
+                }else{
+//                        alert(data.msg);
+                }
+            });
+//            $(this).toggleClass('collect-green')
+        });
+    });
+</script>
+</body>
+</html>

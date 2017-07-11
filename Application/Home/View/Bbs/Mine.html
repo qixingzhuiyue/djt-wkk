@@ -1,0 +1,101 @@
+<include file="Public/header" />
+<title>个人中心-论坛-建材装潢</title>
+  <link rel="stylesheet" href="__PUBLIC__/css/bbs.css">
+</head>
+<body>
+<!--页面头部-->
+<include file="Public/top" />
+<!--主导航-->
+<nav id="nav">
+  <div class="breadcrumbs bbsbread">
+    我的位置：<a href="{:U('Index/index')}">首页</a>&nbsp;＞&nbsp;<a href="{:U('Home/Bbs/Index')}">论坛</a>&nbsp;＞&nbsp;<span>个人中心</span>
+  </div>
+</nav>
+
+<!--主体内容-->
+<section id="main">
+  <div class="ctnLf lf">
+    <div class="topicBox clear">
+      <ul class="bbsTitle">
+        <li class="hisTopic">TA的帖子</li>
+        <li>主贴 {$topicCount}</li>
+        <li>回帖 {$commentCount}</li>
+      </ul>
+      <ul class="TopicBar">
+        <li class="TopicLfName">帖子名</li>
+        <li class="TopicLfTime">时间</li>
+      </ul>
+      <volist name="bbses" id="vo">
+      <ul class="TopicMain clear">
+        <li class="TopicDetail TopicLfName"><a href="{:U('/Home/Bbs/Show', array('id'=>$vo['id']))}">{$vo.title}</a></li>
+        <li class="TopicDetailTime TopicLfTime">{$vo.created|date='Y-m-d H:i:s',###}</li>
+      </ul>
+      </volist>
+      {$page}
+    </div>
+    <!--div class="topicBox clear">
+      <div class="bbsTitle hisTopic notes">
+        TA的随记
+      </div>
+      <div class="bbsCtn">
+        <h4 class="bbsTitleName">总结，装了三套房，总结装修流程</h4>
+        <p class="bbsMainCtn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque dignissimos dolorem,
+          doloremque ea error exercitationem inventore itaque laboriosam magnam natus neque nulla quia, quibusdam saepe
+          tenetur ullam veniam veritatis voluptas.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
+          dignissimos dolorem, doloremque ea error exercitationem inventore itaque laboriosam magnam natus neque nulla
+          quia, quibusdam saepe tenetur ullam veniam veritatis voluptas&nbsp;....<a href="#">查看原文＞＞</a></p>
+        <div>
+          10月24日 15:30
+          <div class="bottomTopic rt">
+          <span>
+            收藏</span><b class="seperate"></b>
+            <span>转发</span><b class="seperate"></b>
+            <span>评价</span><b class="seperate"></b>
+            <span class="thumbs"><img src="images/bbs/dz_likes.png" alt=""></span>
+          </div>
+        </div>
+      </div>
+    </div-->
+    <div class="returnHome">
+      <a href="/">返回首页</a>
+    </div>
+  </div>
+  <div class="ctnRt rt hidden-xs">
+    <div class="asideBox clear" style="margin: 0 0 20px 0;">
+      <div class="clear titleWrapper">
+        <h2 class="asideBoxTitle lf">TA基本信息</h2>
+      </div>
+      <div class="profileInfo">
+        <dl>
+          <dt><img width="116" height="117" src="__PUBLIC__{$designer.certified}" alt=""></dt>
+          <dd class="name">{$designer.realname}</dd>
+          <dd>电话号码：{$designer.tel}</dd>
+          <dd>邮件：{$designer.email}</dd>
+          <dd>微信号：{$designer.wx}</dd>
+        </dl>
+        <h4>个人简介</h4>
+        <p>{$designer.intro}</p>
+      </div>
+    </div>
+    <div class="asideBox">
+      <div class="clear titleWrapper">
+        <h2 class="asideBoxTitle lf">推荐设计</h2>
+      </div>
+      <div class="recommandPro">
+        <volist name="works" id="vo">
+        <dl>
+          <dt>
+            <a href="{:U('/Home/Design/designer', array('id'=>$vo['id']))}"><img width="300" height="195" src="__PUBLIC__{$vo.picture}"></a>
+          </dt>
+          <dd><a href="{:U('/Home/Design/designer', array('id'=>$vo['id']))}">{$vo.name}</a></dd>
+        </dl>
+        </volist>
+      </div>
+    </div>
+  </div>
+</section>
+<!--页面底部-->
+
+<include file="Public/bottom" /> 
+
+<include file="Public/footer" />

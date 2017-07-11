@@ -1,0 +1,238 @@
+<include file='Common:top'/>
+<!--引入日期插件文件开始-->
+<script language="javascript" type="text/javascript" src="__ROOT__/Public/datepicker/WdatePicker.js"></script>
+<!--引入日期插件文件结束-->
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>人才对接管理>添加推荐人才</h1>
+        </div>
+        <div class="template_top_right">
+            <a href="{:U('Admin/Job/talent')}" class="ul_button">返回</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+    
+    <form name="adminForm" id="js-form" action="{:U('Admin/Job/addTalentHandle')}"  method="post" enctype="multipart/form-data">
+        <ul class="add_blank">
+            <li><div class="blank_left">人才id</div><div class="blank_right"><input type="number" class="js-applyid h-35" name="applyid" value="{$job.id}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">推介人姓名</div><div class="blank_right"><input type="text" class="js-refere h-35" name="refere" value="{$job.refere}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">姓名</div><div class="blank_right"><input type="text" class="js-name h-35" name="name" value="{$job.name}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">身份证号码</div><div class="blank_right"><input type="text" class="js-card h-35" name="card" value="{$job.card}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">民族</div><div class="blank_right"><input type="text" class="h-35 js-national" name="national" value="{$job.national}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">性别</div><div class="blank_right"><input type="radio" name="sex" value="1" <if condition="$job.sex neq 2">checked</if> />男<input type="radio" name="sex" value="2" />女</div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">学校名称</div><div class="blank_right"><input type="text" class="js-school h-35" name="school" value="{$job.school}"  /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">身高</div><div class="blank_right"><input type="number" class="h-35 js-height" name="height" value="{$job.height}" placeholder="单位：cm" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">体重</div><div class="blank_right"><input type="number" class="h-35 js-weight" name="weight"  value="{$job.weight}" placeholder="单位：kg" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">健康状况</div><div class="blank_right"><input type="text" class="js-health h-35" name="health"  value="{$job.health}" placeholder="良好" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">照片</div><div class="blank_right"><input type="file" class="js-picture" name="picture" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">电子邮箱</div><div class="blank_right"><input type="text" value="{$job.email}" name="email" class="h-35" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">出生日期</div><div class="blank_right"><input type="text" name="birth"
+onClick="WdatePicker()" value="{$job.birth}" class="js-birth h-35" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">微信</div><div class="blank_right"><input type="text" value="{$job.openid}" name="openid" class="h-35" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">户口所在地</div><div class="blank_right"><select class="w25 h-35" name="hometown">
+                <if condition="$job.hometown eq ''">
+                    <option value="">请选择</option>
+                </if>
+                <foreach name="areas" item="vo">
+                    <option value={$vo.name}<if condition="$job.hometown eq $vo['name']">selected</if> >{$vo.name}</option>
+                </foreach>
+            </select></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">现居住地</div><div class="blank_right"><select class="js-pid w25 h-35" name="pid">
+                <if condition="$job.prov eq ''">
+                    <option value="">请选择</option>
+                </if>
+                <foreach name="areas" item="vo">
+                    <option value={$vo.id} <if condition="$job.prov eq $vo['name']">selected</if>>{$vo.name}</option>
+                </foreach>
+            </select>
+                <select class="js-sid w25 h-35" name="sname">
+                    <if condition="$job.city eq ''">
+                        <option value="">请选择</option>
+                    </if>
+                    <option value="{$job.city}">{$job.city}</option>
+                </select>
+            </div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">联系电话</div><div class="blank_right"><input type="text" class="js-phone h-35" name="phone" value="{$job.phone}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">紧急联系人</div><div class="blank_right"><input type="text" class="js-secondcontact h-35" name="secondcontact" value="{$job.secondcontact}"  /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">紧急联系人电话</div><div class="blank_right"><input type="text" class="js-contactphone h-35" value="{$job.contactphone}"  name="contactphone" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">驾照类型</div><div class="blank_right"><input type="text" class="js-drivertype h-35" name="drivertype" value="{$job.drivertype}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">婚姻状况</div><div class="blank_right"><input type="radio" name="marital" value="1" <if condition="$job.marital eq 1">checked</if><if condition="$job.marital eq 0">checked</if>/>未婚<input type="radio" name="marital" value="2" <if condition="$job.marital eq 2">checked</if> />已婚<input type="radio" name="marital" value="3" <if condition="$job.marital eq 3">checked</if> />已孕</div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">技术职称</div><div class="blank_right"><input type="text" class="js-title h-35" name="title" value="{$job.title}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">英语等级</div><div class="blank_right"><input type="text" class="js-english h-35" name="english" value="{$job.english}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">第二外语</div><div class="blank_right"><input type="text" class="js-secondlanguage h-35" name="secondlanguage" value="{$job.secondlanguage}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">计算机应用水平</div><div class="blank_right"><input type="text" class="js-computer h-35" name="computer" value="{$job.computer}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">家庭住址</div><div class="blank_right"><input type="text" class="js-familyaddress h-35 w100" name="familyaddress" value="{$job.familyaddress}" /></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">教育经历</div><div class="blank_right">
+                <div class="js-education">
+                开始时间：<input type="text" name="start[]" value="{$job['jobs']['start']}" onClick="WdatePicker()" class="js-start h-35"  />&nbsp;&nbsp;
+                结束时间：<input type="text" name="end[]" value="{$job['jobs']['end']}" onClick="WdatePicker()" class="js-end h-35"  />&nbsp;&nbsp;<br/><br/>
+                学&nbsp;&nbsp;&nbsp;&nbsp;校：<input type="text" class="h-35" value="{$job['jobs']['school']}" name="eduschool[]"  />&nbsp;&nbsp;
+                专&nbsp;&nbsp;&nbsp;&nbsp;业：<input type="text" class="h-35" value="{$job['jobs']['professional']}" name="professional[]"/><br /><br/>
+               学&nbsp;&nbsp;&nbsp;&nbsp;历：<select class="w25 h-35" name="record[]">
+                    <if condition="$job['jobs']['record'] eq ''">
+                        <option value="">请选择</option>
+                    </if>
+                <foreach name="records" item="vo">
+                <option value="{$vo.name}" <?php if($job['jobs']['record
+']==$vo['name']){ echo 'selected';} ?> >{$vo.name}</option>
+                </foreach>
+            </select><br/><br/>
+                学&nbsp;&nbsp;&nbsp;&nbsp;位：<select class="w25 h-35" name="degree[]">
+                    <if condition="$job['jobs']['degree'] eq ''">
+                        <option value="">请选择</option>
+                    </if>
+                    <option value="学士" <if condition="$job['jobs']['degree'] eq '学士'">selected</if>>学士</option>
+                    <option value="硕士" <if condition="$job['jobs']['degree'] eq '硕士'">selected</if>>硕士</option>
+                    <option value="博士" <if condition="$job['jobs']['degree'] eq '博士'">selected</if>>博士</option>
+            </select><br/><br/>
+                教育形式：<select class="w25 h-35" name="type[]">
+                    <if condition="$job['jobs']['type'] eq ''">
+                        <option value="">请选择</option>
+                    </if>
+                <option value="全日制">全日制</option>
+                <option value="自考">自考</option>
+                <option value="函授">函授</option>
+                <option value="其他">其他</option>
+            </select>
+              其他：<input class="h-35" type="text" name="descp[]" />
+            <br/><br/>
+            </div>
+                <div class="js-education">
+                    开始时间：<input type="text" name="start[]" onClick="WdatePicker()" class="js-start h-35"  />&nbsp;&nbsp;
+                    结束时间：<input type="text" name="end[]" onClick="WdatePicker()" class="js-end h-35"  />&nbsp;&nbsp;<br/><br/>
+                    学&nbsp;&nbsp;&nbsp;&nbsp;校：<input class="h-35" type="text" name="eduschool[]"/>&nbsp;&nbsp;
+                    专&nbsp;&nbsp;&nbsp;&nbsp;业：<input class="h-35" type="text" name="professional[]"/><br /><br/>
+                    学&nbsp;&nbsp;&nbsp;&nbsp;历：<select class="w25 h-35" name="record[]">
+                    <option value="">请选择</option>
+                    <foreach name="records" item="vo">
+                        <option value="{$vo.name}">{$vo.name}</option>
+                    </foreach>
+                </select><br/><br/>
+                    学&nbsp;&nbsp;&nbsp;&nbsp;位：<select class="w25 h-35" name="degree[]">
+                    <option value="">请选择</option>
+                    <option value="学士">学士</option>
+                    <option value="硕士">硕士</option>
+                    <option value="博士">博士</option>
+                </select><br/><br/>
+                    教育形式：<select class="w25 h-35" name="type[]">
+                    <option value="">请选择</option>
+                    <option value="全日制">全日制</option>
+                    <option value="自考">自考</option>
+                    <option value="函授">函授</option>
+                    <option value="其他">其他</option>
+                </select>
+                    其他：<input class="h-35" type="text" name="descp[]" />
+                    <br/><br/>
+                </div>
+            </div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">工作经历</div><div class="blank_right">
+                <div class="js-experience">
+                    开始时间：<input type="text" name="expstart[]" value="{$job['experience']['start']}" onClick="WdatePicker()" class="js-start h-35"  />&nbsp;&nbsp;
+                    结束时间：<input type="text" name="expend[]" value="{$job['experience']['end']}" onClick="WdatePicker()" class="js-end h-35"  />&nbsp;&nbsp;<br/><br/>
+                    工作单位及部门：<input type="text" name="expcompany[]" value="{$job['experience']['company']}" class="h-35" />&nbsp;&nbsp;<br/><br/>
+                    职&nbsp;&nbsp;&nbsp;&nbsp;位：<input type="text" class="h-35" value="{$job['experience']['position']}" name="position[]"/><br /><br/>
+                    前台座机或行政电话：<input type="text" class="h-35" value="{$job['experience']['telphone']}" name="telphone[]"/><br /><br/>
+                    <br/><br/>
+                </div>
+                <div class="js-experience">
+                    开始时间：<input type="text" name="expstart[]" onClick="WdatePicker()" class="js-start h-35"  />&nbsp;&nbsp;
+                    结束时间：<input type="text" name="expend[]" onClick="WdatePicker()" class="js-end h-35"  />&nbsp;&nbsp;<br/><br/>
+                    工作单位及部门：<input type="text" class="h-35" name="expcompany[]" />&nbsp;&nbsp;<br/><br/>
+                    职位：<input type="text" class="h-35"  name="position[]"/><br /><br/>
+                    前台座机或行政电话：<input class="h-35"  type="text" name="telphone[]"/><br /><br/>
+                    <br/><br/>
+                </div>
+            </div><div class="fn-clear"></div></li>
+            <!--<li><div class="blank_left">家庭成员</div><div class="blank_right">-->
+                <!--<div class="js-family">-->
+                    <!--姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" name="fname[]" class="js-fname"  />&nbsp;&nbsp;-->
+                    <!--关&nbsp;&nbsp;&nbsp;&nbsp;系：<input type="text" name="relation[]" class="js-relation"  />&nbsp;&nbsp;<br/><br/>-->
+                    <!--工作单位：<input type="text" name="fcompany[]" />&nbsp;&nbsp;<br/><br/>-->
+                    <!--职&nbsp;&nbsp;&nbsp;&nbsp;位：<input type="text" name="fposition[]"/><br /><br/>-->
+                    <!--联系电话：<input type="text" name="fphone[]"/><br /><br/>-->
+                    <!--<br/><br/>-->
+                <!--</div>-->
+                <!--<div class="js-family">-->
+                    <!--姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" name="fname[]" class="js-fname"  />&nbsp;&nbsp;-->
+                    <!--关&nbsp;&nbsp;&nbsp;&nbsp;系：<input type="text" name="relation[]" class="js-relation"  />&nbsp;&nbsp;<br/><br/>-->
+                    <!--工作单位：<input type="text" name="fcompany[]" />&nbsp;&nbsp;<br/><br/>-->
+                    <!--职&nbsp;&nbsp;&nbsp;&nbsp;位：<input type="text" name="fposition[]"/><br /><br/>-->
+                    <!--联系电话：<input type="text" name="fphone[]"/><br /><br/>-->
+                    <!--<br/><br/>-->
+                <!--</div>-->
+            <!--</div><div class="fn-clear"></div></li>-->
+            <li><div class="blank_left"><span class="blank_color">*</span>是否免费</div><div class="blank_right">
+                <input type="radio" name="isfree" value="0"  class="ul_middle" checked/>&nbsp;免费&nbsp;&nbsp;
+                <input type="radio" name="isfree" value="1" class="ul_middle" />&nbsp;收费
+            </div><div class="fn-clear"></div></li>
+            <li><div class="blank_left"><span class="blank_color">*</span>状态</div><div class="blank_right">
+            <input type="radio" name="status" value="1"  class="ul_middle" checked/>&nbsp;正常&nbsp;&nbsp;
+            <input type="radio" name="status" value="0" class="ul_middle" />&nbsp;屏蔽
+            </div><div class="fn-clear"></div></li>
+            <li class="ul_word"><input type="button" class="ul_add js-sub" value="保存"/><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/></li>
+        </ul></form>
+    </div>
+</div>
+<script>
+    var ue = UE.getEditor('editor');
+</script>
+<script>
+    $(function () {
+        $('.js-sub').click(function () {
+            var name = $('.js-name').val();
+            var phone = $(".js-phone").val();
+            var card = $(".js-card").val();
+            var status = true;
+            var msg = '';
+            if (name == '') {
+                status = false;
+                msg += "姓名,";
+            }
+            if (phone == '') {
+                status = false;
+                msg += "联系电话,";
+            }
+            if (card == '') {
+                status = false;
+                msg += "身份证号码,";
+            }
+            if (status) {
+                $("#js-form").submit();
+            } else {
+                //正则取出逗号，
+                var reg = /,$/gi;
+                msg = msg.replace(reg, "");
+                msg += "不能为空";
+                alert(msg);
+            }
+        });
+        //城市切换开始
+        $(".js-pid").change(function () {
+            var id = $(this).val();
+            $.post("{:U('Admin/Dict/getAreas')}", {'id': id}, function (data) {
+                $('.js-sid').html('');
+                var htmls = "<option value=''>请选择</option>";
+                $.each(data, function (i, vo) {
+                    htmls += "<option value=" + vo.name + ">" + vo.name + "</option>";
+                });
+                $('.js-sid').append(htmls);
+            });
+        });
+    });
+    function delfile(e) {
+    if (confirm("确认要删除此表单吗？")) {
+    $(e).closest("tr").remove();
+    trCount = trCount - 1;
+    var _id = $(e).closest("tr").attr("id").replace("_tr", "");
+    //                for (var i = _id; i++; i <= trCount) {
+    //                    alert($("#_tr" + i).html());
+    //                }
+    }
+    }
+</script>
+</body>
+</html>

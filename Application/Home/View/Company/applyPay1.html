@@ -1,0 +1,118 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/personal.css">
+    <link rel="stylesheet" href="__PUBLIC__/styles/shopsLocated.css">
+    <link rel="stylesheet" href="__PUBLIC__/styles/applyPay.css">
+    <title>企业入驻-支付</title>
+</head>
+<body>
+<!--企业入驻-课程报名支付applyPay-->
+<!--header登录注册-->
+<div class="topNavBg fn-clear">
+    <div class="topNav f14 g8c fn-clear">
+        <div class="l">
+            <p class="dib hidden-xs">维沃珂企业自助营销推广平台欢迎您！{$userinfo.name}</p>
+            <if condition="$Think.session.userinfo eq null">
+                <a href="{:U('Home/User/login')}" class="g8c">登录</a>
+                <span>  |  </span>
+                <a href="{:U('Home/User/register')}" class="g8c">注册</a>
+                <else/>
+                <a href="javascript:;" class="g8c">{$Think.session.userinfo.name}</a>
+                <a href="{:U('Home/User/logout')}" class="g8c">登出</a>
+            </if>
+        </div>
+        <div class="r">
+            <a href="#" class="g9a"> 收藏本站</a>
+            <span>  |  </span>
+            <a href="#"  class="g8c">在线留言</a>
+            <span>  |  </span>
+            <a href="#"  class="g8c">网站地图</a>
+        </div>
+    </div>
+</div>
+<!--header登录注册 end-->
+<!--header logo-->
+<div class="logo bgwh fn-clear">
+    <div class="fn-clear">
+        <a class="l dib" href="#"><img src="__PUBLIC__/images/personal/logo.png" alt="logo"></a>
+        <h1 class="f40 dib  g8c l">收银台</h1>
+    </div>
+</div>
+<section>
+    <div class="main ">
+        <div class="rightTab f18 personal  payMoney">
+            <div class="tabTitle ">
+                <p class="f18 g8c">商品名称：上海维沃珂自助营销平台商品 <span>需支付: <b class="sumMoney f34 g9a">{$order.amount}</b>元</span></p>
+                <p class="f18 g8c"> 方式二<span>需支付: <b class="sumMoney f34 g9a">{$order.vnum}</b>维币</span></p>
+            </div>
+            <div class="tabDetail g6">
+                <form method="get" >
+                    <div class="terrace">
+                        <span class="before">支付平台：</span>
+                        <span class="payPro abs">订单将为您保留30分钟，请您及时付款，以便订单尽快处理！</span>
+                    </div>
+                    <div class="payStyle">
+                        <span class="before">支付方式：</span>
+                        <span class="payDetail rel">
+                            <img src="__PUBLIC__/images/personal/pay_zhi.png" alt="支付宝" title="支付宝"/>
+                            <span class="select rel selected"></span>
+                            <img class="wei" src="__PUBLIC__/images/personal/pay_wei.png" alt="微信" title="微信"/>
+                            <span class="select rel"></span>
+                        </span>
+                    </div>
+                    <div>
+                        <span class="before">使用维币 :</span>
+                        <input class="weiSelect" type="text"/>
+                        <a class="weibi rel">使用全部维币</a>
+                        <p class="sumWei rel">维币总值：{$order['vcoin']}</p>
+                    </div>
+                    <div class="submit js-sub">
+                        <input class="b9a wh load onPay" type="button" value="立即付款"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!--底部导航&footer-->
+<div class="footer">
+    <div class="rel f16 wh">
+        <img src="__PUBLIC__/images/index/footerEWM.png" alt="EWM">
+        <h4 class="f16 wh">上海维沃珂自助营销平台版权所有</h4>
+        <p class=" hidden-xs">地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇凤新路158-6厂房地址：上海市嘉定区徐兴镇</p>
+        <p class=" hidden-xs">电话：0000-0000-88<span class="dib">传真：0000-0000-88</span>邮箱：9937088888@163.com</p>
+    </div>
+</div>
+<!--底部导航&footer end-->
+<!--模板创建成功-->
+<div class="succeed f" id="succeed">
+    <div class="succeed-bg abs"></div>
+    <div class="succeed-con bgwh abs">
+        <img src="__PUBLIC__/images/shopsLocated/sure.png" alt="sure">
+        <p class="g9a">报名成功 ！</p>
+        <a href="addCompanyTemplate.html" ><input class="b9a wh" type="button" value="创建企业模板 "></a>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //选择付款方式
+        $('.select').click(function(){
+            $('.select').removeClass('selected');
+            $(this).addClass('selected')
+        })
+        $('.back').click(function(){
+            window.location.href="orderMange.html";
+        })
+//        报名成功
+        $('.submit').click(function () {
+            $.post("{:U('Home/Company/vPay')}",{},function(data){
+                if(data.status==1){
+                    $('#succeed').css('display','block')
+                }else if(data.status==0){
+                    alert(data.msg);
+                }
+            });
+        })
+    })
+</script>
+</body>
+</html>

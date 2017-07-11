@@ -1,0 +1,46 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>
+    <meta name="description" content="">
+    <title>后台登录系统</title>
+    <link rel="stylesheet" href="__PUBLIC__/Css/normalize.css">
+    <link rel="stylesheet" href="__PUBLIC__/Css/login.css">
+    <script type="text/javascript" src="__PUBLIC__/Js/jquery.js"></script>
+</head>
+<body>
+<div class="box">
+    <!--登录面板-->
+    <div class="login">
+        <div class="header">
+            <span>后台管理系统</span>
+        </div>
+        <div>
+            <div class="logo">
+                <img src="__PUBLIC__/Image/logo.jpg">
+            </div>
+            <div class="division"></div>
+            <div class="form">
+                <form action="{:U('Admin/Login/login')}" method="post">
+                    <div>
+                        <label for="user">用户名</label><input type="text" id="user" name="email">
+                    </div>
+                    <div>
+                        <label for="password">密&nbsp;&nbsp;码</label><input type="password" id="password" name="password">
+                    </div>
+                    <div>
+                        <input type="submit" id="submit" value="登录" >
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--页脚-->
+    <footer>
+
+    </footer>
+</div>
+</body>
+</html>

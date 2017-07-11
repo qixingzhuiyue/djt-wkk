@@ -1,0 +1,74 @@
+<include file='Common:top'/>
+
+<script type="text/javascript">
+    $(function () {
+        //点击应用
+        $('input[level=1]').click(function () {
+           var inputs = $(this).parents('.app').find('input');
+           $(this).attr('checked') ? inputs.attr('checked','checked'):inputs.removeAttr('checked');
+        });
+
+        //点击控制器
+        $('input[level=2]').click(function () {
+           var inputs = $(this).parents('dl').find('input');
+           $(this).attr('checked') ? inputs.attr('checked','checked'):inputs.removeAttr('checked');
+        });
+    });
+</script>
+
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>权限管理>用户列表>配置权限</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+            <a href="{:U('Admin/Rbac/role')}" class="ul_button">返回</a>
+            <a href="{:U('Admin/Node/index')}" class="ul_button">权限设置</a>
+            <a href="#" onclick="del();" class="ul_button">删除用户组</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <form action="{:U('Admin/Rbac/setAccess')}" method="post">
+        <div id="wrap">
+            <foreach name="node" item="app">
+                <div class="app">
+                    <p>
+                        <strong>{$app.title}</strong>
+                        <input type="checkbox" name="access[]" value="{$app.id}_1" level="1" <if condition="$app['access']">checked="checked"</if>/>
+                    </p>
+
+                    <foreach name="app.child" item="action">
+                        <dl>
+                            <dt>
+                                <strong>{$action.title}</strong>
+                                <input type="checkbox" name="access[]" value="{$action.id}_2" level="2" <if condition="$action['access']">checked="checked"</if>/>
+                            </dt>
+                            <foreach name="action.child" item="method">
+                                <dd>
+                                    <span>{$method.title}</span>
+                                    <input type="checkbox" name="access[]" value="{$method.id}_3" level="3" <if condition="$method['access']">checked="checked"</if>>
+                                </dd>
+                            </foreach>
+                        </dl>
+                    </foreach>
+                </div>
+            </foreach>
+        </div>
+        <input type="hidden" name="rid" value="{$rid}">
+        <input type="submit" value="保存修改" style="display: block;margin: 20px auto;cursor: pointer">
+    </form>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

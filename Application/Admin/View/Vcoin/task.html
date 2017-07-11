@@ -1,0 +1,88 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>维币管理>维币任务列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+            <a href="{:U('Admin/Vcoin/taskView')}" class="ul_button">添加任务项目</a>
+            <!--<a href="{:U('Admin/Company/add')}" class="ul_button">添加企业</a>-->
+            <!--<a href="#" onclick="del();" class="ul_button">删除企业组</a>-->
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+    <table class="ul_table">
+         	<tbody class="ul_table">
+    		<tr>
+    		<td width="60%" style="text-align:left">
+	    		<form action="{:U('Admin/Vcoin/task')}" method="get">
+                    操作名：<input type="text" name="keyword" value="{$Think.get.keyword}" />
+                   <select name="isperson">
+                        <option value="">适用类</option>
+                        <option value="1">通用</option>
+                        <option value="2">个人</option>
+                        <option value="3">企业</option>
+                    </select>
+                   <select name="type">
+                    <option value="">任务类型</option>
+                    <option value="1">单次任务</option>
+                    <option value="2">每日任务</option>
+                    <option value="3">消费加金币</option>
+                    <option value="4">无限制</option>
+                </select>
+                    <select name="status">
+                        <option value="">状态</option>
+                        <option value="0">屏蔽</option>
+                        <option value="1">正常</option>
+                    </select>
+				<input type="submit" value="查询" />
+				<input type="reset" value="清空" />
+	      		</form>
+    		</td>
+      	</tr></tbody>
+     	</table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:5%">适用类</th>
+                <th style="width:15%">操作</th>
+                <th style="width:5%">维币数</th>
+                <th style="width:8%">任务类型</th>
+                <th style="width:10%">任务上限值</th>
+                <th style="width:25%">回复内容限制</th>
+                <th style="width:20%">日期</th>
+                <th style="width:20%">操作</th>
+            </tr>
+                <foreach name="tasks" item="v">
+                    <tr class="ul_box1">
+                        <td>{$v.id}</td>
+                        <td><if condition="$v.isperson eq 1">通用<elseif condition="$v.isperson eq 2"/>个人<else/>企业</if></td>
+                        <td>{$v.action}</td>
+                        <td>{$v.value}</td>
+                        <td><if condition="$v.type eq 1">单次任务<elseif condition="$v.type eq 2"/>每日任务<elseif condition="$v.type eq 3"/>消费加维币<elseif condition="$v.type eq 4"/>无限制<else/></if></td>
+                        <td>{$v.limit}</td>
+                        <td>{$v.length}</td>
+                        <td>{$v.created|date='y-m-d H:i',###}</td>
+                        <td><a href="{:U('Admin/Vcoin/taskView', array('id' => $v['id']))}">编辑</a></td>
+                    </tr>
+                </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

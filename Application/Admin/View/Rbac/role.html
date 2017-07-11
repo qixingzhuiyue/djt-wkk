@@ -1,0 +1,54 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>权限管理>角色列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+            <!--<a href="{:U('Admin/Role/add', array('rpid' => $date['id'],'uid' => $_SESSION[C('USER_AUTH_KEY')]))}" class="ul_button">添加用户组</a>-->
+            <!--<a href="{:U('Admin/Node/index')}" class="ul_button">权限设置</a>-->
+            <!--<a href="#" onclick="del();" class="ul_button">删除用户组</a>-->
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:20%">角色名称</th>
+                <th style="width:20%">角色描述</th>
+                <th style="width:15%">开启状态</th>
+                <th style="width:40%">操作</th>
+            </tr>
+            <foreach name="role" item="v">
+                <tr class="ul_box1">
+                    <td>{$v.id}</td>
+                    <td>{$v.name}</td>
+                    <td>{$v.remark}</td>
+                    <td>
+                        <if condition="$v['status']">开启<else/>关闭</if>
+                    </td>
+                    <td>
+                        <a href="{:U('Admin/Rbac/access',array('rid'=>$v['id']))}">配置权限</a>
+                    </td>
+                </tr>
+            </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

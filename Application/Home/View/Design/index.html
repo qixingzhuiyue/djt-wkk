@@ -1,0 +1,183 @@
+<include file="Public/header" />
+<link rel="stylesheet" href="__PUBLIC__/css/designer.css">
+</head>
+<body>
+<include file="Public/top" />
+<!--页面头部-->
+<!--搜索框-->
+<div id="top-main">
+  <div class="banner-box">
+    <img src="__PUBLIC__/images/designer/d_banner.png" alt="">
+  </div>
+</div>
+<!--主导航-->
+<nav id="nav">
+  <div class="breadcrumbs">
+    当前位置：<a href="{:U('Index/index')}">首页</a>
+    &nbsp;＞&nbsp;<span>找设计师</span>
+  </div>
+</nav>
+<!--主体内容-->
+<section id="main">
+  <div class="bcyellow designBox">
+    <h1>
+      <span class="selectColor">找设计师</span>
+      <if condition="$desid['desid'] neq null">
+        &nbsp;&nbsp;<a href="{:U('Home/Design/desi',array('id'=>session('uid')))}" class="lt f08 titleTop">我的设计</a>
+        <else/>
+        <a href="{:U('Home/Settled/settledDesigner')}" class="rt f08 titleTop">我想出现在这里</a>&nbsp;
+      </if>
+    </h1>
+    <div class="f0 profileCtn">
+      <input type="hidden" class="js-des-num" value="{$desrow|count}"/>
+      <foreach name="desrow" item="vo" key="k">
+        <foreach name="vo" item="des">
+       <div class="dib profileBg js-des js-des-{$k}" <if condition="$k gt 0">style="display:none;"</if>" ><a href="{:U('Home/Design/desi',array('id'=>$des['uid']))}"><img src="__PUBLIC__{$des['certified']}" alt=" {$vo['name']}"></a></div>;
+        </foreach>
+      </foreach>
+      <i class="arrow arrowPlf js-des-prev">
+        <img src="__PUBLIC__/images/arrowlf.png" alt="">
+      </i>
+      <i class="arrow arrowPrt js-des-next">
+        <img src="__PUBLIC__/images/arrowrt.png" alt="">
+      </i>
+    </div>
+    <div class="f0 profileCtn">
+      <foreach name="desrow[0]" item="vo">
+        <div class="dib profileBg"><a href="{:U('Home/Design/desi',array('id'=>$vo['uid']))}"><img width="132" height="132" src="__PUBLIC__{$vo['certified']}" alt=" {$vo['name']}"></a></div>;
+      </foreach>
+    </div>
+  </div>
+  <div class="bcyellow designBox">
+    <h1>
+      <span class="selectColor">设计案例</span>
+      <!--<ul class="rt designTitle">-->
+        <!--<li><a href="#" class="f08">购物空间</a></li>-->
+        <!--<li><a href="#" class="f08">文化空间</a></li>-->
+        <!--<li><a href="#" class="f08">办公空间</a></li>-->
+        <!--<li><a href="#" class="f08">餐饮空间</a></li>-->
+        <!--<li><a href="#" class="f08">更多></a></li>-->
+      <!--</ul>-->
+    </h1>
+    <div class="f0 profileCtn">
+      <input type="hidden" class="js-work-num" value="{$workrow|count}"/>
+      <foreach name="workrow" item="vo" key="k">
+        <foreach name="vo" item="work">
+        <dl class="dib profileBg js-work js-work-{$k}" <if condition="$k gt 0">style="display:none;"</if>" >
+            <a href="{:U('Home/Design/designer',array('id'=>$work['id']))}">
+            <img src="__PUBLIC__/{$work['picture']}" alt="">
+          </a>
+          </dt>
+          <dd class="f08">{$work.name}</dd>
+          <dd class="f08">{$work.desp}</dd>
+        </dl>
+        </foreach>
+      </foreach>
+      <i class="arrow arrowPlf js-work-prev" style="top:142px">
+        <img src="__PUBLIC__/images/arrowlf.png" alt="">
+      </i>
+      <i class="arrow arrowPrt js-work-next" style="top:142px">
+        <img src="__PUBLIC__/images/arrowrt.png" alt="">
+      </i>
+    </div>
+  </div>
+  <foreach name="designers" item="vo">
+    <div class="bcyellow designBox">
+      <div class="profileDetail">
+        <a href="{:U('Home/Design/desi',array('id'=>$vo['uid']))}">
+        <img src="__PUBLIC__{$vo['certified']}" alt="" class="proImg">
+       </a>
+        <div class="dib vm g6">
+          <h4 class="f20 lh24">{$vo['realname']}</h4>
+          <p class="lh24">所在城市 {$vo['prov']} {$vo['city']} 作品 {$vo['count']}套</p>
+          <p class="lh24">擅长空间 {$vo['goodat']}</p>
+          <p class="lh24">预约数</p>
+          <h4 class="f20">{$vo['num']}</h4>
+        </div>
+      </div>
+      <div class="f0 profileCtn">
+        <foreach name="vo['work']" item="val">
+          <div class="dib">
+            <a href="{:U('Home/Design/designer',array('id'=>$val['id']))}">
+            <img src="__PUBLIC__{$val['workpicture']}" width="180" height="180" alt="">
+            </a>
+          </div>
+        </foreach>
+      </div>
+    </div>
+  </foreach>
+  <div class="moreStyle w50">
+    <a href="">查看更多设计师</a>
+  </div>
+</section>
+<!--页面底部-->
+<div class="returnHome">
+  <a href="/">返回首页</a>
+</div>
+<include file="Public/bottom" />
+<include file="Public/footer" />
+<script type="text/javascript">
+  $(document).ready(function() {
+   //获取设计师轮播个数
+    var num = $('.js-des-num').val();
+    //获取设计案例轮播个数
+    var workNum = $('.js-work-num').val();
+    //如果只有一条不需要显示切换按钮
+    if(num<=1){
+      $('.js-des-prev,.js-des-next').hide();
+    }
+    if(workNum<=1){
+      $('.js-work-prev,.js-work-next').hide();
+    }
+    //初始化设计师轮播的值
+    var i = num - 1;
+    var now = 0;
+    //初始化设计案例的值
+    var j = workNum - 1;
+    var workNow = 0;
+  <!--设计师向前查看开始-->
+    $('.js-des-prev').click(function(){
+      if(now<=0){
+        alert("已经是最前边的一张了");
+      }else{
+        now--;
+        $('.js-des').hide();
+        $('.js-des-'+now).show();
+      }
+    });
+    <!--设计师向前查看结束-->
+    <!--设计师向后查看开始-->
+    $('.js-des-next').click(function(){
+      if(now>=i){
+        alert("没有更多了");
+      }else{
+        now++;
+        $('.js-des').hide();
+        $('.js-des-'+now).show();
+      }
+    });
+    <!--设计师向后查看结束-->
+    <!--设计案例向前查看开始-->
+    $('.js-work-prev').click(function(){
+      if(workNow<=0){
+        alert("已经是最前边的一张了");
+      }else{
+        workNow--;
+        $('.js-work').hide();
+        $('.js-work-'+workNow).show();
+      }
+    });
+    <!--设计师向前查看结束-->
+    <!--设计师向后查看开始-->
+    $('.js-work-next').click(function(){
+      if(workNow>=j){
+        alert("没有更多了");
+      }else{
+        workNow++;
+        $('.js-work').hide();
+        $('.js-work-'+workNow).show();
+      }
+    });
+    <!--设计师向前查看结束-->
+  });
+</script>

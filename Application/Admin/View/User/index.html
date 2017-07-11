@@ -1,0 +1,99 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>用户管理>用户列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+            <!--<a href="{:U('Admin/Role/add', array('rpid' => $date['id'],'uid' => $_SESSION[C('USER_AUTH_KEY')]))}" class="ul_button">添加用户组</a>-->
+            <!--<a href="{:U('Admin/Node/index')}" class="ul_button">权限设置</a>-->
+            <!--<a href="#" onclick="del();" class="ul_button">删除用户组</a>-->
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+    <table class="ul_table">
+         	<tbody class="ul_table">
+    		<tr>
+    		<td width="60%" style="text-align:left">
+	    		<form action="{:U('Admin/User/index')}" method="get">
+				用户名：<input type="text" name="keyword" value="{$Think.get.keyword}" />
+				<select name="status">
+				<option value="">状态</option>
+				<option value="1" <if condition="$Think.get.status eq 1">selected</if>>正常</option>
+				<option value="0" <if condition="$Think.get.status eq '0'">selected</if>>屏蔽</option>
+				</select>
+				<select name="type">
+				<option value="">来自</option>
+				<option value="0" <if condition="$Think.get.type eq '0'">selected</if>>自注册</option>
+				<option value="1" <if condition="$Think.get.type eq 1">selected</if>>微信</option>
+				<option value="2" <if condition="$Think.get.type eq 2">selected</if>>QQ</option>
+				<option value="3" <if condition="$Think.get.type eq 3">selected</if>>微博</option>
+				</select>
+				<select name="identity">
+				<option value="">身份</option>
+				<option value="0" <if condition="$Think.get.role eq '0'">selected</if>>无身份</option>
+				<option value="1" <if condition="$Think.get.role eq 1">selected</if>>个人</option>
+				<option value="2" <if condition="$Think.get.role eq 2">selected</if>>企业</option>
+				<!--<option value="3" <if condition="$Think.get.role eq 3">selected</if>>公司</option>				-->
+				</select>
+				<input type="submit" value="查询" />
+				<input type="reset" value="清空" />
+	      		</form>
+    		</td>
+      	</tr></tbody>
+     	</table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:10%">电话</th>
+                <th style="width:10%">昵称</th>
+                <th style="width:15%">类型</th>
+                <th style="width:15%">身份</th>
+                <th style="width:20%">日期</th>
+                <th style="width:10%">状态</th>
+                <th style="width:10%">操作</th>
+
+
+            </tr>
+                <foreach name="users" item="v">
+                    <tr class="ul_box1">
+                        <td>{$v.uid}</td>
+                        <td>{$v.phone}</td>
+                        <td>{$v.name}</td>
+                        <td><if condition="$v.type eq 0">自注册
+                        <elseif condition="$v.type eq 1"/>微信
+                        <elseif condition="$v.type eq 2"/>QQ
+                        <elseif condition="$v.type eq 3"/>微博
+                        </if>
+                        </td>
+                        <td><if condition="$v.role eq 0">无身份
+                        <elseif condition="$v.role eq 1"/>个人
+                        <elseif condition="$v.role eq 2"/>公司
+                        <else/>
+                        </if>
+                        </td>
+                        <td>{$v.created|date='y-m-d H:i',###}</td>
+                        <td><if condition="$v.status eq 1">正常<else />屏蔽</if></td>
+                        <td><a href="{:U('Admin/User/view', array('id' => $v['uid']))}">编辑</a></td>
+                    </tr>
+                </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

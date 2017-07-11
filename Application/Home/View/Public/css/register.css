@@ -1,0 +1,182 @@
+.tabMenu li {
+  width: 50%;
+  cursor: pointer;
+}
+.remPass label {
+  text-align: left;
+  text-indent: 0;
+}
+.regName {
+  background: url("../images/login/regName.png") no-repeat 90% 50%;
+}
+.user {
+  background: #9ab126;
+  color: #fff;
+}
+.loginForm form {
+  padding: 0;
+}
+.information {
+  left: 0;
+  top: 0;
+}
+.regPhone {
+  background: url("../images/login/regPhone.png") no-repeat 90% 50%;
+}
+.regKey {
+  background: url("../images/login/regKey.png") no-repeat 90% 50%;
+}
+.information li input {
+  margin-bottom: 6px;
+}
+.remPass {
+  width: 200px;
+  margin: 0 auto;
+}
+.remPass label {
+  text-indent: 24px;
+}
+.information input {
+  background-size: 12px 12px;
+}
+.information_per {
+  display: none;
+}
+.information li {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+  .loginForm form {
+    width: 140px;
+    padding: 0;
+    height: 234px;
+    margin-top: 36px;
+  }
+  .remPass .confirm {
+    background-size: 12px 12px;
+  }
+  .tabMenu {
+    border-bottom: 1px solid #dcdcdc;
+    line-height: 22px;
+    height: 22px;
+    margin-bottom: 16px;
+  }
+  .information li input {
+    width: 116px;
+    line-height: 14px;
+    height: 14px;
+    margin-bottom: 6px;
+  }
+  .information button {
+    width: 116px;
+  }
+  .remPass {
+    width: 116px;
+    margin: 0 auto 4px;
+  }
+  .remPass a {
+    top: 0;
+  }
+  .remPass label {
+    margin-bottom: 0;
+    height: 12px;
+    text-indent: 20px;
+    line-height: 12px;
+  }
+  .information input {
+    background-size: 10px 10px;
+  }
+}
+/* 中等屏幕（桌面显示器） */
+@media (min-width: 992px) {
+  .loginForm form {
+    width: 224px;
+    padding: 0;
+    height: 336px;
+    margin-top: 36px;
+  }
+  .tabMenu {
+    border-bottom: 1px solid #dcdcdc;
+    line-height: 34px;
+    height: 34px;
+    margin-bottom: 20px;
+  }
+  .information li {
+    width: 224px;
+  }
+  .information li a {
+    top: -2px;
+  }
+  .information li input {
+    width: 182px;
+    line-height: 24px;
+    height: 24px;
+    margin-bottom: 10px;
+  }
+  .remPass {
+    width: 182px;
+    margin: 0 auto 10px;
+  }
+  .remPass .confirm {
+    background-size: 16px 16px;
+  }
+  .remPass label {
+    margin-bottom: 4px;
+    text-indent: 20px;
+  }
+  .information input {
+    background-size: 16px 16px;
+  }
+  .information button {
+    width: 182px;
+    margin-bottom: 8px;
+  }
+}
+/* 大屏幕（大桌面显示器） */
+@media (min-width: 1200px) {
+  .loginForm form {
+    width: 360px;
+    padding: 0;
+    height: 540px;
+    margin-top: 60px;
+  }
+  .tabMenu {
+    border-bottom: 1px solid #dcdcdc;
+    line-height: 58px;
+    height: 58px;
+    margin-bottom: 42px;
+  }
+  .information li {
+    width: 300px;
+  }
+  .information li input {
+    width: 300px;
+    line-height: 42px;
+    height: 42px;
+    margin-bottom: 20px;
+  }
+  .information li a {
+    top: 0;
+  }
+  .remPass {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .remPass .confirm {
+    background-size: 20px 20px;
+  }
+  .remPass label {
+    margin-bottom: 20px;
+  }
+  .information button {
+    width: 300px;
+  }
+  .remPass a {
+    background-size: 20px 20px;
+  }
+}

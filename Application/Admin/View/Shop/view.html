@@ -1,0 +1,34 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>店铺管理>店铺详情</h1>
+        </div>
+        <div class="template_top_right">
+            <a href="{:U('Admin/Shop/index')}" class="ul_button">返回</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+    
+    <form name="adminForm" method="post">
+        <ul class="add_blank">
+            <li><div class="blank_left">店铺名称</div><div class="blank_right">{$shop.name}</div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">Logo</div><div class="blank_right"><if condition="$shop.logo neq ''"><a href="/Public/{$shop.logo}" target="_blank">预览</a></if></div><div class="fn-clear"></div></li>
+            <li><div class="blank_left"><span class="blank_color">*</span>状态</div><div class="blank_right">
+            <input type="radio" name="status" value="1"  class="ul_middle" <eq name="shop['status']" value="1">checked</eq>/>&nbsp;正常&nbsp;&nbsp;
+            <input type="radio" name="status" value="0" class="ul_middle" <eq name="shop['status']" value="0">checked</eq>/>&nbsp;屏蔽
+            </div><div class="fn-clear"></div></li>
+            <li><div class="blank_left"><span class="blank_color">*</span>后台推荐</div><div class="blank_right">
+                <input type="radio" name="ispush" value="1"  class="ul_middle" <eq name="shop['ispush']" value="1">checked</eq>/>&nbsp;是&nbsp;&nbsp;
+                <input type="radio" name="ispush" value="0" class="ul_middle" <eq name="shop['ispush']" value="0">checked</eq>/>&nbsp;否
+            </div><div class="fn-clear"></div></li>
+            <input type="hidden" name="id" value="{$shop.shopid}" />
+            <li><div class="blank_left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="ul_add" value="保存"/></div><div class="'blank_left"><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/></div></li>
+        </ul></form>
+    </div>
+</div>
+</body>
+</html>

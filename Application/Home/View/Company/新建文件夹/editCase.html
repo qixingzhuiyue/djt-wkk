@@ -1,0 +1,200 @@
+<include file="Public/header" />
+<title>案例编辑-建材装潢</title>
+<link rel="stylesheet" href="__PUBLIC__/css/decoration.css">
+<link rel="stylesheet" href="__PUBLIC__/css/webuploader.css">
+<link rel="stylesheet" href="__PUBLIC__/css/diyUpload.css">
+<script src="__PUBLIC__/frameworks/webuploader.html5only.min.js"></script>
+<script src="__PUBLIC__/js/diyUpload.js"></script>
+<!--[if lt IE 9]>
+  <script src="__PUBLIC__/js/html5shiv.min.js"></script>
+  <script src="__PUBLIC__/js/respond.min.js"></script>
+  <![endif]-->
+</head><body>
+<!--页面头部-->
+<include file="Public/top" />
+<!--搜索框-->
+<div id="top-main">
+  <div class="breadcrumbs bbsbread"> 当前位置：<a href="/">首页</a>&nbsp;＞&nbsp;<a href="{:U('Home/Company/Show', array('id' => $company['id']))}">装潢公司</a>&nbsp;＞&nbsp;<span>案例编辑</span> </div>
+</div>
+<!--主导航-->
+<!--侧边栏-->
+<!--主体内容-->
+<section id="main" class="bcyellow">
+  <div class="decorationTitle"> {$title} </div>
+  <div class="decorationBox w60">
+  <form id="tform" method="post" enctype="multipart/form-data">
+    <ul>
+      <li class="clear">
+        <h3 class="dib">案例名称<i class="selectColor dib">*</i>:</h3>
+        <input type = 'hidden' name="companyid" value="{$company['id']}"/>
+        <input type="text" class="dib bcyellow form-base formg w90" placeholder="请填写案例" name="name" value="{$work.name}">
+      </li>
+      <li>
+        <h3 class="dib">区域选择<i class="selectColor dib">*</i>:</h3>
+        <select name="proid" id="proid" class="bcyellow seladdress form-base formg w40">
+          <option value="">请选择省</option>
+          <foreach name="provs" item="v"> <option value="{$v.id}" 
+            <if condition="$v.id eq $work['proid']">selected</if>
+            >{$v.name}
+            </option>
+          </foreach>
+        </select>
+        <select name="cityid" id="cityid" class="bcyellow seladdress form-base rt formg w40">
+          <option value="">请选择区市</option>
+          <foreach name="citys" item="v"> <option value="{$v.id}"
+            <if condition="$v.id eq $work['cityid']">selected</if>
+            >{$v.name}
+            </option>
+          </foreach>
+        </select>
+      </li>
+      <li>
+        <h3 class="dib">风格选择<i class="selectColor dib">*</i>:</h3>
+        <select name="type" class="bcyellow seladdress form-base formg w40">
+          <option value="">请选择</option>
+          <option value="1" 
+          <if condition="1 eq $work['type']">selected</if>
+          >简约
+          </option>
+          <option value="2" 
+          <if condition="2 eq $work['type']">selected</if>
+          >现代
+          </option>
+          <option value="3" 
+          <if condition="3 eq $work['type']">selected</if>
+          >中式
+          </option>
+          <option value="4" 
+          <if condition="4 eq $work['type']">selected</if>
+          >欧式
+          </option>
+          <option value="5" 
+          <if condition="5 eq $work['type']">selected</if>
+          >美式
+          </option>
+          <option value="6" 
+          <if condition="6 eq $work['type']">selected</if>
+          >田园
+          </option>
+          <option value="7" 
+          <if condition="7 eq $work['type']">selected</if>
+          >新古典
+          </option>
+          <option value="8" 
+          <if condition="8 eq $work['type']">selected</if>
+          >地中海
+          </option>
+          <option value="9" 
+          <if condition="9 eq $work['type']">selected</if>
+          >东南亚
+          </option>
+          <option value="10" 
+          <if condition="10 eq $work['type']">selected</if>
+          >日式
+          </option>
+        </select>
+        <h4 class="dib f08">价格:</h4>
+        <select name="price" id="price" class="bcyellow seladdress form-base rt formg w40">
+          <option value="80-120" 
+          <if condition="'80-120' eq $work['price']">selected</if>
+          >80-120
+          </option>
+          <option value="120-500" 
+          <if condition="'120-500' eq $work['price']">selected</if>
+          >120-500
+          </option>
+          <option value="500-700" 
+          <if condition="'500-700' eq $work['price']">selected</if>
+          >500-700
+          </option>
+          <option value="700-900" 
+          <if condition="'700-900' eq $work['price']">selected</if>
+          >700-900
+          </option>
+          <option value="900-1200" 
+          <if condition="'900-1200' eq $work['price']">selected</if>
+          >900-1200
+          </option>
+          <option value="1200-1500" 
+          <if condition="'1200-1500' eq $work['price']">selected</if>
+          >1200-1500
+          </option>
+          <option value="1500+" 
+          <if condition="'1500+' eq $work['price']">selected</if>
+          >1500+
+          </option>
+        </select>
+      </li>
+      <li>
+        <h3 class="dib info appInfo">案例介绍:</h3>
+        <textarea class="dib f08 w90 formg appSize" name="summary">{$work.summary}</textarea>
+      </li>
+      <li>
+        <h3 class="dib info">上传图片<i class="selectColor dib">*</i>:</h3>
+        <div class="dib w90 rtImg">
+          <div id="test">
+            <div id="objId" class="uploader-list" id="">
+            选择文件</div>
+          <div class="dib f08 w10 formg appInfoStyle appSize clear">
+            <input type="file" name="pictures[]"  multiple="multiple" accept="image/*">
+            选择文件 </div>
+          <span class="f06 gc vm">按住ctrl键选择多张图片，单张图片2M以内</span> </div>
+        <div class="f08 rules clear" style="height:auto;line-height:auto">
+          <?php foreach($work['picture'] as $v) {?>
+          <a href="__PUBLIC__<?php echo $v;?>" target="_blank"><img src="__PUBLIC__<?php echo $v;?>" style="width:50px;height:50px;padding:4px;"></a>
+          <?php }?>
+          <br/>
+          <span class="dib chkStyle bcyellow css-span-sub">
+          <input type="checkbox" checked>
+          </span> 我保证所上传的商品是正品，并非无质量保障的商品,如果有侵权，我将承担一些版权纠纷责任。 </div>
+        <div> <span class="btnSubmit" id="sub">开始上传</span> </div>
+      </div>
+      </li>
+    </ul>
+  </form>
+  </div>
+</section>
+<div class="returnHome"> <a href="/">返回首页</a> </div>
+<include file="Public/bottom" />
+<script>
+$(function(){
+	 //$('#imagePreview').delegate('img', 'click', function(){ var obj = $(this); obj.remove(); var position = $('.upload-img').position(); $('#uploadfile').css({ top: position.top+'px', left: position.left + 'px' }); }); }); function setup_reader(file) { var name = file.name; var reader = new window.FileReader(); reader.onload = function(e) { var text = e.target.result; var newPreview = $('#imagePreview'); if (newPreview.text().trim()) { newPreview.find('div:last').prepend('<img src="'+text+'" data-name="'+hex_md5(name)+'" style="width:100px;"/>'); } else { newPreview.prepend('<img src="'+text+'" data-name="'+hex_md5(name)+'" style="width:100px;"/>'); } var position = $('.upload-img').position(); $('#uploadfile').css({ top: position.top+'px', left: position.left + 'px' }); }; reader.readAsDataURL(file); }; function readmultifiles(files) { inputFileClone($('#uploadfile')); for (var i = 0; i < files.length; i++) { setup_reader(files[i]); } }; function inputFileClone(real) { var cloned = real.clone(true); cloned.insertAfter(real); $('#addphotomodal .modal-footer').append(real.attr({'name':'uploadname[]', 'class':'hidden'}).removeAttr('onchange')); };
+
+
+	$('#sub').click(function(){
+        $i = $(".css-span-sub").hasClass("backgroundshow");
+        if($i){
+          $('#tform').submit();
+        }else{
+          alert('请确认保证');
+        }
+	  })
+	 /*
+	$('#test').diyUpload({
+	   //url: 'server/fileupload.php',
+	   success: function (data) {
+	     console.info(data);
+	   },
+	   error: function (err) {
+	     console.info(err);
+	   }
+	});*/
+
+	$('#proid').on('change', function() {
+		var obj = $(this);
+		var html = '<option value="">请选择</option>';
+		$.post("{:U('Home/Dict/areas')}", { id : obj.val()}, function(data){
+			$.each(data, function(i, n) {
+				html += '<option value="'+n.id+'">'+n.name+'</option>';
+			});
+			$('#cityid').html(html);
+		}, 'json');
+		
+	});
+ 
+})
+
+
+
+</script>
+<include file="Public/footer" />

@@ -1,0 +1,62 @@
+<include file="Public/header" />
+<!-- 入驻申请 --><link rel="stylesheet" href="__PUBLIC__/css/decoration.css">
+</head>
+<body>
+<include file="Public/top" />
+<!--页面头部-->
+<!--搜索框-->
+<div id="top-main">
+  <div class="breadcrumbs bbsbread">
+    我的位置：<a href="{:U('Index/index')}">首页</a>&nbsp;＞&nbsp;<a href="{:U('Home/Design/index')}">找设计师</a>&nbsp;＞&nbsp;<span>入驻申请</span>
+  </div>
+</div>
+<!--主导航-->
+<nav id="nav" class="bcyellow">
+  <div class="decorationTitle selectColor">
+    设计师入驻申请
+  </div>
+  <div class=" w40 auto decorationMain">
+    <ul class="selected">
+      <li class="clear">
+        <form id="tform" action="{:U('Home/Settled/settledDesigner')}" method="post" enctype="multipart/form-data">
+        <h3 class="dib w20">姓名:</h3>
+        <input type="text" name="realname" class="dib bcyellow form-base formg w80">
+      </li>
+      <li class="clear">
+        <h3 class="dib w20">电话号码:</h3>
+        <input type="text" name="phone" class="dib bcyellow form-base formg w80">
+      </li>
+      <li>
+        <h3 class="dib info w20 appInfo">身份证:</h3>
+        <div class="dib f08 w80">
+          <p class="formg appInfoStyle appSize clear">
+            <input type="file" name="picture" >选择文件(照片)
+          </p>
+          <div class="f08 rules clear">
+          <span class="dib chkStyle bcyellow">
+            <input type="checkbox" name="remark">
+          </span>
+            我已阅读并接受&nbsp;<span class="selectColor cp">版权声明</span>&nbsp;和&nbsp;<span class="selectColor cp">隐私保护</span>&nbsp;条款
+          </div>
+          <div class="btnUpload auto">
+            <span id="sub">申请</span>
+          </form>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--侧边栏-->
+<div class="returnHome"><a href="/">返回首页</a></div>
+<!--页面底部-->
+<include file="Public/bottom" /> 
+
+<include file="Public/footer" />
+<script>
+$(document).ready(function() {
+  $('#sub').click(function() {
+    $('#tform').submit();
+  });  
+});
+</script>

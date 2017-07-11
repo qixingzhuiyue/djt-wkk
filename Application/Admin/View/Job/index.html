@@ -1,0 +1,92 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>活动管理>活动列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+            <!--<a href="{:U('Admin/Role/add', array('rpid' => $date['id'],'uid' => $_SESSION[C('USER_AUTH_KEY')]))}" class="ul_button">添加店铺组</a>-->
+            <!--<a href="{:U('Admin/Activity/add')}" class="ul_button">添加店铺</a>-->
+            <!--<a href="#" onclick="del();" class="ul_button">删除店铺组</a>-->
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+    <table class="ul_table">
+         	<tbody class="ul_table">
+    		<tr>
+    		<td width="60%" style="text-align:left">
+	    		<form action="{:U('Admin/Activity/index')}" method="get">
+				活动名：<input type="text" name="keyword" value="{$Think.get.keyword}" />
+				<select name="status">
+				<option value="">状态</option>
+				<option value="1">正常</option>
+				<option value="0">屏蔽</option>
+				</select>
+				<select name="ispush">
+				<option value="">推荐</option>
+				<option value="1">是</option>
+				<option value="0">否</option>
+				</select>
+                <select name="type">
+                    <option value="">类型</option>
+                    <foreach name="types" item="vo">
+                        <option value={$key}>{$vo}</option>
+                    </foreach>
+                </select>
+				<input type="submit" value="查询" />
+				<input type="reset" value="清空" />
+	      		</form>
+    		</td>
+      	</tr></tbody>
+     	</table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:10%">主办方</th>
+                <th style="width:15%">活动标题</th>
+                <th style="width:10%">类型</th>
+                <th style="width:15%">海报</th>
+                <th style="width:10%">联系方式</th>
+                <th style="width:5%">推荐</th>
+                <th style="width:10%">日期</th>
+                <th style="width:10%">状态</th>
+                <th style="width:10%">操作</th>
+            </tr>
+                <foreach name="activity" item="v">
+                    <tr class="ul_box1">
+                        <td>{$v.activityid}</td>
+                        <td>{$v.organizer}</td>
+                        <td>{$v.title}</td>
+                        <td>{$v.type}</td>
+                        <td><if condition="$v.picture eq ''">暂无海报<else/><img src="/Public/{$v.picture}"width="70",height="70"/></if></td>
+                        <td>{$v.telephone}</td>
+                        <td><if condition="$v.ispush eq 0">否<else/>是</if></td>
+                        <td>{$v.created|date='y-m-d H:i',###}</td>
+                        <td><if condition="$v.status eq 1">正常<else />屏蔽</if></td>
+                        <td><if condition="$v.status eq 1">
+                            <a href="{:U('Admin/Activity/changeActivityStatus',array('activityid'=>$v['activityid'],'status'=>0))}">屏蔽</a>
+                            <else/>
+                            <a href="{:U('Admin/Activity/changeActivityStatus',array('activityid'=>$v['activityid'],'status'=>1))}">开启</a>
+                        </if></td>
+                    </tr>
+                </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

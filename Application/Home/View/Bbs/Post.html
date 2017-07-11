@@ -1,0 +1,77 @@
+<include file="Public/header" />
+<title>发帖-论坛-建材装潢</title>
+  <link rel="stylesheet" href="__PUBLIC__/css/bbs.css">
+</head>
+<body>
+<!--页面头部-->
+<include file="Public/top" />
+<!--搜索框-->
+<div id="top-main">
+  <div class="breadcrumbs bbsbread">
+    我的位置：<a href="{:U('Index/index')}">首页</a>&nbsp;＞&nbsp;<a href="{:U('Home/Bbs/Index')}">论坛</a>&nbsp;＞&nbsp;<span>发帖</span>
+  </div>
+</div>
+<!--主体内容-->
+<section id="main">
+  <form id="tform" action="" method="post" enctype="multipart/form-data">
+  <div class="formMain container">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="bbsInputBox clearfix">
+          <div class="bbsInputTitle clearfix">标题&nbsp;:</div>
+          <div class="bbsInputTitle clearfix">内容&nbsp;:</div>
+        </div>
+      </div>
+      <div class="col-xs-9">
+        <div>
+          <div class="bbsInputBoxBg">
+            <input class="bbsInput bbsBorder" type="text" name="title">
+          </div>
+          <!--div class="bbsinputMain">
+            <div class="inputBar bbsBorder">
+              <span class="frends inputIcon">朋友</span>
+              <span class="pic inputIcon">图片</span>
+              <span class="emotion inputIcon">表情</span>
+            </div>
+          </div-->
+          <div class="bbsinputMain">
+            <textarea name="content" id="" cols="30" rows="10" class="textInput bbsBorder" style="border-top:1px solid #F6F731"></textarea>
+          </div>
+          <div class="bbsinputMain bbsBottom">
+            <div class=" widget">
+              <div class="row">
+                <div class="col-xs-12 col-md-5">
+                  <span class="bbsLfRule lf">请遵守论坛言论规则，不得违反国家法律法规</span>
+                </div>
+                <div class="col-xs-12 col-md-6 col-md-offset-1">
+                  <div class="rt">
+                    <input type="radio" name="type" value="1" checked><label for="yc">原创</label>
+                    <input type="radio" name="type" value="2"><label for="zz">转载</label>
+                    <!--button class="saveDraft btnDraft">保存草稿</button-->
+                    <button class="postInfo btnDraft" id="sub">发布</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="returnHome"><a href="/">返回首页</a></div>
+      </div>
+    </div>
+  </div>
+  </form>
+</section>
+<!--页面底部-->
+
+<include file="Public/bottom" /> 
+
+<include file="Public/footer" />
+<script>
+$(document).ready(function(){
+  $('#sub').click(function(){
+    $('#tform').submit();
+  })
+})  
+</script>

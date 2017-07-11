@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>维沃珂后台管理系统</title>
+<link rel="stylesheet" href="__PUBLIC__/Css/css.css"/>
+<script src="__PUBLIC__/Js/jquery.js"></script>
+<script type="text/javascript">
+	function resizeIframe(){
+	var iframe = document.getElementById("iframe");
+		try{
+			var bodyHeight = iframe.contentWindow.document.body.scrollHeight;
+			var scrollHeight 
+				= iframe.contentWindow.document.documentElement.scrollHeight;
+			var myHeight = Math.max(bodyHeight, scrollHeight);
+				iframe.height =  myHeight;
+			}catch (ex){}
+		}
+	window.setInterval("resizeIframe()", 200);
+</script>
+</head>
+<body>
+<div class="head">
+    <div class="cont">
+        <div class="top">
+            [&nbsp;{$user.name}&nbsp;]，欢迎进入维沃珂数据管理平台<span>|</span><a href="{:U('Admin/Index/logout')}">退出</a>
+        </div>
+    </div>
+</div>
+<div class="cont">
+    <div class="logo">
+        <img src="__PUBLIC__/Image/logo.png" alt=""/><span>后台管理系统</span>
+        
+    </div>
+</div>
+<div class="nav">
+    <div class="cont">
+        <div class="nav_left">
+            菜单处理
+        </div>
+        <div class="nav_right">
+            <ul>
+                <li><a href="{:U('Admin/Index/index', array('uid' => $user['id']))}">后台首页</a></li>
+                <if condition="$user['level'] lt 2">
+        		<li><a href="{:U('Admin/User/index', array('uid' => $user['id']))}" target="iframe">管理员管理</a></li>
+       			<li><a href="{:U('Admin/Rbac/addRole', array('uid' => $user['id']))}" target="iframe">权限管理</a></li>
+                <else/></if>
+        		<!--<li><a href="{:U('Admin/Cate/index', array('uid' => $user['id']))}" target="iframe">财务管理</a></li>-->
+        		<!--<li><a href="#.html">运营管理</a></li>-->
+        		<!--<li><a href="#.html">数据统计</a></li>-->
+                <div class="fn-clear"></div>
+            </ul>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+</div>
+<div class="cont">
+    <div class="main">
+        <div class="main_left">
+            <div class="main_box main_seven">权限管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                    <li> <a href="{:U('Admin/Rbac/index')}" target="iframe">用户列表</a></li>
+                    <li><a href="{:U('Admin/Rbac/addUser')}" target="iframe">添加用户</a></li>
+                    <li><a href="{:U('Admin/Rbac/changePwd',array('id'=>$user['id']))}" target="iframe">修改密码</a></li>
+                    <!--<li><a href="{:U('Admin/Rbac/role')}" target="iframe">角色列表</a></li>-->
+                    <!--<li><a href="{:U('Admin/Rbac/addRole')}" target="iframe">添加角色</a></li>-->
+                    <!--
+                    <li> <a href="{:U('Admin/Rbac/node')}" target="iframe">节点列表</a></li>
+                    <li><a href="{:U('Admin/Rbac/addNode')}" target="iframe">添加节点</a></li>-->
+
+                </ul>
+            </div>
+        	 <div class="main_box main_five">用户管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                    <li> <a href="{:U('Admin/User/index')}" target="iframe">用户管理</a></li>   
+                </ul>
+            </div>
+            
+            <div class="main_box">企业管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>                	
+                    <li><a href="{:U('Admin/Company/index')}" target="iframe">企业管理</a></li>
+                    <li><a href="{:U('Admin/Company/product')}" target="iframe">产品管理</a></li>
+                    <!--<li><a href="{:U('Admin/Company/news')}" target="iframe">新闻管理</a></li>-->
+                    <li><a href="{:U('Admin/Company/apply')}" target="iframe">入驻申请</a></li>
+                </ul>
+            </div>
+            
+            <!--<div class="main_box">设计师管理</div>-->
+            <!--&lt;!&ndash;二级菜单开始&ndash;&gt;-->
+            <!--<div class="main_box2">-->
+                <!--<ul>                	-->
+                    <!--<li><a href="{:U('Admin/Designer/index')}" target="iframe">设计师管理</a></li>-->
+                    <!--<li><a href="{:U('Admin/Designer/work')}" target="iframe">作品管理</a></li>-->
+                    <!--<li><a href="{:U('Admin/Designer/apply')}" target="iframe">入驻申请</a></li>-->
+                    <!--<li><a href="{:U('Admin/Designer/comment')}" target="iframe">评价管理</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            
+            <div class="main_box">店铺管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>                	
+                    <li><a href="{:U('Admin/Shop/index')}" target="iframe">店铺管理</a></li>
+                    <li><a href="{:U('Admin/Shop/goods')}" target="iframe">商品管理</a></li>
+                    <li><a href="{:U('Admin/Shop/apply')}" target="iframe">店铺申请</a></li>
+                </ul>
+            </div>
+            <div class="main_box">帖子管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>                	
+                    <li><a href="{:U('Admin/Topic/index')}" target="iframe">帖子管理</a></li>
+                    <li><a href="{:U('Admin/Topic/index')}" target="iframe">新闻资讯管理</a></li>
+                    <li><a href="{:U('Admin/Topic/addArticle')}" target="iframe">发布文贴</a></li>
+                    <li><a href="{:U('Admin/Topic/comment')}" target="iframe">评价管理</a></li>
+                </ul>
+            </div>
+            <div class="main_box">新闻管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                    <li><a href="{:U('Admin/News/index')}" target="iframe">新闻管理</a></li>
+                    <!--<li><a href="{:U('Admin/News/addArticle')}" target="iframe">发布新闻资讯</a></li>-->
+                    <li><a href="{:U('Admin/News/comment')}" target="iframe">评价管理</a></li>
+                </ul>
+            </div>
+            <div class="main_box">维币管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                    <li><a href="{:U('Admin/Vcoin/task')}" target="iframe">维币任务表</a></li>
+                    <li><a href="{:U('Admin/Vcoin/vcoinLog')}" target="iframe">维币充值记录管理</a></li>
+                </ul>
+            </div>
+            <!--二级菜单结束-->
+            <div class="main_box">活动管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                    <li><a href="{:U('Admin/Activity/index')}" target="iframe">活动列表</a></li>
+                    <li><a href="{:U('Admin/Activity/review')}" target="iframe">精彩活动回顾列表</a></li>
+                    <li><a href="{:U('Admin/Activity/addActivity')}" target="iframe">添加精彩活动回顾</a></li>
+                    <li><a href="{:U('Admin/Activity/comment')}" target="iframe">评价管理</a></li>
+                </ul>
+            </div>
+            <!--二级菜单结束-->
+            <div class="main_box">培训管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                    <li><a href="{:U('Admin/Course/index')}" target="iframe">课程列表</a></li>
+                    <li><a href="{:U('Admin/Course/apply')}" target="iframe">课程报名列表</a></li>
+                    <li><a href="{:U('Admin/Course/reviewList')}" target="iframe">精彩课程瞬间列表</a></li>
+                    <!--<li><a href="{:U('Admin/Course/add')}" target="iframe">添加课程</a></li>-->
+                    <!--<li><a href="{:U('Admin/Course/addReview')}" target="iframe">添加精彩课程瞬间</a></li>-->
+                    <li><a href="{:U('Admin/Course/needCourse')}" target="iframe">定制课程列表</a></li>
+                    <li><a href="{:U('Admin/Course/comment')}" target="iframe">评价管理</a></li>
+                </ul>
+            </div>
+            <div class="main_box">订单管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                    <li><a href="{:U('Admin/Order/index')}" target="iframe">订单列表</a></li>
+                    <li><a href="{:U('Admin/Order/goods')}" target="iframe">商品订单</a></li>
+                    <li><a href="{:U('Admin/Order/activity')}" target="iframe">活动订单</a></li>
+                    <li><a href="{:U('Admin/Order/course')}" target="iframe">培训订单</a></li>
+                </ul>
+            </div>
+            <!--二级菜单结束-->
+            <div class="main_box">人才对接管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                    <!--<li><a href="{:U('Admin/Order/index')}" target="iframe">订单列表</a></li>-->
+                    <li><a href="{:U('Admin/Job/company')}" target="iframe">企业招生列表</a></li>
+                    <li><a href="{:U('Admin/Job/job')}" target="iframe">推荐职位列表</a></li>
+                    <li><a href="{:U('Admin/Job/apply')}" target="iframe">职位申请列表</a></li>
+                    <li><a href="{:U('Admin/Job/talent')}" target="iframe">推荐人才列表</a></li>
+                </ul>
+            </div>
+            <!--二级菜单结束-->
+            <div class="main_box main_six">字典管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                	<li><a href="{:U('Admin/Dict/area')}" target="iframe">地区管理</a></li>
+                    <li><a href="{:U('Admin/Dict/other')}" target="iframe">其他配置管理</a></li>
+                </ul>
+            </div>
+            
+           
+            <!--二级菜单结束-->
+            <div class="main_box main_four">广告管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                   <!--<li><a href="{:U('Admin/Pcategory/index')}" target="iframe">广告位管理</a></li>-->
+                    <li><a href="{:U('Admin/Banner/index')}" target="iframe">广告列表</a></li>
+                    <li><a href="{:U('Admin/Banner/picture')}" target="iframe">模板图片列表</a></li>
+                </ul>
+            </div>
+            <!--二级菜单结束-->
+            <div class="main_box main_seven">系统管理</div>
+            <!--二级菜单开始-->
+            <div class="main_box2">
+                <ul>
+                   <!--<li><a href="{:U('Admin/Menu/index')}" target="iframe">菜单管理</a></li>-->
+                    <li><a href="{:U('Admin/Dynmic/index')}" target="iframe">平台动态</a></li>
+                    <li><a href="{:U('Admin/Index/note')}" target="iframe">留言</a></li>
+                    <li><a href="{:U('Admin/Index/introView')}" target="iframe">关于平台</a></li>
+                    <li><a href="{:U('Admin/Index/navView')}" target="iframe">平台地图</a></li>
+                   <li><a href="{:U('Admin/Index/adView')}" target="iframe">平台优势</a></li>
+                   <li><a href="{:U('Admin/Index/keysView')}" target="iframe">页面关键字设置</a></li>
+                </ul>
+            </div>
+            <!--二级菜单结束-->
+
+        </div>
+        <div class="main_right">
+            <iframe name="iframe" id="iframe" src="{:U('Admin/Index/main',array('id' => $_SESSION[C('USER_AUTH_KEY')]))}" scrolling="no" frameborder="0" onload="this.height=100"  width="100%"
+			 style="padding:0px; margin:0px;"></iframe>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+</div>
+<div class="button">
+    <div class="cont">
+        <div class="button_left">
+
+        </div>
+        <div class="button_right"></div>
+
+        <div class="fn-clear"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $(".main_box").click(function () {
+            $(this).next("div").addClass("main_font");
+            $(this).next("div").slideToggle("slow").siblings(".main_box2:visible").slideUp("slow");
+        });
+    });
+</script>

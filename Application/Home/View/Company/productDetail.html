@@ -1,0 +1,101 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/newsDetails.css">
+    <title>{$product.title}</title>
+<!--<meta name="description" content="{:mb_substr($product['content'],0,200)}" />-->
+<!--<meta name="keywords" content="{$key.title}" />-->
+</head>
+<body>
+<!--newsDetails-->
+<!--header登录注册-->
+<include file="Public/top" />
+<!--header logo end-->
+<!--导航条-->
+<include file="Public/nav"/>
+<!--导航条 end-->
+<!--content-->
+<div class="content fn-clear">
+    <div class="contentL l bgwh" style="width: 100%;">
+        <h2 class="f18 g3c b">{$product.title}</h2>
+        <div class="g8c issue">
+            <h3 class="dib f12 ">浏览：<span>{$product.num} </span> </h3>
+            <h3 class="dib f12 ">|  发布时间：<span>{$product.created|date='Y.m.d',###}</span></h3>
+        </div>
+        <div class="abstract" style="text-align:center;" >
+            <!--<h4 class="dib f14 g8c"><span class="f14 g3c dib">摘要：</span>{$product.intro}</h4>-->
+            <if condition="$product.picture neq ''">
+                <img src="__PUBLIC__{$product.picture}"  />
+            </if>
+        </div>
+        <div class="fn-clear" id="edit">
+            {$product.content}
+        </div>
+        <div class="share-platform dib fn-clear">
+            <input type="hidden" class="js-productid" value="{$product.productid}" />
+            <p class="dib l">分享：</p>
+            <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare bdsharebuttonbox dib" data="{'url':<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'/fromid/'.$info['uid']; ?>,'title':'<?php echo $product['title'] ?>','pic':'<?php echo 'http://www.91wework.com/Public'.$product['picture'] ?>'}">
+                <a href="javascript:;" class="bds_weixin js-share" data-cmd="weixin" title="分享到微信"></a>
+                <a href="javascript:;" class="bds_tsina js-share" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a href="javascript:;" class="bds_qzone js-share" data-cmd="qzone" title="分享到QQ空间"></a>
+            </div>
+        </div>
+        <div class="fn-clear link">
+            <div class="l">
+                <if condition="$prev neq null">
+                    <a href="{:U('Home/Company/productDetail',array('id'=>$prev['productid']))}">
+                    <input class="f14 g8c" type="button" value="上一篇">
+                   <span class="f14 g8c">{$prev.title}</span></a>
+                </if>
+            </div>
+            <div class="linkR">
+                <if condition="$next neq null">
+                    <a href="{:U('Home/Company/productDetail',array('id'=>$next['productid']))}">
+                    <input class="f14 g8c" type="button" value="下一篇">
+                    <span class="f14 g8c">{$next.title}</span></a>
+                </if>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部导航&footer-->
+<include file="Public/footer3"/>
+<!--底部导航&footer end-->
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/bootstrap.js"></script>
+<script src="__PUBLIC__/scripts/news.js"></script>
+<script src="__PUBLIC__/scripts/postDetails.js"></script>
+<script type="text/javascript" id="bdshare_js" data="type=tools" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdUrl":"<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].$_SERVER['REQUEST_URI'].'/fromid/'.$info['uid'];  ?>","bdPopTitle":"<?php echo $product['title'] ?>","bdText":"<?php echo $product['title'] ?>","bdMini":"1","bdMiniList":["bdxc","tqf","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],"bdPic":"<?php echo 'http://www.91wework.com/Public'.$product['picture'] ?>","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    //    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/share.js?v=89860593.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<script>
+    $(function(){
+        //分享
+        $('.js-share').click(function () {
+            var id = $(".js-productid").val();
+//            if(user==''){
+//                alert("请先登录");
+//                return false;
+//            }
+//            alert(id);
+            if(id==''||id==undefined){
+                alert("参数错误");
+                return false;
+            }
+            $.post("{:U('Home/Company/addProShare')}",{id:id},function(data){
+                if(data.status==1){
+//                        alert(data.msg);
+                    $(this).attr("disabled",true);
+                    setTimeout($('.js-share').attr("disabled",false),6000);
+                }else{
+//                        alert(data.msg);
+                }
+            });
+//            $(this).toggleClass('collect-green')
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/newsDetails.css">
+    <title>{$dynmic.title}</title>
+<meta name="description" content="{$dynmic.title}" />
+<meta name="keywords" content="{$dynmic.title}" />
+</head>
+<body>
+<!--newsDetails-->
+<!--header登录注册-->
+<include file="Public/top"/>
+<!--header logo end-->
+<!--导航条-->
+<include file="Public/nav"/>
+<!--导航条 end-->
+<!--content-->
+<div class="content fn-clear">
+    <div class="contentL l bgwh">
+        <h2 class="f18 g3c b">{$dynmic.title}</h2>
+        <div class="g8c issue">
+            <h3 class="dib f12 ">浏览：<span>{$dynmic.num} </span> </h3>
+            <h3 class="dib f12 ">|  发布时间：<span>{$dynmic.created|date='Y.m.d',###}</span></h3>
+        </div>
+        <!--<div class="abstract">-->
+            <!--<h4 class="dib f14 g8c"><span class="f14 g3c dib">摘要：</span>{$dynmic.intro}</h4>-->
+        <!--</div>-->
+        <div class="fn-clear" id="edit" style="overflow: hidden;">
+            {$dynmic.content}
+        </div>
+        <div class="fn-clear link">
+            <div class="l">
+                <if condition="$prev neq null">
+                 <a  class="g8c" href="{:U('Home/Dynmic/view',array('id'=>$prev['id']))}">
+                <input class="f14 g8c" type="button" value="上一篇">
+                <span class="f14 g8c">{$prev.title}</span>
+                 </a>
+                </if>
+            </div>
+            <div class="r linkR">
+                <if condition="$next neq null">
+                    <a class="g8c" href="{:U('Home/Dynmic/view',array('id'=>$next['id']))}">
+                    <input class="f14 g8c" type="button" value="下一篇">
+                    <span class="f14 g8c">{$next.title}</span>
+                    </a>
+                </if>
+            </div>
+        </div>
+    </div>
+    <div class="contentR r bgwh">
+        <div class="g3c case f12">
+            <h3 class="rel f18">热门主题<i class="g8c">hot</i></h3>
+            <foreach name="articles" item="v" key="k">
+                <a class="g8c" href="{:U('Home/Article/articleDetails',array('id'=>$v['articleid']))}"><p>{$k + 1}&nbsp;{$v.title}</p></a>
+            </foreach>
+        </div>
+    </div>
+</div>
+<!--底部导航&footer-->
+<include file="Public/footer3"/>
+<!--底部导航&footer end-->
+<!--共用js-->
+<script src="__PUBLIC__/scripts/base.js"></script>
+<script src="__PUBLIC__/scripts/bootstrap.js"></script>
+<script src="__PUBLIC__/scripts/news.js"></script>
+</body>
+</html>

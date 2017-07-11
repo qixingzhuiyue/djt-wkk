@@ -1,0 +1,86 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>订单管理>培训订单列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr>
+                <td width="60%" style="text-align:left">
+                    <form action="{:U('Admin/Order/course')}" method="get">
+                        订单号：<input type="text" name="ordernum" value="{$Think.get.ordernum}" />
+                        报名人姓名：<input type="text" name="name" value="{$Think.get.name}" />
+                        <select name="orderstatus">
+                            <option value="">订单状态</option>
+                            <option value="0">待支付</option>
+                            <option value="1">待发货</option>
+                            <option value="2">已发货</option>
+                        </select>
+                        <input type="submit" value="查询" />
+                        <input type="reset" value="清空" />
+                    </form>
+                </td>
+            </tr></tbody>
+        </table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+                <th style="width:5%">ID</th>
+                <th style="width:20%">订单号</th>
+                <th style="width:5%">课程名称</th>
+                <!--<th style="width:5%">商品数量</th>-->
+                <th style="width:5%">金额</th>
+                <th style="width:10%">报名人姓名</th>
+                <th style="width:10%">报名人电话</th>
+                <!--<th style="width:10%">报名人公司</th>-->
+                <!--<th style="width:10%">报名人地址</th>-->
+                <!--<th style="width:10%">下单日期</th>-->
+                <!--<th style="width:10%">支付日期</th>-->
+                <!--<th style="width:10%">支付方式</th>-->
+                <th style="width:10%">日期</th>
+                <th style="width:5%">订单状态</th>
+                <th style="width:5%">操作</th>
+            </tr>
+            <foreach name="orders" item="v">
+                <tr class="ul_box1">
+                    <td>{$v.id}</td>
+                    <td>{$v.ordernum}</td>
+                    <td>{$v.goodname}</td>
+                    <!--<td>{$v.shopnum}</td>-->
+                    <td>{$v.amount}</td>
+                    <td>{$v.name}</td>
+                    <td>{$v.phone}</td>
+                    <!--<td>{$v.orderdate|date='y-m-d H:i',###}</td>-->
+                    <!--<td>{$v.paydate|date='y-m-d H:i',###}</td>-->
+                    <!--<td><if condition="$v.payment eq 'alipay' ">支付宝<elseif conditon="$v.payment eq 'wxpay' ">微信<else/>维币</if></td>-->
+                    <!--<td><if condition="$v.recommend eq 0">否<else/>是</if></td>-->
+                    <!--<td>{$v.weight}</td>-->
+                    <td>{$v.created|date='Y-m-d H:i',###}</td>
+                    <td><if condition="$v.orderstatus eq 0">未支付<elseif condition="$v.orderstatus eq 1" />待发货<else />已发货</if></td>
+                    <td><a href="{:U('Admin/Order/courseView',array('id'=>$v['id']))}">查看详情</a></td>
+                </tr>
+            </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

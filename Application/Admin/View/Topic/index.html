@@ -1,0 +1,102 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top"
+        <div class="template_top_left">
+            <h1>帖子管理>帖子列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+            <!--<a href="{:U('Admin/Role/add', array('rpid' => $date['id'],'uid' => $_SESSION[C('USER_AUTH_KEY')]))}" class="ul_button">添加帖子组</a>-->
+            <!--<a href="{:U('Admin/Node/index')}" class="ul_button">权限设置</a>-->
+            <!--<a href="#" onclick="del();" class="ul_button">删除帖子组</a>-->
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+    <table class="ul_table">
+         	<tbody class="ul_table">
+    		<tr>
+    		<td width="60%" style="text-align:left">
+	    		<form action="{:U('Admin/Topic/index')}" method="get">
+				帖子名：<input type="text" name="keyword" value="{$Think.get.keyword}" />
+				<select name="status">
+				<option value="">状态</option>
+				<option value="1" <if condition="$Think.get.status eq 1">selected</if>>正常</option>
+				<option value="0" <if condition="$Think.get.status eq '0'">selected</if>>屏蔽</option>
+				</select>
+				<select name="ispush">
+				<option value="">推荐</option>
+				<option value="1" <if condition="$Think.get.ispush eq 1">selected</if>>是</option>
+				<option value="0" <if condition="$Think.get.ispush eq '0'">selected</if>>否</option>
+				</select>
+				<input type="submit" value="查询" />
+				<input type="reset" value="清空" />
+	      		</form>
+    		</td>
+      	</tr></tbody>
+     	</table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:30%">标题</th>
+                <th style="width:10%">类型</th>
+                <th style="width:5%">推荐</th>
+                <th style="width:5%">权重</th>
+                <th style="width:20%">日期</th>
+                <th style="width:10%">状态</th>
+                <th style="width:10%">操作</th>
+                <th style="width:10%">删除</th>
+            </tr>
+                <foreach name="topics" item="v">
+                    <tr class="ul_box1">
+                        <td>{$v.articleid}</td>
+                        <td>{$v.title}</td>
+                        <td><if condition="$v.type eq 1">主题文贴<elseif condition="$v.type eq 2"/>企业交流<elseif condition="$v.type eq 3"/>培训咨询<else/>无</if></td>
+                        <td><if condition="$v.ispush eq 0">否<else/>是</if></td>
+                        <td>{$v.weight}</td>
+                        <td>{$v.created|date='y-m-d H:i',###}</td>
+                        <td><if condition="$v.status eq 1">正常<else />屏蔽</if></td>
+                        <td><if condition="$v.type neq 2"><a href="{:U('Admin/Topic/view', array('id' => $v['articleid']))}">编辑</a></if>
+                            <if condition="$v.type eq 2">
+                            <if condition="$v['status']">
+                                <a href="{:U('Admin/Topic/changeStatus',array('articleid'=>$v['articleid'],'status'=>0))}">屏蔽</a>
+                                <else/>
+                                <a href="{:U('Admin/Topic/changeStatus',array('articleid'=>$v['articleid'],'status'=>1))}">开启</a>
+                            </if>
+                        </if></td>
+                        <td><a class="js-del" value="{$v['articleid']}" href="javascript:;">删除</a></td>
+                    </tr>
+                </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+       $(".js-del").click(function(){
+           var status = confirm("删除后不可找回，你确认删除吗？");
+           if(status){
+               var id = $(this).attr("value");
+               if(id==''){
+                   alert("参数错误");
+                   return false;
+               }
+              window.location.href="/index.php/Admin/Topic/del/id/"+id;
+           }
+       }) ;
+    });
+</script>
+</body>
+</html>

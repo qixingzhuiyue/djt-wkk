@@ -1,0 +1,143 @@
+<include file="Public/header" />
+<title>{$work.name}-企业案例-建材装潢</title>
+<link rel="stylesheet" href="__PUBLIC__/css/detail.css">
+<style type="text/css">
+    html,body{margin:0;padding:0;}
+    .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+    .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+</style>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=570E1e7563f6e47308e7928f68f9b6d3"></script>
+<!--[if lt IE 9]>
+  <script src="__PUBLIC__/js/html5shiv.min.js"></script>
+  <script src="__PUBLIC__/js/respond.min.js"></script>
+  <![endif]-->
+</head><body>
+<!--页面头部-->
+<include file="Public/top" />
+<!--搜索框-->
+<div id="top-main">
+  <div class="banner-box"> <img src="__PUBLIC__/{$company.banner}" alt="{$company.name}">
+    <div class="module-top">
+      <h1>告诉我，您对家的想象是</h1>
+      <i class="lf selectColor">Y</i>
+      <h2> <span class="selectColor">our Dream</span> 这一切我们帮您实现 </h2>
+    </div>
+  </div>
+</div>
+<!--主导航-->
+<nav id="nav">
+  <div class="breadcrumbs breadDetail"> 我的位置：<a href="/">首页</a> &nbsp;＞&nbsp; <a href="{:U('Home/Company/Show', array('id' => $company['id']))}">装潢公司</a> &nbsp;＞&nbsp;<span>【{$work.name}】</span> </div>
+</nav>
+<!--侧边栏-->
+<aside id="aside" style="margin-bottom: 10px;">
+  <h1 class="f18 g6">【{$work.name}】</h1>
+  <!--p>参考造价：5万元|风格：现代|空间：二居|面积：93平米|浏览数：16288</p-->
+</aside>
+<!--主体内容-->
+<section id="main">
+  <div class="bcyellow ">
+    <div class="top-title clear">
+      <h1 class="dib hidden-xs js-prov">{$work.proid|getArea=###} {$work.cityid|getArea=###}</h1>
+      <!--span class="hidden-xs">&nbsp;2家门店可以使用(门店信息仅供参考)</span-->
+      <!--div class="rt"> <span class="hidden-xs">所在地:</span>
+        <select name="" data-city="city" class="bcyellow vbl">
+          <option value="" selected="selected">上海市</option>
+          <option value="">北京市</option>
+        </select>
+        <select name="" id="" class="bcyellow vbl">
+          <option value="" selected>所有城市</option>
+          <option value="">北京市</option>
+        </select>
+        <select name="" id="" class="bcyellow vbl">
+          <option value="" selected>所有区域</option>
+          <option value="">北京市</option>
+        </select>
+        <a href="#" class="dib">搜索</a> </div-->
+    </div>
+    <div class="addDetail">
+      <div style="width:584px;height:361px;border:#ccc solid 1px;" id="dituContent" class="dib"></div>
+      <div class="dib w50">
+        <div class="eachCtn">
+          <h1 class="f18 g6 lh24"> {$company.name} </h1>
+          <p class="lh24 js-address"> 地址：{$company.address} </p>
+          <p class="lh24">电话：{$company.tel}</p>
+        </div>
+        <!--div class="eachCtn">
+          <h1 class="f18 g6 lh24"> 2实创装饰(上海公司) </h1>
+        </div-->
+      </div>
+    </div>
+  </div>
+  <div class="frame clear"> <img src="__PUBLIC__/images/frame-bg.png" alt="">
+    <h3 class="g6">案例简介 Case description</h3>
+    <p>{$work.summary}</p>
+  </div>
+  <?php foreach($work['pictures'] as $v) {?>
+  <div class="picDescribe"> <img src="__PUBLIC__/<?php echo $v;?>"> </div>
+  <?php }?>
+</section>
+<!--页面底部-->
+<div class="returnHome"> <a href="/">返回首页</a> </div>
+<include file="Public/bottom" />
+<script type="text/javascript">
+  //创建和初始化地图函数：
+  function initMap(){
+    createMap();//创建地图
+    setMapEvent();//设置地图事件
+    addMapControl();//向地图添加控件
+  }
+
+  //创建地图函数：
+  function createMap(){
+    var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+    var prov = '';
+    var provtxt = $('.js-prov').text();//获得详细地址
+    prov = provtxt;
+//    if (provtxt == '北京' || provtxt == '天津' || provtxt == '上海' || provtxt == '深圳') {
+//      prov = provtxt;
+//    } else {
+//      prov = provtxt;//这里设置默认中心
+//    }
+    map.centerAndZoom(prov, 11);//设定地图的中心点和坐标并将地图显示在地图容器中
+    var local = new BMap.LocalSearch(map, {
+      renderOptions:{map: map}
+    });//搜索地图方法
+    var address = prov + $(".js-address").text();
+
+    local.search(address);//搜索地址
+    map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+    map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+    map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+    map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+    map.addControl(new BMap.MapTypeControl());
+//    var point = new BMap.Point(121.480237,31.236305);//定义一个中心点坐标
+//    map.centerAndZoom(point,12);//设定地图的中心点和坐标并将地图显示在地图容器中
+//    window.map = map;//将map变量存储在全局
+  }
+
+//  //地图事件设置函数：
+//  function setMapEvent(){
+//    map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+//    map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+//    map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+//    map.enableKeyboard();//启用键盘上下左右键移动地图
+//  }
+
+//  //地图控件添加函数：
+//  function addMapControl(){
+//    //向地图中添加缩放控件
+//    var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+//    map.addControl(ctrl_nav);
+//    //向地图中添加缩略图控件
+//    var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+//    map.addControl(ctrl_ove);
+//    //向地图中添加比例尺控件
+//    var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+//    map.addControl(ctrl_sca);
+//  }
+
+
+  initMap();//创建和初始化地图
+</script>
+<include file="Public/footer" />

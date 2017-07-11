@@ -1,0 +1,378 @@
+<include file="Public/header"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/personal.css">
+<!--引入日期插件文件开始-->
+<script language="javascript" type="text/javascript" src="__PUBLIC__/datepicker/WdatePicker.js"></script>
+<!--引入日期插件文件结束-->
+<!--引入地址三级联动插件文件开始-->
+<script language="javascript" type="text/javascript" src="__PUBLIC__/scripts/varieties.data.js"></script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/scripts/jsAddress.js"></script>
+<!--引入地址三级联动插件文件结束-->
+    <title>企业资料</title>
+</head>
+<body>
+<!--维沃柯首页-->
+<!--header登录注册-->
+<!--维沃柯首页-->
+<!--header登录注册-->
+<include file="Public/top"/>
+<!--header logo end-->
+<!--导航条-->
+<include file="Public/nav"/>
+<!--导航条 end-->
+<!--图片轮播-->
+<div class="carousel slide" id="myCarousel">
+    <ol class="carousel-indicators icon">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner imgco">
+        <div class="item active">
+            <img src="__PUBLIC__/images/personal/banner.png" alt="banner"/>
+        </div>
+    </div>
+    <a class="left carousel-control" href="#myCarousel"  data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel"  data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!--图片轮播 end-->
+
+<!--主要内容部分 start-->
+<section>
+    <div class="main">
+        <!--左边导航-->
+        <div class="leftNav">
+            <ul>
+                <li ><a class="b9a" href="{:U('Home/Company/editCompanyInfo')}" style="color:white;">企业资料</a></li>
+                <li><a class="" href="{:U('Home/Activity/activityMange')}">活动管理</a></li>
+                <li><a class="" href="{:U('Home/Order/orderMange')}">订单管理</a></li>
+                <li ><a class="" href="{:U('Home/Vcoin/myWallet')}">我的维币</a></li>
+            </ul>
+        </div>
+        <!--右边切换-->
+        <!--公司——用户资料 start-->
+        <div class="rightTab  company">
+            <li class="g3c abs model-one">
+                <h3 class="f18 rel">基本信息<a href="{:U('Home/Company/company',array('id'=>$company['companyid']))}"><span class="f26 b rel fr">返回主页</span></a></h3>
+                <div>
+                    <label class="f16">公司全称</label>
+                    <input class="f16" value="{$company.name}" name="name" type="text">
+                    <span class="f16 g8c dib hidden-xs">例如：某某信息技术有限公司</span>
+                </div>
+                <div>
+                    <label class="f16">公司类型</label>
+                    <select name="type">
+                        <if condition="$company.type eq ''">
+                            <option>请选择</option>
+                        </if>
+                        <foreach name="types" item="v">
+                            <option value="{$v.name}" <if condition="$company.type eq $v['name']">selected='selected'</if> >{$v.name}</option>
+                        </foreach>
+                    </select>
+                    <!--<input class="f16"  type="text" placeholder="请输入公司类型">-->
+                </div>
+                <div>
+                    <label class="f16">营业执照号</label>
+                    <input class="f16" value="{$company.licensenum}" name="licensenum" type="text">
+                </div>
+                <div>
+                    <label class="f16">营业执照</label>
+                    <div class="dib upImgT fn-clear">
+                        <lable class="l  logoDiv" id="licenseDiv"><img src="__PUBLIC__{$company.licensepic}" id="licenseImg" class="logoImg" /></lable>
+                        <div class="l f16 upImgTitle">
+                            <br/><br/><br/>
+                            <p class="g8c hidden-xs">图片不得大于4M (jpg、gif、png、bmp)</p>
+                            <p class="g8c hidden-xs">推荐尺寸 472*280 px的图片</p>
+                            <br/><br/>
+                            <p class="g8c hidden-xs hidden-sm"></p>
+                            <p class="g8c hidden-xs hidden-sm"></p>
+                            <p class="g8c hidden-xs hidden-sm"></p>
+                            <div class="up_imgT rel">
+                                <input class="abs"  name="lic"  type="file" id="license_up" value="上传"/>
+                                <label class="abs logo_up f18 wh" for="license_Up">上传</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="f16">关于图片</label>
+                    <div class="dib upImgT fn-clear">
+                        <lable class="l logoDiv" id="comDiv"><img id="comImg" src="__PUBLIC__{$company.companypic}" class="logoImg" /></lable>
+                        <div class="l f16 upImgTitle">
+                            <br/><br/><br/>
+                            <p class="g8c hidden-xs">图片不得大于4M (jpg、gif、png、bmp)</p>
+                            <p class="g8c hidden-xs">推荐尺寸 472*280 px的图片</p>
+                            <br/><br/>
+                            <p class="g8c hidden-xs hidden-sm"></p>
+                            <p class="g8c hidden-xs hidden-sm"></p>
+                            <p class="g8c hidden-xs hidden-sm"></p>
+                            <div class="up_imgT rel">
+                                <input class="abs logo_up" name="companypic" type="file" id="com_up" value="上传"/>
+                                <label class="abs logo_up f18 wh" for="com_Up">上传</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="f16">主营业务</label>
+                    <input class="f16" value="{$company.business}" name="business" type="text">
+                </div>
+                <div>
+                    <label class="f16">企业简介</label>
+                    <textarea name="intro" class="f16" >{$company.intro}</textarea>
+                </div>
+                <div>
+                    <label class="f16">企业关键字</label>
+                    <textarea name="keywords" class="f16" >{$company.keywords}</textarea>
+                </div>
+                <div>
+                    <label class="f16">logo图片</label>
+                    <div class="dib upImgT fn-clear">
+                        <lable class="l logoDiv" id="logoDiv"><img id="logoImg" src="__PUBLIC__{$company.logo}" class="logoImg" /></lable>
+                        <div class="l f16 upImgTitle">
+                            <br/><br/><br/>
+                            <p class="g8c hidden-xs">图片不得大于4M (jpg、gif、png、bmp)</p>
+                            <p class="g8c hidden-xs">推荐尺寸 472*280 px的图片</p>
+                            <br/><br/>
+                            <p class="g8c hidden-xs hidden-sm"></p>
+                            <p class="g8c hidden-xs hidden-sm"></p>
+                            <p class="g8c hidden-xs hidden-sm"></p>
+                            <div class="up_imgT rel">
+                                <input class="abs logo_up" name="logo" type="file" id="logo_up" value="上传"/>
+                                <label class="abs logo_up f18 wh" for="logo_Up">上传</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="f16">网址</label>
+                    <input class="f16" value="{$company.link}" name="link"  type="text">
+                </div>
+                <div class="registered">
+                    <label  class="f16">地址</label>
+                    <div class="dib">
+                        <div class="address js-add-data1">
+                            <select name="prov" class="dib select f16 js-provs">
+                                <foreach name="provs" item="vo">
+                                    <option value="{$vo.id}" <if condition="$vo.name eq $company['prov']"> selected="selected"</if> >{$vo.name}</option>
+                                </foreach>
+                            </select>
+                            <span class="f16 g3c province dib">省</span>
+                            <select name="city" class="dib select f16 js-citys">
+                                <if condition="$company.city neq ''">
+                                    <option value="{$company.city}" selected>{$company.city}</option>
+                                    <else/>
+                                    <option value="">请选择区市</option>
+                                </if>
+                            </select>
+                            </select>
+                            <span class="f16 g3c">市</span>
+                        </div>
+                        <textarea name="address" placeholder="请输入详细地址">{$company.address}</textarea>
+                    </div>
+                </div>
+                <div>
+                    <label class="f16">联系人</label>
+                    <input class="f16" value="{$company.contact}" name="contact" type="text">
+                </div>
+                <div>
+                    <label class="f16">联系电话</label>
+                    <input class="f16" value="{$company.mobile}" name="mobile"  type="text">
+                </div>
+                <input class="f18 wh save js-sub" type="button" value="保存">
+                </form>
+            </li>
+            <div class="tabDetail g6">
+                <form action="">
+                    <div>
+                        <span >公司名称</span>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <span>公司类型</span>
+                        <input type="text"/>
+                    </div>
+                    <div>
+                        <span>营业执照号</span>
+                        <input type="text"/>
+                    </div>
+                    <div class="licence">
+                        <span>营业执照</span>
+                        <img class="image liImg"  src="__PUBLIC__/images/personal/unImg.png"  value=""/>
+                        <span class="gc  abs prompt">jpg/png，不超过2M</span>
+                        <input  class="b9a wh load" type="button" value="上传"/>
+                        <input id="licence" type="file" value=" " onchange="selectImage(this)"/>
+                    </div>
+                    <div class="abstract">
+                        <span>企业简介</span>
+                        <textarea></textarea>
+                    </div>
+                    <div class="logoImage">
+                        <span>LOGO图片</span>
+                        <img class="image logoImg"  src="__PUBLIC__/images/personal/unimg2.png" />
+                        <span class="  abs prompt">
+                            尺寸：120*120<br/>
+                            格式：jpg/png<br/>
+                            大小：不超过2M<br/>
+                        </span>
+                        <input class="b9a wh load ab" type="button" value="上传"/>
+                        <input id="comLogo" class="ab"  type="file" onchange="selectImage(this)"/>
+                    </div>
+                    <div class="webAdd">
+                        <span >网址</span>
+                        <input type="text"/>
+                    </div>
+                    <div class="address comAddress" data-toggle="distpicker">
+                        <span>地址</span>
+                        <select id="province1">
+                            <option value="">选择省份</option>
+                        </select>
+
+                        <select id="city">
+                            <option value="">选择城市</option>
+                        </select>
+
+                    </div>
+                    <div class="address">
+                        <span> &nbsp;</span>
+                        <input class="detailAdd" type="text" placeholder="请输入详细地址"/>
+                    </div>
+                    <div class="contacts">
+                        <span >联系人</span>
+                        <input type="text"/>
+                    </div>
+                    <div class="tel">
+                        <span >联系电话</span>
+                        <input type="text"/>
+                    </div>
+                    <div class="submit">
+                        <input class="b9a wh load" type="button" value="确认修改"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--公司——用户资料 end-->
+
+        <!--个人——用户资料 start-->
+        <div class="rightTab personal dn">
+            <div class="tabTitle ">
+                <p class=" g9a">基本信息</p>
+            </div>
+            <div class="tabDetail g6">
+                <form action="{:U('Home/User/editInfo')}" method="post" enctype="multipart/form-data" class="js-form">
+                    <div class="perImage">
+                        <span >头像</span>
+                        <if condition="$info.avatar eq ''">
+                            <img class="abs" id="www"  src="__PUBLIC__/images/personal/personal_bg.png" />
+                            <else/>
+                            <img class="abs" id="www"  src="__PUBLIC__{$info.avatar}" />
+                        </if>
+                        <input class="b9a wh load perLoad" type="button" value="上传头像"/>
+                        <input id="perImg" name="picture"  class="load perLoad" type="file" onchange="selectImage(this)"/>
+                        <span class="abs gc fz14 prompt">图片大小不能超过4M</span>
+                    </div>
+                    <div>
+                        <span>昵称</span>
+                        <input value="{$info.name}" name="name" disabled type="text"/>
+                    </div>
+                    <div>
+                        <span>手机</span>
+                        <input name="mobile" value="{$info.mobile}" type="text"/>
+                    </div>
+                    <div>
+                        <span>邮箱</span>
+                        <input name="email" value="{$info.email}" type="email" />
+                    </div>
+                    性别：&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" value="1" <if condition="$info.sex eq 1">checked</if> " name="sex"/>男&nbsp;&nbsp;
+                    <input type="radio" value="2" <if condition="$info.sex eq 2">checked</if>  name="sex"/> 女&nbsp;&nbsp;
+                    <div class="">
+                        <!--<span>性别</span>-->
+                        <!--<div class="genderSel">-->
+                            <!--<label>-->
+                                <!--<input type="radio" name="sex"/>-->
+                                <!--&lt;!&ndash;<span class="genderRep man select"></span>&ndash;&gt;-->
+                                <!--<span>男</span>-->
+                            <!--</label>-->
+                            <!--<label >-->
+                                <!--<input type="radio" name="sex"/>-->
+                                <!--&lt;!&ndash;<span class="genderRep female"></span>&ndash;&gt;-->
+                                <!--<span>女</span>-->
+                            <!--</label>-->
+                        </div>
+                    <!--</div>-->
+                    <div class="birthday">
+                        <span>生日</span>
+                        <input value="{$info.birth}" type="text" name="birth" onClick="WdatePicker()"/>
+                    </div>
+                    <div class="address">
+                        <span>地址</span>
+                        <div class="selAdd">
+                            <select name="prov"  class="" id="caigou_info[chandi_province]">
+                                <!--<option value="">{$info.prov}</option>-->
+                            </select>
+                            <span>省</span>
+                            <select name="city" id="caigou_info[chandi_city]">
+                                <!--<option value="">{$info.city}</option>-->
+                            </select>
+                            <span>市</span>
+                            <select name="area" id="caigou_info[chandi_region]">
+                                <!--<option value="">{$info.area}</option>-->
+                            </select>
+                            <span>区/县</span>
+                        </div>
+
+                    </div>
+                    <!--<div class="address" data-toggle="distpicker">-->
+                        <!--<span>地址</span>-->
+                        <!--<div class="selAdd">-->
+                            <!--<select name="prov" id="province2">-->
+                                <!--<option value="">{$info.prov}</option>-->
+                            <!--</select>-->
+                            <!--<span>省</span>-->
+                            <!--<select name="city" id="city2">-->
+                                <!--<option value="">{$info.city}</option>-->
+                            <!--</select>-->
+                            <!--<span>市</span>-->
+                            <!--<select name="area" id="district2">-->
+                                <!--<option value="">{$info.area}</option>-->
+                            <!--</select>-->
+                            <!--<span>区/县</span>-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+                    <div class="abstract perAbstract">
+                        <span>简介</span>
+                        <textarea name="intro">{$info.intro}</textarea>
+                    </div>
+                    <div class="submit">
+                        <input class="b9a wh load js-sub" type="button" value="确认修改"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--个人——用户资料 end-->
+    </div>
+</section>
+<!--主要内容部分 end-->
+<!--底部导航&footer-->
+<include file="Public/footer3"/>
+<!--底部导航&footer end-->
+<script src="__PUBLIC__/scripts/distpicker.data.js"></script>
+<script src="__PUBLIC__/scripts/distpicker.js"></script>
+
+<script src="__PUBLIC__/scripts/personal.js"></script>
+</body>
+<script type="text/javascript">
+    $(function(){
+       $(".js-sub").click(function(){
+          $(".js-form").submit();
+       });
+        addressInit('caigou_info[chandi_province]', 'caigou_info[chandi_city]', 'caigou_info[chandi_region]', '<?php echo $info["prov"] ;?>', '<?php echo $info["city"] ;?>', '<?php echo $info["area"] ;?>');
+});
+</script>
+</html>

@@ -1,0 +1,72 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>人才管理>人才列表</h1>
+        </div>
+        <div class="template_top_right">
+        	<script>
+		      function del(){
+		      	if(window.confirm('请确认是否删除？')){
+		         	document.adminForm.submit();
+		        }
+		      }
+			</script>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="template_middle">
+    <table class="ul_table">
+         	<tbody class="ul_table">
+    		<tr>
+    		<td width="60%" style="text-align:left">
+	    		<form action="{:U('Admin/Job/apply')}" method="get">
+				职位名称：<input type="text" name="keyword" value="{$Think.get.keyword}" />
+				<select name="status">
+				<option value="">状态</option>
+				<option value="1">正常</option>
+				<option value="0">屏蔽</option>
+				</select>
+				<input type="submit" value="查询" />
+				<input type="reset" value="清空" />
+	      		</form>
+    		</td>
+      	</tr></tbody>
+     	</table>
+        <table class="ul_table">
+            <tbody class="ul_table">
+            <tr class="ul_box">
+            	<th style="width:5%">ID</th>
+                <th style="width:15%">姓名</th>
+                <th style="width:10%">性别</th>
+                <th style="width:10%">职称</th>
+                <th style="width:10%">联系方式</th>
+                <th style="width:10%">E-mail</th>
+                <th style="width:10%">日期</th>
+                <th style="width:10%">状态</th>
+                <th style="width:10%">操作</th>
+            </tr>
+                <foreach name="job" item="v">
+                    <tr class="ul_box1">
+                        <td>{$v.id}</td>
+                        <td>{$v.name}</td>
+                        <td><if condition="$v['sex'] eq 1">男<elseif condition="$v['sex'] eq 2" />女<else/>保密</if></td>
+                        <td>{$v.title}</td>
+                        <td>{$v.phone}</td>
+                        <td>{$v.email}</td>
+                        <td>{$v.created|date='y-m-d H:i',###}</td>
+                        <td><if condition="$v.status eq 1">正常<else />屏蔽</if></td>
+                        <td><a href="{:U('Admin/Job/applyView', array('id' => $v['id']))}">查看</a></td>
+                    </tr>
+                </foreach>
+            </tbody>
+        </table>
+    </div>
+    <div class="template_page">
+		{$page}    
+    </div>
+</div>
+</body>
+</html>

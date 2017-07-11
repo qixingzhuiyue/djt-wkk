@@ -1,0 +1,20 @@
+<!--企业，店铺三个模板使用-->
+<footer id="footer" class="footer footerT">
+    <p>
+        <!--<a >首页</a>-->
+        <!--<a href="#">|</a>-->
+        <a class="b g9a" style="display: inline-block;font-size: 18px; color:#9ab126" href="{:U('Home/Index/index')}">进入首页</a>
+        <a class="b wh" style="font-size: 24px" href="javascript:;">&nbsp;|&nbsp;</a>
+        <if condition="$Think.session.userinfo.companystatus eq 1">
+            <a class="b wh" style="display: inline-block;font-size: 18px;color:#9ab126"  href="{:U('Home/Shop/apply')}">店铺申请</a>
+            <else/>
+            <a class="b wh" style="display: inline-block;font-size: 18px;color:#9ab126"  href="{:U('Home/Company/apply')}">企业入驻</a>
+        </if>
+    </p>
+    <p>
+        <a class="wh" href="javascript:;">本站使用维沃珂企业模板搭建 </a>
+        <!--<a href="#">| </a>-->
+        <!--<a href="#">管理登录</a>-->
+    </p>
+    <p style="color: white;">企业自助推广营销平台版权所有</p>
+</footer>

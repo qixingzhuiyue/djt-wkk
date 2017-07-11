@@ -1,0 +1,80 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>地区管理>地区详情</h1>
+        </div>
+        <div class="template_top_right">
+            <a href="{:U('Admin/Dict/area')}" class="ul_button">返回</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+    
+    <form name="adminForm" id = "js-form" action="{:U('Admin/Dict/areaView')}" method="post">
+        <ul class="add_blank">                       
+                        <li><div class="blank_left"><span class="blank_color">*</span>名称</div><div class="blank_right"><input type="text" class="js-name" name="name" value="{$area.name}" class="ul_text"/></div><div class="fn-clear"></div></li>
+            
+            <li><div class="blank_left"><span class="blank_color">*</span>省</div><div class="blank_right">
+            <select name="pid" class="ul_text js-pid" style="height:30px;">
+				<option value="">省份</option>
+				 <foreach name="plists" item="v">
+				<option value="{$v.id}" <if condition="$v.id eq $area['pid']">selected</if>>{$v.name}</option>
+				</foreach>
+				</select>
+				</div><div class="fn-clear"></div></li>
+            <li><div class="blank_left"><span class="blank_color">*</span>市</div><div class="blank_right">
+                <select name="sid" class="ul_text js-sid" style="height:30px;">
+                    <option value="">市</option>
+                    <foreach name="plists" item="v">
+                        <option value="{$v.id}" <if condition="$v.id eq $area['pid']">selected</if>>{$v.name}</option>
+                    </foreach>
+                </select>
+            </div><div class="fn-clear"></div></li>
+            <li><div class="blank_left">状态</div><div class="blank_right">
+            <input type="radio" name="status" value="1"  class="ul_middle" <if condition="$area.status neq '0'">checked</if> />&nbsp;正常&nbsp;&nbsp;
+            <input type="radio" name="status" value="0" class="ul_middle" <if condition="$area.status eq '0'">checked</if> />&nbsp;屏蔽
+            </div><div class="fn-clear"></div></li>           
+         
+            
+            <li><div class="blank_left">权重</div><div class="blank_right"><input type="number" name="weight" value="{$area.weight}" class="ul_text"/>值越大越靠前</div><div class="fn-clear"></div></li>            
+            
+            
+            <input type="hidden" name="id" value="{$area.id}" />
+            <li class="ul_word"><input type="button" class="ul_add js-sub" value="保存"/><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/></li>
+        </ul></form>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        //城市联动
+        $(".js-pid").change(function(){
+            var pid = $(this).val();
+            $(".js-sid").html('');
+            if(pid.length!=0){
+                $.post("{:U('Admin/Dict/getAreas')}",{id:pid},function(data){
+                    if(data){
+                        var html = "<option value=''>市</option>";
+                        $.each(data,function(name,value){
+                            html+="<option value="+value.id+">"+value.name+"</option>";
+                        });
+                        $(".js-sid").html(html);
+                    }
+                });
+            }
+        });
+        //城市联动结束
+        $(".js-sub").click(function(){
+           var name = $(".js-name").val();
+            if(name ==''){
+                alert('地区名称不能为空');
+            }else{
+                $("#js-form").submit();
+            }
+        });
+    });
+</script>
+</html>

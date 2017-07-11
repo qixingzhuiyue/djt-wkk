@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>新闻展示</title>
+
+    <!-- core CSS -->
+    <link href="__PUBLIC__/styles/bootstrap.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/styles/animate.min.css" rel="stylesheet">
+    <link href="__PUBLIC__/styles/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="__PUBLIC__/scripts/html5shiv.js"></script>
+    <script src="__PUBLIC__/scripts/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="__PUBLIC__/styles/base.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/reset.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/styles/modelTwo.css"/>
+</head><!--/head-->
+<body>
+<header id="header">
+    <div class="top-bar ">
+        <div class="container">
+            <include file="Public/top1"/>
+        </div><!--/.container-->
+    </div>
+<!--/.container-->
+    </div><!--/.top-bar-->
+    <nav class="navbar" role="banner">
+        <div class="container">
+            <!--<div class="navbar-header">-->
+                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                <!--</button>-->
+                <!--<if condition="$company.logo eq ''">-->
+                    <!--<a class="navbar-brand" href="javascript:;"><img class="nav_img" src="__PUBLIC__/images/model/orange.png" alt="logo"></a>-->
+                    <!--<else/>-->
+                    <!--<a class="navbar-brand" href="javascript:;"><img class="nav_img" src="__PUBLIC__{$company.logo}" alt="logo"></a>-->
+                <!--</if>-->
+            <!--</div>-->
+            <p class="Ctitle f12">{$company.name}</p>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar_na">
+                    <!--<li ><a class="active" href="{:U('Home/Index/index')}">首页 </a></li>-->
+                    <!--<li><a href="#">产品展示 </a></li>-->
+                    <!--<li><a href="#">新闻动态 </a></li>-->
+                    <!--<li><a href="#">关于我们 </a></li>-->
+                    <!--<li><a href="#">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header><!--header-->
+<div class="share-dialog">
+    <!--<div class="share-close"></div>-->
+
+    <!--<div class="share-dialog-cont">-->
+
+        <!--<div class="share-platform">-->
+
+            <!--<div class="share-platform-r">-->
+                <!--<div class="bdsharebuttonbox">-->
+                    <!--<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>-->
+                    <!--<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>-->
+                    <!--<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>-->
+                <!--</div>-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+<div class="carousel slide" id="myCarousel"  data-ride="carousel" data-interval="2000">
+    <!--<ol class="carousel-indicators icon">-->
+        <!--<li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
+        <!--<li data-target="#myCarousel" data-slide-to="1"></li>-->
+        <!--<li data-target="#myCarousel" data-slide-to="2"></li>-->
+
+    <!--</ol>-->
+    <div class="carousel-inner imgco" >
+        <div class="item active">
+            <if condition="$company.banner neq ''">
+                <img src="__PUBLIC__{$company.banner}" alt="" width="100%" height="550px"/>
+                <else/>
+                <img src="__PUBLIC__/images/model/lunbo.jpg" alt="" width="100%" height="550px"/>
+            </if>
+            <div class="container">
+                <div class="row slide-margin">
+                    <div class="col-sm-8 col-sm-offset-4">
+                        <div class="carousel-content">
+                            <!--<p class="hh1">建构家企业自助营销平台</p>-->
+                            <!--<p>以精益求精的生产工艺，严格品质管理，周到的服务体系与客户共同营造双赢的发展未来</p>-->
+                            <!--<if condition="$status eq 0">-->
+                                <!--<a href="{:U('Home/Shop/apply')}" class="active">申请店铺</a>-->
+                                <!--<else/>-->
+                                <!--<a href="{:U('Home/Shop/shop',array('temptype'=>$shop['temptype'],'id'=>$shop['shopid']))}">进入店铺</a>-->
+                            <!--</if>-->
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<section id="manage" class="manage">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p>
+                    <if condition="$company.self eq 1">
+                        <a href="{:U('Home/Company/businessManagement')}"  class="acti">管理企业</a>
+                        <else/>
+                        <a href="{:U('Home/Company/apply')}">加入平台</a>
+                    </if>
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</section><!--manage-->
+
+<section id="detaile" class="detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 ">
+                <!--左边三个列表-->
+                <div class="row">
+                    <div class="col-xs-12 de_left">
+                        <div class="de_p ">
+                            <p>
+                                <span class="ic_left"></span>
+                                新闻资讯
+                            </p>
+                        </div>
+                        <div class="row ">
+                            <foreach name="news" item="v">
+                                <div class="col-xs-6 col-sm-3">
+                                    <a href="{:U('Home/News/newsDetails',array('id'=>$v['id']))}" target="_blank">
+                                        <img class="de_img" src="__PUBLIC__{$v.picture}"  alt=""/>
+                                        <p class="text_center">{:mb_substr($v['title'],0,10)}</p>
+                                    </a>
+                                </div>
+                            </foreach>
+                            <!--<div class="col-xs-6 col-sm-3">-->
+                                <!--<img class="de_img de_none" src="__PUBLIC__/images/model/se_4.jpg"  alt=""/>-->
+                                <!--<p class="text_center">企业产品展示</p>-->
+                            <!--</div>-->
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="template_page paging" id="paging" style="font-size: 20px;text-align: center;">
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section><!--detaile-->
+
+<include file="Public/footer3"/>
+<script src="__PUBLIC__/scripts/jquery-1.12.4.min.js"></script>
+<script src="__PUBLIC__/scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/ZeroClipboard.js"></script>
+
+
+<!--<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"分享","bdMini":"1","bdMiniList":["bdxc","tqf","douban","bdhome","sqq","thx","ibaidu","meilishuo","mogujie","diandian","huaban","duitang","hx","fx","youdao","sdo","qingbiji","people","xinhua","mail","isohu","yaolan","wealink","ty","iguba","fbook","twi","linkedin","h163","evernotecn","copy","print"],"bdPic":"","bdStyle":"1","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>-->
+
+
+
+
+</body>
+</html>

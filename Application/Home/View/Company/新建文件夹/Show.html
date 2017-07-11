@@ -1,0 +1,72 @@
+<include file="Public/header" />
+<title>{$company.name}企业主页-建材装潢</title>
+<link rel="stylesheet" href="__PUBLIC__/css/detail.css">
+<!--[if lt IE 9]>
+  <script src="__PUBLIC__/js/html5shiv.min.js"></script>
+  <script src="__PUBLIC__/js/respond.min.js"></script>
+  <![endif]-->
+</head><body>
+<!--页面头部-->
+<include file="Public/top" />
+<!--logo界面-->
+<div id="top_main" style="overflow:hidden "> <img src="__PUBLIC__/{$company.logo}" alt="{$company.name}"> </div>
+<hr>
+<!--主导航-->
+<nav id="nav">
+  <div> <img src="__PUBLIC__/{$company.banner}" alt="{$company.name}"> </div>
+</nav>
+<aside id="aside">
+  <if condition="$role eq 3">
+    <ul class="bcyellow homeNav">
+      <if condition = "$status eq 1">
+      <li class="dib"><a href="{:U('Home/Company/Edit')}">资料编辑</a></li>
+      <li class="current dib"><a href="{:U('Home/Company/Manage')}">案例管理</a></li>
+      <li class="dib"><a href="{:U('Home/Company/editCase')}">案例添加</a></li>
+      </if>
+    </ul>
+  </if>
+  <if condition="$role == 0">
+    <ul class=" homeNav">
+      <li class="current dib"><a href="{:U('Home/Company/Apply')}">入驻申请</a></li>
+    </ul>
+  </if>
+  <div class="breadcrumbs"> 当前位置：<a href="/">首页</a><span>&nbsp;&gt;&nbsp;<a href="{:U('Home/Company/Show', array('id' => $company['id']))}">装潢公司</a></span>&nbsp;&gt;&nbsp;<span>案例</span> </div>
+</aside>
+<!--主体内容-->
+<section id="main">
+  <foreach name="works" item="work" key="k">
+    <div class="styles">
+      <div class="theme"> <img class="styleTitle" src="__PUBLIC__/images/styletitle.png" alt=""> <span class="textBg">{$k|companyWorkType=###}</span> <span class="textSm">{$k|companyWorkTypeEn=###} style</span> </div>
+      <div class="styleDetail container">
+        <div class="row">
+          <foreach name="work" item="v">
+            <div class="col-xs-6 col-md-3">
+              <div class="g-in stylelist "> <a href="{:U('/Home/Company/Cases', array('id'=>$v['id']))}"><img src="__PUBLIC__{$v.picture}" alt="" style="width:228px;height:145px;padding:0 10px"> </a>
+                <div class="styletext">{$v.name}</div>
+              </div>
+            </div>
+          </foreach>
+        </div>
+      </div>
+      <div class="moreStyle"> <a href="{:U('/Home/Company/CaseList', array('id'=>$v['companyid'],'type' => $k))}">更多设计案例</a> </div>
+    </div>
+  </foreach>
+  <div class="theme"> <img class="styleTitle" src="__PUBLIC__/images/styletitle.png" alt=""> <span class="textBg">关于我们</span> <span class="textSm">About us</span> </div>
+  <div class="contactUs clear">
+    <ul class="lf address">
+      <li>地址：{$company.address}</li>
+      <li>电话：{$company.tel}</li>
+      <li>免费服务热线：{$company.phone}</li>
+      <li>微信公众号：{$company.wx}</li>
+    </ul>
+    <div class="rt">
+      <ul>
+        <li> <img src="__PUBLIC__/images/qrcode_21.png" alt=""> </li>
+        <li> 手机报名用户有特权更实惠 </li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!--页面底部-->
+<div class="returnHome"> <a href="/">返回首页</a> </div>
+<include file="Public/bottom" /> <include file="Public/footer" />

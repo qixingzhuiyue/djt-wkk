@@ -1,0 +1,112 @@
+<include file='Public/header'/>
+<link rel="stylesheet" href="__PUBLIC__/styles/ordernum.css">
+<include file='Public/top'/>
+<div class="weixin bgwh">
+    <h2 class="f26">请使用微信扫描二维码进行支付</h2>
+    <!--img src="__PUBLIC__/images/er_invite.png">  -->
+    <img src="{$wxpay_code}">
+</div>
+<div class="weixin_botm bgwh">
+    <h3 class="f24">总计金额：￥{$order.amount}</h3>
+    <h3 class="f20">订单号：{$order.ordernum}</h3>
+    <h3 class="f20">下单日期：{$order.orderdate|date="Y-m-d H:s",###}</h3>
+    <input type="hidden" name="11" id="order_num" value="{$order.ordernum}">
+    <input type="hidden" name="11" class="js-order-type" value="{$order.type}">
+</div>
+
+<!--<div class="repair_box" style="margin:0;">-->
+ </div>
+<!--<include file='Common:footer'/>-->
+<include file='public/footer1'/>
+<!--微信分享弹窗-->
+<!--邀请朋友弹窗-->
+<!--无私支持钱数切换-->
+<script>
+    $(".money a").click(function(){
+        var n=$(".money a").index(this);
+        $(".money a").removeClass("money_cur");
+        $(this).addClass("money_cur");
+    })
+</script>
+<!--右侧标题背景变换-->
+<script>
+    $(".people_tittle_one").mouseover(function(){
+        $(".people_tittle_one").css({'background':'#585858'});
+        $(".people_tittle_one h1").css({'color':'#ffffff'});
+        $(".people_tittle_one h1 span").css({'color':'#ffffff'});
+        $(".arrow_one").show();
+        $(".people_tittle_one").mouseleave(function(){
+            $(".people_tittle_one").css({'background':'none'});
+            $(".people_tittle_one h1").css({'color':'#6d6d6d'});
+            $(".people_tittle_one h1 span").css({'color':'#ff0303'});
+            $(".arrow_one").show();
+        })
+    })
+</script>
+<script>
+    $(".people_tittle_two").mouseover(function(){
+        $(".people_tittle_two").css({'background':'#585858'});
+        $(".people_tittle_two h1").css({'color':'#ffffff'});
+        $(".people_tittle_two h1 span").css({'color':'#ffffff'});
+        $(".arrow_two").show();
+        $(".people_tittle_two").mouseleave(function(){
+            $(".people_tittle_two").css({'background':'none'});
+            $(".people_tittle_two h1").css({'color':'#6d6d6d'});
+            $(".people_tittle_two h1 span").css({'color':'#ff0303'});
+            $(".arrow").show();
+        })
+    })
+</script>
+
+<!--产品详情切换-->
+<script>
+    $(document).ready(function(){
+        $(".detail_main").hide();
+        $(".detail_main:first").show();
+        $(".detail_tittle li").click(function(){
+            var n=$(".detail_tittle li").index(this);
+            $(".detail_main").hide();
+            $(".detail_main:eq("+n+")").show();
+            $(".detail_tittle li").removeClass("detail_cur");
+            $(this).addClass("detail_cur");
+        })
+    })
+</script>
+<!--页码-->
+<script>
+    $(document).ready(function(){
+        $(".page_num a").click(function(){
+            var n=$(".page_num a").index(this);
+            $(".page_num a").removeClass("page_cur");
+            $(this).addClass("page_cur");
+        });
+//        $.post("{:U('Home/Wxpay/nativeOrders')}",{oid:ordernum},function(data){
+//            alert(data);
+//        });
+    })
+ var timer;
+ var ordernum = $("#order_num").val();
+ var type = $(".js-order-type").val();
+ timer = setInterval(function(){
+     var data = Wxpay_verify(ordernum);
+ },5000);
+ function Wxpay_verify(ordernum){
+     $.post("{:U('Home/Vcoin/nativeOrders')}",{oid:ordernum},function(data){
+         if(data.status==1){
+             if(type==4){
+                 window.location.href="{:U('Home/Vcoin/myWalletSuccess')}";
+             }
+             if(type==5){
+                 window.location.href="{:U('Home/Company/addCompanyTemplate')}";
+             }
+             if(type==1){
+                 window.location.href="{:U('Home/Shop/paySuccess')}";
+             }
+         }else{
+             console.log('支付中');
+         }
+     });
+}
+</script>
+</body>
+</html>

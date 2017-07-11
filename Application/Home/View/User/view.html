@@ -1,0 +1,29 @@
+<include file='Common:top'/>
+</head>
+<body>
+<div class="template">
+    <div class="template_top">
+        <div class="template_top_left">
+            <h1>用户管理>用户详情</h1>
+        </div>
+        <div class="template_top_right">
+            <a href="{:U('Admin/User/index')}" class="ul_button">返回</a>
+        </div>
+        <div class="fn-clear"></div>
+    </div>
+    <div class="add">
+    
+    <form name="adminForm" method="post" action="{:U('Admin/User/view')}">
+        <ul class="add_blank">
+            <li><div class="blank_left">帐号</div><div class="blank_right">{$user.account}</div><div class="fn-clear"></div></li>            
+            <li><div class="blank_left"><span class="blank_color">*</span>状态</div><div class="blank_right">
+            <input type="radio" name="status" value="1"  class="ul_middle" ><eq name="user['status']" value="1">checked</eq>/>&nbsp;正常&nbsp;&nbsp;
+            <input type="radio" name="status" value="0" class="ul_middle" ><eq name="user['status']" value="0">checked</eq>/>&nbsp;屏蔽
+            </div><div class="fn-clear"></div></li>
+            <input type="hidden" name="id" value="{$user.id}" />
+            <li class="ul_word"><input type="submit" class="ul_add" value="保存"/><input type="button" class="ul_cancel" onclick="history.go(-1);"  value="取消"/></li>
+        </ul></form>
+    </div>
+</div>
+</body>
+</html>

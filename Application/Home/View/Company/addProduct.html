@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--ie-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- [if lt IE 9]>-->
+    <script src="__PUBLIC__/scripts/html5shiv.min.js"></script>
+    <script src="__PUBLIC__/scripts/respond.min.js"></script>
+    <!-- <![endif]-->
+    <script src="__PUBLIC__/scripts/common.js"></script>
+    <script src="__PUBLIC__/scripts/jquery-1.12.4.min.js"></script>
+    <link href="__PUBLIC__/styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/styles/base.css" rel="stylesheet" />
+    <link rel="stylesheet" href="__PUBLIC__/styles/footer.css">
+    <link href="__PUBLIC__/styles/template.css" rel="stylesheet" />
+    <link href="__PUBLIC__/styles/shopsManagement.css" rel="stylesheet" />
+    <link rel="stylesheet" href="__PUBLIC__/styles/modelOne.css"/>
+    <link href="__PUBLIC__/styles/editCommodity.css" rel="stylesheet" />
+    <script type="text/javascript" charset="utf-8" src="__ROOT__/Public/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__ROOT__/Public/ueditor/ueditor.all.min.js"></script>
+    <title>店铺管理-编辑产品</title>
+</head>
+<style>
+    .topNav{background:#1e1e1e;}
+</style>
+
+<body>
+<!--editNews-->
+<header id="header">
+    <div class="top-bar ">
+        <div class="container">
+            <include file="Public/top1"/>
+        </div><!--/.container-->
+    </div><!--/.top-bar-->
+    <nav class="navbar" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand dib" href="#"><img class="nav_img" src="__PUBLIC__{$company.logo}" alt="logo"></a>
+            </div>
+            <div class="collapse navbar-collapse navbar-right" id="navbar">
+                <ul class="nav navbar-nav navbar_na">
+                    <!--<li ><a class="active" href="{:U('Home/Company/businessManagement')}">返回管理 </a></li>-->
+                    <!--<li><a href="#">产品展示 </a></li>-->
+                    <!--<li><a href="#">新闻动态 </a></li>-->
+                    <!--<li><a href="#">关于我们 </a></li>-->
+                    <!--<li><a href="#">联系我们</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--banner上传-->
+<div id="banner" class="dib upImg fn-clear rel">
+    <lable><img  src="__PUBLIC__{$company.banner}"  /></lable>
+    <input class="abs up_img" type="hidden" id="up_img" value="上传"/>
+    <label class="" for="up_img"></label>
+</div>
+<!--banner上传 end-->
+<!--content-->
+<div class="content bgwh">
+    <!--<a class="active b f24" style="display: block;width: 100%;text-align: center" ref="{:U('Home/Company/businessManagement')}">返回管理 </a>-->
+    <form action="{:U('Home/Company/addProduct')}" method="post" enctype="multipart/form-data" id="js-form">
+    <h3 class="f18 rel g3c">编辑产品 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="active f24" href="{:U('Home/Company/businessManagement')}"><span class="f25 b rel fr">返回</span></a></h3>
+    <div>
+        <label class="f16 g3c">产品名称</label>
+        <input type="text" value="{$product.title}" name="title" class="required js-title">
+        <input type="hidden" name="id" class="js-id" value="{$product.productid}">
+    </div>
+    <div>
+        <label class="f16">图片</label>
+        <div class="dib upImgT fn-clear">
+            <if condition="$product.picture eq ''">
+                <lable class="l logoDiv" id="logoDiv"><img class="editImg" id="logoImg" /></lable>
+                <else/>
+                <lable class="l logoDiv" id="logoDiv"><img src="__PUBLIC__{$product.picture}" class="editImg" id="logoImg" /></lable>
+            </if>
+            <div class="l f12 upImgTitle required">
+                <p class="g8c hidden-xs">图片不得大于4M (jpg、gif、png、bmp)</p>
+                <p class="g8c hidden-xs"> 推荐尺寸 472*280 px的图片</p>
+                <div class="up_imgT rel">
+                    <input class="abs" name="picture" type="file" id="logo_up" value="上传"/>
+                    <label class="abs logo_up f18 wh" >上传</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div>-->
+    <!--<label class="f16 g3c">摘要</label>-->
+    <!--<textarea></textarea>-->
+    <!--</div>-->
+    <div>
+        <label class="f16 g3c">推荐</label>
+        <ul id="recommend"  class="recommend dib fn-clear">
+            <li class="rel l">
+                <input class="abs" type="radio" value="1" name="type" <if condition="$product.type neq 2">checked='checked' </if> >
+                <span class="f16 g78 abs <if condition="$product.type neq 2">recommendY</if> ">精品</span>
+            </li>
+            <li class="rel l">
+                <input class="abs" type="radio" value="2" name="type" <if condition="$product.type eq 2">checked='checked' </if> >
+                <span class="f16 g78 abs <if condition="$product.type eq 2">recommendY</if> ">热门</span>
+            </li>
+        </ul>
+    </div>
+        <div>
+            <label class="f16 g3c">正文</label>
+            <script class="js-content" id="editor" name="content" type="text/plain">{$product.content}</script>
+        </div>
+    <div class="save f16 wh js-sub" ><span>保存</span></div>
+   </form>
+</div>
+<include file="Public/footer3"/>
+<script src="__PUBLIC__/scripts/bootstrap.js"></script>
+<script src="__PUBLIC__/scripts/uploadPreview.js" ></script>
+<!--<script src="__PUBLIC__/scripts/shopsManagement.js"></script>-->
+<script>
+    var width = $(window).width();
+    if(width>768){
+        var ue = new UE.ui.Editor({initialFrameHeight:500});
+        ue.render('editor');
+//        var ue = UE.getEditor('editor');
+    }else{
+        var ue = UE.getEditor('editor',{
+            //这里可以选择自己需要的工具按钮名称,此处仅选择如下五个
+            initialFrameHeight:200,toolbars:[['FullScreen','bold','underline','forecolor','simpleupload','fontsize','test']]
+            //focus时自动清空初始化时的内容
+//        autoClearinitialContent:true,
+//        //关闭字数统计
+//        wordCount:false,
+//        //关闭elementPath
+//        elementPathEnabled:false,
+//        //默认的编辑区域高度
+//        initialFrameHeight:300
+            //更多其他参数，请参考ueditor.config.js中的配置项
+        });
+    }
+    $(document).ready(function () {
+        //    删除
+        $(".delete").click(function () {
+            $(this).parents('.news>li').remove()
+        });
+        //添加产品
+        $(".js-sub").click(function(){
+            var title = $(".js-title").val();
+            var picture = $(".js-picture").val();
+            var content = ue.hasContents();
+            var id = $(".js-id").val();
+            var flag = true;
+            if(id==''){
+                if(title==''){
+                    alert("标题不能为空");
+                    flag = false;
+                    return false;
+                }
+                if(picture==''){
+                    alert("图片不能为空");
+                    flag = false;
+                    return false;
+                }
+                if(!content){
+                    alert("内容不能为空");
+                    flag = false;
+                    return false;
+                }
+                if(flag){
+                    $("#js-form").submit();
+                }
+            }else{
+                $("#js-form").submit();
+            }
+        });
+    });
+    // 上传图片预览
+    window.onload = function () {
+        new uploadPreview({UpBtn: "logo_up", DivShow: "logoDiv", ImgShow: "logoImg"});
+    };
+    // 选择
+    $('#recommend>li input').click(function () {
+        $(this).find('span').toggleClass("recommendY");
+        $("#recommend>li input[name='type']").next("span").removeClass("recommendY");
+        $(this).next().addClass("recommendY");
+        $(this).attr("checked","checked");
+    });
+    $('#state>li input').click(function () {
+        $(this).find('span').toggleClass("recommendY");
+        $(".state>li input[name='status']").next("span").removeClass("recommendY");
+        $(this).next().addClass("recommendY");
+    });
+</script>
+</body>
+</html>

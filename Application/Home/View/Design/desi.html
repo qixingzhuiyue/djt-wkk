@@ -1,0 +1,194 @@
+<include file="Public/header" />
+  <link rel="stylesheet" href="__PUBLIC__/css/designer.css">
+  <!--[if lt IE 9]>
+  <script src="__PUBLIC__/js/html5shiv.min.js"></script>
+  <script src="__PUBLIC__/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!--页面头部-->
+<include file="Public/top" />
+<!--搜索框-->
+<div id="top-main">
+  <div class="banner-box">
+    <img src="__PUBLIC__/images/designer/design_banner.png" alt="">
+    <div class="banner-md">
+      <div class="profile">
+        <img src ="__PUBLIC__{$designer.0.certified}" width="150" height="150" alt="">
+      </div>
+      <div class="address">
+        <span>{$designer.0.prov} {$designer.0.city}</span>
+      </div>
+      <!--<div class="forcus">-->
+        <!--关注-->
+      <!--</div>-->
+    </div>
+  </div>
+</div>
+<!--主导航-->
+<aside id="aside" class="designBar">
+  <ul class="bcyellow homeNav">
+    <if condition="$status eq 1">
+    <li><a href="{:U('Home/Design/editInfo')}">资料编辑</a></li>
+    <li class="current"><a href="{:U('Home/Design/management')}">作品管理</a></li>
+    <li><a href="{:U('Home/Design/addwork')}">作品添加</a></li>
+    </if>
+  </ul>
+  <div class="breadcrumbs">
+    当前位置：<a href="{:U('Home/Index/index')}">首页</a>
+    &nbsp;＞&nbsp;
+    <a href="{:U('Home/Design/index')}">找设计师</a>
+    &nbsp;＞
+    <span>设计师</span>
+  </div>
+</aside>
+<!--主体内容-->
+<section id="main">
+  <div class="row">
+    <div class="ctnLf lf">
+      <div class="productTitle clear">
+        <h2 class="productShow">作品展示</h2>
+        <span class=" hr-1 lf"></span>
+        <span class=" hr-2 lf"></span>
+      </div>
+      <div class="productCtn">
+        <volist name="designer" id="vo">
+        <div class="productCtnMain">
+          <h4 class="proMainTitle">{$vo.name}</h4>
+          <p class="contentInfo">{$vo.content}</p>
+          <div class="imgShow">
+            <div class="row">
+              <foreach name="vo['picture']" item="val">
+                <div class="col-xs-4">
+                  <a href="{:U('Home/Design/designer',array('id'=>$vo['id']))}"><img src="__PUBLIC__{$val}" width="180" height="180" alt=""></a>
+                </div>
+              </foreach>
+              <!--<div class="col-xs-4">-->
+                <!--<img src="__PUBLIC__/images/designer/design_pro.png" alt="">-->
+              <!--</div>-->
+              <!--<div class="col-xs-4">-->
+                <!--<img src="__PUBLIC__/images/designer/design_pro.png" alt="">-->
+              <!--</div>-->
+            </div>
+          </div>
+        </div>
+        </volist>
+        <div class="moreStyle">
+          <a href="#">设计案例共({$count}套)</a>
+        </div>
+        <div class="comments clear">
+          <h4 class="commentTitle">业主评价</h4>
+          <ul class="clear commentList">
+            <li>
+              <div class="goodComment commentCount">{$goodpersent}%</div>
+              <div class="rate">好评率</div>
+            </li>
+            <li>
+              <div class="commentCount">{$goodnum}</div>
+              <div class="rate">好评</div>
+            </li>
+            <li>
+              <div class="commentCount">{$aproposnum}</div>
+              <div class="rate">中评</div>
+            </li>
+            <li>
+              <div class="commentCount">{$badnum}</div>
+              <div class="rate">差评</div>
+            </li>
+          </ul>
+          <volist name="goods" id="vo"> 
+          <div class="commentDetail clear">
+            <div class="lf commentLf">
+              <dl>
+                <dt><img src="__PUBLIC__/images/designer/design_icon.png" alt=""></dt>
+                <dd>{$vo.name}</dd>
+              </dl>
+            </div>
+            <div class="rt commentRt">
+              <div class="commentRtTitle clear">
+                <span class="rtGoodComment">好评</span>
+              <span class="times rt">
+                {$vo.created|date='Y-m-d',###}
+              </span>
+              </div>
+              <p class="commentRtDetail">
+                    {$vo.content}
+              </p>
+
+            </div>
+          </div>
+          </volist>
+          <div class="page">
+              {$page}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ctnRt  hidden-xs rt">
+      <div class="asideBox profileBox">
+        <dl class="profileInfo">
+          <!--<dt><img src="__PUBLIC__/images/designer/design_profile.png" alt=""></dt>-->
+          <dt><img src="__PUBLIC__{$designer.0.certified}" width="150" height="150" alt=""></dt>
+          <dd>{$designer.0.realname}</dd>
+        </dl>
+        <ul class="draftInfo">
+          <li>设计经验：{$designer.0.workexp}</li>
+          <li>擅长空间：{$designer.0.goodat}</li>
+          <li>电话号码：{$designer.0.tel}</li>
+          <li>微信号：{$designer.0.wx}</li>
+        </ul>
+        <p class="email">邮件：{$designer.0.email}</p>
+        <!--<p class="info js-intro-less">个人简介：{:mb_substr($designer[0]['intro'],0,16)}</p>-->
+        <p class="info js-intro-full">个人简介：{$designer[0]['intro']}</p>
+        <!--<a href="javascript:void(0);" class="js-intro">更多</a>       &lt;!&ndash; 个人简介下拉内容 &ndash;&gt;-->
+      </div>
+      <!--&lt;!&ndash;分页开始&ndash;&gt;-->
+      <!--<div class="clear">-->
+        <!--{$page}-->
+      <!--</div>-->
+      <!--&lt;!&ndash;分页结束&ndash;&gt;-->
+      <div class="asideBox">
+        <div class="clear titleWrapper">
+          <h2 class="asideBoxTitle lf">推荐金牌公司</h2>
+        </div>
+        <ul>
+          <volist name="Recommend" id="vo" key="k">
+          <li><a href="{:U('Home/Company/Show',array('id'=>$vo['id']))}">{$k}.{$vo.name}</a></li>
+          </volist>
+        </ul>
+      </div>
+      <div class="asideBox">
+        <div class="clear titleWrapper">
+          <h2 class="asideBoxTitle lf">热搜话题</h2>
+        </div>
+        <div class="adds-rt"><img src="__PUBLIC__/images/designer/adds-rt.png" alt=""></div>
+        <ul class="hotSearch">
+          <volist name="BBS" id="vo" key="k">
+          <li><a href="{:U('Home/Bbs/Show',array('id'=>$vo['id']))}">{$k}.{$vo.title}</a></li>
+          </volist>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!--页面底部-->
+
+<!--页面底部-->
+<include file="Public/bottom" /> 
+<script>
+  $(function(){
+//    $(".js-intro").click(function(){
+//      var i = $(".js-intro-full").hasClass('dn');
+//      if(i){
+//        $(".js-intro-full").show();
+//        $(".js-intro-less").hide();
+//        $(this).text('收起');
+//      }else{
+//        $(".js-intro-less").show();
+//        $(".js-intro-full").hide();
+//        $(this).text('更多');
+//      }
+//    });
+  });
+</script>
+<include file="Public/footer" />

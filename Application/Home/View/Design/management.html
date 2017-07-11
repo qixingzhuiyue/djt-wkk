@@ -1,0 +1,58 @@
+<include file="Public/header" />
+<link rel="stylesheet" href="__PUBLIC__/css/decoration.css">
+  <!--[if lt IE 9]>
+  <script src="__PUBLIC__/frameworks/html5shiv.min.js"></script>
+  <script src="__PUBLIC__frameworks/respond.min.js"></script>
+  <![endif]-->
+<body>
+<!--页面头部-->
+<include file="Public/top" />
+<!--页面头部结束-->
+<!--搜索框-->
+<div id="top-main">
+  <div class="breadcrumbs bbsbread">
+    当前位置：<a href="{:U('Home/Index/index')}">首页</a>&nbsp;＞&nbsp;<a href="{:U('Home/Design/index')}">找设计师</a>&nbsp;＞&nbsp;<a href="{:U('Home/Design/desi',array('id'=>session('uid')))}">设计师</a>&nbsp;＞&nbsp;<span>作品管理</span>
+  </div>
+</div>
+<!--主体内容-->
+<section id="main" class="bcyellow">
+  <div class="decorationTitle">
+    作品管理
+  </div>
+  <div class="container">
+    <div class="row rowCtn">
+      <foreach name="works" item="vo">
+        <div class="col-xs-6 col-md-3">
+          <dl>
+            <dt><img src="__PUBLIC__{$vo['picture']}" width="280" height="180" alt=""></dt>
+            <dd>{$vo.name}</dd>
+            <dd>作品分类 ：{$vo.type}</dd>
+            <dd>
+              <a href="{:U('Home/Design/addwork',array('id'=>$vo['id']))}"><span class="bcyellow formg">编辑</span></a>
+              <a href="{:U('Home/Design/desiDel',array('id'=>$vo['id']))}"><span class="bcyellow formg">删除</span></a>
+
+            </dd>
+          </dl>
+        </div>
+      </foreach>
+      <!--<div class="col-xs-6 col-md-3">-->
+        <!--<dl>-->
+          <!--<dt><img src="images/designer/d_management.png" alt=""></dt>-->
+          <!--<dd>天津乐尚客世纪都汇店</dd>-->
+          <!--<dd>作品分类 ：公共空间</dd>-->
+          <!--<dd>-->
+            <!--<span class="bcyellow formg">编辑</span>-->
+            <!--<span class="bcyellow formg">删除</span>-->
+          <!--</dd>-->
+        <!--</dl>-->
+      <!--</div>-->
+    </div>
+  </div>
+</section>
+<div class="returnHome">
+  <a href="/">返回首页</a>
+</div>
+<!--页面底部-->
+<include file="Public/bottom" />
+<include file="Public/footer" />
+<!--页面底部-->
