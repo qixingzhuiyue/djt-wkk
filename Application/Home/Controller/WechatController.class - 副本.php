@@ -5,12 +5,10 @@ use Think\Controller;
 define("TOKEN", "weixin");
 
 class WechatController extends CommonController{
-	//wx6e144be882e1e0d0
-	//7b94f80642c8c78e9cfd5b51a6dc2b79
-	//public $appid = 'wxfa5a6521224f3471';
-	//public $secret = 'efa35b1a7cd6c35002d945a048dc04c7';
-	public $appid = 'wx604acb859c405539';
-	public $secret = '7056ef47d91f948e04bbf6c52e02043b';
+	//public $appid = '';
+	//public $secret = '';
+	public $appid = '';
+	public $secret = '';
 //	public $redirect_uri = 'http://qifuzhiye.51ruanron.com/index.php/Home/Wechat/webAuth';
 
 	public function index(){
